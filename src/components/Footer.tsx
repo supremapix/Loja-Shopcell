@@ -182,7 +182,7 @@ export default function Footer() {
                 src={CONTACT_INFO.creditoLogo} 
                 alt="Logo Suprema Sites" 
                 referrerPolicy="no-referrer"
-                className="h-4 object-contain brightness-0 invert"
+                className="h-4 object-contain"
                 onError={(e) => {
                   (e.target as HTMLElement).style.display = 'none';
                 }}
