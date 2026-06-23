@@ -46,22 +46,71 @@ export default function Navbar({
     { id: 'faq', label: 'Dúvidas / FAQ', seniorLabel: '❓ Tirar Dúvidas Frequentes' },
   ];
 
+  const topbarItems = [
+    {
+      icon: <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />,
+      text: "Próximo ao Shopping Estação e Rodoferroviária – R. Conselheiro Laurindo, 809, Sala 402",
+      actionText: "Ver Mapa 📍",
+      link: CONTACT_INFO.mapsLink
+    },
+    {
+      icon: <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />,
+      text: "Avaliação 5.0 Google – +3.500 clientes satisfeitos em Curitiba!",
+      actionText: "Avaliações ⭐",
+      link: CONTACT_INFO.mapsLink
+    },
+    {
+      icon: <CreditCard className="w-3.5 h-3.5 text-[#FF6600]" />,
+      text: "Facilidade de Pagamento: Parcele em até 12x no cartão diretamente na loja física!",
+      actionText: "Ver Parcelas 💳",
+      link: CONTACT_INFO.whatsappLink
+    },
+    {
+      icon: <MessageSquare className="w-3.5 h-3.5 text-emerald-400 fill-transparent" />,
+      text: "Atendimento Rápido via WhatsApp – Tire suas dúvidas ou solicite entrega expressa!",
+      actionText: "Falar Conosco 💬",
+      link: CONTACT_INFO.whatsappLink
+    }
+  ];
+
+  const duplicatedTopbarItems = [...topbarItems, ...topbarItems];
+
   return (
     <>
-      {/* Top Bar */}
-      <div id="topbar" className="w-full bg-slate-100 border-b border-slate-200 text-xs text-gray-600 py-2.5 px-4 z-50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left font-sans">
-          <div className="flex items-center gap-1.5 font-medium">
-            <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
-            <span>📍 Próximo ao <strong className="text-gray-900">Shopping Estação</strong> e <strong className="text-gray-900">Rodoferroviária</strong></span>
-          </div>
-          <div className="flex items-center gap-1.5 font-medium">
-            <Star className="w-3.5 h-3.5 text-[#FF6600] fill-[#FF6600]" />
-            <span>⭐ <strong className="text-gray-900">5.0 Google</strong> – +3.500 avaliações de clientes</span>
-          </div>
-          <div className="flex items-center gap-1.5 font-medium">
-            <CreditCard className="w-3.5 h-3.5 text-[#FF6600]" />
-            <span>💳 Parcele em até <strong className="text-gray-900">12x</strong> – R. Conselheiro Laurindo 809, Centro</span>
+      {/* Top Bar Ticker */}
+      <div 
+        id="topbar" 
+        className="w-full bg-slate-900 text-white border-b border-slate-800 py-2.5 relative overflow-hidden select-none z-50"
+      >
+        {/* Decorative gradient shadows at the edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-slate-900 to-transparent z-10 pointer-events-none" />
+
+        {/* Ticker Content Wrapper */}
+        <div className="flex w-max relative">
+          <div className="flex gap-12 sm:gap-20 animate-marquee-reverse hover:[animation-play-state:paused] transition-all duration-300">
+            {duplicatedTopbarItems.map((item, index) => (
+              <div 
+                key={index} 
+                className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0 text-xs font-sans font-medium tracking-wide"
+              >
+                <div className="flex items-center justify-center p-1 bg-white/5 rounded-md">
+                  {item.icon}
+                </div>
+                <span className="text-gray-200">{item.text}</span>
+                
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  referrerPolicy="no-referrer"
+                  className="inline-flex items-center gap-1 bg-[#FF6600] hover:bg-[#D45500] text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md transition-colors shadow-xs ml-1 cursor-pointer"
+                >
+                  <span>{item.actionText}</span>
+                  <span className="text-[9px]">➔</span>
+                </a>
+              </div>
+            ))}
           </div>
         </div>
       </div>
