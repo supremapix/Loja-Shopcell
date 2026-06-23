@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, MessageSquare, Mail, Clock, ShieldAlert, ChevronDown, ChevronUp } from 'lucide-react';
+import { MapPin, Phone, MessageSquare, Mail, Clock, ShieldAlert, ChevronDown, ChevronUp, Video, Home } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 import { bairrosData } from '../bairrosData';
 
@@ -88,14 +88,10 @@ export default function Location() {
                   <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mt-1">
                     {CONTACT_INFO.address}
                   </p>
-                  <a
-                    href={CONTACT_INFO.mapsLink}
-                    target="_blank"
-                    referrerPolicy="no-referrer"
-                    className="inline-block text-[#FF6600] hover:underline text-xs font-bold font-mono uppercase tracking-wider mt-2"
-                  >
-                    🗺️ Abrir no Google Maps
-                  </a>
+                  <span className="flex items-center gap-1.5 text-[#FF6600] hover:underline text-xs font-bold font-mono uppercase tracking-wider mt-2">
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>Abrir no Google Maps</span>
+                  </span>
                 </div>
               </div>
 
@@ -154,8 +150,9 @@ export default function Location() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF6600]/10 rounded-full filter blur-3xl pointer-events-none" />
             
             <div className="text-center mb-6 relative z-10">
-              <span className="text-[10px] font-mono font-bold text-white uppercase tracking-widest bg-[#FF6600] px-3.5 py-1.5 rounded-full shadow-md inline-block">
-                📹 VÍDEO EXCLUSIVO DA LOJA
+              <span className="text-[10px] font-mono font-bold text-white uppercase tracking-widest bg-[#FF6600] px-3.5 py-1.5 rounded-full shadow-md inline-flex items-center gap-1.5">
+                <Video className="w-3.5 h-3.5" />
+                <span>VÍDEO EXCLUSIVO DA LOJA</span>
               </span>
               <h3 className="font-display font-black text-xl sm:text-2xl text-white mt-4 tracking-tight">
                 Assista ao Vídeo e Conheça Nossa Estrutura de Retirada & Envio!
@@ -198,7 +195,7 @@ export default function Location() {
                     to={`/bairro/${city.slug}`}
                     className="bg-white border border-slate-200 hover:border-[#FF6600]/40 text-gray-700 hover:text-[#FF6600] px-3.5 py-2 rounded-xl text-xs font-semibold shadow-xs hover:shadow-md transition-all flex items-center gap-1.5 h-11"
                   >
-                    <span>📍</span>
+                    <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
                     <span className="truncate">{city.nome}</span>
                   </Link>
                 ))}
@@ -229,7 +226,7 @@ export default function Location() {
                     to={`/bairro/${bairro.slug}`}
                     className="bg-white border border-slate-200 hover:border-[#FF6600]/40 text-gray-700 hover:text-[#FF6600] px-3 py-1.5 rounded-lg text-xs font-medium shadow-xs transition-all flex items-center gap-1 hover:shadow-xs font-mono"
                   >
-                    <span>🏘️</span>
+                    <Home className="w-3 h-3 text-[#FF6600]" />
                     <span className="truncate">{bairro.nome}</span>
                   </Link>
                 ))}
@@ -266,7 +263,7 @@ export default function Location() {
                     to={`/bairro/${bairro.slug}`}
                     className="bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#FF6600]/40 text-gray-600 hover:text-[#FF6600] px-2.5 py-1.5 rounded-md text-[11px] font-sans shadow-xs transition-all flex items-center gap-1"
                   >
-                    <span>📍</span>
+                    <MapPin className="w-3 h-3 text-[#FF6600]" />
                     <span>{bairro.nome}</span>
                   </Link>
                 ))}

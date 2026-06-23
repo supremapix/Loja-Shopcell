@@ -8,6 +8,7 @@ import Ticker from './Ticker';
 import Footer from './Footer';
 import Cart from './Cart';
 import { CartItem, Product } from '../types';
+import { safeGetItem, safeSetItem } from '../utils/storage';
 
 export interface ComparisonModel {
   name: string;
@@ -19,6 +20,7 @@ export interface ComparisonModel {
   antutu: string;
   weight: string;
   highlights: string[];
+  image?: string;
 }
 
 export interface PresetComparison {
@@ -51,7 +53,8 @@ const PRESET_COMPARISONS: PresetComparison[] = [
       charger: '67W Turbo Charge (100% em 44min)',
       antutu: '605.000 pontos',
       weight: '187g',
-      highlights: ['Câmera monstruosa de 200MP com super zoom digital', 'Tela 1.5K ultra definida', 'Bordas de tela extremamente finas']
+      highlights: ['Câmera monstruosa de 200MP com super zoom digital', 'Tela 1.5K ultra definida', 'Bordas de tela extremamente finas'],
+      image: "https://www.celularcuritibashopcell.com.br/image_adds/celular-xiaomi-redmi-note-15-pro-5g-dual-sim-de-256gb8gb-ram.jpg"
     },
     old: {
       name: 'Redmi Note 12 Pro 5G (Antigo)',
@@ -62,7 +65,8 @@ const PRESET_COMPARISONS: PresetComparison[] = [
       charger: '67W Fast Charge',
       antutu: '490.000 pontos',
       weight: '187g',
-      highlights: ['Boa câmera para uso básico', 'Ótimo equilíbrio geral', 'Corpo com traseira em vidro']
+      highlights: ['Boa câmera para uso básico', 'Ótimo equilíbrio geral', 'Corpo com traseira em vidro'],
+      image: "https://www.celularcuritibashopcell.com.br/image.php?image=celular-xiaomi-redmi-note-14-5g-nfc-dual-sim-256gb-8gb-ram.jpg&max_size=600"
     }
   },
   {
@@ -82,7 +86,8 @@ const PRESET_COMPARISONS: PresetComparison[] = [
       charger: '120W HyperCharge (100% em 19min)',
       antutu: '1.610.000 pontos',
       weight: '209g',
-      highlights: ['Processador topo de linha extremamente fluído', 'Carregador de 120W incluso na caixa', 'Tela brilhante de 4000 nits em ambientes ensolarados']
+      highlights: ['Processador topo de linha extremamente fluído', 'Carregador de 120W incluso na caixa', 'Tela brilhante de 4000 nits em ambientes ensolarados'],
+      image: "https://www.xiaomishopcell.com.br/image_adds/celular-xiaomi-poco-f8-ultra-nfc-dual-sim-512gb16gb-ram.jpg"
     },
     old: {
       name: 'POCO F5 Pro (Antigo)',
@@ -93,7 +98,8 @@ const PRESET_COMPARISONS: PresetComparison[] = [
       charger: '67W Turbo / 30W Sem Fio',
       antutu: '1.135.000 pontos',
       weight: '204g',
-      highlights: ['Suporta carregamento sem fio', 'Excelente tela WQHD+', 'Boa autonomia de bateria']
+      highlights: ['Suporta carregamento sem fio', 'Excelente tela WQHD+', 'Boa autonomia de bateria'],
+      image: "https://xiaomishopcell.com.br/image_adds/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram.jpg"
     }
   },
   {
@@ -113,7 +119,8 @@ const PRESET_COMPARISONS: PresetComparison[] = [
       charger: '90W HyperCharge / 50W Sem Fio',
       antutu: '2.120.000 pontos',
       weight: '188g',
-      highlights: ['Lentes profissionais Leica Summilux de abertura f/1.6', 'O celular compacto mais potente do mundo', 'Brilho de tela e durabilidade absurdos']
+      highlights: ['Lentes profissionais Leica Summilux de abertura f/1.6', 'O celular compacto mais potente do mundo', 'Brilho de tela e durabilidade absurdos'],
+      image: "https://www.xiaomishopcell.com.br/image_adds/celular-xiaomi-15t-pro-nfc-dual-sim-de-512gb12gb-ram-de-683-leica-505012mp32mp-mocha-gold-global.jpg"
     },
     old: {
       name: 'Xiaomi 13 (Antigo)',
@@ -124,7 +131,8 @@ const PRESET_COMPARISONS: PresetComparison[] = [
       charger: '67W Turbo / 50W Sem Fio',
       antutu: '1.550.000 pontos',
       weight: '185g',
-      highlights: ['Corpo compacto extremamente confortável', 'Lentes Leica clássicas', 'Ótima performance de bateria']
+      highlights: ['Corpo compacto extremamente confortável', 'Lentes Leica clássicas', 'Ótima performance de bateria'],
+      image: "https://xiaomishopcell.com.br/image_adds/celular-xiaomi-15t-nfc-dual-sim-de-512gb12gb-ram.jpg"
     }
   }
 ];
@@ -132,14 +140,14 @@ const PRESET_COMPARISONS: PresetComparison[] = [
 export default function Compare() {
   const [selectedPresetId, setSelectedPresetId] = useState(PRESET_COMPARISONS[0].id);
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    const saved = localStorage.getItem('mi_shopcell_cart');
+    const saved = safeGetItem('mi_shopcell_cart');
     return saved ? JSON.parse(saved) : [];
   });
   const [cartOpen, setCartOpen] = useState(false);
 
   // Sync cart
   useEffect(() => {
-    localStorage.setItem('mi_shopcell_cart', JSON.stringify(cartItems));
+    safeSetItem('mi_shopcell_cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
@@ -263,11 +271,11 @@ export default function Compare() {
             <div className="space-y-3 pt-2">
               <h4 className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">DIFERENÇAS PRINCIPAIS</h4>
               <div className="bg-slate-950 border border-slate-850 p-3 rounded-xl flex items-center gap-2 text-xs font-semibold text-emerald-400">
-                <span>⚡</span>
+                <Zap className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <span>{currentPreset.performanceDiff}</span>
               </div>
               <div className="bg-slate-950 border border-slate-850 p-3 rounded-xl flex items-center gap-2 text-xs font-semibold text-[#FF6600]">
-                <span>📸</span>
+                <Camera className="w-4 h-4 text-[#FF6600] flex-shrink-0" />
                 <span>{currentPreset.cameraDiff}</span>
               </div>
             </div>
@@ -286,6 +294,39 @@ export default function Compare() {
             <h3 className="font-display font-bold text-white text-lg border-b border-slate-800 pb-4">
               Ficha Técnica Lado a Lado
             </h3>
+
+            {/* Side-by-side Device Visual Preview */}
+            <div className="grid grid-cols-2 gap-4 pb-6 border-b border-slate-800/80">
+              <div className="bg-slate-950/60 border border-slate-800/50 p-4 rounded-2xl flex flex-col items-center text-center">
+                <span className="text-[9px] font-mono font-bold text-[#FF6600] uppercase tracking-widest bg-[#FF6600]/10 px-2.5 py-0.5 rounded-md mb-3">MODELO NOVO</span>
+                {currentPreset.current.image && (
+                  <div className="h-32 sm:h-40 w-full flex items-center justify-center bg-slate-900/40 rounded-xl p-2 mb-3">
+                    <img 
+                      src={currentPreset.current.image} 
+                      alt={currentPreset.current.name} 
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.6)]" 
+                    />
+                  </div>
+                )}
+                <h4 className="font-display font-extrabold text-xs sm:text-sm text-white">{currentPreset.current.name}</h4>
+              </div>
+
+              <div className="bg-slate-950/30 border border-slate-800/30 p-4 rounded-2xl flex flex-col items-center text-center">
+                <span className="text-[9px] font-mono font-bold text-slate-450 uppercase tracking-widest bg-slate-800 px-2.5 py-0.5 rounded-md mb-3">GERAÇÃO ANTERIOR</span>
+                {currentPreset.old.image && (
+                  <div className="h-32 sm:h-40 w-full flex items-center justify-center bg-slate-900/20 rounded-xl p-2 mb-3 opacity-85">
+                    <img 
+                      src={currentPreset.old.image} 
+                      alt={currentPreset.old.name} 
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.6)]" 
+                    />
+                  </div>
+                )}
+                <h4 className="font-display font-medium text-xs sm:text-sm text-slate-400">{currentPreset.old.name}</h4>
+              </div>
+            </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse min-w-[500px]">

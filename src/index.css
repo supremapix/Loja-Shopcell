@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", "Poppins", sans-serif;
-  --font-display: "Poppins", "Inter", sans-serif;
+  --font-sans: "MiSans Latin", "Inter", "Poppins", sans-serif;
+  --font-display: "MiSans Latin", "Poppins", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   
-  --color-xiaomi: #FF6600;
+  --color-xiaomi: #FF6900;
   --color-xiaomi-dark: #D45500;
-  --color-xiaomi-light: #FF8533;
-  --color-dark-bg: #050505;
-  --color-dark-card: #111111;
-  --color-dark-border: #222222;
+  --color-xiaomi-light: #FF781A;
+  --color-dark-bg: #191919;
+  --color-dark-card: #24201c;
+  --color-dark-border: #dbdbdb;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-glow: glow 2s ease-in-out infinite;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageSquare, MapPin, Sparkles, Shield, Gift, Megaphone } from 'lucide-react';
+import { MessageSquare, MapPin, Sparkles, Shield, Gift, Megaphone, ChevronRight } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 
 export default function Ticker() {
@@ -75,7 +75,7 @@ export default function Ticker() {
                 className="inline-flex items-center gap-1 bg-[#FF6600] hover:bg-[#D45500] text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md transition-colors shadow-xs ml-1"
               >
                 <span>{item.actionText}</span>
-                <span className="text-[9px] sm:text-[10px]">➔</span>
+                <ChevronRight className="w-3 h-3 text-white" />
               </a>
             </div>
           ))}

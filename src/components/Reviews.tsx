@@ -36,7 +36,10 @@ export default function Reviews() {
                   <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
                 ))}
               </div>
-              <p className="text-xs font-bold text-gray-900 mt-1">⭐ 5.0 / 5.0 Estrelas</p>
+              <p className="text-xs font-bold text-gray-900 mt-1 flex items-center gap-1">
+                <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                <span>5.0 / 5.0 Estrelas</span>
+              </p>
               <p className="text-[11px] text-gray-400 font-mono mt-0.5 uppercase tracking-wide">Mais de 3.500 avaliações no Google</p>
             </div>
           </div>

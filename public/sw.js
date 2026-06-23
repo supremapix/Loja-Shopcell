@@ -10,8 +10,14 @@ const ASSETS_TO_CACHE = [
 // Install Event
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
+    caches.open(CACHE_NAME).then(async (cache) => {
+      for (const asset of ASSETS_TO_CACHE) {
+        try {
+          await cache.add(asset);
+        } catch (err) {
+          console.warn(`[Service Worker] Failed to cache asset: ${asset}`, err);
+        }
+      }
     })
   );
   self.skipWaiting();
@@ -35,8 +41,24 @@ self.addEventListener('activate', (event) => {
 
 // Fetch Event (Stale-While-Revalidate Strategy)
 self.addEventListener('fetch', (event) => {
-  // Only cache GET requests and ignore chrome-extension URLs or non-http protocols
-  if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) {
+  // Only handle GET requests
+  if (event.request.method !== 'GET') {
+    return;
+  }
+
+  // Parse request URL
+  let url;
+  try {
+    url = new URL(event.request.url);
+  } catch (err) {
+    return;
+  }
+
+  // Only intercept same-origin or Google Fonts requests to prevent cross-origin issues
+  const isSameOrigin = url.origin === self.location.origin;
+  const isGoogleFonts = url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com';
+
+  if (!isSameOrigin && !isGoogleFonts) {
     return;
   }
 

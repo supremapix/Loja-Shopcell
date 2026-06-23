@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { ShoppingCart, Menu, X, Phone, MessageSquare, Search, MapPin, Star, CreditCard, ChevronRight } from 'lucide-react';
+import { 
+  ShoppingCart, Menu, X, Phone, MessageSquare, Search, MapPin, Star, 
+  CreditCard, ChevronRight, Home, Smartphone, Users, HelpCircle, RefreshCw 
+} from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 
 interface NavbarProps {
@@ -24,7 +27,6 @@ export default function Navbar({
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-
   const [isLargeText, setIsLargeText] = useState(false);
 
   useEffect(() => {
@@ -40,36 +42,36 @@ export default function Navbar({
   }, []);
 
   const navItems = [
-    { id: 'inicio', label: 'Início', seniorLabel: '🏠 Ir para o Início' },
-    { id: 'produtos', label: 'Produtos', seniorLabel: '📱 Ver Celulares e Preços' },
-    { id: 'RMCEbairros', label: 'Cidades & Bairros', seniorLabel: '🗺️ Onde fica a Loja Física?' },
-    { id: 'quem-somos', label: 'Quem Somos', seniorLabel: '🤝 Conhecer a Nossa Loja' },
-    { id: 'faq', label: 'Dúvidas / FAQ', seniorLabel: '❓ Tirar Dúvidas Frequentes' },
+    { id: 'inicio', label: 'Início', seniorLabel: 'Ir para o Início', icon: <Home className="w-5 h-5 text-[#FF6600]" /> },
+    { id: 'produtos', label: 'Produtos', seniorLabel: 'Ver Celulares e Preços', icon: <Smartphone className="w-5 h-5 text-[#FF6600]" /> },
+    { id: 'RMCEbairros', label: 'Cidades & Bairros', seniorLabel: 'Onde fica a Loja Física?', icon: <MapPin className="w-5 h-5 text-[#FF6600]" /> },
+    { id: 'quem-somos', label: 'Quem Somos', seniorLabel: 'Conhecer a Nossa Loja', icon: <Users className="w-5 h-5 text-[#FF6600]" /> },
+    { id: 'faq', label: 'Dúvidas / FAQ', seniorLabel: 'Tirar Dúvidas Frequentes', icon: <HelpCircle className="w-5 h-5 text-[#FF6600]" /> },
   ];
 
   const topbarItems = [
     {
       icon: <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />,
       text: "Próximo ao Shopping Estação e Rodoferroviária – R. Conselheiro Laurindo, 809, Sala 402",
-      actionText: "Ver Mapa 📍",
+      actionText: "Ver Mapa",
       link: CONTACT_INFO.mapsLink
     },
     {
       icon: <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />,
       text: "Avaliação 5.0 Google – +3.500 clientes satisfeitos em Curitiba!",
-      actionText: "Avaliações ⭐",
+      actionText: "Avaliações",
       link: CONTACT_INFO.mapsLink
     },
     {
       icon: <CreditCard className="w-3.5 h-3.5 text-[#FF6600]" />,
       text: "Facilidade de Pagamento: Parcele em até 12x no cartão diretamente na loja física!",
-      actionText: "Ver Parcelas 💳",
+      actionText: "Ver Parcelas",
       link: CONTACT_INFO.whatsappLink
     },
     {
       icon: <MessageSquare className="w-3.5 h-3.5 text-emerald-400 fill-transparent" />,
       text: "Atendimento Rápido via WhatsApp – Tire suas dúvidas ou solicite entrega expressa!",
-      actionText: "Falar Conosco 💬",
+      actionText: "Falar Conosco",
       link: CONTACT_INFO.whatsappLink
     }
   ];
@@ -105,10 +107,10 @@ export default function Navbar({
                   target="_blank"
                   rel="noreferrer"
                   referrerPolicy="no-referrer"
-                  className="inline-flex items-center gap-1 bg-[#FF6600] hover:bg-[#D45500] text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md transition-colors shadow-xs ml-1 cursor-pointer"
+                  className="inline-flex items-center gap-1 bg-[#FF6600] hover:bg-[#D45500] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md transition-colors shadow-xs ml-1 cursor-pointer"
                 >
                   <span>{item.actionText}</span>
-                  <span className="text-[9px]">➔</span>
+                  <ChevronRight className="w-3 h-3 text-white" />
                 </a>
               </div>
             ))}
@@ -124,7 +126,7 @@ export default function Navbar({
             : 'bg-white/85 border-b border-slate-100 py-4.5 backdrop-blur-sm'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 flex justify-between items-center">
           {/* Logo */}
           <a
             href="#inicio"
@@ -132,7 +134,7 @@ export default function Navbar({
               e.preventDefault();
               onNavClick('inicio');
             }}
-            className="flex items-center gap-3 group select-none"
+            className="flex items-center gap-3 group select-none flex-shrink-0"
             id="brand-logo"
           >
             {/* MI icon box */}
@@ -157,8 +159,8 @@ export default function Navbar({
             </div>
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          {/* Desktop Navigation - fixed grouped menus with gap-8/gap-10, ample spacing, high-end Swiss typography */}
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-10 mx-6">
             {navItems.map((item) => (
               <a
                 key={item.id}
@@ -167,8 +169,8 @@ export default function Navbar({
                   e.preventDefault();
                   onNavClick(item.id);
                 }}
-                className={`relative font-semibold text-sm tracking-wide transition-colors duration-200 py-1 ${
-                  activeSection === item.id ? 'text-[#FF6600]' : 'text-gray-600 hover:text-gray-900'
+                className={`relative font-display font-bold text-xs uppercase tracking-wider transition-colors duration-200 py-1.5 ${
+                  activeSection === item.id ? 'text-[#FF6600]' : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {item.label}
@@ -185,16 +187,16 @@ export default function Navbar({
             {/* Comparison Link */}
             <Link
               to="/comparar"
-              className="bg-amber-500/15 hover:bg-amber-500 text-amber-600 hover:text-white border border-amber-500/30 hover:border-transparent px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 shadow-xs uppercase tracking-wider"
+              className="bg-amber-500/10 hover:bg-amber-500 text-amber-600 hover:text-white border border-amber-500/20 hover:border-transparent px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs uppercase tracking-wider"
               id="compare-nav-link"
             >
-              <span>🔄</span>
+              <RefreshCw className="w-3.5 h-3.5 animate-spin-slow" />
               <span>Compare Modelos</span>
             </Link>
           </nav>
 
           {/* Actions Bar */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3.5 flex-shrink-0">
             {/* Search Toggle */}
             <div className="relative">
               <AnimatePresence>
@@ -210,7 +212,7 @@ export default function Navbar({
                       placeholder="Buscar aparelho..."
                       value={searchQuery}
                       onChange={(e) => onSearchChange(e.target.value)}
-                      className="bg-slate-50 text-xs text-gray-900 px-3 py-1.5 rounded-full border border-slate-200 focus:border-[#FF6600] focus:outline-none w-full"
+                      className="bg-slate-50 text-xs text-gray-900 px-3 py-1.5 rounded-full border border-slate-200 focus:border-[#FF6600] focus:outline-none w-full animate-fade-in"
                     />
                   </motion.div>
                 )}
@@ -249,7 +251,7 @@ export default function Navbar({
               href={CONTACT_INFO.whatsappLink}
               target="_blank"
               referrerPolicy="no-referrer"
-              className="hidden sm:flex items-center gap-2 bg-[#FF6600]/10 hover:bg-[#FF6600] border border-[#FF6600]/30 text-[#FF6600] hover:text-white px-4 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-300"
+              className="hidden sm:flex items-center gap-2 bg-[#FF6600]/10 hover:bg-[#FF6600] border border-[#FF6600]/30 text-[#FF6600] hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-xs"
               id="contact-whatsapp-btn"
             >
               <MessageSquare className="w-4 h-4 text-inherit" />
@@ -277,30 +279,69 @@ export default function Navbar({
               exit={{ height: 0, opacity: 0 }}
               className="lg:hidden w-full bg-slate-50 border-b border-slate-300 overflow-hidden"
             >
-              <div className="px-4 py-6 flex flex-col gap-5">
+              <div className="px-4 py-6 flex flex-col gap-6">
+                
+                {/* Brand Logo in Mobile Menu - Animated, customized with pulsing motion */}
+                <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-2">
+                  <div className="flex items-center gap-3">
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.08, 1],
+                        rotate: [0, 5, -5, 0]
+                      }}
+                      transition={{ 
+                        duration: 3.5, 
+                        repeat: Infinity, 
+                        ease: "easeInOut" 
+                      }}
+                      className="w-11 h-11 bg-[#FF6600] rounded-xl flex items-center justify-center font-bold text-white text-xl shadow-[0_4px_12px_rgba(255,102,0,0.3)]"
+                    >
+                      MI
+                    </motion.div>
+                    <div className="flex flex-col">
+                      <span className="font-display font-black tracking-wider text-gray-900 text-base leading-none">
+                        MI SHOP CELL
+                      </span>
+                      <span className="font-mono text-[9px] text-[#FF6600] tracking-widest font-bold mt-1 uppercase">
+                        Sua Loja Xiaomi em Curitiba
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Close button inside mobile header */}
+                  <button 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="p-1.5 text-slate-400 hover:text-slate-900 bg-slate-200/60 hover:bg-slate-200 rounded-lg transition-all"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
                 {/* Senior Help & Font Size Controller Box */}
-                <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-xs">
+                <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-                    <div>
-                      <h4 className="font-display font-bold text-gray-900 text-sm flex items-center justify-center sm:justify-start gap-1.5">
-                        <span>👵👴</span>
-                        <span>Menu de Ajuda Simplificado</span>
-                      </h4>
-                      <p className="text-gray-500 text-[11px] mt-0.5">
-                        Projetado para facilitar a leitura e o toque.
-                      </p>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-5 h-5 text-[#FF6600] flex-shrink-0" />
+                      <div>
+                        <h4 className="font-display font-bold text-gray-900 text-sm">
+                          Menu de Ajuda Simplificado
+                        </h4>
+                        <p className="text-gray-500 text-[11px] mt-0.5">
+                          Projetado para facilitar a leitura e o toque.
+                        </p>
+                      </div>
                     </div>
                     
                     <button
                       type="button"
                       onClick={() => setIsLargeText(!isLargeText)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 border ${
+                      className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 border w-full sm:w-auto ${
                         isLargeText
                           ? 'bg-[#FF6600] text-white border-[#FF6600] shadow-sm'
                           : 'bg-slate-100 hover:bg-slate-200 text-gray-700 border-slate-300'
                       }`}
                     >
-                      <span>🔍</span>
+                      <Search className="w-3.5 h-3.5" />
                       <span>{isLargeText ? 'Letra Normal' : 'Aumentar Letra'}</span>
                     </button>
                   </div>
@@ -335,7 +376,7 @@ export default function Navbar({
                         onNavClick(item.id);
                         setMobileMenuOpen(false);
                       }}
-                      className={`flex items-center gap-3 w-full py-4 px-4 rounded-xl border font-bold transition-all duration-200 ${
+                      className={`flex items-center gap-3.5 w-full py-4 px-4 rounded-xl border font-bold transition-all duration-200 ${
                         activeSection === item.id
                           ? 'bg-[#FF6600]/10 border-[#FF6600] text-[#FF6600]'
                           : 'bg-white border-slate-200 text-gray-800 hover:bg-slate-100 shadow-xs'
@@ -344,6 +385,7 @@ export default function Navbar({
                       }`}
                       style={{ minHeight: '52px' }}
                     >
+                      {item.icon}
                       <span className="leading-tight text-left">{item.seniorLabel}</span>
                     </a>
                   ))}
@@ -358,7 +400,7 @@ export default function Navbar({
                     style={{ minHeight: '52px' }}
                   >
                     <span className="flex items-center gap-3">
-                      <span>🔄</span>
+                      <RefreshCw className="w-5 h-5 text-amber-500 group-hover:text-white animate-spin-slow" />
                       <span>Compare Modelos (Novo vs Antigo)</span>
                     </span>
                     <ChevronRight className="w-4 h-4 text-inherit" />
@@ -366,7 +408,7 @@ export default function Navbar({
                 </div>
 
                 {/* Big Help Action Buttons */}
-                <div className="flex flex-col gap-3 pt-3 border-t border-slate-200">
+                <div className="flex flex-col gap-3 pt-4 border-t border-slate-200">
                   <span className="text-[10px] text-gray-500 uppercase tracking-widest font-mono font-bold block px-1 text-center">
                     Precisa de ajuda humana imediata?
                   </span>
@@ -396,9 +438,10 @@ export default function Navbar({
                     </a>
                   </div>
 
-                  <p className="text-center text-gray-500 text-[10px] leading-relaxed mt-1">
-                    📍 Endereço: {CONTACT_INFO.address} (Fácil acesso com rampa e elevador)
-                  </p>
+                  <div className="text-center text-gray-500 text-[10px] leading-relaxed mt-1 flex items-center justify-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
+                    <span>Endereço: {CONTACT_INFO.address} (Fácil acesso com rampa e elevador)</span>
+                  </div>
                 </div>
               </div>
             </motion.div>

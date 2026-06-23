@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, MessageSquare, ArrowUp, Star } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, ArrowUp, Star, Home, Smartphone, ShieldCheck, HelpCircle, RefreshCw } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 
 export default function Footer() {
@@ -43,7 +43,8 @@ export default function Footer() {
             
             {/* Google Stars Rating */}
             <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 p-2.5 rounded-xl w-fit shadow-xs">
-              <span className="text-white text-xs font-bold font-mono">⭐ 5.0</span>
+              <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+              <span className="text-white text-xs font-bold font-mono">5.0</span>
               <span className="text-[10px] text-slate-500 font-mono">Mais de 3.902 avaliações</span>
             </div>
           </div>
@@ -56,37 +57,37 @@ export default function Footer() {
             <ul className="space-y-3 text-xs font-sans text-slate-300 sm:space-y-2.5">
               <li>
                 <a href="#inicio" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <span className="sm:hidden">🏠</span>
+                  <Home className="w-4 h-4 text-[#FF6600] sm:hidden" />
                   <span>Ir para o Início</span>
                 </a>
               </li>
               <li>
                 <a href="#produtos" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <span className="sm:hidden">📱</span>
+                  <Smartphone className="w-4 h-4 text-[#FF6600] sm:hidden" />
                   <span>Catálogo de Smartphones</span>
                 </a>
               </li>
               <li>
                 <a href="#diferenciais" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <span className="sm:hidden">🛡️</span>
+                  <ShieldCheck className="w-4 h-4 text-[#FF6600] sm:hidden" />
                   <span>Por que comprar com a gente?</span>
                 </a>
               </li>
               <li>
                 <a href="#RMCEbairros" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <span className="sm:hidden">🗺️</span>
+                  <MapPin className="w-4 h-4 text-[#FF6600] sm:hidden" />
                   <span>Cidades e Bairros Atendidos</span>
                 </a>
               </li>
               <li>
                 <a href="#faq" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <span className="sm:hidden">❓</span>
+                  <HelpCircle className="w-4 h-4 text-[#FF6600] sm:hidden" />
                   <span>Dúvidas Frequentes (FAQ)</span>
                 </a>
               </li>
               <li>
                 <Link to="/comparar" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-amber-500/10 border border-amber-500/30 sm:border-0 rounded-xl sm:rounded-none text-amber-500 hover:text-amber-400 sm:text-slate-200 sm:hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <span>🔄</span>
+                  <RefreshCw className="w-4 h-4 text-amber-500" />
                   <span>Compare Modelos (Novos vs Antigos)</span>
                 </Link>
               </li>

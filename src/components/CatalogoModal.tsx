@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, FileText, Send } from 'lucide-react';
+import { X, FileText, Send, AlertTriangle } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 
 interface CatalogoModalProps {
@@ -11,13 +11,15 @@ interface CatalogoModalProps {
 export default function CatalogoModal({ isOpen, onClose }: CatalogoModalProps) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) {
-      alert('Por favor, digite seu nome.');
+      setError('Por favor, digite seu nome.');
       return;
     }
+    setError(null);
 
     const message = `Olá! Gostaria de receber o catálogo completo em PDF da *Xiaomi Shop Cell Curitiba* com todos os smartphones, tablets e acessórios disponíveis.\n\n👤 *Nome:* ${name}\n📱 *Contato:* ${phone || 'Não informado'}\n\n_Solicitado via formulário de catálogo do site_`;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(message)}`;
@@ -96,9 +98,17 @@ export default function CatalogoModal({ isOpen, onClose }: CatalogoModalProps) {
                 </div>
 
                 {/* Info Note */}
-                <div className="bg-[#FF6600]/5 border border-[#FF6600]/15 rounded-xl p-3 text-[11px] text-gray-600 leading-normal">
-                  📦 O catálogo completo contém fotos detalhadas, lista de preços à vista, parcelamentos finais e prazos de garantia de todos os aparelhos Xiaomi da loja.
+                <div className="bg-[#FF6600]/5 border border-[#FF6600]/15 rounded-xl p-3 text-[11px] text-gray-600 leading-normal flex items-start gap-2">
+                  <FileText className="w-4 h-4 text-[#FF6600] flex-shrink-0 mt-0.5" />
+                  <span>O catálogo completo contém fotos detalhadas, lista de preços à vista, parcelamentos finais e prazos de garantia de todos os aparelhos Xiaomi da loja.</span>
                 </div>
+
+                {error && (
+                  <div className="bg-red-50 text-red-600 border border-red-200 rounded-xl p-3 text-xs font-semibold flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4 text-red-500 flex-shrink-0" />
+                    <span>{error}</span>
+                  </div>
+                )}
 
                 {/* Actions */}
                 <div className="pt-2">

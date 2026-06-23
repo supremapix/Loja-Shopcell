@@ -20,11 +20,12 @@ import Ticker from './Ticker';
 import Garantia from './Garantia';
 import ShareButton from './ShareButton';
 import EnhancedSEO from './EnhancedSEO';
+import { safeGetItem, safeSetItem } from '../utils/storage';
 
 export default function Home() {
   // State definitions
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    const saved = localStorage.getItem('mi_shopcell_cart');
+    const saved = safeGetItem('mi_shopcell_cart');
     return saved ? JSON.parse(saved) : [];
   });
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -36,7 +37,7 @@ export default function Home() {
 
   // Sync cart to localStorage
   useEffect(() => {
-    localStorage.setItem('mi_shopcell_cart', JSON.stringify(cartItems));
+    safeSetItem('mi_shopcell_cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
   // Handle active section on scroll

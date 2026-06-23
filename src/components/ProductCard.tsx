@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Star, ShoppingBag, Info } from 'lucide-react';
+import { Star, ShoppingBag, Info, MessageSquare } from 'lucide-react';
 import { Product } from '../types';
 
 interface ProductCardProps {
@@ -36,7 +36,7 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
             <span
               key={i}
               className={`font-mono text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider ${
-                b.includes('Novo') || b.includes('🔥') || b.includes('NOVO')
+                b.includes('Novo') || b.includes('Destaque') || b.includes('NOVO') || b.includes('Premium')
                   ? 'bg-[#FF6600] text-white shadow-xs'
                   : 'bg-slate-800 text-slate-200 border border-slate-700'
               }`}
@@ -129,10 +129,11 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
           href={getWhatsAppMessage(product)}
           target="_blank"
           referrerPolicy="no-referrer"
-          className="block text-center text-[10px] text-slate-400 hover:text-[#FF6600] font-mono uppercase tracking-wider mt-3 transition-colors"
+          className="flex items-center justify-center gap-1.5 text-center text-[10px] text-slate-400 hover:text-[#FF6600] font-mono uppercase tracking-wider mt-3 transition-colors"
           id={`direct-whatsapp-${product.id}`}
         >
-          📱 Chamar vendedor direto
+          <MessageSquare className="w-3.5 h-3.5" />
+          <span>Chamar vendedor direto</span>
         </a>
       </div>
     </motion.div>

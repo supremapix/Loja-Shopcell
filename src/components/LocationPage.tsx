@@ -16,7 +16,8 @@ import ProductCard from './ProductCard';
 import ProductDetailModal from './ProductDetailModal';
 import CatalogoModal from './CatalogoModal';
 import ShareButton from './ShareButton';
-import { MapPin, MessageSquare, ChevronRight, ShieldCheck, ShoppingBag, Sparkles, Star } from 'lucide-react';
+import { MapPin, MessageSquare, ChevronRight, ShieldCheck, ShoppingBag, Sparkles, Star, Check, Search, FileText, Smartphone } from 'lucide-react';
+import { safeGetItem, safeSetItem } from '../utils/storage';
 
 export default function LocationPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -33,7 +34,7 @@ export default function LocationPage() {
 
   // Cart and Modal state (replicated from App.tsx for flawless full-fidelity experience)
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    const saved = localStorage.getItem('mi_shopcell_cart');
+    const saved = safeGetItem('mi_shopcell_cart');
     return saved ? JSON.parse(saved) : [];
   });
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -44,7 +45,7 @@ export default function LocationPage() {
 
   // Sync cart to localStorage
   useEffect(() => {
-    localStorage.setItem('mi_shopcell_cart', JSON.stringify(cartItems));
+    safeSetItem('mi_shopcell_cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
   // Scroll to top on page render
@@ -161,7 +162,7 @@ export default function LocationPage() {
 
               {/* Geo-reference context block */}
               <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 flex gap-3 text-xs text-slate-400 max-w-2xl backdrop-blur-xs">
-                <span className="text-lg">📍</span>
+                <MapPin className="w-5 h-5 text-[#FF6600] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-bold text-slate-200 uppercase font-mono tracking-wider text-[10px]">Contexto Local & Direções</p>
                   <p className="mt-1 leading-relaxed">{currentBairro.coordenadasContexto}</p>
@@ -200,19 +201,19 @@ export default function LocationPage() {
               
               <ul className="space-y-3 text-xs text-slate-300">
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-500 font-bold mt-0.5">✓</span>
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
                   <span><strong>Pague na Chegada:</strong> Pagamento seguro apenas após a chegada do motoboy, teste e aprovação do seu Xiaomi.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-500 font-bold mt-0.5">✓</span>
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
                   <span><strong>Garantia Shopcell:</strong> Garantia completa de 6 meses direto conosco na nossa loja física.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-500 font-bold mt-0.5">✓</span>
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
                   <span><strong>Brinde Especial:</strong> Seu aparelho já sai com película de vidro aplicada e capinha de brinde!</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-500 font-bold mt-0.5">✓</span>
+                  <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
                   <span><strong>Segurança Máxima:</strong> Caixa lacrada aberta e ativada na sua frente pelo nosso motoboy.</span>
                 </li>
               </ul>
@@ -263,7 +264,7 @@ export default function LocationPage() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full bg-slate-50 border border-slate-200 text-slate-800 px-4 py-3 pl-10 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#FF6600] transition-colors"
                 />
-                <span className="absolute left-3.5 top-3.5 text-slate-400">🔍</span>
+                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
@@ -279,7 +280,10 @@ export default function LocationPage() {
                 onClick={() => setCatalogModalOpen(true)}
                 className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-2xl text-xs sm:text-sm transition-colors cursor-pointer"
               >
-                <span>📖 Catálogo Completo (PDF)</span>
+                <span className="flex items-center gap-1.5">
+                  <FileText className="w-4 h-4" />
+                  <span>Catálogo Completo (PDF)</span>
+                </span>
               </button>
             </div>
 
@@ -316,7 +320,7 @@ export default function LocationPage() {
             </div>
           ) : (
             <div className="bg-white border border-slate-200 p-12 rounded-3xl text-center">
-              <span className="text-3xl">📱</span>
+              <Smartphone className="w-8 h-8 text-slate-400 mx-auto mb-4" />
               <h3 className="font-display font-bold text-gray-900 text-lg mt-4">Nenhum aparelho encontrado</h3>
               <p className="text-gray-500 text-xs sm:text-sm mt-1 max-w-md mx-auto">
                 Não encontramos smartphones correspondentes à pesquisa. Chame nossos vendedores no WhatsApp para conferir todo o nosso estoque de reposição!

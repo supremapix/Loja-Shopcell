@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Trash2, Plus, Minus, ShoppingBag, Send, AlertTriangle } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, Send, AlertTriangle, Store, Truck, Wallet, CreditCard, Sparkles } from 'lucide-react';
 import { CartItem } from '../types';
 import { CONTACT_INFO, CURITIBA_NEIGHBORHOODS, RMC_CITIES } from '../data';
 
@@ -28,20 +28,23 @@ export default function Cart({
   const [neighborhood, setNeighborhood] = useState('');
   const [city, setCity] = useState('Curitiba');
   const [paymentMethod, setPaymentMethod] = useState<'pix' | 'cartao'>('pix');
+  const [formError, setFormError] = useState<string | null>(null);
 
   // Compute Totals
   const totalAtVista = cartItems.reduce((acc, item) => acc + (item.product.priceAt * item.quantity), 0);
 
   const handleFinishOrder = () => {
     if (!clientName.trim()) {
-      alert('Por favor, digite seu nome para o pedido.');
+      setFormError('Por favor, digite seu nome para o pedido.');
       return;
     }
 
     if (deliveryType === 'entrega' && (!address.trim() || !neighborhood.trim())) {
-      alert('Por favor, preencha o endereço de entrega e o bairro.');
+      setFormError('Por favor, preencha o endereço de entrega e o bairro.');
       return;
     }
+
+    setFormError(null);
 
     // Build WhatsApp Message
     let message = `🛒 *NOVO PEDIDO - XIAOMI SHOP CELL CURITIBA*\n`;
@@ -253,25 +256,33 @@ export default function Cart({
                       <div className="grid grid-cols-2 gap-2">
                         <button
                           type="button"
-                          onClick={() => setDeliveryType('retirada')}
-                          className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                          onClick={() => {
+                            setDeliveryType('retirada');
+                            setFormError(null);
+                          }}
+                          className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
                             deliveryType === 'retirada'
                               ? 'bg-[#FF6600]/10 border-[#FF6600] text-[#FF6600]'
                               : 'bg-slate-50 border-slate-200 text-gray-600 hover:bg-slate-100'
                           }`}
                         >
-                          🏪 Retirar na Loja (Centro)
+                          <Store className="w-4 h-4" />
+                          <span>Retirar na Loja (Centro)</span>
                         </button>
                         <button
                           type="button"
-                          onClick={() => setDeliveryType('entrega')}
-                          className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                          onClick={() => {
+                            setDeliveryType('entrega');
+                            setFormError(null);
+                          }}
+                          className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
                             deliveryType === 'entrega'
                               ? 'bg-[#FF6600]/10 border-[#FF6600] text-[#FF6600]'
                               : 'bg-slate-50 border-slate-200 text-gray-600 hover:bg-slate-100'
                           }`}
                         >
-                          🛵 Receber via Motoboy
+                          <Truck className="w-4 h-4" />
+                          <span>Receber via Motoboy</span>
                         </button>
                       </div>
                     </div>
@@ -337,25 +348,33 @@ export default function Cart({
                       <div className="grid grid-cols-2 gap-2">
                         <button
                           type="button"
-                          onClick={() => setPaymentMethod('pix')}
-                          className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                          onClick={() => {
+                            setPaymentMethod('pix');
+                            setFormError(null);
+                          }}
+                          className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
                             paymentMethod === 'pix'
                               ? 'bg-[#FF6600]/10 border-[#FF6600] text-[#FF6600]'
                               : 'bg-slate-50 border-slate-200 text-gray-600 hover:bg-slate-100'
                           }`}
                         >
-                          💵 Pix / Dinheiro (-Desconto)
+                          <Wallet className="w-4 h-4" />
+                          <span>Pix / Dinheiro</span>
                         </button>
                         <button
                           type="button"
-                          onClick={() => setPaymentMethod('cartao')}
-                          className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                          onClick={() => {
+                            setPaymentMethod('cartao');
+                            setFormError(null);
+                          }}
+                          className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
                             paymentMethod === 'cartao'
                               ? 'bg-[#FF6600]/10 border-[#FF6600] text-[#FF6600]'
                               : 'bg-slate-50 border-slate-200 text-gray-600 hover:bg-slate-100'
                           }`}
                         >
-                          💳 Cartão em até 12x
+                          <CreditCard className="w-4 h-4" />
+                          <span>Cartão em até 12x</span>
                         </button>
                       </div>
                     </div>
@@ -380,10 +399,18 @@ export default function Cart({
                       {totalAtVista.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                     </span>
                   </div>
-                  <span className="text-[10px] text-gray-400 block text-right font-mono uppercase tracking-wide">
-                    {paymentMethod === 'pix' ? '🔥 Preço com Desconto Especial À Vista' : 'Taxas de cartão calculadas ao orçar'}
-                  </span>
+                  <div className="flex items-center gap-1 justify-end text-[10px] text-gray-400 font-mono uppercase tracking-wide">
+                    {paymentMethod === 'pix' && <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />}
+                    <span>{paymentMethod === 'pix' ? 'Preço com Desconto Especial À Vista' : 'Taxas de cartão calculadas ao orçar'}</span>
+                  </div>
                 </div>
+
+                {formError && (
+                  <div className="bg-red-50 text-red-600 border border-red-200 rounded-xl p-3 text-xs font-semibold flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4 text-red-500 flex-shrink-0" />
+                    <span>{formError}</span>
+                  </div>
+                )}
 
                 {checkoutStep === 1 ? (
                   <button

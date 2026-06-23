@@ -96,7 +96,7 @@ export const PRODUCTS: Product[] = [
     parcelas: "12x de R$ 215,12",
     image: "https://xiaomishopcell.com.br/image_adds/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram.jpg",
     link: "https://www.xiaomishopcell.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram",
-    badges: ["5G", "🔥 Novo", "512GB"]
+    badges: ["5G", "Destaque Novo", "512GB"]
   },
   {
     id: 8,
@@ -161,7 +161,7 @@ export const PRODUCTS: Product[] = [
     parcelas: "12x de R$ 501,52",
     image: "https://www.xiaomishopcell.com.br/image_adds/celular-xiaomi-poco-f8-ultra-nfc-dual-sim-512gb16gb-ram.jpg",
     link: "https://www.celularescuritibashopcell.com.br/celular-xiaomi-poco-f8-ultra-nfc-dual-sim-512gb-16gb-ram",
-    badges: ["16GB RAM", "Snapdragon 8 Elite", "6500mAh", "👑 Flagship"],
+    badges: ["16GB RAM", "Snapdragon 8 Elite", "6500mAh", "Premium Flagship"],
     isHeroDestaque: true
   },
   {
