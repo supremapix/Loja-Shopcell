@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
 );
 
 // Register service worker for offline capabilities and asset caching
-if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+if ('serviceWorker' in navigator && (import.meta as any).env?.PROD) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then((reg) => console.log('Service Worker registrado com sucesso: ', reg.scope))
