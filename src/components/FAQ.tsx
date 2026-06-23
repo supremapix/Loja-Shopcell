@@ -11,10 +11,10 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-20 bg-slate-50 border-t border-slate-200">
+    <section id="faq" className="py-12 sm:py-20 bg-slate-50 border-t border-slate-200">
       <div className="max-w-4xl mx-auto px-4">
         {/* Section Title */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-3">DÚVIDAS FREQUENTES</span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-gray-900 tracking-tight">
             Perguntas Frequentes · FAQ

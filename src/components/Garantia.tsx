@@ -7,7 +7,7 @@ export default function Garantia() {
   return (
     <section 
       id="garantia" 
-      className="py-20 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden border-t border-b border-slate-200"
+      className="py-12 sm:py-20 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden border-t border-b border-slate-200"
     >
       {/* Background radial soft light */}
       <div className="absolute right-1/4 top-1/4 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-[35rem] bg-[#FF6600]/4 rounded-full filter blur-[120px] pointer-events-none" />

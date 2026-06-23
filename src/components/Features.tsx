@@ -12,13 +12,13 @@ const iconMap: { [key: string]: any } = {
 
 export default function Features() {
   return (
-    <section id="diferenciais" className="py-20 bg-white relative border-y border-slate-200/60">
+    <section id="diferenciais" className="py-12 sm:py-20 bg-white relative border-y border-slate-200/60">
       {/* Decorative side lights */}
       <div className="absolute right-0 top-1/4 w-[25rem] h-[25rem] bg-[#FF6600]/3 rounded-full filter blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Section Title */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-3">DIFERENCIAIS EXCLUSIVOS</span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-gray-900 tracking-tight leading-tight">
             Por que escolher a Xiaomi Shop Cell Curitiba?

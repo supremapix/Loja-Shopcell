@@ -14,13 +14,13 @@ export default function Location() {
   const unofficialBairros = bairrosData.filter(b => b.regiao === "Curitiba (Região Popular)");
 
   return (
-    <section id="RMCEbairros" className="py-20 bg-white relative overflow-hidden border-t border-slate-200">
+    <section id="RMCEbairros" className="py-12 sm:py-20 bg-white relative overflow-hidden border-t border-slate-200">
       {/* Glow */}
       <div className="absolute right-0 bottom-0 w-[20rem] h-[20rem] bg-[#FF6600]/3 rounded-full filter blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Title */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-3">ATENDIMENTO LOCAL</span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-gray-900 tracking-tight">
             Nossa Loja Física em Curitiba
@@ -31,7 +31,7 @@ export default function Location() {
         </div>
 
         {/* Info Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10 sm:mb-16">
           {/* Photos and Details */}
           <div className="col-span-1 lg:col-span-6 space-y-6">
             {/* Optimized Gallery Grid */}
@@ -144,7 +144,7 @@ export default function Location() {
         </div>
 
         {/* Highlighted 16:9 Institutional Video */}
-        <div className="w-full max-w-4xl mx-auto mb-16 px-1">
+        <div className="w-full max-w-4xl mx-auto mb-10 sm:mb-16 px-1">
           <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl relative overflow-hidden">
             {/* Soft decorative background glows */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF6600]/10 rounded-full filter blur-3xl pointer-events-none" />

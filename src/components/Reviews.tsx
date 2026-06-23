@@ -3,13 +3,13 @@ import { REVIEWS } from '../data';
 
 export default function Reviews() {
   return (
-    <section id="depoimentos" className="py-20 bg-slate-50 relative overflow-hidden border-b border-slate-200">
+    <section id="depoimentos" className="py-12 sm:py-20 bg-slate-50 relative overflow-hidden border-b border-slate-200">
       {/* Background glow lights */}
       <div className="absolute left-0 bottom-0 w-[30rem] h-[30rem] bg-[#FF6600]/3 rounded-full filter blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Title and Google Badge Intro */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10 sm:mb-16">
           <div className="max-w-xl text-center lg:text-left mx-auto lg:mx-0">
             <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-3">AVALIAÇÕES DE CLIENTES</span>
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-gray-900 tracking-tight leading-tight">
