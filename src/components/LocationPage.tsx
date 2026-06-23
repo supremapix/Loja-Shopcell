@@ -199,21 +199,21 @@ export default function LocationPage() {
               </div>
               
               <ul className="space-y-3 text-xs text-slate-300">
-                <li className="flex items-center gap-2.5">
-                  <span className="text-emerald-500">✓</span>
-                  <span>Entrega Expressa via Motoboy Segura</span>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-500 font-bold mt-0.5">✓</span>
+                  <span><strong>Pague na Chegada:</strong> Pagamento seguro apenas após a chegada do motoboy, teste e aprovação do seu Xiaomi.</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="text-emerald-500">✓</span>
-                  <span>6 Meses de Garantia Local Localizada</span>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-500 font-bold mt-0.5">✓</span>
+                  <span><strong>Garantia Shopcell:</strong> Garantia completa de 6 meses direto conosco na nossa loja física.</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="text-emerald-500">✓</span>
-                  <span>Brinde: Película de Vidro + Capinha</span>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-500 font-bold mt-0.5">✓</span>
+                  <span><strong>Brinde Especial:</strong> Seu aparelho já sai com película de vidro aplicada e capinha de brinde!</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="text-emerald-500">✓</span>
-                  <span>Caixa Lacrada original aberta na sua frente</span>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-500 font-bold mt-0.5">✓</span>
+                  <span><strong>Segurança Máxima:</strong> Caixa lacrada aberta e ativada na sua frente pelo nosso motoboy.</span>
                 </li>
               </ul>
             </div>

@@ -9,7 +9,7 @@ export interface BairroInfo {
   ctaText: string;
 }
 
-export const bairrosData: BairroInfo[] = [
+const baseBairrosData: BairroInfo[] = [
   {
     slug: "centro",
     nome: "Centro",
@@ -211,3 +211,94 @@ export const bairrosData: BairroInfo[] = [
     ctaText: "Retirar / Comprar Rebouças"
   }
 ];
+
+const OFFICIAL_BAIRROS = [
+  "Abranches", "Ahú", "Alto Boqueirão", "Alto da Glória", "Alto da Rua XV", "Atuba", "Augusta", 
+  "Bacacheri", "Bairro Alto", "Barreirinha", "Boa Vista", "Bom Retiro", "Butiatuvinha", "Cachoeira", 
+  "Campo Comprido", "Campo de Santana", "Capão da Imbuia", "Cascatinha", "Caximba", "Centro Cívico", 
+  "Fanny", "Fazendinha", "Ganchinho", "Guabirotuba", "Guaíra", "Hugo Lange", "Jardim Botânico", 
+  "Jardim das Américas", "Lamenha Pequena", "Lindóia", "Mercês", "Mossunguê", "Novo Mundo", 
+  "Orleans", "Parolin", "Pilarzinho", "Prado Velho", "Riviera", "Santa Cândida", "Santa Quitéria", 
+  "Santo Inácio", "Sítio Cercado", "São Braz", "São Francisco", "São João", "São Lourenço", 
+  "São Miguel", "Taboão", "Tarumã", "Tatuquara", "Tingui", "Umbará", "Vila Izabel", "Vista Alegre", "Xaxim"
+];
+
+const UNOFFICIAL_BAIRROS = [
+  "Vila Sandra", "CIC Central", "Neoville", "Vitória Régia", "Caiuá", "Sabará", "Vila Verde", 
+  "Nossa Senhora da Luz", "Barigui", "Conquista", "Augusta (região)", "Riviera (região)", 
+  "São Miguel (região)", "Gabineto", "Itatiaia", "Santa Helena", "Atenas", "Osvaldo Cruz", 
+  "Vila Pantanal", "Vila Torres", "Vila das Torres", "Vila Parolin", "Vila Hauer", "Vila Guaíra", 
+  "Vila Oficinas", "Vila Osternack", "Vila São Pedro", "Vila Audi", "Pinheirinho Velho", 
+  "Portão Velho", "Capão Raso Velho", "Sítio Cercado Velho", "Umbará de Baixo", "Umbará de Cima", 
+  "Carmo", "Hauer Velho", "Xaxim Velho", "Boqueirão Alto", "Boqueirão Velho", "Cajuru Alto", 
+  "Uberaba Velho", "Uberaba de Cima", "Jardim das Torres", "Vila Prado", "Bairro Alto Norte", 
+  "Bairro Alto Velho", "Tingui Velho", "Boa Vista Norte", "Orleans Velho", "São Braz Alto", 
+  "Santa Felicidade Norte", "Jardim Gabineto", "Jardim Itatiaia", "Jardim Kosmos", "Jardim da Ordem", 
+  "Jardim Alvorada"
+];
+
+const NEARBY_CITIES = [
+  "São José dos Pinhais", "Pinhais", "Colombo", "Araucária", "Almirante Tamandaré", "Campo Largo", 
+  "Campo Magro", "Fazenda Rio Grande", "Quatro Barras", "Campina Grande do Sul", "Mandirituba", 
+  "Balsa Nova", "Rio Branco do Sul", "Itaperuçu", "Tijucas do Sul"
+];
+
+function toSlug(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9\-]/g, "");
+}
+
+// Generate dynamic listings
+const generatedOfficial: BairroInfo[] = OFFICIAL_BAIRROS.map(nome => ({
+  slug: toSlug(nome),
+  nome,
+  regiao: "Curitiba (IPPUC)",
+  tituloSEO: `Celular Xiaomi no Bairro ${nome} Curitiba | Envio Rápido Motoboy`,
+  metaDescription: `Adquira seu celular Xiaomi original no bairro ${nome} em Curitiba. Entrega imediata via motoboy express, pague na entrega ao receber, 6 meses de garantia local.`,
+  introducao: `A Xiaomi Shopcell atende o bairro ${nome} de Curitiba com total prioridade! Garantimos a entrega expressa do seu celular original, novo e lacrado na caixa via motoboy. O melhor de tudo: você realiza o pagamento seguro apenas no ato da entrega (pague na chegada do nosso motoboy), com suporte e garantia Shopcell de 6 meses inclusos de fábrica.`,
+  coordenadasContexto: `Atendimento logístico otimizado com rotas rápidas via motoboy para as principais ruas e condomínios do bairro ${nome}.`,
+  ctaText: `Pedir no WhatsApp (${nome})`
+}));
+
+const generatedUnofficial: BairroInfo[] = UNOFFICIAL_BAIRROS.map(nome => ({
+  slug: toSlug(nome),
+  nome,
+  regiao: "Curitiba (Região Popular)",
+  tituloSEO: `Xiaomi na Região ${nome} Curitiba | Original com Garantia`,
+  metaDescription: `Compre celular Xiaomi original na região popular ${nome} de Curitiba. Entrega via motoboy rápida, pague na chegada e tenha 6 meses de garantia.`,
+  introducao: `Se você mora na região do ${nome} em Curitiba e procura um Xiaomi original, nós levamos até você. Nosso serviço de motoboy express entrega seu aparelho com rapidez, segurança e a garantia local Shopcell de 6 meses. Com a Shopcell, você tem a facilidade do "peça e pague na chegada" para total segurança e transparência!`,
+  coordenadasContexto: `Entrega expressa e segura para moradores, vilas e comércios na área do ${nome} em Curitiba.`,
+  ctaText: `Solicitar no ${nome}`
+}));
+
+const generatedCities: BairroInfo[] = NEARBY_CITIES.map(nome => ({
+  slug: toSlug(nome),
+  nome,
+  regiao: "Região Metropolitana",
+  tituloSEO: `Loja Xiaomi em ${nome} | Celulares Originais com Envio Hoje`,
+  metaDescription: `Sua loja Xiaomi para ${nome}. Compre Redmi ou POCO lacrados com entrega expressa para a Região Metropolitana e 6 meses de garantia.`,
+  introducao: `Moradores de ${nome} e região contam com o serviço diferenciado da Shopcell! Compre seu smartphone Xiaomi, Redmi ou POCO lacrado na caixa com frete rápido e pague na entrega para o motoboy após inspecionar o aparelho em mãos. Todos os nossos produtos têm garantia local de 6 meses e brindes especiais.`,
+  coordenadasContexto: `Rota de entrega expressa de fácil acesso cobrindo ${nome} e toda a Região Metropolitana a partir de nossa base em Curitiba.`,
+  ctaText: `Consultar Frete para ${nome}`
+}));
+
+// Combine and export, filtering duplicates
+const allBairrosMap = new Map<string, BairroInfo>();
+
+// Add base pre-written ones first so they have higher precedence
+baseBairrosData.forEach(b => {
+  allBairrosMap.set(b.slug, b);
+});
+
+// Add generated ones if slug doesn't exist
+[...generatedOfficial, ...generatedUnofficial, ...generatedCities].forEach(b => {
+  if (!allBairrosMap.has(b.slug)) {
+    allBairrosMap.set(b.slug, b);
+  }
+});
+
+export const bairrosData: BairroInfo[] = Array.from(allBairrosMap.values());

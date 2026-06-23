@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { ShoppingCart, Menu, X, Phone, MessageSquare, Search, MapPin, Star, CreditCard } from 'lucide-react';
+import { ShoppingCart, Menu, X, Phone, MessageSquare, Search, MapPin, Star, CreditCard, ChevronRight } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 
 interface NavbarProps {
@@ -157,7 +158,7 @@ export default function Navbar({
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <a
                 key={item.id}
@@ -180,6 +181,16 @@ export default function Navbar({
                 )}
               </a>
             ))}
+
+            {/* Comparison Link */}
+            <Link
+              to="/comparar"
+              className="bg-amber-500/15 hover:bg-amber-500 text-amber-600 hover:text-white border border-amber-500/30 hover:border-transparent px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 shadow-xs uppercase tracking-wider"
+              id="compare-nav-link"
+            >
+              <span>🔄</span>
+              <span>Compare Modelos</span>
+            </Link>
           </nav>
 
           {/* Actions Bar */}
@@ -336,6 +347,22 @@ export default function Navbar({
                       <span className="leading-tight text-left">{item.seniorLabel}</span>
                     </a>
                   ))}
+
+                  {/* Highly highlighted comparison link for Mobile */}
+                  <Link
+                    to="/comparar"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between w-full py-4 px-4 rounded-xl border border-amber-300 bg-amber-500/10 text-amber-700 font-extrabold shadow-sm hover:bg-amber-500 hover:text-white transition-all duration-200 ${
+                      isLargeText ? 'text-lg' : 'text-sm sm:text-base'
+                    }`}
+                    style={{ minHeight: '52px' }}
+                  >
+                    <span className="flex items-center gap-3">
+                      <span>🔄</span>
+                      <span>Compare Modelos (Novo vs Antigo)</span>
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-inherit" />
+                  </Link>
                 </div>
 
                 {/* Big Help Action Buttons */}

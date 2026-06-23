@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, MessageSquare, ArrowUp, Star } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 
@@ -82,6 +83,12 @@ export default function Footer() {
                   <span className="sm:hidden">❓</span>
                   <span>Dúvidas Frequentes (FAQ)</span>
                 </a>
+              </li>
+              <li>
+                <Link to="/comparar" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-amber-500/10 border border-amber-500/30 sm:border-0 rounded-xl sm:rounded-none text-amber-500 hover:text-amber-400 sm:text-slate-200 sm:hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
+                  <span>🔄</span>
+                  <span>Compare Modelos (Novos vs Antigos)</span>
+                </Link>
               </li>
             </ul>
           </div>

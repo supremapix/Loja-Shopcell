@@ -1,7 +1,18 @@
-import { MapPin, Phone, MessageSquare, Mail, Clock, ShieldAlert } from 'lucide-react';
-import { CONTACT_INFO, CURITIBA_NEIGHBORHOODS, RMC_CITIES } from '../data';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { MapPin, Phone, MessageSquare, Mail, Clock, ShieldAlert, ChevronDown, ChevronUp } from 'lucide-react';
+import { CONTACT_INFO } from '../data';
+import { bairrosData } from '../bairrosData';
 
 export default function Location() {
+  const [showAllCities, setShowAllCities] = useState(false);
+  const [showAllBairros, setShowAllBairros] = useState(false);
+
+  // Categorize from bairrosData
+  const cities = bairrosData.filter(b => b.regiao === "Região Metropolitana");
+  const officialBairros = bairrosData.filter(b => b.regiao === "Curitiba (IPPUC)" || ["Central", "Nobre", "Sul", "Oeste", "Norte", "Leste"].includes(b.regiao));
+  const unofficialBairros = bairrosData.filter(b => b.regiao === "Curitiba (Região Popular)");
+
   return (
     <section id="RMCEbairros" className="py-20 bg-white relative overflow-hidden border-t border-slate-200">
       {/* Glow */}
@@ -170,41 +181,98 @@ export default function Location() {
         </div>
 
         {/* Directory Regions & Cities served (SEO Booster) */}
-        <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="font-display font-bold text-gray-900 text-base mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#FF6600] rounded-full" />
-              <span>Cidades Atendidas na RMC (Entrega via Motoboy)</span>
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {RMC_CITIES.map((city, idx) => (
-                <span
-                  key={idx}
-                  className="bg-white border border-slate-200/80 hover:border-[#FF6600]/30 text-gray-700 px-3 py-1.5 rounded-lg text-xs font-medium cursor-default transition-all shadow-xs"
+        <div className="bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl space-y-8" id="regions-directory">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            {/* Column 1: Metropolitan Cities */}
+            <div className="space-y-4">
+              <h3 className="font-display font-bold text-gray-900 text-base flex items-center gap-2 border-b border-slate-200/60 pb-3">
+                <span className="w-2.5 h-2.5 bg-[#FF6600] rounded-full animate-pulse" />
+                <span>Cidades Atendidas na RMC (Entrega via Motoboy)</span>
+              </h3>
+              
+              <div className="flex flex-wrap gap-2">
+                {(showAllCities ? cities : cities.slice(0, 6)).map((city) => (
+                  <Link
+                    key={city.slug}
+                    to={`/bairro/${city.slug}`}
+                    className="bg-white border border-slate-200 hover:border-[#FF6600]/40 text-gray-700 hover:text-[#FF6600] px-3.5 py-2 rounded-xl text-xs font-semibold shadow-xs hover:shadow-md transition-all flex items-center gap-1.5 h-11"
+                  >
+                    <span>📍</span>
+                    <span className="truncate">{city.nome}</span>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="pt-2">
+                <button
+                  onClick={() => setShowAllCities(!showAllCities)}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#FF6600] hover:text-[#D45500] uppercase tracking-wider transition-colors py-2 px-3 rounded-lg hover:bg-[#FF6600]/5 cursor-pointer"
                 >
-                  📍 {city}
-                </span>
-              ))}
+                  <span>{showAllCities ? "Ver menos cidades" : "Veja mais cidades / RMC"}</span>
+                  {showAllCities ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </button>
+              </div>
             </div>
+
+            {/* Column 2: Neighborhoods in Highlight */}
+            <div className="space-y-4">
+              <h3 className="font-display font-bold text-gray-900 text-base flex items-center gap-2 border-b border-slate-200/60 pb-3">
+                <span className="w-2.5 h-2.5 bg-[#FF6600] rounded-full animate-pulse" />
+                <span>Bairros Principais de Curitiba</span>
+              </h3>
+              
+              <div className="flex flex-wrap gap-1.5">
+                {(showAllBairros ? officialBairros : officialBairros.slice(0, 12)).map((bairro) => (
+                  <Link
+                    key={bairro.slug}
+                    to={`/bairro/${bairro.slug}`}
+                    className="bg-white border border-slate-200 hover:border-[#FF6600]/40 text-gray-700 hover:text-[#FF6600] px-3 py-1.5 rounded-lg text-xs font-medium shadow-xs transition-all flex items-center gap-1 hover:shadow-xs font-mono"
+                  >
+                    <span>🏘️</span>
+                    <span className="truncate">{bairro.nome}</span>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="pt-2">
+                <button
+                  onClick={() => setShowAllBairros(!showAllBairros)}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#FF6600] hover:text-[#D45500] uppercase tracking-wider transition-colors py-2 px-3 rounded-lg hover:bg-[#FF6600]/5 cursor-pointer"
+                >
+                  <span>{showAllBairros ? "Recolher Bairros" : "Veja mais bairros / regiões Curitiba"}</span>
+                  {showAllBairros ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
           </div>
 
-          <div>
-            <h3 className="font-display font-bold text-gray-900 text-base mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#FF6600] rounded-full" />
-              <span>Bairros em Destaque (Entrega Rápida Curitiba)</span>
-            </h3>
-            <div className="flex flex-wrap gap-1.5">
-              {CURITIBA_NEIGHBORHOODS.slice(0, 14).map((bairro, idx) => (
-                <span
-                  key={idx}
-                  className="bg-white border border-slate-200/80 hover:border-[#FF6600]/30 text-gray-600 px-2.5 py-1 rounded-md text-[11px] font-mono cursor-default transition-all shadow-xs"
-                >
-                  {bairro}
-                </span>
-              ))}
-              <span className="text-xs text-gray-500 font-medium self-center pl-1">e outros bairros...</span>
+          {/* Collapsible Panel for Unofficial & Remaining popular regions */}
+          {showAllBairros && (
+            <div className="pt-6 border-t border-slate-200/80 space-y-4 animate-fadeIn">
+              <h4 className="font-display font-bold text-gray-900 text-sm flex items-center gap-2">
+                <span className="w-2 h-2 bg-slate-400 rounded-full" />
+                <span>Vilas, Loteamentos e Regiões Populares de Curitiba (Muito buscadas para SEO)</span>
+              </h4>
+              <p className="text-gray-500 text-xs leading-relaxed max-w-4xl">
+                Além dos bairros oficiais reconhecidos pelo IPPUC, atendemos com rapidez as principais vilas, loteamentos planejados e divisões populares que fazem parte do dia a dia dos curitibanos:
+              </p>
+              
+              <div className="flex flex-wrap gap-1.5">
+                {unofficialBairros.map((bairro) => (
+                  <Link
+                    key={bairro.slug}
+                    to={`/bairro/${bairro.slug}`}
+                    className="bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#FF6600]/40 text-gray-600 hover:text-[#FF6600] px-2.5 py-1.5 rounded-md text-[11px] font-sans shadow-xs transition-all flex items-center gap-1"
+                  >
+                    <span>📍</span>
+                    <span>{bairro.nome}</span>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Star, Shield, Zap, Sparkles, ShoppingBag, ArrowRight } from 'lucide-react';
 import { Product } from '../types';
-import { CONTACT_INFO } from '../data';
+import { CONTACT_INFO, PRODUCTS } from '../data';
 
 interface HeroProps {
   destaqueProduct: Product;
@@ -10,6 +10,11 @@ interface HeroProps {
 }
 
 export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: HeroProps) {
+  // Sort products to find the 4 cheapest devices
+  const cheapestProducts = [...PRODUCTS]
+    .sort((a, b) => a.priceAt - b.priceAt)
+    .slice(0, 4);
+
   // Container stagger properties
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -151,12 +156,12 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
               </div>
 
               {/* Product Image Wrapper */}
-              <div className="bg-slate-50 rounded-2xl p-6 mb-5 flex justify-center items-center relative group min-h-[220px]">
+              <div className="bg-slate-50 rounded-2xl p-1 mb-5 flex justify-center items-center relative group min-h-[220px]">
                 <img 
                   src={destaqueProduct.image} 
                   alt={destaqueProduct.name} 
                   referrerPolicy="no-referrer"
-                  className="max-h-[190px] object-contain transition-transform duration-500 group-hover:scale-105"
+                  className="max-h-[220px] max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
                   id="hero-destaque-img"
                 />
               </div>
@@ -211,6 +216,118 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                 </button>
               </div>
             </div>
+          </div>
+        </motion.div>
+
+        {/* Cheapest Devices Gallery */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.55 }}
+          className="col-span-1 lg:col-span-12 mt-12 pt-12 border-t border-slate-200/70"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block mb-1">ECONOMIA INTELIGENTE</span>
+              <h3 className="font-display font-black text-xl sm:text-2xl text-gray-900 tracking-tight">
+                Os Aparelhos Mais Baratos da Loja
+              </h3>
+              <p className="text-xs text-gray-500 mt-0.5">
+                Modelos novos, originais e lacrados com o menor preço e 6 meses de garantia local.
+              </p>
+            </div>
+            <div className="flex items-center gap-1.5 text-xs text-gray-600 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200/60 w-fit">
+              <Zap className="w-3.5 h-3.5 text-[#FF6600] animate-bounce" />
+              <span>Super Ofertas de Entrada</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {cheapestProducts.map((product) => (
+              <motion.div
+                key={product.id}
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.25 }}
+                className="bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col justify-between shadow-xs hover:shadow-md transition-all relative overflow-hidden group"
+              >
+                {/* Sale tag */}
+                <div className="absolute top-3 left-3 bg-[#FF6600]/10 text-[#FF6600] font-mono text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider z-10">
+                  Melhor Preço ⭐
+                </div>
+
+                {/* Image Area */}
+                <div 
+                  onClick={() => onSelectProduct(product)}
+                  className="bg-slate-50 rounded-xl p-1 mb-3 flex justify-center items-center h-36 cursor-pointer relative overflow-hidden group-hover:bg-slate-50/70 transition-colors"
+                >
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    referrerPolicy="no-referrer"
+                    className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Text Content */}
+                <div className="flex-grow flex flex-col">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FF6600]">{product.brand}</span>
+                    <span className="text-gray-300 font-mono text-xs">•</span>
+                    <div className="flex items-center gap-0.5">
+                      <Star className="w-3 h-3 text-[#FF6600] fill-[#FF6600]" />
+                      <span className="text-[10px] text-gray-700 font-bold">{product.rating}.0</span>
+                    </div>
+                  </div>
+
+                  <h4 
+                    onClick={() => onSelectProduct(product)}
+                    className="font-display font-bold text-gray-900 text-xs sm:text-sm tracking-tight mb-1 line-clamp-1 group-hover:text-[#FF6600] transition-colors cursor-pointer"
+                  >
+                    {product.name}
+                  </h4>
+
+                  <p className="text-gray-500 text-[10px] line-clamp-2 mb-3 leading-relaxed flex-grow">
+                    {product.desc}
+                  </p>
+                </div>
+
+                {/* Price and Action Section */}
+                <div className="border-t border-slate-100 pt-3 mt-auto">
+                  <div className="flex justify-between items-baseline mb-3">
+                    <div>
+                      {product.priceDe && (
+                        <span className="block text-[10px] text-gray-400 line-through">
+                          {product.priceDe.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                        </span>
+                      )}
+                      <span className="text-sm sm:text-base font-display font-black text-gray-900">
+                        {product.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="block text-[9px] text-gray-400 font-mono">No cartão</span>
+                      <span className="text-[10px] font-bold text-[#FF6600]">{product.parcelas}</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => onSelectProduct(product)}
+                      className="bg-slate-50 hover:bg-slate-100 border border-slate-200 text-gray-700 text-[10px] font-bold py-2 px-1 rounded-lg transition-all duration-300 uppercase tracking-wider text-center cursor-pointer"
+                    >
+                      Detalhes
+                    </button>
+                    <button
+                      onClick={() => onAddToCart(product)}
+                      className="bg-[#FF6600] hover:bg-[#D45500] text-white text-[10px] font-bold py-2 px-1 rounded-lg transition-all duration-300 uppercase tracking-wider flex items-center justify-center gap-1 cursor-pointer"
+                    >
+                      <ShoppingBag className="w-3 h-3" />
+                      <span>Comprar</span>
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

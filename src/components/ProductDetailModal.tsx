@@ -51,7 +51,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               
               {/* Left Column: Image wrapper */}
-              <div className="bg-slate-50 rounded-2xl p-6 flex justify-center items-center relative overflow-hidden h-[280px] sm:h-[320px]">
+              <div className="bg-slate-50 rounded-2xl p-1 flex justify-center items-center relative overflow-hidden h-[280px] sm:h-[320px]">
                 {/* Image */}
                 <img
                   src={product.image}

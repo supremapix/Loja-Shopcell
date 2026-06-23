@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import Home from './components/Home';
 import LocationPage from './components/LocationPage';
+import Compare from './components/Compare';
 import NotFound from './components/NotFound';
 
 // Route guard to detect non-normalized slugs (with accents, capitals, spaces) and redirect to normalized form
@@ -27,6 +28,11 @@ function BairroRouteGuard() {
   return <LocationPage />;
 }
 
+function PrefixRedirect() {
+  const { slug } = useParams<{ slug: string }>();
+  return <Navigate to={`/bairro/${slug}`} replace />;
+}
+
 export default function App() {
   return (
     <Routes>
@@ -35,6 +41,14 @@ export default function App() {
 
       {/* Dynamic Neighborhood / Location Pages with redirect guard */}
       <Route path="/bairro/:slug" element={<BairroRouteGuard />} />
+      
+      {/* Comparison page routes */}
+      <Route path="/comparar" element={<Compare />} />
+      <Route path="/compare" element={<Navigate to="/comparar" replace />} />
+      
+      {/* City and Region Route Aliases */}
+      <Route path="/cidade/:slug" element={<PrefixRedirect />} />
+      <Route path="/regiao/:slug" element={<PrefixRedirect />} />
 
       {/* Explicit 404 Route */}
       <Route path="/404" element={<NotFound />} />
