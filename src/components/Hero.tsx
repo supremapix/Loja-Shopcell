@@ -84,59 +84,71 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col">
         {/* MOBILE & TABLET HERO (Slider-Only under lg viewport, no overlay text as requested) */}
-        <div className="block lg:hidden w-full px-1 mb-8">
-          <div className="relative w-full aspect-[4/5] xs:aspect-[16/10] sm:aspect-[16/9] bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-            {/* Slide Images with random transition */}
-            <div className="absolute inset-0 w-full h-full">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentSlide}
-                  src={MOBILE_SLIDES[currentSlide]}
-                  alt="Xiaomi Banner"
-                  referrerPolicy="no-referrer"
-                  variants={TRANSITIONS[transitionIndex]}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  transition={{ duration: 0.65, ease: "easeInOut" }}
-                  className="w-full h-full object-cover select-none"
-                />
-              </AnimatePresence>
-            </div>
+        <div className="block lg:hidden w-full px-1 mb-8 max-w-[480px] mx-auto">
+          {/* Animated Glowing Gradient Border Wrapper */}
+          <div className="relative p-[3px] rounded-3xl bg-gradient-to-r from-[#FF6900] via-[#FFE86F] to-[#FF6900] bg-[size:200%_auto] animate-gradient-shift shadow-[0_0_25px_rgba(255,105,0,0.45)] transition-all duration-500 overflow-hidden group">
+            
+            {/* Tech HUD corners */}
+            <div className="absolute top-2.5 left-2.5 w-4 h-4 border-t-2 border-l-2 border-[#FF6900] z-30 pointer-events-none rounded-tl-sm animate-pulse" />
+            <div className="absolute top-2.5 right-2.5 w-4 h-4 border-t-2 border-r-2 border-[#FF6900] z-30 pointer-events-none rounded-tr-sm animate-pulse" />
+            <div className="absolute bottom-2.5 left-2.5 w-4 h-4 border-b-2 border-l-2 border-[#FF6900] z-30 pointer-events-none rounded-bl-sm animate-pulse" />
+            <div className="absolute bottom-2.5 right-2.5 w-4 h-4 border-b-2 border-r-2 border-[#FF6900] z-30 pointer-events-none rounded-br-sm animate-pulse" />
 
-            {/* Slider Control Buttons (ChevronLeft / ChevronRight) */}
-            <div className="absolute inset-0 flex justify-between items-center px-4 z-20 pointer-events-none">
-              <button
-                onClick={handlePrevSlide}
-                className="pointer-events-auto w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all border border-white/15 backdrop-blur-xs active:scale-95"
-                aria-label="Anterior"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              <button
-                onClick={handleNextSlide}
-                className="pointer-events-auto w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all border border-white/15 backdrop-blur-xs active:scale-95"
-                aria-label="Próximo"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
+            <div className="relative w-full aspect-square bg-white rounded-[21px] overflow-hidden">
+              {/* Slide Images with random transition */}
+              <div className="absolute inset-0 w-full h-full bg-white flex items-center justify-center">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentSlide}
+                    src={MOBILE_SLIDES[currentSlide]}
+                    alt="Xiaomi Banner"
+                    referrerPolicy="no-referrer"
+                    variants={TRANSITIONS[transitionIndex]}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.65, ease: "easeInOut" }}
+                    className="w-full h-full object-contain select-none"
+                  />
+                </AnimatePresence>
+              </div>
 
-            {/* Pagination Indicators / Dots */}
-            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20 bg-black/20 px-3 py-1.5 rounded-full backdrop-blur-xs border border-white/5">
-              {MOBILE_SLIDES.map((_, index) => (
+              {/* Slider Control Buttons (ChevronLeft / ChevronRight) */}
+              <div className="absolute inset-0 flex justify-between items-center px-4 z-20 pointer-events-none">
                 <button
-                  key={index}
-                  onClick={() => {
-                    setTransitionIndex(Math.floor(Math.random() * TRANSITIONS.length));
-                    setCurrentSlide(index);
-                  }}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    currentSlide === index ? 'bg-[#FF6600] w-6' : 'bg-white/60 hover:bg-white'
-                  }`}
-                  aria-label={`Slide ${index + 1}`}
-                />
-              ))}
+                  type="button"
+                  onClick={handlePrevSlide}
+                  className="pointer-events-auto w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all border border-white/15 backdrop-blur-xs active:scale-95"
+                  aria-label="Anterior"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNextSlide}
+                  className="pointer-events-auto w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all border border-white/15 backdrop-blur-xs active:scale-95"
+                  aria-label="Próximo"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Pagination Indicators / Dots */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-xs border border-white/10">
+                {MOBILE_SLIDES.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setTransitionIndex(Math.floor(Math.random() * TRANSITIONS.length));
+                      setCurrentSlide(index);
+                    }}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      currentSlide === index ? 'bg-[#FF6900] w-5' : 'bg-white/60 hover:bg-white'
+                    }`}
+                    aria-label={`Slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
