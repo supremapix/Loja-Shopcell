@@ -1,0 +1,6 @@
+{
+  "name": "Xiaomi Shop Cell Curitiba",
+  "description": "Loja virtual e catálogo premium de smartphones Xiaomi, POCO e Redmi em Curitiba.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

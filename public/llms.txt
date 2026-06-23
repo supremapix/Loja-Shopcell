@@ -1,0 +1,72 @@
+# Xiaomi Shop Cell Curitiba
+Loja de comércio eletrônico especializada em celulares Xiaomi, POCO e Redmi em Curitiba, PR.
+
+## Informações Gerais
+- Nome Comercial: Xiaomi Shop Cell Curitiba
+- Endereço: R. Conselheiro Laurindo, 809 – Sala 402, 4º Andar, Edifício Downtown, Centro, Curitiba – PR, CEP 80060-100
+- Telefone Comercial: (41) 3538-1822
+- WhatsApp Comercial: (41) 3798-9918
+- E-mail: contato@celularcuritibashopcell.com.br
+- URL Canônica: https://www.xiaomishopcell.com/
+
+## Catálogo de Celulares e Tablets
+
+1. Smartphone Xiaomi Redmi A5 128GB 4GB RAM
+   - Categoria: Redmi
+   - Preço Especial: R$ 799,99 (ou 12x de R$ 77,16)
+
+2. Smartphone Xiaomi POCO C85 NFC 256GB 8GB RAM
+   - Categoria: POCO (NFC)
+   - Preço Especial: R$ 999,99 (ou 12x de R$ 96,45)
+
+3. Smartphone Xiaomi POCO M7 NFC 256GB 8GB RAM
+   - Categoria: POCO (NFC)
+   - Preço Especial: R$ 1.099,99 (ou 12x de R$ 106,09)
+
+4. Smartphone Xiaomi Redmi 15 256GB 8GB RAM 4G
+   - Categoria: Redmi (4G / Novo)
+   - Preço Especial: R$ 1.199,00 (ou 12x de R$ 115,73)
+
+5. Tablet Xiaomi Redmi Pad 2 256GB 8GB RAM
+   - Categoria: Tablet
+   - Preço Especial: R$ 1.449,99 (ou 12x de R$ 139,85)
+
+6. Smartphone Xiaomi Redmi Note 14 5G NFC 256GB 8GB RAM
+   - Categoria: Redmi (5G / NFC)
+   - Preço Especial: R$ 1.349,99 (ou 12x de R$ 130,20)
+
+7. Smartphone Xiaomi POCO X8 Pro 5G NFC 512GB 8GB RAM
+   - Categoria: POCO (5G / Novo)
+   - Preço Especial: R$ 2.249,99 (ou 12x de R$ 215,12)
+
+8. Smartphone Xiaomi POCO X8 Pro 5G NFC 512GB 12GB RAM
+   - Categoria: POCO (5G / Premium)
+   - Preço Especial: R$ 2.549,99 (ou 12x de R$ 245,94)
+
+9. Smartphone Xiaomi 15T 5G NFC 512GB 12GB RAM
+   - Categoria: Xiaomi (5G / Premium)
+   - Preço Especial: R$ 3.999,99 (ou 12x de R$ 342,38)
+
+10. Smartphone Xiaomi POCO X8 Pro Max 5G NFC 512GB 12GB RAM
+    - Categoria: POCO (5G / Premium)
+    - Preço Especial: R$ 2.699,99 (ou 12x de R$ 260,40)
+
+11. Celular Xiaomi 15T Pro 5G NFC 512GB 12GB RAM
+    - Categoria: Xiaomi (5G / Premium)
+    - Preço Especial: R$ 4.749,99 (ou 12x de R$ 458,12)
+
+12. Celular Xiaomi POCO F8 Ultra 5G NFC 512GB 16GB RAM (Destaque Principal)
+    - Categoria: POCO (5G / Premium / Top)
+    - Preço Especial: R$ 5.199,99 (ou 12x de R$ 501,52)
+
+13. Smartphone Xiaomi Redmi Note 15 Pro 5G NFC 512GB 8GB RAM
+    - Categoria: Redmi (5G / NFC)
+    - Preço Especial: R$ 2.699,99 (ou 12x de R$ 260,40)
+
+14. Smartphone Xiaomi POCO M8 5G NFC 256GB 8GB RAM
+    - Categoria: POCO (5G / NFC)
+    - Preço Especial: R$ 1.349,99 (ou 12x de R$ 130,20)
+
+15. Smartphone Xiaomi POCO M8 5G NFC 512GB 8GB RAM
+    - Categoria: POCO (5G / NFC)
+    - Preço Especial: R$ 1.649,99 (ou 12x de R$ 159,14)

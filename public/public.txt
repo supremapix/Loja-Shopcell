@@ -1,0 +1,18 @@
+Xiaomi Shop Cell Curitiba - SEO Files Directory
+==============================================
+
+The following SEO and metadata files are fully generated and located in the /public directory:
+
+1. Robots.txt (Located at: /public/robots.txt)
+   Configured to allow all search engines and point to the XML sitemap.
+   URL: https://www.xiaomishopcell.com/robots.txt
+
+2. Sitemap.xml (Located at: /public/sitemap.xml)
+   Standard XML sitemap with indexation guidelines for the homepage.
+   URL: https://www.xiaomishopcell.com/sitemap.xml
+
+3. LLMs.txt (Located at: /public/llms.txt)
+   Structured specification file of the catalog and shop information for LLM parsers.
+   URL: https://www.xiaomishopcell.com/llms.txt
+
+All files are structured for immediate and optimal search engine indexation.
