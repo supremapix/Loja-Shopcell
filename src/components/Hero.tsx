@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Star, Shield, Zap, Sparkles, ShoppingBag, ArrowRight, ChevronLeft, ChevronRight, Check } from 'lucide-react';
 import { Product } from '../types';
-import { CONTACT_INFO, PRODUCTS } from '../data';
+import { CONTACT_INFO, PRODUCTS, getProductSlug } from '../data';
 
 interface HeroProps {
   destaqueProduct: Product;
@@ -13,15 +14,38 @@ interface HeroProps {
 const MOBILE_SLIDES = [
   "https://loja.xiaomishopcell.com/img/slider-5.png",
   "https://loja.xiaomishopcell.com/img/slider-4.png",
-  "https://loja.xiaomishopcell.com/img/slider-mobile-3.png"
+  "https://loja.xiaomishopcell.com/img/slider-mobile-3.png",
+  "https://loja.xiaomishopcell.com/img/slider-2-movel.png",
+  "https://loja.xiaomishopcell.com/img/slider-movel-1.png",
+  "https://loja.xiaomishopcell.com/img/slider-5q.png"
 ];
 
-// Randomized smooth transitions
+// Extremely high-impact futuristic sci-fi transitions
 const TRANSITIONS = [
-  { initial: { opacity: 0, scale: 0.95, x: 50 }, animate: { opacity: 1, scale: 1, x: 0 }, exit: { opacity: 0, scale: 1.05, x: -50 } },
-  { initial: { opacity: 0, x: -100 }, animate: { opacity: 1, x: 0 }, exit: { opacity: 0, x: 100 } },
-  { initial: { opacity: 0, rotate: -2, scale: 0.98 }, animate: { opacity: 1, rotate: 0, scale: 1 }, exit: { opacity: 0, rotate: 2, scale: 1.02 } },
-  { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, exit: { opacity: 0, y: -30 } }
+  // 1. Zoom portal transition with blur & flash
+  { 
+    initial: { opacity: 0, scale: 0.2, rotate: -15, filter: "blur(12px) brightness(2)" }, 
+    animate: { opacity: 1, scale: 1, rotate: 0, filter: "blur(0px) brightness(1)" }, 
+    exit: { opacity: 0, scale: 1.8, rotate: 15, filter: "blur(12px) brightness(0.5)" } 
+  },
+  // 2. High-speed warp slide with skew & glow
+  { 
+    initial: { opacity: 0, x: "100%", skewX: -20, filter: "contrast(1.5)" }, 
+    animate: { opacity: 1, x: 0, skewX: 0, filter: "contrast(1)" }, 
+    exit: { opacity: 0, x: "-100%", skewX: 20, filter: "contrast(1.5)" } 
+  },
+  // 3. Digital Glitch reveal
+  { 
+    initial: { opacity: 0, scaleY: 0.05, scaleX: 1.5, filter: "hue-rotate(90deg)" }, 
+    animate: { opacity: 1, scaleY: 1, scaleX: 1, filter: "hue-rotate(0deg)" }, 
+    exit: { opacity: 0, scaleY: 0.05, scaleX: 1.5, filter: "hue-rotate(-90deg)" } 
+  },
+  // 4. Elastic 3D flip & bounce
+  { 
+    initial: { opacity: 0, rotateY: 90, scale: 0.8, filter: "brightness(1.5)" }, 
+    animate: { opacity: 1, rotateY: 0, scale: 1, filter: "brightness(1)" }, 
+    exit: { opacity: 0, rotateY: -90, scale: 0.8, filter: "brightness(0.5)" } 
+  }
 ];
 
 export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: HeroProps) {
@@ -51,6 +75,18 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
     setCurrentSlide((prev) => (prev - 1 + MOBILE_SLIDES.length) % MOBILE_SLIDES.length);
   };
 
+  // Promotional items for fast mobile ticker linking directly to detailed pages with plus-separated slugs
+  const promoItems = [
+    { name: "POCO C85 NFC por R$ 999,99!", product: PRODUCTS.find(p => p.id === 2) },
+    { name: "POCO M7 NFC por R$ 1.099,99!", product: PRODUCTS.find(p => p.id === 3) },
+    { name: "Redmi 15 256GB por R$ 1.199,00!", product: PRODUCTS.find(p => p.id === 4) },
+    { name: "Redmi Note 14 5G por R$ 1.349,99!", product: PRODUCTS.find(p => p.id === 6) },
+    { name: "POCO X8 Pro 5G por R$ 2.249,99!", product: PRODUCTS.find(p => p.id === 7) },
+    { name: "POCO F8 Ultra 16GB por R$ 5.199,99!", product: PRODUCTS.find(p => p.id === 12) },
+  ].filter(item => item.product !== undefined);
+
+  const duplicatedPromoItems = [...promoItems, ...promoItems, ...promoItems];
+
   // Container stagger properties
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -73,82 +109,82 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
   } as const;
 
   return (
-    <section id="inicio" className="relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-white via-slate-50/70 to-white border-b border-slate-200 py-10 sm:py-16 md:py-20 lg:py-24 px-4">
+    <>
+      <section id="inicio" className="relative flex flex-col items-center justify-center overflow-hidden bg-black border-b border-slate-900 lg:border-b-0 pt-0 pb-0 sm:pb-0 lg:py-24 px-0 lg:px-4">
       {/* Decorative Gradient Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[10%] left-[5%] w-[35rem] h-[35rem] bg-[#FF6600]/4 rounded-full filter blur-[120px] animate-pulse-slow" />
-        <div className="absolute bottom-[10%] right-[5%] w-[40rem] h-[40rem] bg-[#FF6600]/3 rounded-full filter blur-[150px]" />
+        <div className="absolute top-[10%] left-[5%] w-[35rem] h-[35rem] bg-[#FF6600]/8 rounded-full filter blur-[120px] animate-pulse-slow" />
+        <div className="absolute bottom-[10%] right-[5%] w-[40rem] h-[40rem] bg-[#FF6600]/6 rounded-full filter blur-[150px]" />
         {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-35" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col">
-        {/* MOBILE & TABLET HERO (Slider-Only under lg viewport, no overlay text as requested) */}
-        <div className="block lg:hidden w-full px-1 mb-8 max-w-[480px] mx-auto">
-          {/* Animated Glowing Gradient Border Wrapper */}
-          <div className="relative p-[3px] rounded-3xl bg-gradient-to-r from-[#FF6900] via-[#FFE86F] to-[#FF6900] bg-[size:200%_auto] animate-gradient-shift shadow-[0_0_25px_rgba(255,105,0,0.45)] transition-all duration-500 overflow-hidden group">
-            
-            {/* Tech HUD corners */}
-            <div className="absolute top-2.5 left-2.5 w-4 h-4 border-t-2 border-l-2 border-[#FF6900] z-30 pointer-events-none rounded-tl-sm animate-pulse" />
-            <div className="absolute top-2.5 right-2.5 w-4 h-4 border-t-2 border-r-2 border-[#FF6900] z-30 pointer-events-none rounded-tr-sm animate-pulse" />
-            <div className="absolute bottom-2.5 left-2.5 w-4 h-4 border-b-2 border-l-2 border-[#FF6900] z-30 pointer-events-none rounded-bl-sm animate-pulse" />
-            <div className="absolute bottom-2.5 right-2.5 w-4 h-4 border-b-2 border-r-2 border-[#FF6900] z-30 pointer-events-none rounded-br-sm animate-pulse" />
+        {/* MOBILE & TABLET HERO (Slider-Only under lg viewport, edge-to-edge, colada na header) */}
+        <div className="block lg:hidden w-full">
+          <div className="relative w-full aspect-square bg-black overflow-hidden shadow-xs border-b border-slate-900">
+            {/* Slide Images with random transition */}
+            <div className="absolute inset-0 w-full h-full bg-black flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentSlide}
+                  src={MOBILE_SLIDES[currentSlide]}
+                  alt="Xiaomi Banner"
+                  referrerPolicy="no-referrer"
+                  variants={TRANSITIONS[transitionIndex]}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  transition={{ duration: 0.65, ease: "easeInOut" }}
+                  className="w-full h-full object-contain select-none"
+                />
+              </AnimatePresence>
+            </div>
 
-            <div className="relative w-full aspect-square bg-white rounded-[21px] overflow-hidden">
-              {/* Slide Images with random transition */}
-              <div className="absolute inset-0 w-full h-full bg-white flex items-center justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={currentSlide}
-                    src={MOBILE_SLIDES[currentSlide]}
-                    alt="Xiaomi Banner"
-                    referrerPolicy="no-referrer"
-                    variants={TRANSITIONS[transitionIndex]}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.65, ease: "easeInOut" }}
-                    className="w-full h-full object-contain select-none"
-                  />
-                </AnimatePresence>
-              </div>
+            {/* Progressive Filling Slide Indicator Bar */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 w-[80%] max-w-[320px]">
+              {MOBILE_SLIDES.map((_, index) => (
+                <div key={index} className="h-1 flex-grow bg-white/20 rounded-full overflow-hidden backdrop-blur-xs">
+                  {currentSlide === index ? (
+                    <motion.div
+                      key={`progress-bar-${index}`}
+                      initial={{ width: "0%" }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: 5, ease: "linear" }}
+                      className="h-full bg-gradient-to-r from-[#FF6600] to-amber-400 shadow-[0_0_8px_#FF6600]"
+                    />
+                  ) : (
+                    <div 
+                      className={`h-full w-full ${index < currentSlide ? "bg-[#FF6600]" : "bg-transparent"}`} 
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
-              {/* Slider Control Buttons (ChevronLeft / ChevronRight) */}
-              <div className="absolute inset-0 flex justify-between items-center px-4 z-20 pointer-events-none">
-                <button
-                  type="button"
-                  onClick={handlePrevSlide}
-                  className="pointer-events-auto w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all border border-white/15 backdrop-blur-xs active:scale-95"
-                  aria-label="Anterior"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={handleNextSlide}
-                  className="pointer-events-auto w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-all border border-white/15 backdrop-blur-xs active:scale-95"
-                  aria-label="Próximo"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Pagination Indicators / Dots */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-xs border border-white/10">
-                {MOBILE_SLIDES.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setTransitionIndex(Math.floor(Math.random() * TRANSITIONS.length));
-                      setCurrentSlide(index);
-                    }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      currentSlide === index ? 'bg-[#FF6900] w-5' : 'bg-white/60 hover:bg-white'
-                    }`}
-                    aria-label={`Slide ${index + 1}`}
-                  />
-                ))}
-              </div>
+        {/* FAST TICKER BELOW MOBILE SLIDER (Opposite direction, links to promo phones) */}
+        <div className="block lg:hidden w-full bg-amber-500 text-slate-950 border-y border-amber-600/30 py-3 relative overflow-hidden select-none z-20 mb-0">
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-amber-500 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-amber-500 to-transparent z-10 pointer-events-none" />
+          
+          <div className="flex w-max relative">
+            <div className="flex gap-8 sm:gap-12 animate-marquee-reverse-fast hover:[animation-play-state:paused] transition-all duration-300">
+              {duplicatedPromoItems.map((item, idx) => {
+                const url = item.product ? `/produto/${getProductSlug(item.product)}` : '#';
+                return (
+                  <Link
+                    key={idx}
+                    to={url}
+                    className="flex items-center gap-2 flex-shrink-0 text-xs sm:text-sm font-sans font-extrabold tracking-wide text-slate-950 hover:text-slate-800 transition-colors cursor-pointer uppercase"
+                  >
+                    <span className="inline-flex items-center justify-center px-1.5 py-0.5 bg-slate-950 text-amber-400 rounded-md text-[10px] font-mono font-bold mr-1 animate-pulse">PROMO</span>
+                    <span>{item.name}</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -174,7 +210,7 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
             {/* Headline with split-text layout */}
             <motion.h1 
               variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-6xl font-display font-black text-gray-900 leading-[1.1] tracking-tight mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl font-display font-black text-white leading-[1.1] tracking-tight mb-6"
             >
               A Revolução <br />
               <span className="text-gradient-orange glow-orange">Xiaomi Curitiba</span>
@@ -182,9 +218,9 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
 
             <motion.p 
               variants={itemVariants}
-              className="text-gray-600 text-base sm:text-lg max-w-xl mb-8 leading-relaxed"
+              className="text-slate-400 text-base sm:text-lg max-w-xl mb-8 leading-relaxed"
             >
-              Sua loja especializada premium no Centro de Curitiba. Os smartphones, tablets e fones mais potentes do mundo com <strong className="text-gray-900">6 meses de garantia local</strong> e em até <strong className="text-gray-900">12x parcelados</strong>. Venha garantir o seu!
+              Sua loja especializada premium no Centro de Curitiba. Os smartphones, tablets e fones mais potentes do mundo com <strong className="text-white">6 meses de garantia local</strong> e em até <strong className="text-white">12x parcelados</strong>. Venha garantir o seu!
             </motion.p>
 
             {/* Call-to-action Buttons */}
@@ -202,7 +238,7 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
               </a>
               <button 
                 onClick={() => onSelectProduct(destaqueProduct)}
-                className="flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-200 hover:border-slate-300 text-gray-800 font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer"
+                className="flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-white font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer"
                 id="hero-cta-destaque"
               >
                 <span>Conhecer POCO F8 Ultra</span>
@@ -212,26 +248,26 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
             {/* Social Proof Badges Row */}
             <motion.div 
               variants={itemVariants}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-850"
             >
               <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900">5.0</span>
+                <span className="text-2xl sm:text-3xl font-display font-extrabold text-white">5.0</span>
                 <div className="flex items-center gap-1 mt-1">
                   <Star className="w-3 h-3 text-[#FF6600] fill-[#FF6600]" />
-                  <span className="text-xs text-gray-500 font-medium">Google Nota Máxima</span>
+                  <span className="text-xs text-slate-400 font-medium">Google Nota Máxima</span>
                 </div>
               </div>
 
               <div className="flex flex-col">
                 <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#FF6600]">+3.500</span>
-                <span className="text-xs text-gray-500 font-medium mt-1">Clientes Satisfeitos</span>
+                <span className="text-xs text-slate-400 font-medium mt-1">Clientes Satisfeitos</span>
               </div>
 
               <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-display font-extrabold text-gray-900">6 Meses</span>
+                <span className="text-2xl sm:text-3xl font-display font-extrabold text-white">6 Meses</span>
                 <div className="flex items-center gap-1 mt-1">
                   <Shield className="w-3.5 h-3.5 text-[#FF6600]" />
-                  <span className="text-xs text-gray-500 font-medium">Garantia Local Completa</span>
+                  <span className="text-xs text-slate-400 font-medium">Garantia Local Completa</span>
                 </div>
               </div>
 
@@ -239,7 +275,7 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                 <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#FF6600]">12x</span>
                 <div className="flex items-center gap-1 mt-1">
                   <Zap className="w-3 h-3 text-[#FF6600]" />
-                  <span className="text-xs text-gray-500 font-medium">Parcelas no Cartão</span>
+                  <span className="text-xs text-slate-400 font-medium">Parcelas no Cartão</span>
                 </div>
               </div>
             </motion.div>
@@ -257,7 +293,7 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
               {/* Ambient orange glow container behind card */}
               <div className="absolute inset-0 bg-[#FF6600]/10 rounded-3xl filter blur-[30px] -z-10" />
 
-              <div className="bg-white border border-slate-200/80 p-5 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] relative overflow-hidden">
+              <div className="bg-zinc-950 border border-zinc-800/80 p-5 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative overflow-hidden backdrop-blur-md">
                 {/* Flagship overlay badge */}
                 <div className="absolute top-4 right-4 bg-[#FF6600] text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-[0_2px_10px_rgba(255,102,0,0.3)] z-20 flex items-center gap-1">
                   <Sparkles className="w-3 h-3 text-white fill-white" />
@@ -265,7 +301,7 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                 </div>
 
                 {/* Product Image Wrapper */}
-                <div className="bg-slate-50 rounded-2xl p-1 mb-5 flex justify-center items-center relative group min-h-[220px]">
+                <div className="bg-zinc-900/60 rounded-2xl p-1 mb-5 flex justify-center items-center relative group min-h-[220px]">
                   <img 
                     src={destaqueProduct.image} 
                     alt={destaqueProduct.name} 
@@ -278,44 +314,44 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                 {/* Product Info */}
                 <div className="flex items-center gap-1.5 mb-2">
                   <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#FF6600]">{destaqueProduct.brand}</span>
-                  <span className="text-gray-300 font-mono text-xs">•</span>
+                  <span className="text-zinc-700 font-mono text-xs">•</span>
                   <div className="flex items-center gap-0.5">
                     <Star className="w-3.5 h-3.5 text-[#FF6600] fill-[#FF6600]" />
-                    <span className="text-xs text-gray-700 font-semibold font-sans">{destaqueProduct.rating}.0</span>
-                    <span className="text-gray-400 text-[11px]">({destaqueProduct.reviewsCount})</span>
+                    <span className="text-xs text-zinc-200 font-semibold font-sans">{destaqueProduct.rating}.0</span>
+                    <span className="text-zinc-500 text-[11px]">({destaqueProduct.reviewsCount})</span>
                   </div>
                 </div>
 
-                <h3 className="font-display font-extrabold text-gray-900 text-lg tracking-tight mb-2 leading-tight">
+                <h3 className="font-display font-extrabold text-white text-lg tracking-tight mb-2 leading-tight">
                   {destaqueProduct.name}
                 </h3>
 
-                <p className="text-gray-500 text-xs line-clamp-2 mb-4 leading-relaxed">
+                <p className="text-zinc-400 text-xs line-clamp-2 mb-4 leading-relaxed">
                   {destaqueProduct.desc}
                 </p>
 
                 {/* Pricing section */}
-                <div className="border-t border-slate-100 pt-4 flex justify-between items-center mb-4">
+                <div className="border-t border-zinc-800 pt-4 flex justify-between items-center mb-4">
                   <div>
-                    <span className="block text-[11px] text-gray-400 font-mono">À vista no Pix/Dinheiro</span>
-                    <span className="text-xl font-display font-black text-gray-900">
+                    <span className="block text-[11px] text-zinc-500 font-mono">À vista no Pix/Dinheiro</span>
+                    <span className="text-xl font-display font-black text-white">
                       {destaqueProduct.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                     </span>
                   </div>
                   <div className="text-right">
-                    <span className="block text-[11px] text-gray-400 font-mono">No cartão</span>
+                    <span className="block text-[11px] text-zinc-500 font-mono">No cartão</span>
                     <span className="text-xs font-bold text-[#FF6600] block">{destaqueProduct.parcelas}</span>
                   </div>
                 </div>
 
                 {/* Direct Purchase Actions */}
                 <div className="grid grid-cols-2 gap-2.5">
-                  <button
-                    onClick={() => onSelectProduct(destaqueProduct)}
-                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200 text-gray-700 text-xs font-bold py-3 px-4 rounded-xl transition-all duration-300 uppercase tracking-wider text-center cursor-pointer"
+                  <Link
+                    to={`/produto/${getProductSlug(destaqueProduct)}`}
+                    className="bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-200 text-xs font-bold py-3 px-4 rounded-xl transition-all duration-300 uppercase tracking-wider text-center cursor-pointer flex items-center justify-center hover:text-white"
                   >
-                    Ver detalhes
-                  </button>
+                    Ver mais detalhes
+                  </Link>
                   <button
                     onClick={() => onAddToCart(destaqueProduct)}
                     className="bg-[#FF6600] hover:bg-[#D45500] text-white text-xs font-bold py-3 px-4 rounded-xl transition-all duration-300 shadow-[0_4px_12px_rgba(255,102,0,0.2)] hover:shadow-[0_4px_20px_rgba(255,102,0,0.4)] uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer"
@@ -328,21 +364,31 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
             </div>
           </motion.div>
         </div>
+      </div>
+    </section>
 
-        {/* Cheapest Devices Gallery (Highly polished) */}
+    {/* Section: Economia Inteligente / Os Aparelhos Mais Baratos da Loja */}
+    <section className="bg-white border-b border-slate-200 py-12 lg:py-20 relative overflow-hidden">
+      {/* Subtle background decoration for white page */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[10%] left-[5%] w-[35rem] h-[35rem] bg-[#FF6600]/3 rounded-full filter blur-[120px]" />
+        <div className="absolute bottom-[10%] right-[5%] w-[40rem] h-[40rem] bg-amber-500/3 rounded-full filter blur-[150px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 35 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.55 }}
-          className="col-span-1 lg:col-span-12 mt-12 pt-12 border-t border-slate-200/70"
+          className="w-full"
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
             <div className="text-center sm:text-left">
               <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block mb-1">ECONOMIA INTELIGENTE</span>
-              <h3 className="font-display font-black text-2xl text-gray-900 tracking-tight">
+              <h3 className="font-display font-black text-2xl text-zinc-900 tracking-tight">
                 Os Aparelhos Mais Baratos da Loja
               </h3>
-              <p className="text-xs text-gray-500 mt-0.5 max-w-xl">
+              <p className="text-xs text-zinc-600 mt-0.5 max-w-xl">
                 Modelos novos, originais e lacrados com o menor preço e 6 meses de garantia local direto na loja física em Curitiba.
               </p>
             </div>
@@ -355,16 +401,16 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
           {/* Infinite Carousel / Conveyor Belt of Products */}
           <div className="w-full relative overflow-hidden py-4 select-none">
             {/* Ambient edge shadows */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-slate-50/90 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-slate-50/90 to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
             <div className="flex w-max relative">
               <div className="flex gap-6 animate-marquee-reverse hover:[animation-play-state:paused] transition-all duration-300">
                 {[...cheapestProducts, ...cheapestProducts, ...cheapestProducts, ...cheapestProducts].map((product, idx) => (
-                  <div
+                  <Link
                     key={`${product.id}-${idx}`}
-                    onClick={() => onSelectProduct(product)}
-                    className="w-64 sm:w-72 flex-shrink-0 bg-white border border-slate-200/80 rounded-2xl p-4 flex flex-col justify-between shadow-xs hover:shadow-md hover:border-[#FF6600]/40 transition-all cursor-pointer group relative overflow-hidden"
+                    to={`/produto/${getProductSlug(product)}`}
+                    className="w-64 sm:w-72 flex-shrink-0 bg-zinc-100 hover:bg-zinc-50 border border-zinc-200/80 rounded-2xl p-4 flex flex-col justify-between shadow-xs hover:shadow-md hover:border-[#FF6600]/40 transition-all cursor-pointer group relative overflow-hidden text-left"
                   >
                     {/* Sale tag */}
                     <div className="absolute top-3 left-3 bg-[#FF6600]/10 text-[#FF6600] font-mono text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider z-10 flex items-center gap-1">
@@ -373,7 +419,7 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                     </div>
 
                     {/* Image Area */}
-                    <div className="bg-slate-50 rounded-xl p-1 mb-3 flex justify-center items-center h-36 relative overflow-hidden group-hover:bg-slate-50/70 transition-colors">
+                    <div className="bg-white rounded-xl p-1 mb-3 flex justify-center items-center h-36 relative overflow-hidden group-hover:bg-white/90 transition-colors">
                       <img 
                         src={product.image} 
                         alt={product.name} 
@@ -386,48 +432,47 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                     <div className="flex-grow flex flex-col">
                       <div className="flex items-center gap-1.5 mb-1">
                         <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FF6600]">{product.brand}</span>
-                        <span className="text-gray-300 font-mono text-xs">•</span>
+                        <span className="text-zinc-300 font-mono text-xs">•</span>
                         <div className="flex items-center gap-0.5">
                           <Star className="w-3 h-3 text-[#FF6600] fill-[#FF6600]" />
-                          <span className="text-[10px] text-gray-700 font-bold">{product.rating}.0</span>
+                          <span className="text-[10px] text-zinc-700 font-bold">{product.rating}.0</span>
                         </div>
                       </div>
 
-                      <h4 className="font-display font-bold text-gray-900 text-xs sm:text-sm tracking-tight mb-1 line-clamp-1 group-hover:text-[#FF6600] transition-colors">
+                      <h4 className="font-display font-bold text-zinc-900 text-xs sm:text-sm tracking-tight mb-1 line-clamp-1 group-hover:text-[#FF6600] transition-colors">
                         {product.name}
                       </h4>
 
-                      <p className="text-gray-500 text-[10px] line-clamp-2 mb-3 leading-relaxed flex-grow">
+                      <p className="text-zinc-600 text-[10px] line-clamp-2 mb-3 leading-relaxed flex-grow">
                         {product.desc}
                       </p>
                     </div>
 
                     {/* Price and Action Section */}
-                    <div className="border-t border-slate-100 pt-3 mt-auto">
+                    <div className="border-t border-zinc-200 pt-3 mt-auto">
                       <div className="flex justify-between items-baseline mb-3">
                         <div>
                           {product.priceDe && (
-                            <span className="block text-[10px] text-gray-400 line-through">
+                            <span className="block text-[10px] text-zinc-400 line-through">
                               {product.priceDe.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                             </span>
                           )}
-                          <span className="text-sm sm:text-base font-display font-black text-gray-900">
+                          <span className="text-sm sm:text-base font-display font-black text-zinc-900">
                             {product.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                           </span>
                         </div>
                         <div className="text-right">
-                          <span className="block text-[9px] text-gray-400 font-mono">No cartão</span>
+                          <span className="block text-[9px] text-zinc-400 font-mono">No cartão</span>
                           <span className="text-[10px] font-bold text-[#FF6600]">{product.parcelas}</span>
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-2">
-                        <button
-                          type="button"
-                          className="bg-slate-50 group-hover:bg-[#FF6600]/5 border border-slate-200 group-hover:border-[#FF6600]/25 text-gray-700 group-hover:text-[#FF6600] text-[10px] font-bold py-2 px-1 rounded-lg transition-all duration-300 uppercase tracking-wider text-center"
+                        <span
+                          className="bg-white hover:bg-zinc-150 border border-zinc-200 text-zinc-700 text-[10px] font-bold py-2 px-1 rounded-lg transition-all duration-300 uppercase tracking-wider text-center cursor-pointer flex items-center justify-center"
                         >
-                          Detalhes
-                        </button>
+                          Ver mais detalhes
+                        </span>
                         <button
                           type="button"
                           onClick={(e) => {
@@ -441,7 +486,7 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -449,5 +494,6 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Star, ShoppingBag, Info, MessageSquare } from 'lucide-react';
 import { Product } from '../types';
+import { getProductSlug } from '../data';
 
 interface ProductCardProps {
   product: Product;
@@ -15,6 +17,8 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
     return `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(text)}`;
   };
 
+  const productUrl = `/produto/${getProductSlug(product)}`;
+
   return (
     <motion.div
       layout
@@ -23,13 +27,13 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.5 }}
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
-      className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-[#FF6600]/60 transition-all duration-300 flex flex-col h-full shadow-lg hover:shadow-2xl hover:shadow-[#FF6600]/10 group relative"
+      className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-[#FF6600]/60 transition-all duration-300 flex flex-col h-full shadow-lg hover:shadow-2xl hover:shadow-[#FF6600]/10 group relative"
     >
       {/* Product Image and badges */}
       <div className="relative pt-[100%] bg-white overflow-hidden flex items-center justify-center p-1">
         {/* Category Badge */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
-          <span className="bg-slate-900 text-[#FF6600] border border-slate-800 font-mono text-[9px] font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider shadow-xs">
+          <span className="bg-zinc-900 text-[#FF6600] border border-zinc-800 font-mono text-[9px] font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider shadow-xs">
             {product.brand}
           </span>
           {product.badges.map((b, i) => (
@@ -38,7 +42,7 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
               className={`font-mono text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider ${
                 b.includes('Novo') || b.includes('Destaque') || b.includes('NOVO') || b.includes('Premium')
                   ? 'bg-[#FF6600] text-white shadow-xs'
-                  : 'bg-slate-800 text-slate-200 border border-slate-700'
+                  : 'bg-zinc-800 text-zinc-200 border border-zinc-700'
               }`}
             >
               {b}
@@ -46,8 +50,8 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
           ))}
         </div>
 
-        {/* Product Image */}
-        <div className="absolute inset-0 flex items-center justify-center p-3">
+        {/* Product Image Link */}
+        <Link to={productUrl} className="absolute inset-0 flex items-center justify-center p-3 cursor-pointer">
           <img
             src={product.image}
             alt={product.name}
@@ -56,7 +60,7 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
             className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
             id={`product-img-${product.id}`}
           />
-        </div>
+        </Link>
       </div>
 
       {/* Product Information */}
@@ -73,7 +77,9 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
 
         {/* Title */}
         <h3 className="font-display font-extrabold text-white text-sm sm:text-base leading-snug line-clamp-2 mb-1.5 group-hover:text-[#FF6600] transition-colors duration-200">
-          {product.name}
+          <Link to={productUrl} className="hover:text-[#FF6600]">
+            {product.name}
+          </Link>
         </h3>
 
         {/* Description */}
@@ -82,7 +88,7 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
         </p>
 
         {/* Pricing */}
-        <div className="border-t border-slate-800 pt-3 mt-auto flex flex-col mb-4">
+        <div className="border-t border-zinc-800 pt-3 mt-auto flex flex-col mb-4">
           <div className="flex items-baseline gap-2">
             {product.priceDe && (
               <span className="text-[11px] text-slate-500 line-through">
@@ -101,16 +107,16 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
 
         {/* Action Buttons */}
         <div className="grid grid-cols-2 gap-2 mt-auto">
-          {/* View Details triggers modal */}
-          <button
-            onClick={() => onSelect(product)}
-            className="flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-750 border border-slate-700 text-slate-200 text-xs font-bold py-2.5 px-3 rounded-xl transition-all duration-300 uppercase tracking-wider cursor-pointer hover:text-white"
+          {/* View Details Link */}
+          <Link
+            to={productUrl}
+            className="flex items-center justify-center gap-1.5 bg-zinc-800 hover:bg-zinc-750 border border-zinc-700 text-zinc-200 text-xs font-bold py-2.5 px-3 rounded-xl transition-all duration-300 uppercase tracking-wider cursor-pointer hover:text-white"
             aria-label="Ver detalhes do produto"
             id={`view-details-${product.id}`}
           >
             <Info className="w-3.5 h-3.5" />
-            <span>Detalhes</span>
-          </button>
+            <span>Ver mais detalhes</span>
+          </Link>
 
           {/* Add to Cart triggers adding */}
           <button

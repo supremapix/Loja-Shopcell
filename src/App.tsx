@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import Home from './components/Home';
 import LocationPage from './components/LocationPage';
 import Compare from './components/Compare';
+import ProductPage from './components/ProductPage';
 import NotFound from './components/NotFound';
 
 // Route guard to detect non-normalized slugs (with accents, capitals, spaces) and redirect to normalized form
@@ -38,6 +39,9 @@ export default function App() {
     <Routes>
       {/* Primary Home Page */}
       <Route path="/" element={<Home />} />
+
+      {/* Dedicated Product Detail Pages with + separators */}
+      <Route path="/produto/:slug" element={<ProductPage />} />
 
       {/* Dynamic Neighborhood / Location Pages with redirect guard */}
       <Route path="/bairro/:slug" element={<BairroRouteGuard />} />

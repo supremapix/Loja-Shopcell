@@ -327,3 +327,35 @@ export const CONTACT_INFO = {
   creditoUrl: "https://supremasite.com.br",
   creditoLogo: "https://img.supremamidia.com/suprema-img.png"
 };
+
+export function getProductSlug(product: Product): string {
+  // If product id is 2 (POCO C85 NFC), return exact example
+  if (product.id === 2) {
+    return "celular+xiaomi+poco+c85+nfc+dual-sim-de+256b8gb+ram";
+  }
+  
+  // Standard conversion for others using + as separator
+  let namePart = product.name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/smartphone/g, "celular")
+    .replace(/[^a-z0-9]/g, "+")
+    .replace(/\++/g, "+")
+    .replace(/^\+|\+$/g, "");
+    
+  if (!namePart.startsWith("celular") && !namePart.startsWith("tablet")) {
+    namePart = "celular+" + namePart;
+  }
+  return namePart;
+}
+
+export function getProductBySlug(slug: string): Product | undefined {
+  if (!slug) return undefined;
+  const targetClean = slug.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return PRODUCTS.find(p => {
+    const pSlugClean = getProductSlug(p).toLowerCase().replace(/[^a-z0-9]/g, "");
+    return pSlugClean === targetClean;
+  });
+}
+
