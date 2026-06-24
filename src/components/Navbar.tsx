@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ShoppingCart, Menu, X, Phone, MessageSquare, Search, MapPin, Star, 
-  CreditCard, ChevronRight, Home, Smartphone, Users, HelpCircle, RefreshCw 
+  CreditCard, ChevronRight, Home, Smartphone, Users, HelpCircle, RefreshCw, ArrowLeft
 } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 
@@ -41,12 +41,23 @@ export default function Navbar({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const navItems = [
-    { id: 'inicio', label: 'Início', seniorLabel: 'Ir para o Início', icon: <Home className="w-5 h-5 text-[#FF6600]" /> },
-    { id: 'produtos', label: 'Produtos', seniorLabel: 'Ver Celulares e Preços', icon: <Smartphone className="w-5 h-5 text-[#FF6600]" /> },
-    { id: 'RMCEbairros', label: 'Cidades & Bairros', seniorLabel: 'Onde fica a Loja Física?', icon: <MapPin className="w-5 h-5 text-[#FF6600]" /> },
-    { id: 'quem-somos', label: 'Quem Somos', seniorLabel: 'Conhecer a Nossa Loja', icon: <Users className="w-5 h-5 text-[#FF6600]" /> },
-    { id: 'faq', label: 'Dúvidas / FAQ', seniorLabel: 'Tirar Dúvidas Frequentes', icon: <HelpCircle className="w-5 h-5 text-[#FF6600]" /> },
+    { id: 'inicio', label: 'Início', seniorLabel: 'Ir para o Início da Página', icon: <Home className="w-6 h-6 text-[#FF6600]" />, bgClass: 'bg-[#FFF0E5] border-orange-200 text-orange-950 hover:bg-orange-100', sub: 'Voltar ao topo' },
+    { id: 'produtos', label: 'Produtos', seniorLabel: 'Ver Celulares e Preços', icon: <Smartphone className="w-6 h-6 text-emerald-600" />, bgClass: 'bg-[#EAFDF5] border-emerald-200 text-emerald-950 hover:bg-emerald-100', sub: 'Modelos originais com garantia' },
+    { id: 'RMCEbairros', label: 'Cidades & Bairros', seniorLabel: 'Onde fica a Loja Física?', icon: <MapPin className="w-6 h-6 text-purple-600" />, bgClass: 'bg-[#F5F3FF] border-purple-200 text-purple-950 hover:bg-purple-100', sub: 'Como chegar no Centro de Curitiba' },
+    { id: 'quem-somos', label: 'Quem Somos', seniorLabel: 'Conhecer a Nossa Loja', icon: <Users className="w-6 h-6 text-indigo-600" />, bgClass: 'bg-[#EEF2FF] border-indigo-200 text-indigo-950 hover:bg-indigo-100', sub: 'Mais de 8 anos em Curitiba' },
+    { id: 'faq', label: 'Dúvidas / FAQ', seniorLabel: 'Tirar Dúvidas Frequentes', icon: <HelpCircle className="w-6 h-6 text-orange-600" />, bgClass: 'bg-[#FFF5F0] border-orange-200 text-orange-950 hover:bg-orange-50', sub: 'Perguntas e respostas fáceis' },
   ];
 
   const topbarItems = [
@@ -57,7 +68,7 @@ export default function Navbar({
       link: CONTACT_INFO.mapsLink
     },
     {
-      icon: <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />,
+      icon: <Star className="w-3.5 h-3.5 text-[#FF6600] fill-[#FF6600]" />,
       text: "Avaliação 5.0 Google – +3.500 clientes satisfeitos em Curitiba!",
       actionText: "Avaliações",
       link: CONTACT_INFO.mapsLink
@@ -83,11 +94,11 @@ export default function Navbar({
       {/* Top Bar Ticker */}
       <div 
         id="topbar" 
-        className="w-full bg-slate-900 text-white border-b border-slate-800 py-2.5 relative overflow-hidden select-none z-50"
+        className="w-full bg-white text-slate-800 border-b border-slate-200 py-2.5 relative overflow-hidden select-none z-50"
       >
         {/* Decorative gradient shadows at the edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-slate-900 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         {/* Ticker Content Wrapper */}
         <div className="flex w-max relative">
@@ -95,12 +106,12 @@ export default function Navbar({
             {duplicatedTopbarItems.map((item, index) => (
               <div 
                 key={index} 
-                className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0 text-xs font-sans font-medium tracking-wide"
+                className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0 text-xs font-sans font-medium tracking-wide text-slate-800"
               >
-                <div className="flex items-center justify-center p-1 bg-white/5 rounded-md">
+                <div className="flex items-center justify-center p-1 bg-slate-100 rounded-md">
                   {item.icon}
                 </div>
-                <span className="text-gray-200">{item.text}</span>
+                <span className="text-slate-700">{item.text}</span>
                 
                 <a
                   href={item.link}
@@ -274,99 +285,99 @@ export default function Navbar({
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="lg:hidden w-full bg-slate-50 border-b border-slate-300 overflow-hidden"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 w-full h-screen bg-slate-50 z-50 overflow-y-auto flex flex-col p-4 sm:p-6"
             >
-              <div className="px-4 py-6 flex flex-col gap-6">
+              {/* TOP NAVIGATION BAR FOR ELDERLY */}
+              <div className="flex items-center justify-between gap-3 border-b-2 border-slate-200 pb-4 mb-4">
+                {/* Big Back Button */}
+                <button
+                  onClick={() => {
+                    if (window.history.length > 1) {
+                      window.history.back();
+                    }
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center justify-center gap-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-black px-4 py-3 rounded-2xl text-sm transition-all shadow-xs cursor-pointer"
+                  style={{ minHeight: '48px' }}
+                >
+                  <ArrowLeft className="w-5 h-5 text-[#FF6600]" />
+                  <span>VOLTAR</span>
+                </button>
                 
-                {/* Brand Logo in Mobile Menu - Animated, customized with pulsing motion */}
-                <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-2">
-                  <div className="flex items-center gap-3">
-                    <motion.div
-                      animate={{ 
-                        scale: [1, 1.08, 1],
-                        rotate: [0, 5, -5, 0]
-                      }}
-                      transition={{ 
-                        duration: 3.5, 
-                        repeat: Infinity, 
-                        ease: "easeInOut" 
-                      }}
-                      className="w-11 h-11 bg-[#FF6600] rounded-xl flex items-center justify-center font-bold text-white text-xl shadow-[0_4px_12px_rgba(255,102,0,0.3)]"
-                    >
-                      MI
-                    </motion.div>
-                    <div className="flex flex-col">
-                      <span className="font-display font-black tracking-wider text-gray-900 text-base leading-none">
-                        MI SHOP CELL
-                      </span>
-                      <span className="font-mono text-[9px] text-[#FF6600] tracking-widest font-bold mt-1 uppercase">
-                        Sua Loja Xiaomi em Curitiba
-                      </span>
+                {/* Branding indicator */}
+                <div className="flex items-center gap-2 select-none">
+                  <div className="w-9 h-9 bg-[#FF6600] rounded-xl flex items-center justify-center font-bold text-white text-base shadow-sm">
+                    MI
+                  </div>
+                  <span className="font-display font-black text-gray-900 text-sm tracking-tight">MENU DA LOJA</span>
+                </div>
+
+                {/* Big Close Button */}
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 bg-[#FF6600] hover:bg-[#D45500] text-white font-black px-4 py-3 rounded-2xl text-sm transition-all shadow-md cursor-pointer"
+                  style={{ minHeight: '48px' }}
+                >
+                  <X className="w-5 h-5" />
+                  <span>FECHAR</span>
+                </button>
+              </div>
+
+              {/* MENU CONTROLS - ADJUST TEXT SIZE */}
+              <div className="bg-white border-2 border-slate-200 rounded-2xl p-4 shadow-sm mb-4">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <div className="flex items-center gap-2 text-center sm:text-left">
+                    <Users className="w-6 h-6 text-[#FF6600] flex-shrink-0" />
+                    <div>
+                      <h4 className="font-display font-black text-gray-900 text-base">
+                        Ajuda para Enxergar Melhor
+                      </h4>
+                      <p className="text-gray-500 text-xs mt-0.5">
+                        Deseja aumentar o tamanho das letras do menu?
+                      </p>
                     </div>
                   </div>
                   
-                  {/* Close button inside mobile header */}
-                  <button 
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="p-1.5 text-slate-400 hover:text-slate-900 bg-slate-200/60 hover:bg-slate-200 rounded-lg transition-all"
+                  <button
+                    type="button"
+                    onClick={() => setIsLargeText(!isLargeText)}
+                    className={`px-5 py-3 rounded-2xl text-sm font-black uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 border w-full sm:w-auto ${
+                      isLargeText
+                        ? 'bg-[#FF6600] text-white border-[#FF6600] shadow-md scale-102'
+                        : 'bg-slate-100 hover:bg-slate-200 text-gray-800 border-slate-300'
+                    }`}
                   >
-                    <X className="w-5 h-5" />
+                    <Search className="w-4 h-4" />
+                    <span>{isLargeText ? 'Letra Normal' : 'Aumentar Letras'}</span>
                   </button>
                 </div>
+              </div>
 
-                {/* Senior Help & Font Size Controller Box */}
-                <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm">
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-                    <div className="flex items-center gap-2">
-                      <Users className="w-5 h-5 text-[#FF6600] flex-shrink-0" />
-                      <div>
-                        <h4 className="font-display font-bold text-gray-900 text-sm">
-                          Menu de Ajuda Simplificado
-                        </h4>
-                        <p className="text-gray-500 text-[11px] mt-0.5">
-                          Projetado para facilitar a leitura e o toque.
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <button
-                      type="button"
-                      onClick={() => setIsLargeText(!isLargeText)}
-                      className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-center gap-1.5 border w-full sm:w-auto ${
-                        isLargeText
-                          ? 'bg-[#FF6600] text-white border-[#FF6600] shadow-sm'
-                          : 'bg-slate-100 hover:bg-slate-200 text-gray-700 border-slate-300'
-                      }`}
-                    >
-                      <Search className="w-3.5 h-3.5" />
-                      <span>{isLargeText ? 'Letra Normal' : 'Aumentar Letra'}</span>
-                    </button>
-                  </div>
-                </div>
+              {/* SEARCH MODEL INPUT */}
+              <div className="relative mb-5">
+                <input
+                  type="text"
+                  placeholder="Pesquisar por modelo de celular..."
+                  value={searchQuery}
+                  onChange={(e) => onSearchChange(e.target.value)}
+                  className={`bg-white text-gray-900 px-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 focus:outline-none w-full shadow-xs ${
+                    isLargeText ? 'text-lg placeholder:text-gray-400 font-bold' : 'text-sm'
+                  }`}
+                />
+                <Search className="w-5 h-5 text-gray-400 absolute right-4 top-1/2 -translate-y-1/2" />
+              </div>
 
-                {/* Search Input for Mobile */}
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Pesquisar por modelo de celular..."
-                    value={searchQuery}
-                    onChange={(e) => onSearchChange(e.target.value)}
-                    className={`bg-white text-gray-900 px-4 py-3.5 rounded-xl border border-slate-200 focus:border-[#FF6600] focus:ring-1 focus:ring-[#FF6600]/10 focus:outline-none w-full shadow-xs ${
-                      isLargeText ? 'text-base placeholder:text-gray-400' : 'text-sm'
-                    }`}
-                  />
-                  <Search className="w-5 h-5 text-gray-400 absolute right-4 top-1/2 -translate-y-1/2" />
-                </div>
-
-                {/* Senior Friendly Main Links List */}
-                <div className="flex flex-col gap-2.5">
-                  <span className="text-[10px] text-gray-500 uppercase tracking-widest font-mono font-bold block px-1 text-center sm:text-left">
-                    Toque em uma opção para navegar:
-                  </span>
-                  
+              {/* MAIN ACCESSIBLE NAVIGATION LINKS */}
+              <div className="flex flex-col gap-3 flex-grow">
+                <span className="text-xs text-slate-500 uppercase tracking-widest font-mono font-black block px-1 text-center sm:text-left">
+                  Escolha abaixo o que você quer ver:
+                </span>
+                
+                <div className="flex flex-col gap-3">
                   {navItems.map((item) => (
                     <a
                       key={item.id}
@@ -376,71 +387,115 @@ export default function Navbar({
                         onNavClick(item.id);
                         setMobileMenuOpen(false);
                       }}
-                      className={`flex items-center gap-3.5 w-full py-4 px-4 rounded-xl border font-bold transition-all duration-200 ${
-                        activeSection === item.id
-                          ? 'bg-[#FF6600]/10 border-[#FF6600] text-[#FF6600]'
-                          : 'bg-white border-slate-200 text-gray-800 hover:bg-slate-100 shadow-xs'
-                      } ${
-                        isLargeText ? 'text-lg' : 'text-sm sm:text-base'
-                      }`}
-                      style={{ minHeight: '52px' }}
+                      className={`flex items-center justify-between w-full p-4 sm:p-5 rounded-2xl border-2 shadow-sm hover:shadow-md transition-all duration-200 ${item.bgClass}`}
+                      style={{ minHeight: '68px' }}
                     >
-                      {item.icon}
-                      <span className="leading-tight text-left">{item.seniorLabel}</span>
+                      <div className="flex items-center gap-4">
+                        <div className="p-2.5 bg-white rounded-xl shadow-xs border border-slate-100">
+                          {item.icon}
+                        </div>
+                        <div className="flex flex-col text-left">
+                          <span className={`font-black tracking-tight leading-snug ${isLargeText ? 'text-xl' : 'text-base sm:text-lg'}`}>
+                            {item.seniorLabel}
+                          </span>
+                          <span className="text-[11px] opacity-80 font-medium">
+                            {item.sub}
+                          </span>
+                        </div>
+                      </div>
+                      <ChevronRight className="w-5 h-5 opacity-70" />
                     </a>
                   ))}
 
-                  {/* Highly highlighted comparison link for Mobile */}
+                  {/* Accessible comparison link */}
                   <Link
                     to="/comparar"
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center justify-between w-full py-4 px-4 rounded-xl border border-amber-300 bg-amber-500/10 text-amber-700 font-extrabold shadow-sm hover:bg-amber-500 hover:text-white transition-all duration-200 ${
-                      isLargeText ? 'text-lg' : 'text-sm sm:text-base'
-                    }`}
-                    style={{ minHeight: '52px' }}
+                    className="flex items-center justify-between w-full p-4 sm:p-5 rounded-2xl border-2 border-orange-200 bg-[#FFF5F0] text-orange-950 hover:bg-orange-100 shadow-sm transition-all duration-200"
+                    style={{ minHeight: '68px' }}
                   >
-                    <span className="flex items-center gap-3">
-                      <RefreshCw className="w-5 h-5 text-amber-500 group-hover:text-white animate-spin-slow" />
-                      <span>Compare Modelos (Novo vs Antigo)</span>
-                    </span>
-                    <ChevronRight className="w-4 h-4 text-inherit" />
+                    <div className="flex items-center gap-4">
+                      <div className="p-2.5 bg-white rounded-xl shadow-xs border border-slate-100">
+                        <RefreshCw className="w-6 h-6 text-[#FF6600] animate-spin-slow" />
+                      </div>
+                      <div className="flex flex-col text-left">
+                        <span className={`font-black tracking-tight leading-snug text-[#FF6600] ${isLargeText ? 'text-xl' : 'text-base sm:text-lg'}`}>
+                          Compare Modelos de Celular
+                        </span>
+                        <span className="text-[11px] text-orange-600 font-medium">
+                          Descubra qual celular Xiaomi é ideal para você
+                        </span>
+                      </div>
+                    </div>
+                    <ChevronRight className="w-5 h-5 text-[#FF6600]" />
                   </Link>
                 </div>
 
-                {/* Big Help Action Buttons */}
-                <div className="flex flex-col gap-3 pt-4 border-t border-slate-200">
-                  <span className="text-[10px] text-gray-500 uppercase tracking-widest font-mono font-bold block px-1 text-center">
-                    Precisa de ajuda humana imediata?
+                {/* HELP CARDS FOR OLDER PEOPLE */}
+                <div className="flex flex-col gap-4 pt-6 mt-4 border-t-2 border-slate-200">
+                  <span className="text-xs text-slate-500 uppercase tracking-widest font-mono font-black block px-1 text-center">
+                    Conversar ou ligar para tirar dúvidas:
                   </span>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {/* WhatsApp Support Card */}
+                  <div className="bg-emerald-50 border-2 border-emerald-300 p-5 rounded-2xl flex flex-col gap-4">
+                    <div className="flex items-start gap-4 text-left">
+                      <div className="p-2 bg-white rounded-xl shadow-xs border border-emerald-100 flex-shrink-0">
+                        <MessageSquare className="w-7 h-7 text-emerald-600 fill-emerald-50" />
+                      </div>
+                      <div>
+                        <h4 className="font-display font-black text-emerald-950 text-base leading-tight">
+                          Falar com Atendente no WhatsApp
+                        </h4>
+                        <p className="text-emerald-700 text-xs mt-1 leading-relaxed font-semibold">
+                          Tire suas dúvidas, veja preços ou peça entrega para sua casa conversando com uma pessoa de verdade.
+                        </p>
+                      </div>
+                    </div>
                     <a
                       href={CONTACT_INFO.whatsappLink}
                       target="_blank"
                       referrerPolicy="no-referrer"
-                      className={`flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white py-4 px-5 rounded-2xl font-bold uppercase tracking-wider text-center shadow-md transition-colors ${
-                        isLargeText ? 'text-base' : 'text-xs sm:text-sm'
-                      }`}
-                      style={{ minHeight: '56px' }}
+                      className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-4 px-6 rounded-2xl font-black uppercase text-center shadow-md transition-colors flex items-center justify-center gap-3 cursor-pointer"
+                      style={{ minHeight: '52px' }}
                     >
-                      <MessageSquare className="w-5.5 h-5.5 fill-white text-[#25D366]" />
-                      <span>Falar no WhatsApp</span>
-                    </a>
-                    <a
-                      href={CONTACT_INFO.phoneLink}
-                      className={`flex items-center justify-center gap-3 bg-slate-200 hover:bg-slate-300 border border-slate-300 text-gray-800 py-4 px-5 rounded-2xl font-bold uppercase tracking-wider text-center shadow-xs transition-colors ${
-                        isLargeText ? 'text-base' : 'text-xs sm:text-sm'
-                      }`}
-                      style={{ minHeight: '56px' }}
-                    >
-                      <Phone className="w-5 h-5 text-gray-700" />
-                      <span>Ligar por Telefone</span>
+                      <MessageSquare className="w-6 h-6 fill-white text-[#25D366]" />
+                      <span>Conversar por Mensagem</span>
                     </a>
                   </div>
 
-                  <div className="text-center text-gray-500 text-[10px] leading-relaxed mt-1 flex items-center justify-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
-                    <span>Endereço: {CONTACT_INFO.address} (Fácil acesso com rampa e elevador)</span>
+                  {/* Phone Call Support Card */}
+                  <div className="bg-orange-50 border-2 border-orange-200 p-5 rounded-2xl flex flex-col gap-4">
+                    <div className="flex items-start gap-4 text-left">
+                      <div className="p-2 bg-white rounded-xl shadow-xs border border-orange-100 flex-shrink-0">
+                        <Phone className="w-7 h-7 text-[#FF6600]" />
+                      </div>
+                      <div>
+                        <h4 className="font-display font-black text-orange-950 text-base leading-tight">
+                          Ligar por Telefone Comum
+                        </h4>
+                        <p className="text-orange-700 text-xs mt-1 leading-relaxed font-semibold">
+                          Se você prefere falar ouvindo nossa voz, clique no botão abaixo para nos telefonar diretamente.
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href={CONTACT_INFO.phoneLink}
+                      className="w-full bg-[#FF6600] hover:bg-[#D45500] text-white py-4 px-6 rounded-2xl font-black uppercase text-center shadow-md transition-colors flex items-center justify-center gap-3 cursor-pointer"
+                      style={{ minHeight: '52px' }}
+                    >
+                      <Phone className="w-6 h-6" />
+                      <span>Fazer Ligação Telefônica</span>
+                    </a>
+                  </div>
+
+                  {/* Footnote address details */}
+                  <div className="text-center text-slate-500 text-xs leading-relaxed mt-2 flex flex-col items-center justify-center gap-1 bg-white border border-slate-200/60 p-4 rounded-xl">
+                    <div className="flex items-center gap-1.5 font-bold text-slate-700">
+                      <MapPin className="w-4 h-4 text-[#FF6600]" />
+                      <span>{CONTACT_INFO.address}</span>
+                    </div>
+                    <span className="text-[11px] text-slate-400">Temos acesso fácil com rampas de acessibilidade e elevador para melhor atendê-lo.</span>
                   </div>
                 </div>
               </div>

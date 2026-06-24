@@ -190,10 +190,10 @@ export default function NotFound() {
             {/* Card E-mail */}
             <a 
               href={`mailto:${CONTACT_INFO.email}`}
-              className="bg-slate-900 border border-slate-850 hover:border-blue-500/40 p-5 rounded-2xl flex flex-col items-center group transition-all"
+              className="bg-slate-900 border border-slate-850 hover:border-[#FF6600]/40 p-5 rounded-2xl flex flex-col items-center group transition-all"
             >
-              <div className="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform mb-3">
-                <Mail className="w-5 h-5 text-blue-400" />
+              <div className="w-10 h-10 bg-[#FF6600]/10 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform mb-3">
+                <Mail className="w-5 h-5 text-[#FF6600]" />
               </div>
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">E-mail</span>
               <span className="text-xs text-white font-bold font-mono mt-1 text-center truncate w-full">{CONTACT_INFO.email}</span>

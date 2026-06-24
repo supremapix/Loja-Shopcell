@@ -12,7 +12,7 @@ export default function Footer() {
       
       {/* Premium modern animated color-shifting gradient separator bar */}
       <div 
-        className="w-full h-1.5 bg-gradient-to-r from-red-500 via-[#FF6600] via-amber-400 via-emerald-400 via-sky-400 via-purple-500 to-red-500 bg-[length:200%_auto] animate-gradient-shift"
+        className="w-full h-1.5 bg-gradient-to-r from-[#FF6600] via-red-500 via-[#FF6600] via-orange-400 to-[#FF6600] bg-[length:200%_auto] animate-gradient-shift"
         id="premium-shifting-footer-separator"
       />
 
@@ -37,13 +37,13 @@ export default function Footer() {
               </div>
             </div>
             
-            <p className="text-xs leading-relaxed text-slate-400">
+            <p className="text-xs leading-relaxed text-slate-400 font-medium">
               Sua revenda autorizada multimarcas especializada em Xiaomi, POCO e Redmi no coração de Curitiba. Há mais de 8 anos conectando você ao melhor da tecnologia mundial.
             </p>
             
             {/* Google Stars Rating */}
             <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 p-2.5 rounded-xl w-fit shadow-xs">
-              <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+              <Star className="w-4 h-4 text-[#FF6600] fill-[#FF6600]" />
               <span className="text-white text-xs font-bold font-mono">5.0</span>
               <span className="text-[10px] text-slate-500 font-mono">Mais de 3.902 avaliações</span>
             </div>
@@ -54,40 +54,40 @@ export default function Footer() {
             <h4 className="text-white font-display font-bold text-sm tracking-wider uppercase border-l-2 border-[#FF6600] pl-3.5">
               Navegação Útil
             </h4>
-            <ul className="space-y-3 text-xs font-sans text-slate-300 sm:space-y-2.5">
+            <ul className="space-y-3 text-sm font-sans text-slate-300">
               <li>
-                <a href="#inicio" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <Home className="w-4 h-4 text-[#FF6600] sm:hidden" />
+                <a href="#inicio" className="flex items-center gap-2 py-3 px-4 sm:py-1 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-bold sm:font-semibold shadow-2xs min-h-[46px] sm:min-h-0">
+                  <Home className="w-4.5 h-4.5 text-[#FF6600]" />
                   <span>Ir para o Início</span>
                 </a>
               </li>
               <li>
-                <a href="#produtos" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <Smartphone className="w-4 h-4 text-[#FF6600] sm:hidden" />
+                <a href="#produtos" className="flex items-center gap-2 py-3 px-4 sm:py-1 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-bold sm:font-semibold shadow-2xs min-h-[46px] sm:min-h-0">
+                  <Smartphone className="w-4.5 h-4.5 text-[#FF6600]" />
                   <span>Catálogo de Smartphones</span>
                 </a>
               </li>
               <li>
-                <a href="#diferenciais" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <ShieldCheck className="w-4 h-4 text-[#FF6600] sm:hidden" />
+                <a href="#diferenciais" className="flex items-center gap-2 py-3 px-4 sm:py-1 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-bold sm:font-semibold shadow-2xs min-h-[46px] sm:min-h-0">
+                  <ShieldCheck className="w-4.5 h-4.5 text-[#FF6600]" />
                   <span>Por que comprar com a gente?</span>
                 </a>
               </li>
               <li>
-                <a href="#RMCEbairros" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <MapPin className="w-4 h-4 text-[#FF6600] sm:hidden" />
+                <a href="#RMCEbairros" className="flex items-center gap-2 py-3 px-4 sm:py-1 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-bold sm:font-semibold shadow-2xs min-h-[46px] sm:min-h-0">
+                  <MapPin className="w-4.5 h-4.5 text-[#FF6600]" />
                   <span>Cidades e Bairros Atendidos</span>
                 </a>
               </li>
               <li>
-                <a href="#faq" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <HelpCircle className="w-4 h-4 text-[#FF6600] sm:hidden" />
+                <a href="#faq" className="flex items-center gap-2 py-3 px-4 sm:py-1 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-bold sm:font-semibold shadow-2xs min-h-[46px] sm:min-h-0">
+                  <HelpCircle className="w-4.5 h-4.5 text-[#FF6600]" />
                   <span>Dúvidas Frequentes (FAQ)</span>
                 </a>
               </li>
               <li>
-                <Link to="/comparar" className="flex items-center gap-2 py-2.5 px-3 sm:py-0 sm:px-0 bg-amber-500/10 border border-amber-500/30 sm:border-0 rounded-xl sm:rounded-none text-amber-500 hover:text-amber-400 sm:text-slate-200 sm:hover:text-[#FF6600] transition-all font-semibold sm:font-normal shadow-2xs sm:shadow-none min-h-[44px] sm:min-h-0">
-                  <RefreshCw className="w-4 h-4 text-amber-500" />
+                <Link to="/comparar" className="flex items-center gap-2 py-3 px-4 sm:py-1 sm:px-0 bg-[#FF6600]/10 border border-[#FF6600]/30 sm:border-0 rounded-xl sm:rounded-none text-[#FF6600] hover:text-[#D45500] sm:text-slate-200 sm:hover:text-[#FF6600] transition-all font-bold sm:font-semibold shadow-2xs min-h-[46px] sm:min-h-0">
+                  <RefreshCw className="w-4.5 h-4.5 text-[#FF6600]" />
                   <span>Compare Modelos (Novos vs Antigos)</span>
                 </Link>
               </li>
