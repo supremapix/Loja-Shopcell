@@ -106,11 +106,11 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-2.5 mt-auto">
+        <div className="grid grid-cols-2 gap-2 mt-auto">
           {/* View Details Link */}
           <Link
             to={productUrl}
-            className="flex items-center justify-center gap-1 bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-700 text-[11px] font-bold py-2.5 px-2 rounded-xl transition-all duration-300 uppercase tracking-wider cursor-pointer hover:text-slate-900 hover:border-slate-300 shadow-2xs"
+            className="flex items-center justify-center gap-1 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-[10.5px] sm:text-[11px] font-bold py-2 px-1.5 rounded-lg transition-all duration-300 uppercase tracking-wider cursor-pointer hover:text-slate-900 hover:border-slate-300 shadow-2xs"
             aria-label="Ver detalhes do produto"
             id={`view-details-${product.id}`}
           >
@@ -121,7 +121,7 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
           {/* Add to Cart triggers adding */}
           <button
             onClick={() => onAddToCart(product)}
-            className="flex items-center justify-center gap-1 bg-[#FF6900] hover:bg-[#D45500] text-white text-[11px] font-bold py-2.5 px-2 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md uppercase tracking-wider cursor-pointer hover:scale-[1.02]"
+            className="flex items-center justify-center gap-1 bg-[#FF6900] hover:bg-[#D45500] text-white text-[10.5px] sm:text-[11px] font-bold py-2 px-1.5 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md uppercase tracking-wider cursor-pointer hover:scale-[1.01]"
             aria-label="Adicionar produto ao carrinho"
             id={`add-to-cart-${product.id}`}
           >

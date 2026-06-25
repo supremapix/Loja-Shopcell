@@ -229,20 +229,20 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                     {DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaLink.startsWith('#') ? (
                       <a
                         href={DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaLink}
-                        className="group bg-[#FF6900] hover:bg-[#D45500] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2 cursor-pointer w-fit hover:scale-[1.03]"
+                        className="group bg-[#FF6900] hover:bg-[#D45500] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider px-4.5 py-2.5 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md inline-flex items-center gap-1.5 cursor-pointer w-fit hover:scale-[1.01]"
                       >
                         <span>{DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaText}</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                       </a>
                     ) : (
                       <a
                         href={DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaLink}
                         target="_blank"
                         referrerPolicy="no-referrer"
-                        className="group bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2 cursor-pointer w-fit hover:scale-[1.03]"
+                        className="group bg-emerald-500 hover:bg-emerald-600 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider px-4.5 py-2.5 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md inline-flex items-center gap-1.5 cursor-pointer w-fit hover:scale-[1.01]"
                       >
                         <span>{DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaText}</span>
-                        <MessageSquare className="w-4 h-4" />
+                        <MessageSquare className="w-3.5 h-3.5" />
                       </a>
                     )}
 
@@ -469,18 +469,18 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
             >
               <a 
                 href="#produtos" 
-                className="group flex items-center justify-center gap-2 bg-[#FF6600] hover:bg-[#D45500] text-white font-bold px-8 py-4 rounded-2xl text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(255,102,0,0.25)] hover:shadow-[0_8px_30px_rgba(255,102,0,0.45)] hover:scale-[1.02]"
+                className="group flex items-center justify-center gap-1.5 bg-[#FF6600] hover:bg-[#D45500] text-white font-bold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition-all duration-300 shadow-xs hover:scale-[1.01]"
                 id="hero-cta-catalog"
               >
-                <span>Ver Modelos e Preços</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <span>Ver Modelos</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </a>
               <button 
                 onClick={() => onSelectProduct(destaqueProduct)}
-                className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border-2 border-slate-200 hover:border-slate-300 text-slate-800 font-bold px-8 py-4 rounded-2xl text-sm uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] cursor-pointer shadow-xs"
+                className="flex items-center justify-center gap-1.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-800 font-bold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition-all duration-300 hover:scale-[1.01] cursor-pointer shadow-2xs"
                 id="hero-cta-destaque"
               >
-                <span>Conhecer POCO F8 Ultra</span>
+                <span>POCO F8 Ultra</span>
               </button>
             </motion.div>
 
@@ -583,17 +583,17 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                   </div>
                 </div>
 
-                {/* Direct Purchase Actions */}
-                <div className="grid grid-cols-2 gap-2.5">
+                 {/* Direct Purchase Actions */}
+                <div className="grid grid-cols-2 gap-2">
                   <Link
                     to={`/produto/${getProductSlug(destaqueProduct)}`}
-                    className="bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-700 text-xs font-black py-3 px-4 rounded-xl transition-all duration-300 uppercase tracking-wider text-center cursor-pointer flex items-center justify-center hover:text-slate-900 hover:border-slate-300 shadow-2xs"
+                    className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-[11px] font-bold py-2 px-3 rounded-lg transition-all duration-300 uppercase tracking-wider text-center cursor-pointer flex items-center justify-center hover:text-slate-900 hover:border-slate-300 shadow-2xs"
                   >
-                    Ver detalhes
+                    Detalhes
                   </Link>
                   <button
                     onClick={() => onAddToCart(destaqueProduct)}
-                    className="bg-[#FF6600] hover:bg-[#D45500] text-white text-xs font-black py-3 px-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02]"
+                    className="bg-[#FF6600] hover:bg-[#D45500] text-white text-[11px] font-bold py-2 px-3 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md uppercase tracking-wider flex items-center justify-center gap-1 cursor-pointer hover:scale-[1.01]"
                   >
                     <ShoppingBag className="w-3.5 h-3.5" />
                     <span>Comprar</span>

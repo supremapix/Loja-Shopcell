@@ -55,9 +55,9 @@ export default function Navbar({
   const navItems = [
     { id: 'inicio', label: 'Início', seniorLabel: 'Ir para o Início da Página', icon: <Home className="w-6 h-6 text-[#FF6600]" />, bgClass: 'bg-[#FFF0E5] border-orange-200 text-orange-950 hover:bg-orange-100', sub: 'Voltar ao topo' },
     { id: 'produtos', label: 'Produtos', seniorLabel: 'Ver Celulares e Preços', icon: <Smartphone className="w-6 h-6 text-emerald-600" />, bgClass: 'bg-[#EAFDF5] border-emerald-200 text-emerald-950 hover:bg-emerald-100', sub: 'Modelos originais com garantia' },
-    { id: 'RMCEbairros', label: 'Cidades & Bairros', seniorLabel: 'Onde fica a Loja Física?', icon: <MapPin className="w-6 h-6 text-purple-600" />, bgClass: 'bg-[#F5F3FF] border-purple-200 text-purple-950 hover:bg-purple-100', sub: 'Como chegar no Centro de Curitiba' },
-    { id: 'quem-somos', label: 'Quem Somos', seniorLabel: 'Conhecer a Nossa Loja', icon: <Users className="w-6 h-6 text-indigo-600" />, bgClass: 'bg-[#EEF2FF] border-indigo-200 text-indigo-950 hover:bg-indigo-100', sub: 'Mais de 8 anos em Curitiba' },
-    { id: 'faq', label: 'Dúvidas / FAQ', seniorLabel: 'Tirar Dúvidas Frequentes', icon: <HelpCircle className="w-6 h-6 text-orange-600" />, bgClass: 'bg-[#FFF5F0] border-orange-200 text-orange-950 hover:bg-orange-50', sub: 'Perguntas e respostas fáceis' },
+    { id: 'RMCEbairros', label: 'Bairros', seniorLabel: 'Onde fica a Loja Física?', icon: <MapPin className="w-6 h-6 text-purple-600" />, bgClass: 'bg-[#F5F3FF] border-purple-200 text-purple-950 hover:bg-purple-100', sub: 'Como chegar no Centro de Curitiba' },
+    { id: 'quem-somos', label: 'Sobre', seniorLabel: 'Conhecer a Nossa Loja', icon: <Users className="w-6 h-6 text-indigo-600" />, bgClass: 'bg-[#EEF2FF] border-indigo-200 text-indigo-950 hover:bg-indigo-100', sub: 'Mais de 8 anos em Curitiba' },
+    { id: 'faq', label: 'FAQ', seniorLabel: 'Tirar Dúvidas Frequentes', icon: <HelpCircle className="w-6 h-6 text-orange-600" />, bgClass: 'bg-[#FFF5F0] border-orange-200 text-orange-950 hover:bg-orange-50', sub: 'Perguntas e respostas fáceis' },
   ];
 
   const topbarItems = [
@@ -215,7 +215,7 @@ export default function Navbar({
           </a>
 
           {/* Desktop Navigation - normal title casing, sleek text, identical to official Xiaomi brand menus */}
-          <nav className="hidden xl:flex items-center gap-6 xl:gap-8 mx-4 xl:mx-6">
+          <nav className="hidden xl:flex items-center gap-4 xl:gap-5 mx-2.5 xl:mx-4">
             {navItems.map((item) => (
               <a
                 key={item.id}
@@ -224,7 +224,7 @@ export default function Navbar({
                   e.preventDefault();
                   onNavClick(item.id);
                 }}
-                className={`relative font-sans font-bold text-[13px] tracking-wide transition-colors duration-200 py-1.5 ${
+                className={`relative font-sans font-bold text-[12px] xl:text-[13px] tracking-wide transition-colors duration-200 py-1 ${
                   activeSection === item.id ? 'text-[#FF6900]' : 'text-slate-700 hover:text-[#FF6900]'
                 }`}
               >
@@ -239,29 +239,29 @@ export default function Navbar({
               </a>
             ))}
 
-            {/* Comparison Link */}
+            {/* Comparison Link - elegant inline link instead of bulky button */}
             <Link
               to="/comparar"
-              className="bg-amber-500/10 hover:bg-amber-500 text-amber-600 hover:text-white border border-amber-500/20 hover:border-transparent px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs uppercase tracking-wider"
+              className="font-sans font-bold text-[12px] xl:text-[13px] tracking-wide text-amber-600 hover:text-[#FF6900] transition-colors duration-200 py-1 flex items-center gap-1 cursor-pointer"
               id="compare-nav-link"
             >
-              <RefreshCw className="w-3.5 h-3.5 animate-spin-slow" />
-              <span>Compare Modelos</span>
+              <RefreshCw className="w-3.5 h-3.5 animate-spin-slow text-amber-500" />
+              <span>Comparar</span>
             </Link>
           </nav>
 
           {/* Actions Bar */}
-          <div className="flex items-center gap-3.5 flex-shrink-0">
+          <div className="flex items-center gap-2.5 xl:gap-3.5 flex-shrink-0">
             {/* Desktop Search Bar - Always visible like mibrasil.com.br */}
-            <div className="hidden lg:flex items-center relative w-44 xl:w-60">
+            <div className="hidden lg:flex items-center relative w-32 focus-within:w-44 xl:w-36 xl:focus-within:w-48 transition-all duration-300">
               <input
                 type="text"
-                placeholder="Xiaomi 14T..."
+                placeholder="Buscar..."
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
-                className="w-full bg-slate-50 text-xs text-slate-900 px-4 py-2 pr-10 rounded-full border border-slate-200 focus:border-[#FF6900] focus:ring-1 focus:ring-[#FF6900] focus:bg-white focus:outline-none transition-all placeholder-slate-400 font-bold"
+                className="w-full bg-slate-50 text-[11px] xl:text-xs text-slate-900 px-3 py-1.5 pr-8 rounded-full border border-slate-200 focus:border-[#FF6900] focus:ring-1 focus:ring-[#FF6900] focus:bg-white focus:outline-none transition-all placeholder-slate-400 font-bold"
               />
-              <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+              <Search className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
             </div>
 
             {/* Mobile Search Button (shown on mobile and smaller tablet sizes where input bar is hidden) */}
@@ -318,11 +318,11 @@ export default function Navbar({
               href={CONTACT_INFO.whatsappLink}
               target="_blank"
               referrerPolicy="no-referrer"
-              className="hidden xl:flex items-center gap-2 bg-[#FF6600]/10 hover:bg-[#FF6600] border border-[#FF6600]/30 text-[#FF6600] hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-xs cursor-pointer"
+              className="hidden xl:flex items-center gap-1.5 bg-[#FF6600]/10 hover:bg-[#FF6600] border border-[#FF6600]/25 text-[#FF6600] hover:text-white px-3.5 py-1.5 rounded-lg text-[11px] font-bold tracking-wider uppercase transition-all duration-300 shadow-2xs cursor-pointer"
               id="contact-whatsapp-btn"
             >
-              <MessageSquare className="w-4 h-4 text-inherit" />
-              <span>Orçar WhatsApp</span>
+              <MessageSquare className="w-3.5 h-3.5 text-inherit" />
+              <span>Orçar</span>
             </a>
 
             {/* Mobile Menu Toggle */}
@@ -512,11 +512,10 @@ export default function Navbar({
                       href={CONTACT_INFO.whatsappLink}
                       target="_blank"
                       referrerPolicy="no-referrer"
-                      className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-4 px-6 rounded-2xl font-black uppercase text-center shadow-md transition-colors flex items-center justify-center gap-3 cursor-pointer"
-                      style={{ minHeight: '52px' }}
+                      className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-3 px-5 rounded-xl font-bold uppercase text-center shadow-sm transition-colors flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <MessageSquare className="w-6 h-6 fill-white text-[#25D366]" />
-                      <span>Conversar por Mensagem</span>
+                      <MessageSquare className="w-5 h-5 fill-white text-[#25D366]" />
+                      <span>Conversar no WhatsApp</span>
                     </a>
                   </div>
 
@@ -537,11 +536,10 @@ export default function Navbar({
                     </div>
                     <a
                       href={CONTACT_INFO.phoneLink}
-                      className="w-full bg-[#FF6600] hover:bg-[#D45500] text-white py-4 px-6 rounded-2xl font-black uppercase text-center shadow-md transition-colors flex items-center justify-center gap-3 cursor-pointer"
-                      style={{ minHeight: '52px' }}
+                      className="w-full bg-[#FF6600] hover:bg-[#D45500] text-white py-3 px-5 rounded-xl font-bold uppercase text-center shadow-sm transition-colors flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <Phone className="w-6 h-6" />
-                      <span>Fazer Ligação Telefônica</span>
+                      <Phone className="w-5 h-5" />
+                      <span>Ligar Agora</span>
                     </a>
                   </div>
 

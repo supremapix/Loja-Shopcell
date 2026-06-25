@@ -174,11 +174,11 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
                 href={getWhatsAppMessage(product)}
                 target="_blank"
                 referrerPolicy="no-referrer"
-                className="flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#128C7E] text-white text-xs font-bold py-3.5 px-4 rounded-xl uppercase tracking-wider transition-all duration-300 text-center cursor-pointer"
+                className="flex items-center justify-center gap-1 bg-[#25D366] hover:bg-[#128C7E] text-white text-[11px] font-bold py-2 px-2.5 rounded-lg uppercase tracking-wide transition-all duration-300 text-center cursor-pointer"
                 id={`modal-whatsapp-${product.id}`}
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Orçar WhatsApp</span>
+                <span>WhatsApp</span>
               </a>
 
               {/* Add to Cart */}
@@ -187,7 +187,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
                   onAddToCart(product);
                   onClose();
                 }}
-                className="flex items-center justify-center gap-1.5 bg-[#FF6600] hover:bg-[#D45500] text-white text-xs font-bold py-3.5 px-4 rounded-xl uppercase tracking-wider transition-all duration-300 shadow-md shadow-[#FF6600]/10 cursor-pointer"
+                className="flex items-center justify-center gap-1 bg-[#FF6600] hover:bg-[#D45500] text-white text-[11px] font-bold py-2 px-2.5 rounded-lg uppercase tracking-wide transition-all duration-300 shadow-xs cursor-pointer"
                 id={`modal-cart-${product.id}`}
               >
                 <ShoppingBag className="w-4 h-4" />

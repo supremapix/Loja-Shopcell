@@ -212,7 +212,7 @@ export default function Home() {
                   setSearchQuery('');
                   setActiveBrand('Todos');
                 }}
-                className="bg-[#FF6600] hover:bg-[#D45500] text-white text-xs font-bold px-6 py-3 rounded-xl uppercase tracking-wider mt-6 transition-colors cursor-pointer"
+                className="bg-[#FF6600] hover:bg-[#D45500] text-white text-[11px] font-bold px-4 py-2 rounded-lg uppercase tracking-wider mt-5 transition-colors cursor-pointer"
               >
                 Limpar filtros
               </button>
@@ -269,11 +269,11 @@ export default function Home() {
           </p>
           <button
             onClick={() => setCatalogModalOpen(true)}
-            className="inline-flex items-center gap-2.5 bg-[#FF6600] hover:bg-[#D45500] text-white font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(255,102,0,0.3)] hover:shadow-[0_8px_30px_rgba(255,102,0,0.5)] cursor-pointer"
+            className="inline-flex items-center gap-1.5 bg-[#FF6600] hover:bg-[#D45500] text-white font-bold px-5 py-3 rounded-lg text-xs uppercase tracking-wider transition-all duration-300 shadow-xs cursor-pointer"
             id="footer-catalog-cta-btn"
           >
-            <span>Solicitar Catálogo Completo</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>Solicitar Catálogo</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </section>

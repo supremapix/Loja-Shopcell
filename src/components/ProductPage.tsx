@@ -312,23 +312,23 @@ export default function ProductPage() {
                 </div>
 
                 {/* Primary Actions Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {/* WhatsApp contact */}
                   <a
                     href={getWhatsAppMessage(product)}
                     target="_blank"
                     rel="noreferrer"
                     referrerPolicy="no-referrer"
-                    className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold py-4 px-6 rounded-xl text-xs uppercase tracking-wider transition-all shadow-[0_4px_15px_rgba(37,211,102,0.25)] hover:scale-[1.01]"
+                    className="flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold py-2.5 px-4 rounded-lg text-xs uppercase tracking-wide transition-all shadow-xs hover:scale-[1.01]"
                   >
                     <MessageSquare className="w-4 h-4 fill-white text-transparent" />
-                    <span>Chamar Especialista</span>
+                    <span>Pedir WhatsApp</span>
                   </a>
 
                   {/* Add to Cart button */}
                   <button
                     onClick={() => handleAddToCart(product)}
-                    className="flex items-center justify-center gap-2 bg-[#FF6600] hover:bg-[#D45500] text-white font-bold py-4 px-6 rounded-xl text-xs uppercase tracking-wider transition-all shadow-[0_4px_15px_rgba(255,102,0,0.25)] hover:scale-[1.01]"
+                    className="flex items-center justify-center gap-1.5 bg-[#FF6600] hover:bg-[#D45500] text-white font-bold py-2.5 px-4 rounded-lg text-xs uppercase tracking-wide transition-all shadow-xs hover:scale-[1.01]"
                   >
                     <ShoppingBag className="w-4 h-4" />
                     <span>Adicionar ao Carrinho</span>
