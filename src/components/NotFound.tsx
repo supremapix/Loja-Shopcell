@@ -119,7 +119,7 @@ export default function NotFound() {
           <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest bg-[#FF6600]/10 border border-[#FF6600]/25 px-4 py-1.5 rounded-full inline-block">
             OPS! ALGO DEU ERRADO
           </span>
-          <h2 className="font-display font-black text-3xl sm:text-4xl tracking-tight leading-none text-white">
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight leading-none text-white">
             Página Não Encontrada
           </h2>
           <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">

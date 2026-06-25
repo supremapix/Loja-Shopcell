@@ -29,7 +29,7 @@ export default function Garantia() {
             </div>
 
             {/* Title / Header */}
-            <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-gray-900 tracking-tight leading-tight">
+            <h2 className="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-gray-900 tracking-tight leading-tight">
               Garantia de <span className="text-[#FF6600] underline decoration-[#FF6600]/20 decoration-wavy">6 Meses</span> em Todos os Produtos
             </h2>
 
@@ -46,8 +46,8 @@ export default function Garantia() {
                 ))}
               </div>
               <div>
-                <p className="text-gray-900 font-display font-black text-lg leading-none">
-                  Mais de 3.902 avaliações reais
+                <p className="text-gray-900 font-display font-bold text-lg leading-none">
+                  Mais de 3.800 avaliações reais
                 </p>
                 <p className="text-gray-500 text-xs mt-1">
                   De clientes reais extremamente satisfeitos em Curitiba e Região!

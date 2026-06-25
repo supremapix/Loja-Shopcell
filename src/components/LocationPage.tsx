@@ -152,7 +152,7 @@ export default function LocationPage() {
                 </span>
               </div>
 
-              <h1 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
+              <h1 className="font-display font-semibold text-xl sm:text-2xl lg:text-3xl tracking-tight leading-tight">
                 Xiaomi no <span className="text-[#FF6600]">{currentBairro.nome}</span> Curitiba
               </h1>
 
@@ -234,7 +234,7 @@ export default function LocationPage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12 text-center md:text-left">
             <div className="max-w-xl mx-auto md:mx-0">
               <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-2.5">ENTREGA NO {currentBairro.nome.toUpperCase()}</span>
-              <h2 className="font-display font-black text-3xl sm:text-4xl text-gray-900 tracking-tight">
+              <h2 className="font-display font-semibold text-3xl sm:text-4xl text-gray-900 tracking-tight">
                 Modelos Disponíveis para o {currentBairro.nome}
               </h2>
               <p className="text-gray-500 text-xs sm:text-sm mt-2">

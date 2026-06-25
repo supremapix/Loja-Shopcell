@@ -257,7 +257,7 @@ export const DIFFERENTIALS: Differential[] = [
   {
     icon: "Star",
     title: "Nota 5.0 Google",
-    description: "Somos avaliados com nota máxima por mais de 3.500 clientes em Curitiba e região."
+    description: "Somos avaliados com nota máxima por mais de 3.800 clientes em Curitiba e região."
   },
   {
     icon: "Smartphone",

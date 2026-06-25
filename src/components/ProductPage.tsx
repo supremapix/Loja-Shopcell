@@ -217,7 +217,7 @@ export default function ProductPage() {
                 </div>
 
                 {/* Full name heading */}
-                <h1 className="font-display font-black text-slate-900 text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight mb-4">
+                <h1 className="font-display font-semibold text-slate-900 text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight mb-4">
                   {product.name}
                 </h1>
 
@@ -283,7 +283,7 @@ export default function ProductPage() {
                           {product.priceDe.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                         </span>
                       )}
-                      <span className="text-3xl font-display font-black text-slate-900 leading-none">
+                      <span className="text-3xl font-display font-bold text-slate-900 leading-none">
                         {product.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                       </span>
                     </div>

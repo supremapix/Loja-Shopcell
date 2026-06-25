@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Star, Shield, Zap, Sparkles, ShoppingBag, ArrowRight, ChevronLeft, ChevronRight, Check } from 'lucide-react';
+import { Star, Shield, Zap, Sparkles, ShoppingBag, ArrowRight, ChevronLeft, ChevronRight, Check, MessageSquare } from 'lucide-react';
 import { Product } from '../types';
 import { CONTACT_INFO, PRODUCTS, getProductSlug } from '../data';
 
@@ -18,6 +18,48 @@ const MOBILE_SLIDES = [
   "https://loja.xiaomishopcell.com/img/slider-2-movel.png",
   "https://loja.xiaomishopcell.com/img/slider-movel-1.png",
   "https://loja.xiaomishopcell.com/img/slider-5q.png"
+];
+
+const DESKTOP_SLIDES = [
+  "https://loja.xiaomishopcell.com/img/hero-xiaomi-mi-curitiba-pr.webp",
+  "https://loja.xiaomishopcell.com/img/hero-xiaomi-mi-curitiba.webp",
+  "https://loja.xiaomishopcell.com/img/hero-xiaomi-mi-curitiba-cwb.webp",
+  "https://loja.xiaomishopcell.com/img/hero-xiaomi-mi-cwb.webp"
+];
+
+const DESKTOP_SLIDE_DATA = [
+  {
+    badge: "Estoque Real no Centro de Curitiba",
+    title: "XIAOMI ORIGINAL COM GARANTIA",
+    subtitle: "Sua loja especializada com garantia local real de 6 meses e o melhor suporte técnico da região.",
+    incentive: "Garantia Local • Suporte Pós-Venda • Brindes Exclusivos",
+    ctaText: "Comprar Agora",
+    ctaLink: "#produtos"
+  },
+  {
+    badge: "Entrega Expressa via Motoboy",
+    title: "SEU NOVO CELULAR HOJE MESMO",
+    subtitle: "Compre e receba em Curitiba e Região Metropolitana em poucas horas com total segurança e comodidade.",
+    incentive: "Receba em Casa • Pague na Entrega • 100% Seguro",
+    ctaText: "Ver Modelos",
+    ctaLink: "#produtos"
+  },
+  {
+    badge: "Melhor Condição do Estado",
+    title: "PARCELAMENTO EM ATÉ 12X",
+    subtitle: "Aproveite 8% de desconto no Pix ou parcele em até 12 vezes sem juros no cartão de crédito.",
+    incentive: "Parcelas Suaves • Menor Preço Garantido • Sem Burocracia",
+    ctaText: "Falar com Consultor",
+    ctaLink: CONTACT_INFO.whatsappLink
+  },
+  {
+    badge: "Sua Melhor Escolha em Curitiba",
+    title: "PRODUTOS 100% ORIGINAIS LACRADOS",
+    subtitle: "Trabalhamos apenas com aparelhos novos, originais e com garantia de fábrica. Venha nos visitar ou peça entrega expressa.",
+    incentive: "Estoque Real • Selo de Autenticidade • Atendimento Especializado",
+    ctaText: "Aproveitar Ofertas",
+    ctaLink: "#produtos"
+  }
 ];
 
 // Extremely high-impact futuristic sci-fi transitions
@@ -50,6 +92,7 @@ const TRANSITIONS = [
 
 export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: HeroProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentDesktopSlide, setCurrentDesktopSlide] = useState(0);
   const [transitionIndex, setTransitionIndex] = useState(0);
 
   // Sort products to find the 4 cheapest devices
@@ -65,6 +108,14 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
     return () => clearInterval(interval);
   }, [currentSlide]);
 
+  // Desktop auto-slide every 6 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNextDesktopSlide();
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [currentDesktopSlide]);
+
   const handleNextSlide = () => {
     setTransitionIndex(Math.floor(Math.random() * TRANSITIONS.length));
     setCurrentSlide((prev) => (prev + 1) % MOBILE_SLIDES.length);
@@ -73,6 +124,14 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
   const handlePrevSlide = () => {
     setTransitionIndex(Math.floor(Math.random() * TRANSITIONS.length));
     setCurrentSlide((prev) => (prev - 1 + MOBILE_SLIDES.length) % MOBILE_SLIDES.length);
+  };
+
+  const handleNextDesktopSlide = () => {
+    setCurrentDesktopSlide((prev) => (prev + 1) % DESKTOP_SLIDES.length);
+  };
+
+  const handlePrevDesktopSlide = () => {
+    setCurrentDesktopSlide((prev) => (prev - 1 + DESKTOP_SLIDES.length) % DESKTOP_SLIDES.length);
   };
 
   // Promotional items for fast mobile ticker linking directly to detailed pages with plus-separated slugs
@@ -109,85 +168,264 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
   } as const;
 
   return (
-    <>
-      <section id="inicio" className="relative flex flex-col items-center justify-center overflow-hidden bg-black border-b border-slate-900 lg:border-b-0 pt-0 pb-0 sm:pb-0 lg:py-24 px-0 lg:px-4">
-      {/* Decorative Gradient Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[10%] left-[5%] w-[35rem] h-[35rem] bg-[#FF6600]/8 rounded-full filter blur-[120px] animate-pulse-slow" />
-        <div className="absolute bottom-[10%] right-[5%] w-[40rem] h-[40rem] bg-[#FF6600]/6 rounded-full filter blur-[150px]" />
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
+    <div id="inicio" className="w-full flex flex-col bg-white">
+      {/* DESKTOP SLIDER BANNER (Visible on lg+, 100% full width, flush under header, rente aos lados, no rounding, no borders) */}
+      <div className="hidden lg:block w-full relative z-20">
+        <div className="relative w-full aspect-[2.6/1] bg-slate-900 overflow-hidden">
+          {/* Slides */}
+          <div className="absolute inset-0 w-full h-full bg-slate-900">
+            <AnimatePresence mode="wait">
+              <div key={currentDesktopSlide} className="relative w-full h-full">
+                {/* Cinema black-gradient mask overlay for perfect readability of text content over any image part */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent z-10 pointer-events-none" />
+
+                <motion.img
+                  src={DESKTOP_SLIDES[currentDesktopSlide]}
+                  alt="Xiaomi Desktop Banner"
+                  referrerPolicy="no-referrer"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="w-full h-full object-cover select-none"
+                />
+
+                {/* Text Overlay contents & CTA */}
+                <div className="absolute inset-y-0 left-0 flex flex-col justify-center px-12 sm:px-16 md:px-24 xl:px-32 max-w-xl sm:max-w-2xl lg:max-w-3xl z-20 text-left">
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1, duration: 0.4 }}
+                    className="inline-flex items-center gap-1.5 bg-[#FF6900] text-white px-3 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest rounded-md mb-4 w-fit shadow-xs"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 fill-white" />
+                    <span>{DESKTOP_SLIDE_DATA[currentDesktopSlide].badge}</span>
+                  </motion.div>
+
+                  <motion.h2
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.4 }}
+                    className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-display font-semibold text-white leading-tight mb-3 tracking-tight uppercase drop-shadow-md"
+                  >
+                    {DESKTOP_SLIDE_DATA[currentDesktopSlide].title}
+                  </motion.h2>
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.4 }}
+                    className="text-slate-200 text-xs sm:text-sm lg:text-base max-w-lg mb-6 font-medium leading-relaxed drop-shadow-xs"
+                  >
+                    {DESKTOP_SLIDE_DATA[currentDesktopSlide].subtitle}
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.4 }}
+                    className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6"
+                  >
+                    {DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaLink.startsWith('#') ? (
+                      <a
+                        href={DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaLink}
+                        className="group bg-[#FF6900] hover:bg-[#D45500] text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2 cursor-pointer w-fit hover:scale-[1.03]"
+                      >
+                        <span>{DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaText}</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    ) : (
+                      <a
+                        href={DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaLink}
+                        target="_blank"
+                        referrerPolicy="no-referrer"
+                        className="group bg-emerald-500 hover:bg-emerald-600 text-white text-xs sm:text-sm font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2 cursor-pointer w-fit hover:scale-[1.03]"
+                      >
+                        <span>{DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaText}</span>
+                        <MessageSquare className="w-4 h-4" />
+                      </a>
+                    )}
+
+                    <span className="text-[#FF6900] text-[11px] sm:text-xs font-bold uppercase tracking-wider block bg-black/40 px-3 py-1 rounded-md backdrop-blur-xs">
+                      {DESKTOP_SLIDE_DATA[currentDesktopSlide].incentive}
+                    </span>
+                  </motion.div>
+                </div>
+              </div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation Arrows */}
+          <button 
+            onClick={handlePrevDesktopSlide}
+            className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/40 hover:bg-[#FF6900]/95 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer z-30"
+            aria-label="Anterior"
+          >
+            <ChevronLeft className="w-7 h-7" />
+          </button>
+          <button 
+            onClick={handleNextDesktopSlide}
+            className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/40 hover:bg-[#FF6900]/95 text-white rounded-full flex items-center justify-center backdrop-blur-md transition-all duration-200 cursor-pointer z-30"
+            aria-label="Próximo"
+          >
+            <ChevronRight className="w-7 h-7" />
+          </button>
+
+          {/* Indicator dots */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+            {DESKTOP_SLIDES.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentDesktopSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
+                  currentDesktopSlide === index 
+                    ? "bg-[#FF6900] w-7 shadow-sm" 
+                    : "bg-white/45 hover:bg-white"
+                }`}
+                aria-label={`Ir para o slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col">
-        {/* MOBILE & TABLET HERO (Slider-Only under lg viewport, edge-to-edge, colada na header) */}
-        <div className="block lg:hidden w-full">
-          <div className="relative w-full aspect-square bg-black overflow-hidden shadow-xs border-b border-slate-900">
-            {/* Slide Images with random transition */}
-            <div className="absolute inset-0 w-full h-full bg-black flex items-center justify-center">
-              <AnimatePresence mode="wait">
+      {/* MOBILE & TABLET HERO (Slider matching desktop slides, aspect-[1.15/1], object-right, same overlays) */}
+      <div className="block lg:hidden w-full">
+        <div className="relative w-full aspect-[1.15/1] bg-slate-950 overflow-hidden shadow-xs border-b border-slate-900">
+          {/* Slide Images with random transition */}
+          <div className="absolute inset-0 w-full h-full bg-slate-950">
+            <AnimatePresence mode="wait">
+              <div key={currentDesktopSlide} className="relative w-full h-full">
+                {/* Cinema black-gradient mask overlay for perfect readability of text content over any image part */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10 z-10 pointer-events-none" />
+
                 <motion.img
-                  key={currentSlide}
-                  src={MOBILE_SLIDES[currentSlide]}
-                  alt="Xiaomi Banner"
+                  src={DESKTOP_SLIDES[currentDesktopSlide]}
+                  alt="Xiaomi Banner Mobile"
                   referrerPolicy="no-referrer"
-                  variants={TRANSITIONS[transitionIndex]}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  transition={{ duration: 0.65, ease: "easeInOut" }}
-                  className="w-full h-full object-contain select-none"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="w-full h-full object-cover object-right select-none"
                 />
-              </AnimatePresence>
-            </div>
 
-            {/* Progressive Filling Slide Indicator Bar */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 w-[80%] max-w-[320px]">
-              {MOBILE_SLIDES.map((_, index) => (
-                <div key={index} className="h-1 flex-grow bg-white/20 rounded-full overflow-hidden backdrop-blur-xs">
-                  {currentSlide === index ? (
-                    <motion.div
-                      key={`progress-bar-${index}`}
-                      initial={{ width: "0%" }}
-                      animate={{ width: "100%" }}
-                      transition={{ duration: 5, ease: "linear" }}
-                      className="h-full bg-gradient-to-r from-[#FF6600] to-amber-400 shadow-[0_0_8px_#FF6600]"
-                    />
-                  ) : (
-                    <div 
-                      className={`h-full w-full ${index < currentSlide ? "bg-[#FF6600]" : "bg-transparent"}`} 
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* FAST TICKER BELOW MOBILE SLIDER (Opposite direction, links to promo phones) */}
-        <div className="block lg:hidden w-full bg-amber-500 text-slate-950 border-y border-amber-600/30 py-3 relative overflow-hidden select-none z-20 mb-0">
-          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-amber-500 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-amber-500 to-transparent z-10 pointer-events-none" />
-          
-          <div className="flex w-max relative">
-            <div className="flex gap-8 sm:gap-12 animate-marquee-reverse-fast hover:[animation-play-state:paused] transition-all duration-300">
-              {duplicatedPromoItems.map((item, idx) => {
-                const url = item.product ? `/produto/${getProductSlug(item.product)}` : '#';
-                return (
-                  <Link
-                    key={idx}
-                    to={url}
-                    className="flex items-center gap-2 flex-shrink-0 text-xs sm:text-sm font-sans font-extrabold tracking-wide text-slate-950 hover:text-slate-800 transition-colors cursor-pointer uppercase"
+                {/* Mobile Text Overlay contents & CTA */}
+                <div className="absolute inset-x-0 bottom-12 flex flex-col justify-end px-5 py-2 z-20 text-left">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="inline-flex items-center gap-1 bg-[#FF6900] text-white px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest rounded-md mb-2 w-fit shadow-xs"
                   >
-                    <span className="inline-flex items-center justify-center px-1.5 py-0.5 bg-slate-950 text-amber-400 rounded-md text-[10px] font-mono font-bold mr-1 animate-pulse">PROMO</span>
-                    <span>{item.name}</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </Link>
-                );
-              })}
-            </div>
+                    <Sparkles className="w-3 h-3 fill-white" />
+                    <span>{DESKTOP_SLIDE_DATA[currentDesktopSlide].badge}</span>
+                  </motion.div>
+
+                  <motion.h2
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-lg sm:text-xl font-display font-semibold text-white leading-tight mb-1.5 uppercase drop-shadow-md"
+                  >
+                    {DESKTOP_SLIDE_DATA[currentDesktopSlide].title}
+                  </motion.h2>
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-slate-300 text-[11px] sm:text-xs max-w-xs mb-3 font-medium leading-relaxed drop-shadow-xs"
+                  >
+                    {DESKTOP_SLIDE_DATA[currentDesktopSlide].subtitle}
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-3"
+                  >
+                    {DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaLink.startsWith('#') ? (
+                      <a
+                        href={DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaLink}
+                        className="bg-[#FF6900] hover:bg-[#D45500] text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-2 rounded-lg transition-all duration-300 shadow-md inline-flex items-center gap-1 cursor-pointer w-fit"
+                      >
+                        <span>{DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaText}</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </a>
+                    ) : (
+                      <a
+                        href={DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaLink}
+                        target="_blank"
+                        referrerPolicy="no-referrer"
+                        className="bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-2 rounded-lg transition-all duration-300 shadow-md inline-flex items-center gap-1 cursor-pointer w-fit"
+                      >
+                        <span>{DESKTOP_SLIDE_DATA[currentDesktopSlide].ctaText}</span>
+                        <MessageSquare className="w-3 h-3" />
+                      </a>
+                    )}
+                  </motion.div>
+                </div>
+              </div>
+            </AnimatePresence>
+          </div>
+
+          {/* Progressive Filling Slide Indicator Bar */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 w-[80%] max-w-[320px]">
+            {DESKTOP_SLIDES.map((_, index) => (
+              <div key={index} className="h-1 flex-grow bg-white/20 rounded-full overflow-hidden backdrop-blur-xs">
+                {currentDesktopSlide === index ? (
+                  <motion.div
+                    key={`progress-bar-${index}`}
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 6, ease: "linear" }}
+                    className="h-full bg-[#FF6900]"
+                  />
+                ) : (
+                  <div 
+                    className={`h-full w-full ${index < currentDesktopSlide ? "bg-[#FF6900]" : "bg-transparent"}`} 
+                  />
+                )}
+              </div>
+            ))}
           </div>
         </div>
+      </div>
+
+      {/* PROMOTIONAL TICKER - NOW ON ALL DEVICES, BLACK BACKGROUND, WHITE TEXT */}
+      <div className="block w-full bg-slate-950 text-white border-y border-slate-800 py-3 relative overflow-hidden select-none z-20 mb-0">
+        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
+        
+        <div className="flex w-max relative">
+          <div className="flex gap-8 sm:gap-12 animate-marquee-reverse-fast hover:[animation-play-state:paused] transition-all duration-300">
+            {duplicatedPromoItems.map((item, idx) => {
+              const url = item.product ? `/produto/${getProductSlug(item.product)}` : '#';
+              return (
+                <Link
+                  key={idx}
+                  to={url}
+                  className="flex items-center gap-2 flex-shrink-0 text-xs sm:text-sm font-sans font-extrabold tracking-wide text-white hover:text-slate-200 transition-colors cursor-pointer uppercase"
+                >
+                  <span className="inline-flex items-center justify-center px-1.5 py-0.5 bg-[#FF6900] text-white rounded-md text-[10px] font-mono font-bold mr-1 animate-pulse">PROMO</span>
+                  <span>{item.name}</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* THE INNER GRID HERO CONTENT (with container, background decoration, etc) */}
+      <section className="relative flex flex-col items-center justify-center overflow-hidden bg-white lg:bg-[#F9FAFB] border-b border-slate-200/60 lg:border-b-0 py-12 lg:py-24 px-4 lg:px-8">
+        {/* Decorative Gradient Background */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[10%] left-[5%] w-[35rem] h-[35rem] bg-[#FF6600]/4 rounded-full filter blur-[120px] animate-pulse-slow" />
+          <div className="absolute bottom-[10%] right-[5%] w-[40rem] h-[40rem] bg-orange-100/30 rounded-full filter blur-[150px]" />
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30" />
+        </div>
+
+        <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col">
 
         {/* DESKTOP HERO (Grid content, visible on lg+) */}
         <div className="hidden lg:grid grid-cols-12 gap-12 items-center w-full">
@@ -204,23 +442,24 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
               className="inline-flex items-center gap-2 bg-[#FF6600]/10 border border-[#FF6600]/25 text-[#FF6600] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 w-fit"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Revendedor Xiaomi Premium Curitiba</span>
+              <span>Revendedor Autorizado Multimarcas Curitiba</span>
             </motion.div>
 
             {/* Headline with split-text layout */}
             <motion.h1 
               variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-6xl font-display font-black text-white leading-[1.1] tracking-tight mb-6"
+              className="text-4xl sm:text-5xl lg:text-[42px] xl:text-[50px] font-display font-bold text-slate-900 leading-[1.15] tracking-tight mb-6"
             >
-              A Revolução <br />
-              <span className="text-gradient-orange glow-orange">Xiaomi Curitiba</span>
+              Seu Xiaomi Novo & Original <br />
+              <span className="text-[#FF6600]">Com Garantia de Verdade</span> <br />
+              <span className="text-slate-900">e Entrega no Mesmo Dia!</span>
             </motion.h1>
 
             <motion.p 
               variants={itemVariants}
-              className="text-slate-400 text-base sm:text-lg max-w-xl mb-8 leading-relaxed"
+              className="text-slate-600 text-base sm:text-lg max-w-xl mb-8 leading-relaxed font-medium"
             >
-              Sua loja especializada premium no Centro de Curitiba. Os smartphones, tablets e fones mais potentes do mundo com <strong className="text-white">6 meses de garantia local</strong> e em até <strong className="text-white">12x parcelados</strong>. Venha garantir o seu!
+              Não coloque seu dinheiro em risco com golpes ou aparelhos recondicionados sem nota. Na <strong className="text-slate-950 font-bold">Xiaomi Shop Cell</strong>, você compra seu smartphone novo, original e lacrado com <strong className="text-slate-950 font-bold">6 meses de garantia local completa</strong>. Retire com total segurança em nossa loja física no Centro de Curitiba ou receba em casa em poucas horas por motoboy!
             </motion.p>
 
             {/* Call-to-action Buttons */}
@@ -230,15 +469,15 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
             >
               <a 
                 href="#produtos" 
-                className="group flex items-center justify-center gap-2 bg-[#FF6600] hover:bg-[#D45500] text-white font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(255,102,0,0.3)] hover:shadow-[0_8px_30px_rgba(255,102,0,0.5)]"
+                className="group flex items-center justify-center gap-2 bg-[#FF6600] hover:bg-[#D45500] text-white font-bold px-8 py-4 rounded-2xl text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(255,102,0,0.25)] hover:shadow-[0_8px_30px_rgba(255,102,0,0.45)] hover:scale-[1.02]"
                 id="hero-cta-catalog"
               >
-                <span>Ver Catálogo</span>
+                <span>Ver Modelos e Preços</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <button 
                 onClick={() => onSelectProduct(destaqueProduct)}
-                className="flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-white font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer"
+                className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border-2 border-slate-200 hover:border-slate-300 text-slate-800 font-bold px-8 py-4 rounded-2xl text-sm uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] cursor-pointer shadow-xs"
                 id="hero-cta-destaque"
               >
                 <span>Conhecer POCO F8 Ultra</span>
@@ -248,34 +487,34 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
             {/* Social Proof Badges Row */}
             <motion.div 
               variants={itemVariants}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-850"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t-2 border-slate-200/60"
             >
               <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-display font-extrabold text-white">5.0</span>
+                <span className="text-2xl sm:text-3xl font-display font-bold text-slate-950">5.0</span>
                 <div className="flex items-center gap-1 mt-1">
-                  <Star className="w-3 h-3 text-[#FF6600] fill-[#FF6600]" />
-                  <span className="text-xs text-slate-400 font-medium">Google Nota Máxima</span>
+                  <Star className="w-3.5 h-3.5 text-[#FF6600] fill-[#FF6600]" />
+                  <span className="text-xs text-slate-500 font-bold font-sans">Google Nota Máxima</span>
                 </div>
               </div>
 
               <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#FF6600]">+3.500</span>
-                <span className="text-xs text-slate-400 font-medium mt-1">Clientes Satisfeitos</span>
+                <span className="text-2xl sm:text-3xl font-display font-bold text-[#FF6600]">+3.800</span>
+                <span className="text-xs text-slate-500 font-bold font-sans mt-1">Clientes Satisfeitos</span>
               </div>
 
               <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-display font-extrabold text-white">6 Meses</span>
+                <span className="text-2xl sm:text-3xl font-display font-bold text-slate-950">6 Meses</span>
                 <div className="flex items-center gap-1 mt-1">
                   <Shield className="w-3.5 h-3.5 text-[#FF6600]" />
-                  <span className="text-xs text-slate-400 font-medium">Garantia Local Completa</span>
+                  <span className="text-xs text-slate-500 font-bold font-sans">Garantia Local Real</span>
                 </div>
               </div>
 
               <div className="flex flex-col">
-                <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#FF6600]">12x</span>
+                <span className="text-2xl sm:text-3xl font-display font-bold text-[#FF6600]">12x</span>
                 <div className="flex items-center gap-1 mt-1">
-                  <Zap className="w-3 h-3 text-[#FF6600]" />
-                  <span className="text-xs text-slate-400 font-medium">Parcelas no Cartão</span>
+                  <Zap className="w-3.5 h-3.5 text-[#FF6600]" />
+                  <span className="text-xs text-slate-500 font-bold font-sans">No Cartão de Crédito</span>
                 </div>
               </div>
             </motion.div>
@@ -291,17 +530,17 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
             {/* Card Wrapper with flotation animation */}
             <div className="relative animate-float w-full max-w-[380px]" id="hero-destaque-card">
               {/* Ambient orange glow container behind card */}
-              <div className="absolute inset-0 bg-[#FF6600]/10 rounded-3xl filter blur-[30px] -z-10" />
+              <div className="absolute inset-0 bg-[#FF6600]/5 rounded-3xl filter blur-[30px] -z-10" />
 
-              <div className="bg-zinc-950 border border-zinc-800/80 p-5 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative overflow-hidden backdrop-blur-md">
+              <div className="bg-white border-2 border-slate-200/95 p-6 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(255,102,0,0.08)] transition-all duration-300 relative overflow-hidden">
                 {/* Flagship overlay badge */}
-                <div className="absolute top-4 right-4 bg-[#FF6600] text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-[0_2px_10px_rgba(255,102,0,0.3)] z-20 flex items-center gap-1">
+                <div className="absolute top-4 right-4 bg-[#FF6600] text-white font-mono text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm z-20 flex items-center gap-1">
                   <Sparkles className="w-3 h-3 text-white fill-white" />
-                  <span>MÁXIMA PERFORMANCE</span>
+                  <span>Destaque da Semana</span>
                 </div>
 
                 {/* Product Image Wrapper */}
-                <div className="bg-zinc-900/60 rounded-2xl p-1 mb-5 flex justify-center items-center relative group min-h-[220px]">
+                <div className="bg-slate-50/70 border border-slate-100 rounded-2xl p-2 mb-5 flex justify-center items-center relative group min-h-[220px]">
                   <img 
                     src={destaqueProduct.image} 
                     alt={destaqueProduct.name} 
@@ -314,33 +553,33 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                 {/* Product Info */}
                 <div className="flex items-center gap-1.5 mb-2">
                   <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#FF6600]">{destaqueProduct.brand}</span>
-                  <span className="text-zinc-700 font-mono text-xs">•</span>
+                  <span className="text-slate-300 font-mono text-xs">•</span>
                   <div className="flex items-center gap-0.5">
                     <Star className="w-3.5 h-3.5 text-[#FF6600] fill-[#FF6600]" />
-                    <span className="text-xs text-zinc-200 font-semibold font-sans">{destaqueProduct.rating}.0</span>
-                    <span className="text-zinc-500 text-[11px]">({destaqueProduct.reviewsCount})</span>
+                    <span className="text-xs text-slate-800 font-bold font-sans">{destaqueProduct.rating}.0</span>
+                    <span className="text-slate-400 text-[11px] font-bold">({destaqueProduct.reviewsCount})</span>
                   </div>
                 </div>
 
-                <h3 className="font-display font-extrabold text-white text-lg tracking-tight mb-2 leading-tight">
+                <h3 className="font-display font-semibold text-slate-900 text-lg tracking-tight mb-2 leading-tight">
                   {destaqueProduct.name}
                 </h3>
 
-                <p className="text-zinc-400 text-xs line-clamp-2 mb-4 leading-relaxed">
+                <p className="text-slate-500 text-xs line-clamp-2 mb-4 leading-relaxed font-medium">
                   {destaqueProduct.desc}
                 </p>
 
                 {/* Pricing section */}
-                <div className="border-t border-zinc-800 pt-4 flex justify-between items-center mb-4">
+                <div className="border-t border-slate-200/75 pt-4 flex justify-between items-center mb-4">
                   <div>
-                    <span className="block text-[11px] text-zinc-500 font-mono">À vista no Pix/Dinheiro</span>
-                    <span className="text-xl font-display font-black text-white">
+                    <span className="block text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">À vista no Pix</span>
+                    <span className="text-xl font-display font-semibold text-slate-950">
                       {destaqueProduct.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                     </span>
                   </div>
                   <div className="text-right">
-                    <span className="block text-[11px] text-zinc-500 font-mono">No cartão</span>
-                    <span className="text-xs font-bold text-[#FF6600] block">{destaqueProduct.parcelas}</span>
+                    <span className="block text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">No cartão</span>
+                    <span className="text-xs font-black text-[#FF6600] block">{destaqueProduct.parcelas}</span>
                   </div>
                 </div>
 
@@ -348,13 +587,13 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                 <div className="grid grid-cols-2 gap-2.5">
                   <Link
                     to={`/produto/${getProductSlug(destaqueProduct)}`}
-                    className="bg-zinc-900 hover:bg-zinc-850 border border-zinc-800 text-zinc-200 text-xs font-bold py-3 px-4 rounded-xl transition-all duration-300 uppercase tracking-wider text-center cursor-pointer flex items-center justify-center hover:text-white"
+                    className="bg-white hover:bg-slate-50 border-2 border-slate-200 text-slate-700 text-xs font-black py-3 px-4 rounded-xl transition-all duration-300 uppercase tracking-wider text-center cursor-pointer flex items-center justify-center hover:text-slate-900 hover:border-slate-300 shadow-2xs"
                   >
-                    Ver mais detalhes
+                    Ver detalhes
                   </Link>
                   <button
                     onClick={() => onAddToCart(destaqueProduct)}
-                    className="bg-[#FF6600] hover:bg-[#D45500] text-white text-xs font-bold py-3 px-4 rounded-xl transition-all duration-300 shadow-[0_4px_12px_rgba(255,102,0,0.2)] hover:shadow-[0_4px_20px_rgba(255,102,0,0.4)] uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="bg-[#FF6600] hover:bg-[#D45500] text-white text-xs font-black py-3 px-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md uppercase tracking-wider flex items-center justify-center gap-1.5 cursor-pointer hover:scale-[1.02]"
                   >
                     <ShoppingBag className="w-3.5 h-3.5" />
                     <span>Comprar</span>
@@ -494,6 +733,6 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
         </motion.div>
       </div>
     </section>
-    </>
+    </div>
   );
 }

@@ -45,7 +45,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 p-2.5 rounded-xl w-fit shadow-xs">
               <Star className="w-4 h-4 text-[#FF6600] fill-[#FF6600]" />
               <span className="text-white text-xs font-bold font-mono">5.0</span>
-              <span className="text-[10px] text-slate-500 font-mono">Mais de 3.902 avaliações</span>
+              <span className="text-[10px] text-slate-500 font-mono">Mais de 3.800 avaliações</span>
             </div>
           </div>
 

@@ -91,41 +91,85 @@ export default function Navbar({
 
   return (
     <>
-      {/* Top Bar Ticker */}
+      {/* Top Bar - Premium Dark Minimalist Layout */}
       <div 
         id="topbar" 
-        className="w-full bg-white text-slate-800 border-b border-slate-200 py-2.5 relative overflow-hidden select-none z-50"
+        className="w-full bg-[#0B0F19] text-slate-300 py-2 relative z-50 shadow-xs border-b border-slate-800 text-[11px] font-sans font-medium tracking-wide"
       >
-        {/* Decorative gradient shadows at the edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
-        {/* Ticker Content Wrapper */}
-        <div className="flex w-max relative">
-          <div className="flex gap-12 sm:gap-20 animate-marquee-reverse hover:[animation-play-state:paused] transition-all duration-300">
-            {duplicatedTopbarItems.map((item, index) => (
-              <div 
-                key={index} 
-                className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0 text-xs font-sans font-medium tracking-wide text-slate-800"
-              >
-                <div className="flex items-center justify-center p-1 bg-slate-100 rounded-md">
-                  {item.icon}
-                </div>
-                <span className="text-slate-700">{item.text}</span>
-                
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  referrerPolicy="no-referrer"
-                  className="inline-flex items-center gap-1 bg-[#FF6600] hover:bg-[#D45500] text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md transition-colors shadow-xs ml-1 cursor-pointer"
-                >
-                  <span>{item.actionText}</span>
-                  <ChevronRight className="w-3 h-3 text-white" />
-                </a>
-              </div>
-            ))}
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 flex items-center justify-between">
+          
+          {/* Desktop Left Side - Clickable Address */}
+          <div className="hidden lg:flex items-center gap-1.5 text-slate-400">
+            <a 
+              href={CONTACT_INFO.mapsLink} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-[#FF6900] flex items-center gap-1.5 transition-colors duration-200"
+              title="Ver localização no Google Maps"
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#FF6900]" />
+              <span className="font-semibold text-slate-300">Endereço:</span>
+              <span>Rua Conselheiro Laurindo, 809 - Sala 402</span>
+            </a>
           </div>
+
+          {/* Desktop Center Side - High Conversion Persuasive Slogan */}
+          <div className="hidden lg:flex items-center gap-2">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#FF6900]/10 text-[#FF6900] rounded text-[9px] font-bold uppercase tracking-widest border border-[#FF6900]/20 animate-pulse">
+              Destaque
+            </span>
+            <span className="font-semibold text-slate-200">
+              🔥 Até 12x no cartão • 8% de Desconto no Pix • Mais de 3.800 avaliações 5 estrelas!
+            </span>
+          </div>
+
+          {/* Desktop Right Side - Clickable Contacts */}
+          <div className="hidden lg:flex items-center gap-4 text-slate-400">
+            <a 
+              href={CONTACT_INFO.phoneLink} 
+              className="hover:text-white flex items-center gap-1 transition-colors duration-200"
+              title="Ligar para nós"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#FF6900]" />
+              <span>{CONTACT_INFO.phone}</span>
+            </a>
+            <span className="text-slate-700">|</span>
+            <a 
+              href={CONTACT_INFO.whatsappLink} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-emerald-400 flex items-center gap-1 transition-colors duration-200"
+              title="Chamar no WhatsApp"
+            >
+              <MessageSquare className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/10" />
+              <span className="text-emerald-400 font-bold">WhatsApp</span>
+            </a>
+          </div>
+
+          {/* Mobile/Tablet Marquee - All elements clickable & persistent */}
+          <div className="flex lg:hidden w-full relative overflow-hidden py-0.5">
+            <div className="flex gap-10 animate-marquee-reverse hover:[animation-play-state:paused] transition-all duration-300 w-max text-[10px] font-sans font-bold tracking-wider uppercase text-slate-300">
+              <a href={CONTACT_INFO.mapsLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 flex-shrink-0 hover:text-[#FF6900]">
+                <MapPin className="w-3.5 h-3.5 text-[#FF6900]" />
+                <span>R. Conselheiro Laurindo, 809 - Sala 402, Curitiba</span>
+              </a>
+              <span className="text-slate-700 select-none">❖</span>
+              <span className="flex items-center gap-1.5 flex-shrink-0 text-[#FF6900]">
+                <span>🔥 PARCELAMENTO EM ATÉ 12X • 8% DE DESCONTO NO PIX</span>
+              </span>
+              <span className="text-slate-700 select-none">❖</span>
+              <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 flex-shrink-0 hover:text-emerald-400 text-emerald-400 font-extrabold">
+                <MessageSquare className="w-3.5 h-3.5 fill-emerald-400/10" />
+                <span>WHATSAPP: {CONTACT_INFO.whatsapp}</span>
+              </a>
+              <span className="text-slate-700 select-none">❖</span>
+              <span className="flex items-center gap-1.5 flex-shrink-0 text-amber-400">
+                <Star className="w-3.5 h-3.5 fill-amber-400" />
+                <span>MAIS DE 3.800 AVALIAÇÕES 5 ESTRELAS NO GOOGLE</span>
+              </span>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -133,8 +177,8 @@ export default function Navbar({
       <header
         className={`sticky top-0 z-40 transition-all duration-300 w-full ${
           scrolled
-            ? 'bg-white/95 shadow-lg border-b border-slate-200 backdrop-blur-md py-3'
-            : 'bg-white/85 border-b border-slate-100 py-4.5 backdrop-blur-sm'
+            ? 'bg-white shadow-md border-b border-slate-200/90 py-2.5'
+            : 'bg-white border-b border-slate-100 py-3.5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 flex justify-between items-center">
@@ -153,25 +197,25 @@ export default function Navbar({
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6, type: "spring" }}
-              className="w-10 h-10 bg-[#FF6600] rounded-xl flex items-center justify-center font-bold text-white text-xl shadow-[0_4px_12px_rgba(255,102,0,0.25)] group-hover:scale-105 group-hover:shadow-[0_4px_20px_rgba(255,102,0,0.5)] transition-all duration-300 relative overflow-hidden"
+              className="w-9 h-9 bg-[#FF6600] rounded-xl flex items-center justify-center font-bold text-white text-lg shadow-md group-hover:scale-105 transition-all duration-300 relative overflow-hidden"
             >
-              <span className="relative z-10 font-display">MI</span>
+              MI
               <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.div>
 
             {/* Logo Text */}
             <div className="flex flex-col">
-              <span className="font-display font-black tracking-wider text-gray-900 text-lg leading-none group-hover:text-[#FF6600] transition-colors duration-200">
+              <span className="font-display font-black tracking-wider text-gray-900 text-base leading-none group-hover:text-[#FF6600] transition-colors duration-200">
                 MI SHOP CELL
               </span>
-              <span className="font-mono text-[9px] text-[#FF6600] tracking-widest font-semibold mt-0.5">
+              <span className="font-mono text-[8px] text-[#FF6600] tracking-widest font-bold mt-0.5">
                 CURITIBA · PR
               </span>
             </div>
           </a>
 
-          {/* Desktop Navigation - fixed grouped menus with gap-8/gap-10, ample spacing, high-end Swiss typography */}
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-10 mx-6">
+          {/* Desktop Navigation - normal title casing, sleek text, identical to official Xiaomi brand menus */}
+          <nav className="hidden xl:flex items-center gap-6 xl:gap-8 mx-4 xl:mx-6">
             {navItems.map((item) => (
               <a
                 key={item.id}
@@ -180,15 +224,15 @@ export default function Navbar({
                   e.preventDefault();
                   onNavClick(item.id);
                 }}
-                className={`relative font-display font-bold text-xs uppercase tracking-wider transition-colors duration-200 py-1.5 ${
-                  activeSection === item.id ? 'text-[#FF6600]' : 'text-slate-600 hover:text-slate-900'
+                className={`relative font-sans font-bold text-[13px] tracking-wide transition-colors duration-200 py-1.5 ${
+                  activeSection === item.id ? 'text-[#FF6900]' : 'text-slate-700 hover:text-[#FF6900]'
                 }`}
               >
                 {item.label}
                 {activeSection === item.id && (
                   <motion.div
                     layoutId="activeNavIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FF6600]"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FF6900]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -208,13 +252,25 @@ export default function Navbar({
 
           {/* Actions Bar */}
           <div className="flex items-center gap-3.5 flex-shrink-0">
-            {/* Search Toggle */}
-            <div className="relative">
+            {/* Desktop Search Bar - Always visible like mibrasil.com.br */}
+            <div className="hidden lg:flex items-center relative w-44 xl:w-60">
+              <input
+                type="text"
+                placeholder="Xiaomi 14T..."
+                value={searchQuery}
+                onChange={(e) => onSearchChange(e.target.value)}
+                className="w-full bg-slate-50 text-xs text-slate-900 px-4 py-2 pr-10 rounded-full border border-slate-200 focus:border-[#FF6900] focus:ring-1 focus:ring-[#FF6900] focus:bg-white focus:outline-none transition-all placeholder-slate-400 font-bold"
+              />
+              <Search className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+            </div>
+
+            {/* Mobile Search Button (shown on mobile and smaller tablet sizes where input bar is hidden) */}
+            <div className="relative lg:hidden">
               <AnimatePresence>
                 {showSearch && (
                   <motion.div
                     initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 180, opacity: 1 }}
+                    animate={{ width: 160, opacity: 1 }}
                     exit={{ width: 0, opacity: 0 }}
                     className="absolute right-10 top-1/2 -translate-y-1/2"
                   >
@@ -230,7 +286,7 @@ export default function Navbar({
               </AnimatePresence>
               <button
                 onClick={() => setShowSearch(!showSearch)}
-                className="p-2 text-gray-500 hover:text-[#FF6600] transition-colors duration-200"
+                className="p-2 text-gray-500 hover:text-[#FF6600] transition-colors duration-200 cursor-pointer"
                 aria-label="Buscar"
                 id="search-btn"
               >
@@ -241,7 +297,7 @@ export default function Navbar({
             {/* Shopping Cart Button */}
             <button
               onClick={onOpenCart}
-              className="p-2 relative text-gray-500 hover:text-[#FF6600] transition-colors duration-200"
+              className="p-2 relative text-gray-500 hover:text-[#FF6600] transition-colors duration-200 cursor-pointer"
               aria-label="Ver carrinho"
               id="cart-btn"
             >
@@ -250,7 +306,7 @@ export default function Navbar({
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 bg-[#FF6600] text-white font-mono text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-lg"
+                  className="absolute -top-1 -right-1 bg-slate-950 text-white font-mono text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center shadow-md"
                 >
                   {cartCount}
                 </motion.span>
@@ -262,7 +318,7 @@ export default function Navbar({
               href={CONTACT_INFO.whatsappLink}
               target="_blank"
               referrerPolicy="no-referrer"
-              className="hidden sm:flex items-center gap-2 bg-[#FF6600]/10 hover:bg-[#FF6600] border border-[#FF6600]/30 text-[#FF6600] hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-xs"
+              className="hidden xl:flex items-center gap-2 bg-[#FF6600]/10 hover:bg-[#FF6600] border border-[#FF6600]/30 text-[#FF6600] hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-xs cursor-pointer"
               id="contact-whatsapp-btn"
             >
               <MessageSquare className="w-4 h-4 text-inherit" />
@@ -272,7 +328,7 @@ export default function Navbar({
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 lg:hidden text-gray-500 hover:text-gray-900 transition-colors duration-200"
+              className="p-2 xl:hidden text-gray-500 hover:text-gray-900 transition-colors duration-200 cursor-pointer"
               aria-label="Menu"
               id="mobile-menu-btn"
             >

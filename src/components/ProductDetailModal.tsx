@@ -90,7 +90,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display font-black text-gray-900 text-xl sm:text-2xl leading-tight">
+                <h3 className="font-display font-semibold text-gray-900 text-xl sm:text-2xl leading-tight">
                   {product.name}
                 </h3>
 
@@ -155,7 +155,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
             <div className="sm:col-span-6 flex flex-col">
               <span className="text-[10px] text-gray-400 uppercase tracking-wide font-mono">À vista no Pix ou Dinheiro</span>
               <div className="flex items-baseline gap-2 mt-0.5">
-                <span className="text-2xl font-display font-black text-gray-900">
+                <span className="text-2xl font-display font-bold text-gray-900">
                   {product.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                 </span>
                 {product.priceDe && (

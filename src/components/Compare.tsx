@@ -212,7 +212,7 @@ export default function Compare() {
           <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest bg-[#FF6600]/10 px-3 py-1 rounded-full">
             COMPARADOR INTELIGENTE DE MODELOS
           </span>
-          <h1 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight leading-none">
+          <h1 className="font-display font-semibold text-3xl sm:text-5xl text-white tracking-tight leading-none">
             Modelo Atual vs Versão Antiga: <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6600] to-amber-500">
               Descubra se Vale o Upgrade

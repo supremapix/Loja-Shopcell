@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "MiSans Latin", "Inter", "Poppins", sans-serif;
-  --font-display: "MiSans Latin", "Poppins", "Inter", sans-serif;
+  --font-sans: "Inter", "Poppins", sans-serif;
+  --font-display: "Outfit", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   
   --color-xiaomi: #FF6900;

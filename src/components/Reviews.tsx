@@ -40,7 +40,7 @@ export default function Reviews() {
                 <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
                 <span>5.0 / 5.0 Estrelas</span>
               </p>
-              <p className="text-[11px] text-gray-400 font-mono mt-0.5 uppercase tracking-wide">Mais de 3.500 avaliações no Google</p>
+              <p className="text-[11px] text-gray-400 font-mono mt-0.5 uppercase tracking-wide">Mais de 3.800 avaliações no Google</p>
             </div>
           </div>
         </div>

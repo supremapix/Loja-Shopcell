@@ -154,7 +154,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12 text-center md:text-left">
             <div className="max-w-xl mx-auto md:mx-0">
               <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-2.5">XIAOMI SHOWCASE</span>
-              <h2 className="font-display font-black text-3xl sm:text-4xl text-gray-900 tracking-tight">
+              <h2 className="font-display font-semibold text-3xl sm:text-4xl text-gray-900 tracking-tight">
                 Nossos Aparelhos de Última Geração
               </h2>
               <p className="text-gray-600 text-xs sm:text-sm mt-3 leading-relaxed">
@@ -261,7 +261,7 @@ export default function Home() {
 
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <FileText className="w-12 h-12 text-[#FF6600] mx-auto mb-6 glow-orange animate-pulse" />
-          <h2 className="font-display font-black text-3xl sm:text-4xl text-gray-900 tracking-tight mb-4 leading-tight">
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl text-gray-900 tracking-tight mb-4 leading-tight">
             Gostaria de ver o catálogo completo em PDF?
           </h2>
           <p className="text-gray-600 text-sm sm:text-base max-w-xl mx-auto mb-10 leading-relaxed">
