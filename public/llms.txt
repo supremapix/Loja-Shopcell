@@ -13,15 +13,15 @@ Loja de comércio eletrônico especializada em celulares Xiaomi, POCO e Redmi em
 
 1. Smartphone Xiaomi Redmi A5 128GB 4GB RAM
    - Categoria: Redmi
-   - Preço Especial: R$ 799,99 (ou 12x de R$ 77,16)
+   - Preço Especial: R$ 849,99 (ou 12x de R$ 81,98)
 
 2. Smartphone Xiaomi POCO C85 NFC 256GB 8GB RAM
    - Categoria: POCO (NFC)
-   - Preço Especial: R$ 999,99 (ou 12x de R$ 96,45)
+   - Preço Especial: R$ 1.099,99 (ou 12x de R$ 106,09)
 
 3. Smartphone Xiaomi POCO M7 NFC 256GB 8GB RAM
    - Categoria: POCO (NFC)
-   - Preço Especial: R$ 1.099,99 (ou 12x de R$ 106,09)
+   - Preço Especial: R$ 1.199,99 (ou 12x de R$ 115,73)
 
 4. Smartphone Xiaomi Redmi 15 256GB 8GB RAM 4G
    - Categoria: Redmi (4G / Novo)
@@ -37,7 +37,7 @@ Loja de comércio eletrônico especializada em celulares Xiaomi, POCO e Redmi em
 
 7. Smartphone Xiaomi POCO X8 Pro 5G NFC 512GB 8GB RAM
    - Categoria: POCO (5G / Novo)
-   - Preço Especial: R$ 2.249,99 (ou 12x de R$ 215,12)
+   - Preço Especial: R$ 2.299,99 (ou 12x de R$ 221,83)
 
 8. Smartphone Xiaomi POCO X8 Pro 5G NFC 512GB 12GB RAM
    - Categoria: POCO (5G / Premium)
@@ -65,7 +65,7 @@ Loja de comércio eletrônico especializada em celulares Xiaomi, POCO e Redmi em
 
 14. Smartphone Xiaomi POCO M8 5G NFC 256GB 8GB RAM
     - Categoria: POCO (5G / NFC)
-    - Preço Especial: R$ 1.349,99 (ou 12x de R$ 130,20)
+    - Preço Especial: R$ 1.449,99 (ou 12x de R$ 139,85)
 
 15. Smartphone Xiaomi POCO M8 5G NFC 512GB 8GB RAM
     - Categoria: POCO (5G / NFC)
