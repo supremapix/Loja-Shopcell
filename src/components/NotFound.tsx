@@ -100,6 +100,7 @@ export default function NotFound() {
         description="A página solicitada não foi encontrada ou foi movida. Confira nossos canais de atendimento e perguntas frequentes."
         canonical="https://www.xiaomishopcell.com/404"
         keywords="404 xiaomi curitiba, pagina nao encontrada"
+        noindex={true}
       />
 
       {/* Background aesthetics */}

@@ -10,6 +10,7 @@ export interface EnhancedSEOProps {
   keywords?: string;
   bairroName?: string;
   regiaoName?: string;
+  noindex?: boolean;
 }
 
 export default function EnhancedSEO({
@@ -21,6 +22,7 @@ export default function EnhancedSEO({
   keywords = "Xiaomi Curitiba, comprar Xiaomi Curitiba, celular Xiaomi Centro, Redmi Note 14, POCO X8 Pro, POCO F8 Ultra, Xiaomi original Curitiba, loja Xiaomi Curitiba",
   bairroName,
   regiaoName,
+  noindex = false,
 }: EnhancedSEOProps) {
   
   // Base structured data (JSON-LD) for the business
@@ -106,7 +108,11 @@ export default function EnhancedSEO({
       <link rel="canonical" href={canonical} />
 
       {/* Robots indexing constraints */}
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      {noindex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      )}
 
       {/* Geo-targeting Meta Tags (Curitiba focus) */}
       <meta name="geo.region" content="BR-PR" />

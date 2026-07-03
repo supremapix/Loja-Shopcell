@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { bairrosData } from './src/bairrosData.js';
+import { PRODUCTS, getProductSlug } from './src/data.js';
 
 // Derive __dirname in ES Modules environment
 const __filename = fileURLToPath(import.meta.url);
@@ -31,6 +32,12 @@ interface PrerenderPage {
   bairroName?: string;
   regiaoName?: string;
   introducao?: string;
+  productName?: string;
+  productImage?: string;
+  productPrice?: number;
+  productParcelas?: string;
+  productLink?: string;
+  noindex?: boolean;
 }
 
 const pages: PrerenderPage[] = [
@@ -43,6 +50,16 @@ const pages: PrerenderPage[] = [
     canonical: 'https://www.xiaomishopcell.com/',
     keywords: 'Xiaomi Curitiba, comprar Xiaomi Curitiba, celular Xiaomi Centro, Redmi Note 14, POCO X8 Pro, POCO F8 Ultra, Xiaomi original Curitiba, loja Xiaomi Curitiba'
   },
+  // 404 Page (for servers like Netlify/Apache that look for 404.html)
+  {
+    path: '/404',
+    outputPath: '404.html',
+    title: 'Página não encontrada (404) | Xiaomi Shop Cell Curitiba',
+    description: 'A página solicitada não foi encontrada ou foi movida. Confira nossos canais de atendimento e perguntas frequentes.',
+    canonical: 'https://www.xiaomishopcell.com/404',
+    keywords: '404, pagina nao encontrada, xiaomi curitiba',
+    noindex: true
+  },
   // Neighborhood pages
   ...bairrosData.map((b) => ({
     path: `/bairro/${b.slug}`,
@@ -54,7 +71,24 @@ const pages: PrerenderPage[] = [
     bairroName: b.nome,
     regiaoName: b.regiao,
     introducao: b.introducao
-  }))
+  })),
+  // Product pages
+  ...PRODUCTS.map((p) => {
+    const slug = getProductSlug(p);
+    return {
+      path: `/produto/${slug}`,
+      outputPath: path.join('produto', slug, 'index.html'),
+      title: `${p.name} | Xiaomi Shop Cell Curitiba`,
+      description: p.desc,
+      canonical: `https://www.xiaomishopcell.com/produto/${slug}`,
+      keywords: `${p.name}, comprar ${p.name}, preço ${p.name}, ${p.brand} Curitiba, Xiaomi Curitiba, celular ${p.brand}`,
+      productName: p.name,
+      productImage: p.image,
+      productPrice: p.priceAt,
+      productParcelas: p.parcelas,
+      productLink: p.link
+    };
+  })
 ];
 
 // Helper to generate the JSON-LD schemas
@@ -125,13 +159,43 @@ function generateSchemas(page: PrerenderPage) {
         "position": 2,
         "name": page.bairroName,
         "item": page.canonical
+      }] : page.productName ? [{
+        "@type": "ListItem",
+        "position": 2,
+        "name": page.productName,
+        "item": page.canonical
       }] : [])
     ]
   };
 
+  const productSchema = page.productName ? {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": page.productName,
+    "image": [page.productImage],
+    "description": page.description,
+    "brand": {
+      "@type": "Brand",
+      "name": page.productName.includes('Redmi') ? 'Redmi' : page.productName.includes('POCO') ? 'POCO' : 'Xiaomi'
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": page.canonical,
+      "priceCurrency": "BRL",
+      "price": page.productPrice,
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "MobilePhoneStore",
+        "name": "Xiaomi Shop Cell Curitiba"
+      }
+    }
+  } : null;
+
   return `
     <script type="application/ld+json">${JSON.stringify(neighborhoodBusiness)}</script>
     <script type="application/ld+json">${JSON.stringify(breadcrumb)}</script>
+    ${productSchema ? `<script type="application/ld+json">${JSON.stringify(productSchema)}</script>` : ''}
   `;
 }
 
@@ -143,14 +207,19 @@ pages.forEach((page) => {
   html = html.replace(/<title>.*?<\/title>/gi, `<title>${page.title}</title>`);
 
   // 2. Head Tags Generation (Canonical, Metas, Geo, OG, Twitter)
-  const ogImage = "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp";
+  const ogImage = page.productImage || "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp";
+  
+  const robotsTag = page.noindex 
+    ? '<meta name="robots" content="noindex, nofollow" />' 
+    : '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />';
+
   const seoHeadTags = `
     <!-- Compiled Static SEO Tags -->
     <meta name="description" content="${page.description}" />
     <meta name="keywords" content="${page.keywords}" />
     <meta name="author" content="Suprema Sites Express" />
     <link rel="canonical" href="${page.canonical}" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    ${robotsTag}
     <meta name="geo.region" content="BR-PR" />
     <meta name="geo.placename" content="Curitiba${page.bairroName ? ` - ${page.bairroName}` : ''}" />
     <meta name="geo.position" content="-25.4357;-49.2638" />

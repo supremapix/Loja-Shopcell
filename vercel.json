@@ -1,4 +1,9 @@
 {
+  "redirects": [
+    { "source": "/compare", "destination": "/comparar", "statusCode": 301 },
+    { "source": "/cidade/:slug*", "destination": "/bairro/:slug*", "statusCode": 301 },
+    { "source": "/regiao/:slug*", "destination": "/bairro/:slug*", "statusCode": 301 }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

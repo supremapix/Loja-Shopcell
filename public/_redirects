@@ -1,1 +1,4 @@
+/compare /comparar 301
+/cidade/* /bairro/:splat 301
+/regiao/* /bairro/:splat 301
 /* /index.html 200

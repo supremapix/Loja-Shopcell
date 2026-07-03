@@ -1,4 +1,19 @@
 [[redirects]]
+  from = "/compare"
+  to = "/comparar"
+  status = 301
+
+[[redirects]]
+  from = "/cidade/*"
+  to = "/bairro/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/regiao/*"
+  to = "/bairro/:splat"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

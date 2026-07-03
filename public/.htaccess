@@ -1,6 +1,13 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # 301 Redirects for moved pages
+  RewriteRule ^compare$ /comparar [R=301,L]
+  RewriteRule ^cidade/(.*)$ /bairro/$1 [R=301,L]
+  RewriteRule ^regiao/(.*)$ /bairro/$1 [R=301,L]
+
+  # SPA Rewrite
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ index.html [QSA,L]
