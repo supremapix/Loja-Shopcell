@@ -93,8 +93,8 @@ export const PRODUCTS: Product[] = [
     rating: 5,
     reviewsCount: 528,
     priceDe: 2599.99,
-    priceAt: 2299.99,
-    parcelas: "12x de R$ 221,83",
+    priceAt: 2399.99,
+    parcelas: "12x de R$ 231,47",
     image: "https://xiaomishopcell.com.br/image_adds/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram.jpg",
     link: "https://www.xiaomishopcell.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram",
     badges: ["5G", "Destaque Novo", "512GB"]
