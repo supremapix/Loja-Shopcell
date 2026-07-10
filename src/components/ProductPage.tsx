@@ -3,8 +3,10 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowLeft, Star, ShieldCheck, CreditCard, ShoppingBag, MessageSquare, 
-  ChevronRight, Sparkles, AlertTriangle, Truck, BadgeCheck, Check, Info 
+  ChevronRight, Sparkles, AlertTriangle, Truck, BadgeCheck, Check, Info,
+  Play, Lock, Phone
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 import { Product, CartItem } from '../types';
 import { PRODUCTS, CONTACT_INFO, getProductBySlug, getProductSlug } from '../data';
@@ -15,8 +17,13 @@ import EnhancedSEO from './EnhancedSEO';
 import { safeGetItem, safeSetItem } from '../utils/storage';
 
 export default function ProductPage() {
-  const { slug } = useParams<{ slug: string }>();
+  let { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+
+  // If slug is empty and path matches custom url, resolve to custom slug
+  if (!slug && window.location.pathname.includes('celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram')) {
+    slug = 'celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram';
+  }
 
   // Load product based on the plus-separated slug
   const product = slug ? getProductBySlug(slug) : undefined;
@@ -28,6 +35,8 @@ export default function ProductPage() {
   });
   const [cartOpen, setCartOpen] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   // Sync cart with local storage
   useEffect(() => {
@@ -92,8 +101,9 @@ export default function ProductPage() {
 
   // WhatsApp helper
   const getWhatsAppMessage = (prod: Product) => {
+    const phone = prod.id === 16 ? '5541988837477' : '554137989918';
     const text = `Olá! Vi o *${prod.name}* no site por *R$ ${prod.priceAt.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}* (${prod.parcelas}) e gostaria de saber sobre a disponibilidade ou finalizar a compra! Link: ${window.location.href}`;
-    return `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(text)}`;
+    return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(text)}`;
   };
 
   // Recommended/Related Products (same brand, or cheapest alternatives excluding current)
@@ -108,9 +118,9 @@ export default function ProductPage() {
   return (
     <div className="min-h-screen bg-slate-50 text-gray-800 flex flex-col font-sans relative">
       <EnhancedSEO
-        title={`${product.name} | Xiaomi Shop Cell Curitiba`}
-        description={`Garanta seu ${product.name} na Xiaomi Shop Cell Curitiba. Novo, original, caixa lacrada com 6 meses de garantia local. Em até 12x no cartão ou desconto à vista!`}
-        canonical={`https://www.celularescuritibashopcell.com.br/produto/${getProductSlug(product)}`}
+        title={product.id === 16 ? "Xiaomi 17T Pro 5G NFC 512GB 12GB RAM em Curitiba | Shopcell" : `${product.name} | Xiaomi Shop Cell Curitiba`}
+        description={product.id === 16 ? "Garanta seu Xiaomi 17T Pro 5G NFC 512GB 12GB RAM na Xiaomi Shop Cell Curitiba por R$ 5.199,99 à vista ou parcelado em até 12x de R$ 501,52 no cartão. Loja segura no Centro de Curitiba com garantia local de 6 meses. Compre com retirada imediata!" : `Garanta seu ${product.name} na Xiaomi Shop Cell Curitiba. Novo, original, caixa lacrada com 6 meses de garantia local. Em até 12x no cartão ou desconto à vista!`}
+        canonical={product.id === 16 ? "https://www.xiaomishopcell.com/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram" : `https://www.celularescuritibashopcell.com.br/produto/${getProductSlug(product)}`}
       />
 
       <Navbar
@@ -172,8 +182,20 @@ export default function ProductPage() {
                   src={product.image}
                   alt={product.name}
                   referrerPolicy="no-referrer"
-                  className="max-h-full max-w-full object-contain select-none transition-transform duration-500 hover:scale-105"
+                  onClick={() => setIsLightboxOpen(true)}
+                  className="max-h-full max-w-full object-contain select-none transition-transform duration-500 hover:scale-105 cursor-zoom-in"
                 />
+
+                {/* Floating "Ver Vídeo" button inside image container */}
+                {product.id === 16 && (
+                  <button
+                    onClick={() => setVideoOpen(true)}
+                    className="absolute bottom-4 right-4 bg-black/75 hover:bg-[#FF6600] text-white rounded-full px-4 py-2.5 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md z-10 cursor-pointer border border-white/10 hover:scale-105"
+                  >
+                    <Play className="w-3.5 h-3.5 fill-white text-transparent" />
+                    <span>Ver Vídeo</span>
+                  </button>
+                )}
               </div>
 
               {/* Delivery and availability badge */}
@@ -292,6 +314,30 @@ export default function ProductPage() {
                     </span>
                   </div>
 
+                  {/* For Xiaomi 17T Pro, show installment table */}
+                  {product.id === 16 && (
+                    <div className="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs">
+                      <h4 className="font-bold text-slate-900 mb-2.5 font-mono uppercase text-[10px] tracking-wider text-[#FF6600] flex items-center gap-1.5">
+                        <CreditCard className="w-4 h-4" />
+                        <span>Tabela de Parcelamento (Loja Física)</span>
+                      </h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[11px] text-slate-600">
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">1x</strong> R$ 5.402,79</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">2x</strong> R$ 2.770,47</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">3x</strong> R$ 1.862,51</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">4x</strong> R$ 1.408,59</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">5x</strong> R$ 1.136,29</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">6x</strong> R$ 954,80</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">7x</strong> R$ 825,20</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">8x</strong> R$ 728,03</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">9x</strong> R$ 652,48</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">10x</strong> R$ 592,07</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">11x</strong> R$ 542,67</div>
+                        <div className="bg-orange-50 border border-orange-200 p-2 rounded-lg font-bold text-[#FF6600]"><span className="text-orange-800 font-bold">12x</span> R$ 501,52</div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Share button */}
                   <button
                     onClick={handleCopyLink}
@@ -334,11 +380,175 @@ export default function ProductPage() {
                     <span>Adicionar ao Carrinho</span>
                   </button>
                 </div>
+
+                {/* Comprar pelo Telefone Call CTA */}
+                <div className="mt-3">
+                  <a
+                    href={product.id === 16 ? "tel:41988837477" : "tel:4135381822"}
+                    className="flex items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs uppercase tracking-wider transition-all shadow-xs hover:scale-[1.01]"
+                  >
+                    <Phone className="w-4 h-4" />
+                    <span>Comprar pelo Telefone {product.id === 16 ? "(41) 98883-7477" : "(41) 3538-1822"}</span>
+                  </a>
+                </div>
               </div>
 
             </div>
 
           </div>
+
+          {/* Custom Rich Description Section for Xiaomi 17T Pro */}
+          {product.id === 16 && (
+            <section className="mb-16 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+                <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-2.5 font-bold">EXPLORE O APARELHO</span>
+                <h2 className="font-display font-black text-2xl sm:text-4xl text-gray-900 tracking-tight leading-tight">
+                  Xiaomi 17T Pro 5G: O ápice da tecnologia móvel
+                </h2>
+                <p className="text-slate-600 text-sm mt-4 leading-relaxed">
+                  O <strong className="text-slate-900">Xiaomi 17T Pro</strong> chega como um smartphone premium, rodando o sistema <strong className="text-slate-900">Android 16</strong> com a interface <strong className="text-slate-900">HyperOS 3.0</strong>, oferecendo desempenho extremo, recursos avançados de inteligência e uma experiência multimídia de alto nível.
+                </p>
+              </div>
+
+              {/* Intercalated 7 Sections with .webp images */}
+              <div className="space-y-16 sm:space-y-24">
+                
+                {/* 1. Desempenho */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block font-bold">PODER PROCESSAMENTO</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">1. Desempenho de última geração</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Equipado com o avançado <strong className="text-slate-900">MediaTek Dimensity 9500 Octa-Core</strong>, o Xiaomi 17T Pro entrega velocidade impressionante para jogos, edição de vídeos, inteligência artificial e multitarefas, mantendo alto desempenho com excelente eficiência energética.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-1.webp"
+                      alt="Xiaomi 17T Pro Desempenho"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 2. Bateria */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4 order-1 md:order-2">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block font-bold">AUTONOMIA IMPRESSIONANTE</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">2. Bateria gigante para o dia inteiro</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Com impressionantes <strong className="text-slate-900">7.000 mAh</strong> de capacidade, o Xiaomi 17T Pro oferece autonomia para enfrentar longas jornadas de trabalho, entretenimento, jogos e navegação sem preocupações.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs order-2 md:order-1">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-2.webp"
+                      alt="Xiaomi 17T Pro Bateria"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 3. Carregamento */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block font-bold">VELOCIDADE MAXIMA</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">3. Carregamento ultrarrápido com e sem fio</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Recarregue sua bateria rapidamente com carregamento de até <strong className="text-slate-900">100 W via cabo</strong> e até <strong className="text-slate-900">50 W sem fio</strong>, proporcionando muito mais praticidade para a rotina.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-3.webp"
+                      alt="Xiaomi 17T Pro Carregamento"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 4. Câmeras Leica */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4 order-1 md:order-2">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block font-bold font-bold">FOTOGRAFIA PROFISSIONAL</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">4. Sistema Leica Summilux de 50 MP</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Capture imagens com qualidade profissional graças ao conjunto Leica Summilux composto por câmera principal de <strong className="text-slate-900">50 MP</strong>, ultra-wide de <strong className="text-slate-900">12 MP</strong> e teleobjetiva de <strong className="text-slate-900">50 MP</strong>, oferecendo excelente desempenho em qualquer situação.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs order-2 md:order-1">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-4.webp"
+                      alt="Xiaomi 17T Pro Lentes Leica"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 5. Proteção */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block font-bold font-bold font-bold">RESISTENCIA E SEGURANÇA</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">5. Proteção IP68 para mais segurança</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      A certificação <strong className="text-slate-900">IP68</strong> garante resistência contra água e poeira, proporcionando maior tranquilidade para o uso diário em diferentes ambientes.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-5.webp"
+                      alt="Xiaomi 17T Pro IP68"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 6. Tela */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4 order-1 md:order-2">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block font-bold font-bold font-bold">TELA SURREAL</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">6. Tela AMOLED 1.5K de 144 Hz</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      A tela AMOLED de <strong className="text-slate-900">6,83"</strong> oferece resolução 1.5K, Dolby Vision, HDR10+, tecnologia Wet Touch e protection Corning Gorilla Glass 7i, garantindo excelente visualização mesmo em diferentes condições de uso.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs order-2 md:order-1">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-6.webp"
+                      alt="Xiaomi 17T Pro AMOLED Tela"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 7. Conectividade */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block font-bold font-bold">PRONTO PARA O FUTURO</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">7. Conectividade de última geração</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Com <strong className="text-slate-900">Wi-Fi 7, Bluetooth 6.0, NFC, GPS multissistema</strong> e suporte às redes 5G, o Xiaomi 17T Pro oferece conexões rápidas, estáveis e preparadas para o futuro.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-7.webp"
+                      alt="Xiaomi 17T Pro Conectividade"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          )}
 
           {/* Related / Recommended products section */}
           <section className="mb-12">
@@ -413,6 +623,130 @@ export default function ProductPage() {
         onRemoveItem={handleRemoveItem}
         onClearCart={handleClearCart}
       />
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {isLightboxOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 cursor-zoom-out"
+              onClick={() => setIsLightboxOpen(false)}
+            />
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative max-w-4xl max-h-[90vh] z-10 flex flex-col items-center justify-center pointer-events-auto"
+            >
+              <img
+                src={product.image}
+                alt={product.name}
+                referrerPolicy="no-referrer"
+                className="max-h-[80vh] max-w-full object-contain rounded-xl select-none"
+              />
+              <button
+                onClick={() => setIsLightboxOpen(false)}
+                className="absolute top-4 right-4 bg-black/50 hover:bg-black/80 text-white rounded-full p-2 cursor-pointer transition-colors"
+                aria-label="Fechar zoom"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* YouTube Video Modal */}
+      <AnimatePresence>
+        {videoOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 cursor-pointer"
+              onClick={() => setVideoOpen(false)}
+            />
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative bg-black rounded-3xl overflow-hidden w-full max-w-3xl aspect-video z-10 shadow-2xl border border-slate-800 pointer-events-auto"
+            >
+              <iframe
+                src="https://www.youtube.com/embed/dSPOGtBxMds?autoplay=1"
+                title="Xiaomi 17T Pro Video Review"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+              <button
+                onClick={() => setVideoOpen(false)}
+                className="absolute top-4 right-4 bg-black/60 hover:bg-[#FF6600] text-white rounded-full p-2 cursor-pointer transition-colors"
+                aria-label="Fechar vídeo"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Structured Schema Markup (JSON-LD) */}
+      {product.id === 16 && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org/",
+              "@type": "Product",
+              "name": "Celular Xiaomi 17T Pro 5G NFC 512GB 12GB RAM",
+              "image": [
+                "https://xiaomishopcell.com.br/image_adds/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram.jpg",
+                "https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-1.webp",
+                "https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-2.webp",
+                "https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-3.webp",
+                "https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-4.webp",
+                "https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-5.webp",
+                "https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-6.webp",
+                "https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram-7.webp"
+              ],
+              "description": "O Xiaomi 17T Pro chega como um smartphone premium, rodando o sistema Android 16 com a interface HyperOS 3.0, oferecendo desempenho extremo, recursos avançados de inteligência e uma experiência multimídia de alto nível. Bateria titânica de 7.000 mAh e carregamento de 100W.",
+              "sku": "1631388",
+              "mpn": "1631388",
+              "brand": {
+                "@type": "Brand",
+                "name": "Xiaomi"
+              },
+              "offers": {
+                "@type": "Offer",
+                "url": "https://www.xiaomishopcell.com/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram",
+                "priceCurrency": "BRL",
+                "price": 5199.99,
+                "priceValidUntil": "2027-12-31",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": {
+                  "@type": "MobilePhoneStore",
+                  "name": "Xiaomi Shop Cell Curitiba"
+                }
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "528"
+              }
+            })}
+          </script>
+        </Helmet>
+      )}
     </div>
   );
 }

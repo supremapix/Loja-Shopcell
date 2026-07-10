@@ -206,6 +206,19 @@ export const PRODUCTS: Product[] = [
     image: "https://www.celularcuritibashopcell.com.br/image_adds/celular-xiaomi-poco-m8-5g-nfc-dual-sim-de-512gb-8gb-ram.jpg",
     link: "https://www.xiaomishopcell.com.br/celular-xiaomi-poco-m8-5g-nfc-dual-sim-de-512gb-8gb-ram",
     badges: ["512GB", "Snapdragon", "IP68"]
+  },
+  {
+    id: 16,
+    name: "Celular Xiaomi 17T Pro 5G NFC 512GB 12GB RAM",
+    brand: "Xiaomi",
+    desc: "O Xiaomi 17T Pro chega como um smartphone premium, rodando Android 16 com HyperOS 3.0, processador MediaTek Dimensity 9500, tela AMOLED 1.5K de 144Hz, lentes Leica de 50MP e bateria de 7.000 mAh com 100W.",
+    rating: 5,
+    reviewsCount: 528,
+    priceAt: 5199.99,
+    parcelas: "12x de R$ 501,52",
+    image: "https://xiaomishopcell.com.br/image_adds/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram.jpg",
+    link: "https://www.xiaomishopcell.com.br/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram",
+    badges: ["5G", "7000mAh", "Dimensity 9500", "Lentes Leica", "⭐ Premium"]
   }
 ];
 
@@ -331,6 +344,11 @@ export const CONTACT_INFO = {
 };
 
 export function getProductSlug(product: Product): string {
+  // If product id is 16 (Xiaomi 17T Pro), return exact requested slug
+  if (product.id === 16) {
+    return "celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram";
+  }
+
   // If product id is 2 (POCO C85 NFC), return exact example
   if (product.id === 2) {
     return "celular+xiaomi+poco+c85+nfc+dual-sim-de+256b8gb+ram";

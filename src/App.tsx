@@ -43,6 +43,9 @@ export default function App() {
       {/* Dedicated Product Detail Pages with + separators */}
       <Route path="/produto/:slug" element={<ProductPage />} />
 
+      {/* Direct custom URL for Xiaomi 17T Pro */}
+      <Route path="/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram" element={<ProductPage />} />
+
       {/* Dynamic Neighborhood / Location Pages with redirect guard */}
       <Route path="/bairro/:slug" element={<BairroRouteGuard />} />
       

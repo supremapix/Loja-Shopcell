@@ -78,9 +78,9 @@ const pages: PrerenderPage[] = [
     return {
       path: `/produto/${slug}`,
       outputPath: path.join('produto', slug, 'index.html'),
-      title: `${p.name} | Xiaomi Shop Cell Curitiba`,
-      description: p.desc,
-      canonical: `https://www.xiaomishopcell.com/produto/${slug}`,
+      title: p.id === 16 ? "Xiaomi 17T Pro 5G NFC 512GB 12GB RAM em Curitiba | Shopcell" : `${p.name} | Xiaomi Shop Cell Curitiba`,
+      description: p.id === 16 ? "Garanta seu Xiaomi 17T Pro 5G NFC 512GB 12GB RAM na Xiaomi Shop Cell Curitiba por R$ 5.199,99 à vista ou parcelado em até 12x de R$ 501,52 no cartão. Loja segura no Centro de Curitiba com garantia local de 6 meses. Compre com retirada imediata!" : p.desc,
+      canonical: p.id === 16 ? "https://www.xiaomishopcell.com/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram" : `https://www.xiaomishopcell.com/produto/${slug}`,
       keywords: `${p.name}, comprar ${p.name}, preço ${p.name}, ${p.brand} Curitiba, Xiaomi Curitiba, celular ${p.brand}`,
       productName: p.name,
       productImage: p.image,
@@ -88,7 +88,21 @@ const pages: PrerenderPage[] = [
       productParcelas: p.parcelas,
       productLink: p.link
     };
-  })
+  }),
+  // Explicit direct URL for Xiaomi 17T Pro to prevent indexing issues / soft 404s
+  {
+    path: '/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram',
+    outputPath: path.join('celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram', 'index.html'),
+    title: 'Xiaomi 17T Pro 5G NFC 512GB 12GB RAM em Curitiba | Shopcell',
+    description: 'Garanta seu Xiaomi 17T Pro 5G NFC 512GB 12GB RAM na Xiaomi Shop Cell Curitiba por R$ 5.199,99 à vista ou parcelado em até 12x de R$ 501,52 no cartão. Loja segura no Centro de Curitiba com garantia local de 6 meses. Compre com retirada imediata!',
+    canonical: 'https://www.xiaomishopcell.com/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram',
+    keywords: 'Celular Xiaomi 17T Pro 5G NFC 512GB 12GB RAM, Xiaomi 17T Pro Curitiba, Xiaomi 17T Pro comprar Curitiba, preço Xiaomi 17T Pro, Xiaomi Curitiba, celular Xiaomi',
+    productName: 'Celular Xiaomi 17T Pro 5G NFC 512GB 12GB RAM',
+    productImage: 'https://xiaomishopcell.com.br/image_adds/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram.jpg',
+    productPrice: 5199.99,
+    productParcelas: '12x de R$ 501,52',
+    productLink: 'https://www.xiaomishopcell.com.br/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram'
+  }
 ];
 
 // Helper to generate the JSON-LD schemas
