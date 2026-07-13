@@ -87,17 +87,17 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 7,
-    name: "Celular Xiaomi POCO X8 Pro 5G NFC 512GB 8GB RAM",
+    name: "Celular Xiaomi POCO X8 Pro 5G NFC 256GB 8GB RAM",
     brand: "POCO",
     desc: "Processador MediaTek Dimensity 8500 Ultra de 3.4GHz, super carregador 100W (bateria cheia em 48 min), certificação IP68+IP69K e Android 16.",
     rating: 5,
     reviewsCount: 528,
-    priceDe: 2599.99,
-    priceAt: 2399.99,
-    parcelas: "12x de R$ 231,47",
+    priceDe: 2399.99,
+    priceAt: 2199.99,
+    parcelas: "12x de R$ 212,18",
     image: "https://www.celularcuritibashopcell.com.br/image_adds/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram.jpg",
     link: "https://www.xiaomishopcell.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram",
-    badges: ["5G", "Destaque Novo", "512GB"]
+    badges: ["5G", "Destaque Novo", "256GB"]
   },
   {
     id: 8,

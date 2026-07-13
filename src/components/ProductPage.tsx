@@ -124,14 +124,14 @@ export default function ProductPage() {
           product.id === 16 
             ? "Xiaomi 17T Pro 5G NFC 512GB 12GB RAM em Curitiba | Shopcell" 
             : product.id === 7
-            ? "Celular Xiaomi POCO X8 Pro 5G NFC 512GB 8GB RAM em Curitiba | Shopcell"
+            ? "Celular Xiaomi POCO X8 Pro 5G NFC 256GB 8GB RAM em Curitiba | Shopcell"
             : `${product.name} | Xiaomi Shop Cell Curitiba`
         }
         description={
           product.id === 16 
             ? "Garanta seu Xiaomi 17T Pro 5G NFC 512GB 12GB RAM na Xiaomi Shop Cell Curitiba por R$ 5.199,99 à vista ou parcelado em até 12x de R$ 501,52 no cartão. Loja segura no Centro de Curitiba com garantia local de 6 meses. Compre com retirada imediata!" 
             : product.id === 7
-            ? "Compre o Celular Xiaomi POCO X8 Pro 5G NFC 512GB 8GB RAM na Xiaomi Shop Cell Curitiba por R$ 2.399,99 à vista ou parcelado em até 12x de R$ 231,47 no cartão. Loja segura com garantia local de 6 meses."
+            ? "Compre o Celular Xiaomi POCO X8 Pro 5G NFC 256GB 8GB RAM na Xiaomi Shop Cell Curitiba por R$ 2.199,99 à vista ou parcelado em até 12x de R$ 212,18 no cartão. Loja segura com garantia local de 6 meses."
             : `Garanta seu ${product.name} na Xiaomi Shop Cell Curitiba. Novo, original, caixa lacrada com 6 meses de garantia local. Em até 12x no cartão ou desconto à vista!`
         }
         canonical={
@@ -327,7 +327,7 @@ export default function ProductPage() {
                         </div>
                         <div className="flex justify-between py-2 border-b border-slate-100">
                           <span className="text-slate-500 font-medium">Armazenamento</span>
-                          <span className="text-slate-800 font-bold">512 GB</span>
+                          <span className="text-slate-800 font-bold">256 GB</span>
                         </div>
                         <div className="flex justify-between py-2 border-b border-slate-100">
                           <span className="text-slate-500 font-medium">Câmeras Traseiras</span>
@@ -420,18 +420,18 @@ export default function ProductPage() {
                         <span>Tabela de Parcelamento (Loja Física)</span>
                       </h4>
                       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[11px] text-slate-600">
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">1x</strong> R$ 2.493,59</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">2x</strong> R$ 1.278,68</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">3x</strong> R$ 859,62</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">4x</strong> R$ 650,12</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">5x</strong> R$ 524,44</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">6x</strong> R$ 440,67</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">7x</strong> R$ 380,86</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">8x</strong> R$ 336,01</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">9x</strong> R$ 301,15</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">10x</strong> R$ 273,26</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">11x</strong> R$ 250,46</div>
-                        <div className="bg-orange-50 border border-orange-200 p-2 rounded-lg font-bold text-[#FF6600]"><span className="text-orange-800 font-bold">12x</span> R$ 231,47</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">1x</strong> R$ 2.285,79</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">2x</strong> R$ 1.172,12</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">3x</strong> R$ 787,98</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">4x</strong> R$ 595,94</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">5x</strong> R$ 480,74</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">6x</strong> R$ 403,95</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">7x</strong> R$ 349,12</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">8x</strong> R$ 308,01</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">9x</strong> R$ 276,05</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">10x</strong> R$ 250,49</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">11x</strong> R$ 229,59</div>
+                        <div className="bg-orange-50 border border-orange-200 p-2 rounded-lg font-bold text-[#FF6600]"><span className="text-orange-800 font-bold">12x</span> R$ 212,18</div>
                       </div>
                     </div>
                   )}
@@ -706,9 +706,9 @@ export default function ProductPage() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                   <div className="md:col-span-7 space-y-4 order-1 md:order-2">
                     <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block font-bold">ESPAÇO INFINITO</span>
-                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">3. Armazenamento massivo de 512 GB com 8 GB + 8 GB RAM</h3>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">3. Armazenamento massivo de 256 GB com 8 GB + 8 GB RAM</h3>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      Com <strong className="text-slate-900">512 GB</strong> de memória interna e <strong className="text-slate-900">8 GB de RAM</strong> física, expansível até mais 8 GB de memória virtual ativa, o POCO X8 Pro permite armazenar milhares de fotos, vídeos de alta resolução, músicas e aplicativos sem se preocupar com espaço ou lentidão no multitarefa.
+                      Com <strong className="text-slate-900">256 GB</strong> de memória interna e <strong className="text-slate-900">8 GB de RAM</strong> física, expansível até mais 8 GB de memória virtual ativa, o POCO X8 Pro permite armazenar milhares de fotos, vídeos de alta resolução, músicas e aplicativos sem se preocupar com espaço ou lentidão no multitarefa.
                     </p>
                   </div>
                   <div className="md:col-span-5 grid grid-cols-2 gap-2 order-2 md:order-1">
@@ -1005,7 +1005,7 @@ export default function ProductPage() {
             {JSON.stringify({
               "@context": "https://schema.org/",
               "@type": "Product",
-              "name": "Celular Xiaomi POCO X8 Pro 5G NFC 512GB 8GB RAM",
+              "name": "Celular Xiaomi POCO X8 Pro 5G NFC 256GB 8GB RAM",
               "image": [
                 "https://www.celularcuritibashopcell.com.br/image_adds/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram.jpg",
                 "https://www.celularcuritibashopcell.com.br/images/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram-1.webp",
@@ -1027,7 +1027,7 @@ export default function ProductPage() {
                 "@type": "Offer",
                 "url": "https://www.celularescuritibashopcell.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram",
                 "priceCurrency": "BRL",
-                "price": 2399.99,
+                "price": 2199.99,
                 "priceValidUntil": "2027-12-31",
                 "itemCondition": "https://schema.org/NewCondition",
                 "availability": "https://schema.org/InStock",
