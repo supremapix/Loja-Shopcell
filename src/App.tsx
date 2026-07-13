@@ -46,6 +46,9 @@ export default function App() {
       {/* Direct custom URL for Xiaomi 17T Pro */}
       <Route path="/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram" element={<ProductPage />} />
 
+      {/* Direct custom URL for POCO X8 Pro */}
+      <Route path="/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram" element={<ProductPage />} />
+
       {/* Dynamic Neighborhood / Location Pages with redirect guard */}
       <Route path="/bairro/:slug" element={<BairroRouteGuard />} />
       

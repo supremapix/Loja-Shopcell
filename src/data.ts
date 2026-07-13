@@ -87,7 +87,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 7,
-    name: "Smartphone Xiaomi POCO X8 Pro 5G NFC 512GB 8GB RAM",
+    name: "Celular Xiaomi POCO X8 Pro 5G NFC 512GB 8GB RAM",
     brand: "POCO",
     desc: "Processador MediaTek Dimensity 8500 Ultra de 3.4GHz, super carregador 100W (bateria cheia em 48 min), certificação IP68+IP69K e Android 16.",
     rating: 5,
@@ -95,7 +95,7 @@ export const PRODUCTS: Product[] = [
     priceDe: 2599.99,
     priceAt: 2399.99,
     parcelas: "12x de R$ 231,47",
-    image: "https://xiaomishopcell.com.br/image_adds/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram.jpg",
+    image: "https://www.celularcuritibashopcell.com.br/image_adds/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram.jpg",
     link: "https://www.xiaomishopcell.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram",
     badges: ["5G", "Destaque Novo", "512GB"]
   },
@@ -347,6 +347,11 @@ export function getProductSlug(product: Product): string {
   // If product id is 16 (Xiaomi 17T Pro), return exact requested slug
   if (product.id === 16) {
     return "celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram";
+  }
+
+  // If product id is 7 (POCO X8 Pro), return exact requested slug
+  if (product.id === 7) {
+    return "celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram";
   }
 
   // If product id is 2 (POCO C85 NFC), return exact example
