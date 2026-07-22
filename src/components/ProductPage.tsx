@@ -16,6 +16,17 @@ import Cart from './Cart';
 import EnhancedSEO from './EnhancedSEO';
 import { safeGetItem, safeSetItem } from '../utils/storage';
 
+const REDMI_NOTE_15_GALLERY = [
+  "https://xiaomishopcell.com.br/image_adds/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram.jpg",
+  "https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-1.webp",
+  "https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-2.webp",
+  "https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-3.webp",
+  "https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-4.webp",
+  "https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-5.webp",
+  "https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-6.webp",
+  "https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-7.webp"
+];
+
 export default function ProductPage() {
   let { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -25,10 +36,23 @@ export default function ProductPage() {
     slug = 'celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram';
   } else if (!slug && window.location.pathname.includes('celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram')) {
     slug = 'celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram';
+  } else if (!slug && window.location.pathname.includes('celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram')) {
+    slug = 'celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram';
   }
 
   // Load product based on the plus-separated slug
   const product = slug ? getProductBySlug(slug) : undefined;
+
+  // Selected image for gallery thumbnails
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (product) {
+      setSelectedImage(product.image);
+    }
+  }, [product]);
+
+  const currentDisplayImage = selectedImage || product?.image;
 
   // Cart operations
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
@@ -125,6 +149,8 @@ export default function ProductPage() {
             ? "Xiaomi 17T Pro 5G NFC 512GB 12GB RAM em Curitiba | Shopcell" 
             : product.id === 7
             ? "Celular Xiaomi POCO X8 Pro 5G NFC 256GB 8GB RAM em Curitiba | Shopcell"
+            : product.id === 17
+            ? "Celular Xiaomi Redmi Note 15 5G NFC Dual SIM 256GB 8GB RAM em Curitiba | Shopcell"
             : `${product.name} | Xiaomi Shop Cell Curitiba`
         }
         description={
@@ -132,6 +158,8 @@ export default function ProductPage() {
             ? "Garanta seu Xiaomi 17T Pro 5G NFC 512GB 12GB RAM na Xiaomi Shop Cell Curitiba por R$ 5.199,99 à vista ou parcelado em até 12x de R$ 501,52 no cartão. Loja segura no Centro de Curitiba com garantia local de 6 meses. Compre com retirada imediata!" 
             : product.id === 7
             ? "Compre o Celular Xiaomi POCO X8 Pro 5G NFC 256GB 8GB RAM na Xiaomi Shop Cell Curitiba por R$ 2.199,99 à vista ou parcelado em até 12x de R$ 212,18 no cartão. Loja segura com garantia local de 6 meses."
+            : product.id === 17
+            ? "Compre o Celular Xiaomi Redmi Note 15 5G NFC Dual SIM 256GB 8GB RAM na Xiaomi Shop Cell Curitiba por R$ 1.699,99 à vista ou parcelado em até 12x de R$ 163,90 no cartão. Loja segura no Centro de Curitiba com garantia local de 6 meses."
             : `Garanta seu ${product.name} na Xiaomi Shop Cell Curitiba. Novo, original, caixa lacrada com 6 meses de garantia local. Em até 12x no cartão ou desconto à vista!`
         }
         canonical={
@@ -139,6 +167,8 @@ export default function ProductPage() {
             ? "https://www.xiaomishopcell.com/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram" 
             : product.id === 7
             ? "https://www.celularescuritibashopcell.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram"
+            : product.id === 17
+            ? "https://www.celularescuritibashopcell.com.br/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram"
             : `https://www.celularescuritibashopcell.com.br/produto/${getProductSlug(product)}`
         }
       />
@@ -199,7 +229,7 @@ export default function ProductPage() {
 
                 {/* Main Product Image */}
                 <img
-                  src={product.image}
+                  src={currentDisplayImage}
                   alt={product.name}
                   referrerPolicy="no-referrer"
                   onClick={() => setIsLightboxOpen(true)}
@@ -217,6 +247,28 @@ export default function ProductPage() {
                   </button>
                 )}
               </div>
+
+              {/* Gallery Thumbnails for Product 17 */}
+              {product.id === 17 && (
+                <div className="mt-3.5 grid grid-cols-4 sm:grid-cols-8 gap-2">
+                  {REDMI_NOTE_15_GALLERY.map((imgUrl, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedImage(imgUrl)}
+                      className={`bg-slate-50 border-2 rounded-xl p-1 aspect-square flex items-center justify-center overflow-hidden transition-all cursor-pointer ${
+                        currentDisplayImage === imgUrl ? 'border-[#FF6600] shadow-sm scale-105 bg-orange-50/20' : 'border-slate-200 hover:border-slate-300'
+                      }`}
+                    >
+                      <img
+                        src={imgUrl}
+                        alt={`${product.name} thumbnail ${idx + 1}`}
+                        referrerPolicy="no-referrer"
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
 
               {/* Delivery and availability badge */}
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 border border-slate-200/60 p-4 rounded-2xl text-xs">
@@ -363,6 +415,92 @@ export default function ProductPage() {
                         </div>
                       </>
                     )}
+
+                    {/* Dynamic Detailed Specifications for Redmi Note 15 5G */}
+                    {product.id === 17 && (
+                      <>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Marca</span>
+                          <span className="text-slate-800 font-bold">Xiaomi</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Cor</span>
+                          <span className="text-slate-800 font-bold">Várias</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Tela</span>
+                          <span className="text-slate-800 font-bold text-right">AMOLED 6.77" Full HD+ (120Hz)</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Dimensões</span>
+                          <span className="text-slate-800 font-bold">9 x 6 x 18 cm</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">SIM Card</span>
+                          <span className="text-slate-800 font-bold">Dual SIM (Nano)</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Rede de Dados</span>
+                          <span className="text-slate-800 font-bold">5G; LTE; 4G; 3G</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Processador</span>
+                          <span className="text-slate-800 font-bold text-right">Qualcomm Snapdragon 6 Gen 3 (4nm)</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Câmeras</span>
+                          <span className="text-slate-800 font-bold text-right">Principal 108MP f/1.7 | Frontal 20MP f/2.2</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Memória RAM</span>
+                          <span className="text-slate-800 font-bold">8GB + 4GB virtual</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Memória Interna</span>
+                          <span className="text-slate-800 font-bold">256GB</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Memória Externa</span>
+                          <span className="text-slate-800 font-bold">Suporta MicroSD</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Conectividade</span>
+                          <span className="text-slate-800 font-bold text-right">Wi-Fi Dual Band, Bluetooth 5.3, NFC</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Bateria / Carga</span>
+                          <span className="text-[#FF6600] font-bold">5.520mAh | 45W Turbo</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Sistema</span>
+                          <span className="text-slate-800 font-bold">Android 15 + HyperOS 2.0</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Proteção</span>
+                          <span className="text-slate-800 font-bold">IP65</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Sensores</span>
+                          <span className="text-slate-800 font-bold text-right">Digital lateral, Acelerômetro, Giroscópio, Bússola, Proximidade</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Resolução Vídeo</span>
+                          <span className="text-slate-800 font-bold">4K @ 30fps</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Peso Bruto</span>
+                          <span className="text-slate-800 font-bold">470g</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Localização</span>
+                          <span className="text-slate-800 font-bold">GPS, GLONASS, Galileo, BDS</span>
+                        </div>
+                        <div className="flex justify-between py-2 border-b border-slate-100">
+                          <span className="text-slate-500 font-medium">Itens Inclusos</span>
+                          <span className="text-slate-800 font-bold text-right">Adaptador, Cabo USB, Capinha, Manual</span>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -412,7 +550,29 @@ export default function ProductPage() {
                     </div>
                   )}
 
-                  {/* For POCO X8 Pro, show installment table */}
+                  {/* For Redmi Note 15 5G, show installment table */}
+                  {product.id === 17 && (
+                    <div className="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs">
+                      <h4 className="font-bold text-slate-900 mb-2.5 font-mono uppercase text-[10px] tracking-wider text-[#FF6600] flex items-center gap-1.5">
+                        <CreditCard className="w-4 h-4" />
+                        <span>Tabela de Parcelamento (Loja Física)</span>
+                      </h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[11px] text-slate-600">
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">1x</strong> R$ 1.766,33</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">2x</strong> R$ 905,73</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">3x</strong> R$ 608,98</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">4x</strong> R$ 460,63</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">5x</strong> R$ 371,58</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">6x</strong> R$ 312,23</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">7x</strong> R$ 269,85</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">8x</strong> R$ 238,08</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">9x</strong> R$ 213,37</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">10x</strong> R$ 193,62</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">11x</strong> R$ 177,46</div>
+                        <div className="bg-orange-50 border border-orange-200 p-2 rounded-lg font-bold text-[#FF6600]"><span className="text-orange-800 font-bold">12x</span> R$ 163,90</div>
+                      </div>
+                    </div>
+                  )}
                   {product.id === 7 && (
                     <div className="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs">
                       <h4 className="font-bold text-slate-900 mb-2.5 font-mono uppercase text-[10px] tracking-wider text-[#FF6600] flex items-center gap-1.5">
@@ -432,6 +592,30 @@ export default function ProductPage() {
                         <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">10x</strong> R$ 250,49</div>
                         <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">11x</strong> R$ 229,59</div>
                         <div className="bg-orange-50 border border-orange-200 p-2 rounded-lg font-bold text-[#FF6600]"><span className="text-orange-800 font-bold">12x</span> R$ 212,18</div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* For Redmi Note 15 Pro 5G, show installment table */}
+                  {product.id === 13 && (
+                    <div className="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs">
+                      <h4 className="font-bold text-slate-900 mb-2.5 font-mono uppercase text-[10px] tracking-wider text-[#FF6600] flex items-center gap-1.5">
+                        <CreditCard className="w-4 h-4" />
+                        <span>Tabela de Parcelamento (Loja Física)</span>
+                      </h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[11px] text-slate-600">
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">1x</strong> R$ 2.077,98</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">2x</strong> R$ 1.065,56</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">3x</strong> R$ 716,35</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">4x</strong> R$ 541,76</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">5x</strong> R$ 437,03</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">6x</strong> R$ 367,22</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">7x</strong> R$ 317,38</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">8x</strong> R$ 280,01</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">9x</strong> R$ 250,95</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">10x</strong> R$ 227,72</div>
+                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">11x</strong> R$ 208,72</div>
+                        <div className="bg-orange-50 border border-orange-200 p-2 rounded-lg font-bold text-[#FF6600]"><span className="text-orange-800 font-bold">12x</span> R$ 192,89</div>
                       </div>
                     </div>
                   )}
@@ -801,6 +985,159 @@ export default function ProductPage() {
             </section>
           )}
 
+          {/* Custom Rich Description Section for Redmi Note 15 5G */}
+          {product.id === 17 && (
+            <section className="mb-16 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xs">
+              <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+                <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-2.5">EXPLORE O APARELHO</span>
+                <h2 className="font-display font-black text-2xl sm:text-4xl text-gray-900 tracking-tight leading-tight">
+                  Redmi Note 15 5G: Desempenho e Tecnologia para o Dia a Dia
+                </h2>
+                <p className="text-slate-600 text-sm mt-4 leading-relaxed">
+                  O <strong className="text-slate-900">Redmi Note 15 5G</strong> é um smartphone moderno equipado com <strong className="text-slate-900">Android 15</strong> e <strong className="text-slate-900">HyperOS 2.0</strong>, oferecendo desempenho eficiente e recursos atualizados. Conta com uma ampla tela AMOLED de 6.77" Full HD+ com taxa de atualização de 120Hz, processador Qualcomm Snapdragon 6 Gen 3, 256GB de armazenamento e câmera de 108MP.
+                </p>
+              </div>
+
+              {/* Intercalated 7 Sections */}
+              <div className="space-y-16 sm:space-y-24">
+                
+                {/* 1. Durabilidade e Bateria */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block">AUTONOMIA E DURABILIDADE</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">1. Bateria de 5.520 mAh de longa duração</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Autonomia para até <strong className="text-slate-900">1,58 dias</strong> de uso contínuo, cerca de <strong className="text-slate-900">21 horas</strong> de reprodução de vídeo ou aproximadamente <strong className="text-slate-900">10 horas</strong> de gravação. A bateria foi projetada para manter excelente desempenho por até 5 anos.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-1.webp"
+                      alt="Redmi Note 15 5G Bateria"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 2. Carregamento */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4 order-1 md:order-2">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block">CARREGAMENTO TURBO</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">2. Carregamento rápido de 45W</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Com tecnologia de carregamento rápido de <strong className="text-slate-900">45W</strong>, o aparelho reduz drasticamente o tempo conectado à tomada, garantindo horas de uso em poucos minutos de carga.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs order-2 md:order-1">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-2.webp"
+                      alt="Redmi Note 15 5G Carregamento"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 3. Câmera de 108MP */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block">FOTOGRAFIA DE ALTA RESOLUÇÃO</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">3. Câmera principal de 108 MP com OIS</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      A câmera principal de <strong className="text-slate-900">108 MP</strong> com estabilização OIS captura fotos com incrível nitidez e detalhes. A câmera frontal de <strong className="text-slate-900">20MP</strong> garante selfies perfeitas e vídeo chamadas em altíssima resolução.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-3.webp"
+                      alt="Redmi Note 15 5G Câmera"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 4. Tela Ultragrande */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4 order-1 md:order-2">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block">EXCLUSIVA TELA AMOLED</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">4. Tela ultragrande de 6,77" AMOLED 120Hz</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Painel AMOLED com brilho máximo de <strong className="text-slate-900">3200 nits</strong> para ótima visibilidade mesmo sob sol forte. A taxa de atualização de <strong className="text-slate-900">120Hz</strong> garante fluidez total em jogos e navegação nas redes.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs order-2 md:order-1">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-4.webp"
+                      alt="Redmi Note 15 5G Tela"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 5. Processador */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block">PODER PROCESSAMENTO</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">5. Processador Snapdragon 6 Gen 3 (4nm)</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      O chip <strong className="text-slate-900">Snapdragon 6 Gen 3 (4nm)</strong> com 8GB RAM (+4GB virtual) e 256GB de memória garante rapidez, jogos sem travamentos e excelente gestão energética para o seu dia a dia.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-5.webp"
+                      alt="Redmi Note 15 5G Processador"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 6. Áudio */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4 order-1 md:order-2">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block">IMERSÃO SONORA</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">6. Alto-falantes duplos estéreo com Dolby Atmos</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Som estéreo encorpado com até <strong className="text-slate-900">300% mais volume</strong>, certificação Hi-Res Audio e Dolby Atmos para filmes, vídeos e partidas com alta imersão sonora.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs order-2 md:order-1">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-6.webp"
+                      alt="Redmi Note 15 5G Áudio"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                {/* 7. Proteção e Conectividade */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                  <div className="md:col-span-7 space-y-4">
+                    <span className="text-[10px] font-mono font-bold text-[#FF6600] uppercase tracking-wider block">PROTEÇÃO E REDE</span>
+                    <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-900 leading-tight">7. Proteção IP65 e conectividade 5G / NFC</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Proteção contra poeira e respingos d'água com certificação <strong className="text-slate-900">IP65</strong>, leitor de digital na lateral e suporte a conexões <strong className="text-slate-900">5G ultravelozes e NFC</strong> para pagamentos por aproximação.
+                    </p>
+                  </div>
+                  <div className="md:col-span-5 bg-slate-50 border border-slate-100 rounded-2xl p-2 overflow-hidden aspect-video flex items-center justify-center shadow-xs">
+                    <img
+                      src="https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-7.webp"
+                      alt="Redmi Note 15 5G Proteção"
+                      referrerPolicy="no-referrer"
+                      className="max-h-full max-w-full object-contain rounded-lg transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          )}
+
           {/* Related / Recommended products section */}
           <section className="mb-12">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
@@ -1040,6 +1377,43 @@ export default function ProductPage() {
                 "@type": "AggregateRating",
                 "ratingValue": "4.9",
                 "reviewCount": "528"
+              }
+            })}
+          </script>
+        </Helmet>
+      )}
+      {product.id === 17 && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org/",
+              "@type": "Product",
+              "name": "Celular Xiaomi Redmi Note 15 5G NFC Dual SIM 256GB 8GB RAM",
+              "image": REDMI_NOTE_15_GALLERY,
+              "description": "O Redmi Note 15 5G é um smartphone moderno equipado com Android 15 e HyperOS 2.0. Conta com tela AMOLED de 6.77\" 120Hz, processador Qualcomm Snapdragon 6 Gen 3 (4nm), 256GB de memória, 8GB RAM, câmera de 108MP e bateria de 5.520mAh com carregamento de 45W.",
+              "sku": "169999",
+              "mpn": "169999",
+              "brand": {
+                "@type": "Brand",
+                "name": "Xiaomi"
+              },
+              "offers": {
+                "@type": "Offer",
+                "url": "https://www.celularescuritibashopcell.com.br/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram",
+                "priceCurrency": "BRL",
+                "price": 1699.99,
+                "priceValidUntil": "2027-12-31",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": {
+                  "@type": "MobilePhoneStore",
+                  "name": "Xiaomi Shop Cell Curitiba"
+                }
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "reviewCount": "210"
               }
             })}
           </script>

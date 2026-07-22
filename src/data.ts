@@ -172,9 +172,9 @@ export const PRODUCTS: Product[] = [
     desc: "Câmera revolucionária de 200MP f/1.7 com estabilização óptica, fantástica tela AMOLED 1.5K de 120Hz e resistência IP68.",
     rating: 5,
     reviewsCount: 528,
-    priceDe: 2499.99,
-    priceAt: 2699.99,
-    parcelas: "12x de R$ 260,40",
+    priceDe: 2199.99,
+    priceAt: 1999.99,
+    parcelas: "12x de R$ 192,89",
     image: "https://www.celularcuritibashopcell.com.br/image_adds/celular-xiaomi-redmi-note-15-pro-5g-dual-sim-de-256gb8gb-ram.jpg",
     link: "https://www.xiaomishopcell.com.br/celular-xiaomi-redmi-note-15-pro-5g-dual-sim-de-256gb8gb-ram",
     badges: ["200MP", "AMOLED 1.5K", "IP68"]
@@ -219,6 +219,20 @@ export const PRODUCTS: Product[] = [
     image: "https://xiaomishopcell.com.br/image_adds/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram.jpg",
     link: "https://www.xiaomishopcell.com.br/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram",
     badges: ["5G", "7000mAh", "Dimensity 9500", "Lentes Leica", "⭐ Premium"]
+  },
+  {
+    id: 17,
+    name: "Celular Xiaomi Redmi Note 15 5G NFC Dual SIM 256GB 8GB RAM",
+    brand: "Xiaomi",
+    desc: "O Redmi Note 15 5G é um smartphone moderno equipado com Android 15 e HyperOS 2.0. Conta com tela AMOLED de 6.77\" 120Hz, processador Qualcomm Snapdragon 6 Gen 3 (4nm), 256GB de memória, 8GB RAM, câmera de 108MP e bateria de 5.520mAh com carregamento de 45W.",
+    rating: 5,
+    reviewsCount: 210,
+    priceDe: 1899.99,
+    priceAt: 1699.99,
+    parcelas: "12x de R$ 163,90",
+    image: "https://xiaomishopcell.com.br/image_adds/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram.jpg",
+    link: "https://www.celularescuritibashopcell.com.br/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram",
+    badges: ["5G", "108MP", "Snapdragon", "AMOLED 120Hz", "NOVO"]
   }
 ];
 
@@ -344,6 +358,11 @@ export const CONTACT_INFO = {
 };
 
 export function getProductSlug(product: Product): string {
+  // If product id is 17 (Redmi Note 15 5G), return exact requested slug
+  if (product.id === 17) {
+    return "celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram";
+  }
+
   // If product id is 16 (Xiaomi 17T Pro), return exact requested slug
   if (product.id === 16) {
     return "celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram";
