@@ -62,12 +62,11 @@ export default function Cart({
     message += `📦 *ITENS DO PEDIDO:*\n`;
     cartItems.forEach((item) => {
       message += `- *${item.quantity}x* ${item.product.name}\n`;
-      message += `   Preço: R$ ${item.product.priceAt.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} cada\n`;
-      message += `   Opção Cartão: ${item.product.parcelas}\n\n`;
+      message += `   Consulta: Consulte o menor valor via WhatsApp agora mesmo!\n\n`;
     });
 
     message += `-----------------------------------\n`;
-    message += `💵 *TOTAL ESTIMADO À VISTA:* R$ ${totalAtVista.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n`;
+    message += `💵 *VALOR DO PEDIDO:* Consulte o menor valor para este aparelho via WhatsApp agora mesmo!\n`;
     if (paymentMethod === 'cartao') {
       message += `💳 *CONDIÇÃO CARTÃO:* Consultar taxas de parcelamento final no WhatsApp.\n`;
     }
@@ -175,8 +174,8 @@ export default function Cart({
                             {item.product.brand}
                           </span>
                           <div className="flex items-center justify-between mt-2.5">
-                            <span className="text-[#FF6600] font-mono text-xs font-bold">
-                              {item.product.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                            <span className="text-[#FF6600] font-mono text-[11px] font-bold">
+                              Consulte o menor valor via WhatsApp
                             </span>
 
                             {/* Quantity Controls */}
@@ -393,10 +392,9 @@ export default function Cart({
                       {cartItems.reduce((acc, item) => acc + item.quantity, 0)} un
                     </span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-bold text-gray-900">Subtotal Estimado</span>
-                    <span className="text-xl font-display font-black text-[#FF6600]">
-                      {totalAtVista.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                  <div className="bg-[#FF6900]/10 border border-[#FF6900]/30 rounded-xl p-3 text-center my-2">
+                    <span className="text-[#FF6600] font-bold text-xs leading-snug block">
+                      Consulte o menor valor para este aparelho via WhatsApp agora mesmo!
                     </span>
                   </div>
                   <div className="flex items-center gap-1 justify-end text-[10px] text-gray-400 font-mono uppercase tracking-wide">

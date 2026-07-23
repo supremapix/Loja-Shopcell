@@ -36,7 +36,7 @@ export default function Ticker() {
     },
     {
       icon: <Megaphone className="w-4 h-4 text-rose-400" />,
-      text: "SUPER DESCONTO: Até R$ 150 de desconto para pagamentos à vista no PIX!",
+      text: "MENOR PREÇO GARANTIDO: Consulte o menor valor para este aparelho via WhatsApp agora mesmo!",
       actionText: "Aproveitar Desconto",
       link: CONTACT_INFO.whatsappLink
     }

@@ -128,7 +128,7 @@ export default function ProductPage() {
   // WhatsApp helper
   const getWhatsAppMessage = (prod: Product) => {
     const phone = prod.id === 16 ? '5541988837477' : '554137989918';
-    const text = `Olá! Vi o *${prod.name}* no site por *R$ ${prod.priceAt.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}* (${prod.parcelas}) e gostaria de saber sobre a disponibilidade ou finalizar a compra! Link: ${window.location.href}`;
+    const text = `Olá! Gostaria de consultar o menor valor para o *${prod.name}* via WhatsApp agora mesmo! Link: ${window.location.href}`;
     return `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(text)}`;
   };
 
@@ -507,119 +507,18 @@ export default function ProductPage() {
 
               {/* Pricing & Call to Actions */}
               <div className="border-t border-slate-200 pt-6 bg-slate-50 -mx-6 -mb-6 p-6 sm:-mx-10 sm:-mb-10 sm:p-10 rounded-b-3xl">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-6">
-                  {/* Price Box */}
-                  <div className="flex flex-col">
-                    <span className="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider font-mono">Preço Promocional Especial</span>
-                    <div className="flex items-baseline gap-2 mt-1">
-                      {product.priceDe && (
-                        <span className="text-sm text-slate-400 line-through font-mono">
-                          {product.priceDe.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                        </span>
-                      )}
-                      <span className="text-3xl font-display font-bold text-slate-900 leading-none">
-                        {product.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                      </span>
-                    </div>
-                    <span className="text-[10px] sm:text-xs font-semibold text-[#FF6600] mt-1.5 font-mono">
-                      À vista no PIX/Dinheiro ou {product.parcelas}
-                    </span>
+                {/* Price Alert Box */}
+                <div className="bg-[#FF6900]/10 border-2 border-[#FF6900]/30 rounded-2xl p-4 sm:p-5 text-center shadow-xs mb-6">
+                  <div className="flex items-center justify-center gap-2 text-[#FF6600] font-extrabold text-sm sm:text-base leading-snug">
+                    <MessageSquare className="w-5 h-5 shrink-0 text-[#FF6600]" />
+                    <span>Consulte o menor valor para este aparelho via WhatsApp agora mesmo!</span>
                   </div>
+                  <p className="text-slate-600 text-xs mt-2 font-medium">
+                    Oferecemos condições especiais à vista no PIX/Dinheiro e parcelamento em até 12x direto na nossa loja física em Curitiba.
+                  </p>
+                </div>
 
-                  {/* For Xiaomi 17T Pro, show installment table */}
-                  {product.id === 16 && (
-                    <div className="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs">
-                      <h4 className="font-bold text-slate-900 mb-2.5 font-mono uppercase text-[10px] tracking-wider text-[#FF6600] flex items-center gap-1.5">
-                        <CreditCard className="w-4 h-4" />
-                        <span>Tabela de Parcelamento (Loja Física)</span>
-                      </h4>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[11px] text-slate-600">
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">1x</strong> R$ 5.402,79</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">2x</strong> R$ 2.770,47</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">3x</strong> R$ 1.862,51</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">4x</strong> R$ 1.408,59</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">5x</strong> R$ 1.136,29</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">6x</strong> R$ 954,80</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">7x</strong> R$ 825,20</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">8x</strong> R$ 728,03</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">9x</strong> R$ 652,48</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">10x</strong> R$ 592,07</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">11x</strong> R$ 542,67</div>
-                        <div className="bg-orange-50 border border-orange-200 p-2 rounded-lg font-bold text-[#FF6600]"><span className="text-orange-800 font-bold">12x</span> R$ 501,52</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* For Redmi Note 15 5G, show installment table */}
-                  {product.id === 17 && (
-                    <div className="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs">
-                      <h4 className="font-bold text-slate-900 mb-2.5 font-mono uppercase text-[10px] tracking-wider text-[#FF6600] flex items-center gap-1.5">
-                        <CreditCard className="w-4 h-4" />
-                        <span>Tabela de Parcelamento (Loja Física)</span>
-                      </h4>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[11px] text-slate-600">
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">1x</strong> R$ 1.766,33</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">2x</strong> R$ 905,73</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">3x</strong> R$ 608,98</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">4x</strong> R$ 460,63</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">5x</strong> R$ 371,58</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">6x</strong> R$ 312,23</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">7x</strong> R$ 269,85</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">8x</strong> R$ 238,08</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">9x</strong> R$ 213,37</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">10x</strong> R$ 193,62</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">11x</strong> R$ 177,46</div>
-                        <div className="bg-orange-50 border border-orange-200 p-2 rounded-lg font-bold text-[#FF6600]"><span className="text-orange-800 font-bold">12x</span> R$ 163,90</div>
-                      </div>
-                    </div>
-                  )}
-                  {product.id === 7 && (
-                    <div className="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs">
-                      <h4 className="font-bold text-slate-900 mb-2.5 font-mono uppercase text-[10px] tracking-wider text-[#FF6600] flex items-center gap-1.5">
-                        <CreditCard className="w-4 h-4" />
-                        <span>Tabela de Parcelamento (Loja Física)</span>
-                      </h4>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[11px] text-slate-600">
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">1x</strong> R$ 2.285,79</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">2x</strong> R$ 1.172,12</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">3x</strong> R$ 787,98</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">4x</strong> R$ 595,94</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">5x</strong> R$ 480,74</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">6x</strong> R$ 403,95</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">7x</strong> R$ 349,12</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">8x</strong> R$ 308,01</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">9x</strong> R$ 276,05</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">10x</strong> R$ 250,49</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">11x</strong> R$ 229,59</div>
-                        <div className="bg-orange-50 border border-orange-200 p-2 rounded-lg font-bold text-[#FF6600]"><span className="text-orange-800 font-bold">12x</span> R$ 212,18</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* For Redmi Note 15 Pro 5G, show installment table */}
-                  {product.id === 13 && (
-                    <div className="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs">
-                      <h4 className="font-bold text-slate-900 mb-2.5 font-mono uppercase text-[10px] tracking-wider text-[#FF6600] flex items-center gap-1.5">
-                        <CreditCard className="w-4 h-4" />
-                        <span>Tabela de Parcelamento (Loja Física)</span>
-                      </h4>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-[11px] text-slate-600">
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">1x</strong> R$ 2.077,98</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">2x</strong> R$ 1.065,56</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">3x</strong> R$ 716,35</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">4x</strong> R$ 541,76</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">5x</strong> R$ 437,03</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">6x</strong> R$ 367,22</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">7x</strong> R$ 317,38</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">8x</strong> R$ 280,01</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">9x</strong> R$ 250,95</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">10x</strong> R$ 227,72</div>
-                        <div className="bg-white border border-slate-100 p-2 rounded-lg"><strong className="text-slate-900">11x</strong> R$ 208,72</div>
-                        <div className="bg-orange-50 border border-orange-200 p-2 rounded-lg font-bold text-[#FF6600]"><span className="text-orange-800 font-bold">12x</span> R$ 192,89</div>
-                      </div>
-                    </div>
-                  )}
-
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                   {/* Share button */}
                   <button
                     onClick={handleCopyLink}
@@ -1184,11 +1083,10 @@ export default function ProductPage() {
                         <Link to={url}>{p.name}</Link>
                       </h4>
 
-                      <div className="mt-auto pt-3 border-t border-slate-100 flex flex-col">
-                        <span className="text-sm font-display font-black text-slate-900">
-                          {p.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                      <div className="mt-auto pt-3 border-t border-slate-100 bg-[#FF6900]/10 border rounded-xl p-2 text-center">
+                        <span className="text-[#FF6600] font-bold text-[10px] leading-tight block">
+                          Consulte o menor valor via WhatsApp agora mesmo!
                         </span>
-                        <span className="text-[10px] text-slate-500 font-mono mt-0.5">{p.parcelas}</span>
                       </div>
                     </div>
                   </motion.div>

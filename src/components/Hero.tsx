@@ -136,12 +136,12 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
 
   // Promotional items for fast mobile ticker linking directly to detailed pages with plus-separated slugs
   const promoItems = [
-    { name: "POCO C85 NFC por R$ 999,99!", product: PRODUCTS.find(p => p.id === 2) },
-    { name: "POCO M7 NFC por R$ 1.099,99!", product: PRODUCTS.find(p => p.id === 3) },
-    { name: "Redmi 15 256GB por R$ 1.199,00!", product: PRODUCTS.find(p => p.id === 4) },
-    { name: "Redmi Note 14 5G por R$ 1.349,99!", product: PRODUCTS.find(p => p.id === 6) },
-    { name: "POCO X8 Pro 5G por R$ 2.249,99!", product: PRODUCTS.find(p => p.id === 7) },
-    { name: "POCO F8 Ultra 16GB por R$ 5.199,99!", product: PRODUCTS.find(p => p.id === 12) },
+    { name: "Consulte o menor valor para o POCO C85 NFC via WhatsApp agora mesmo!", product: PRODUCTS.find(p => p.id === 2) },
+    { name: "Consulte o menor valor para o POCO M7 NFC via WhatsApp agora mesmo!", product: PRODUCTS.find(p => p.id === 3) },
+    { name: "Consulte o menor valor para o Redmi 15 256GB via WhatsApp agora mesmo!", product: PRODUCTS.find(p => p.id === 4) },
+    { name: "Consulte o menor valor para o Redmi Note 14 5G via WhatsApp agora mesmo!", product: PRODUCTS.find(p => p.id === 6) },
+    { name: "Consulte o menor valor para o POCO X8 Pro 5G via WhatsApp agora mesmo!", product: PRODUCTS.find(p => p.id === 7) },
+    { name: "Consulte o menor valor para o POCO F8 Ultra 16GB via WhatsApp agora mesmo!", product: PRODUCTS.find(p => p.id === 12) },
   ].filter(item => item.product !== undefined);
 
   const duplicatedPromoItems = [...promoItems, ...promoItems, ...promoItems];
@@ -569,17 +569,11 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
                   {destaqueProduct.desc}
                 </p>
 
-                {/* Pricing section */}
-                <div className="border-t border-slate-200/75 pt-4 flex justify-between items-center mb-4">
-                  <div>
-                    <span className="block text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">À vista no Pix</span>
-                    <span className="text-xl font-display font-semibold text-slate-950">
-                      {destaqueProduct.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                    </span>
-                  </div>
-                  <div className="text-right">
-                    <span className="block text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">No cartão</span>
-                    <span className="text-xs font-black text-[#FF6600] block">{destaqueProduct.parcelas}</span>
+                {/* Pricing Alert section */}
+                <div className="border-t border-slate-200/75 pt-3 mb-4 bg-[#FF6900]/10 border border-[#FF6900]/25 rounded-xl p-2.5 text-center">
+                  <div className="flex items-center justify-center gap-1.5 text-[#FF6600] font-bold text-[11px] leading-tight">
+                    <MessageSquare className="w-3.5 h-3.5 shrink-0 text-[#FF6600]" />
+                    <span>Consulte o menor valor para este aparelho via WhatsApp agora mesmo!</span>
                   </div>
                 </div>
 
@@ -689,21 +683,10 @@ export default function Hero({ destaqueProduct, onSelectProduct, onAddToCart }: 
 
                     {/* Price and Action Section */}
                     <div className="border-t border-zinc-200 pt-3 mt-auto">
-                      <div className="flex justify-between items-baseline mb-3">
-                        <div>
-                          {product.priceDe && (
-                            <span className="block text-[10px] text-zinc-400 line-through">
-                              {product.priceDe.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                            </span>
-                          )}
-                          <span className="text-sm sm:text-base font-display font-black text-zinc-900">
-                            {product.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                          </span>
-                        </div>
-                        <div className="text-right">
-                          <span className="block text-[9px] text-zinc-400 font-mono">No cartão</span>
-                          <span className="text-[10px] font-bold text-[#FF6600]">{product.parcelas}</span>
-                        </div>
+                      <div className="bg-[#FF6900]/10 border border-[#FF6900]/25 rounded-xl p-2 text-center mb-3">
+                        <span className="text-[#FF6600] font-bold text-[10px] leading-tight block">
+                          Consulte o menor valor para este aparelho via WhatsApp agora mesmo!
+                        </span>
                       </div>
 
                       <div className="grid grid-cols-2 gap-2">

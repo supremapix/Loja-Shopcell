@@ -12,7 +12,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
   if (!product) return null;
 
   const getWhatsAppMessage = (prod: Product) => {
-    const text = `Olá! Vi o *${prod.name}* no site por *R$ ${prod.priceAt.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}* (${prod.parcelas}) e gostaria de saber sobre a disponibilidade ou finalizar a compra! Link: ${prod.link}`;
+    const text = `Olá! Gostaria de consultar o menor valor para o *${prod.name}* via WhatsApp agora mesmo! Link: ${prod.link}`;
     return `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(text)}`;
   };
 
@@ -151,20 +151,12 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
           {/* Pricing & Footer action buttons */}
           <div className="p-6 border-t border-slate-150 bg-slate-50/75 grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
             
-            {/* Price breakdown block */}
-            <div className="sm:col-span-6 flex flex-col">
-              <span className="text-[10px] text-gray-400 uppercase tracking-wide font-mono">À vista no Pix ou Dinheiro</span>
-              <div className="flex items-baseline gap-2 mt-0.5">
-                <span className="text-2xl font-display font-bold text-gray-900">
-                  {product.priceAt.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                </span>
-                {product.priceDe && (
-                  <span className="text-xs text-gray-400 line-through">
-                    De: {product.priceDe.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                  </span>
-                )}
+            {/* Price alert block */}
+            <div className="sm:col-span-7 bg-[#FF6900]/10 border border-[#FF6900]/30 rounded-2xl p-3 text-center">
+              <div className="flex items-center justify-center gap-1.5 text-[#FF6600] font-bold text-xs">
+                <MessageSquare className="w-4 h-4 shrink-0 text-[#FF6600]" />
+                <span>Consulte o menor valor para este aparelho via WhatsApp agora mesmo!</span>
               </div>
-              <span className="text-xs text-[#FF6600] font-bold font-mono mt-0.5">Ou {product.parcelas} no cartão</span>
             </div>
 
             {/* CTA action buttons */}
