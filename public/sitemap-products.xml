@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-5g-nfc-dual-sim-de-512gb12gb-ram-cinza.webp</image:loc>
+      <image:title>Xiaomi 17T Pro 5G 512GB - Shopcell Curitiba</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://xiaomishopcell.com.br/images/celular-xiaomi-poco-x8-pro-5g-nfc-dual-sim-de-512gb8gb-ram-preto.webp</image:loc>
+      <image:title>POCO X8 Pro 5G 512GB - Shopcell Curitiba</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://xiaomishopcell.com.br/images/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram-1.webp</image:loc>
+      <image:title>Redmi Note 15 5G 256GB - Shopcell Curitiba</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/produto/poco-f8-ultra-16gb</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/produto/redmi-note-14-5g</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/produto/poco-x7-pro-5g</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+</urlset>

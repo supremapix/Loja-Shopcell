@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/</loc>
+    <image:image>
+      <image:loc>https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp</image:loc>
+      <image:title>Loja Física Xiaomi Shopcell Curitiba Centro - Edifício Downtown</image:title>
+      <image:caption>Vitrine e Monitores da loja física Xiaomi Shopcell no Centro de Curitiba</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://xiaomishopcell.com.br/images/celular-xiaomi-17t-pro-5g-nfc-dual-sim-de-512gb12gb-ram-cinza.webp</image:loc>
+      <image:title>Xiaomi 17T Pro Curitiba</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/sitio-cercado</loc>
+    <image:image>
+      <image:loc>https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp</image:loc>
+      <image:title>Entrega de Celulares no Sítio Cercado Curitiba</image:title>
+    </image:image>
+  </url>
+
+</urlset>

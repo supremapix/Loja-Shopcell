@@ -1,218 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
   <!-- Home Page -->
   <url>
-    <loc>https://www.xiaomishopcell.com/</loc>
-    <lastmod>2026-06-23</lastmod>
+    <loc>https://www.celularescuritibashopcell.com.br/</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>1.00</priority>
   </url>
 
-  <!-- Neighborhood Pages -->
+  <!-- High Intent Spotlight - Sítio Cercado -->
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/centro</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/sitio-cercado</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/batel</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/loja-de-celular-sitio-cercado</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/agua-verde</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/bigorrilho</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/portao</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/cabral</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/juveve</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/cristo-rei</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/jardim-social</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/seminario</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/campina-do-siqueira</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/santa-felicidade</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/pinheirinho</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/boqueirao</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/capao-raso</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/cajuru</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/hauer</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/uberaba</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/cic</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.xiaomishopcell.com/bairro/reboucas</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/loja-xiaomi-sitio-cercado</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
   </url>
 
-  <!-- Cities and Other Popular Regions -->
+  <!-- High Intent Pages - Curitiba -->
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/sao-jose-dos-pinhais</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/loja-xiaomi-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/pinhais</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/iphone-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.92</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/colombo</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/samsung-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.92</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/araucaria</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/redmi-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.92</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/fazenda-rio-grande</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/poco-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.92</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/campo-largo</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/comprar-celular-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.92</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/bairro-alto</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/celular-barato-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/boa-vista</loc>
-    <lastmod>2026-06-23</lastmod>
+    <loc>https://www.celularescuritibashopcell.com.br/assistencia-xiaomi-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.88</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/sitio-cercado</loc>
-    <lastmod>2026-06-23</lastmod>
+    <loc>https://www.celularescuritibashopcell.com.br/troca-de-celular-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.88</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/xaxim</loc>
-    <lastmod>2026-06-23</lastmod>
+    <loc>https://www.celularescuritibashopcell.com.br/celular-com-garantia-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.88</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/novo-mundo</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.celularescuritibashopcell.com.br/loja-de-celulares-perto-de-mim</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/vila-sandra</loc>
-    <lastmod>2026-06-23</lastmod>
+    <loc>https://www.celularescuritibashopcell.com.br/comparar</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Blog Index and Articles -->
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/blog</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.88</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/neoville</loc>
-    <lastmod>2026-06-23</lastmod>
+    <loc>https://www.celularescuritibashopcell.com.br/blog/qual-xiaomi-comprar-em-2026</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.xiaomishopcell.com/bairro/vitoria-regia</loc>
-    <lastmod>2026-06-23</lastmod>
+    <loc>https://www.celularescuritibashopcell.com.br/blog/melhor-celular-xiaomi-custo-beneficio</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/blog/redmi-ou-poco</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/blog/vale-a-pena-comprar-xiaomi-em-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/blog/onde-comprar-celular-em-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/blog/xiaomi-original-em-curitiba</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/blog/loja-xiaomi-perto-de-mim</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Key Neighborhood Pages -->
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/sitio-cercado</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/xaxim</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/pinheirinho</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/boqueirao</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/alto-boqueirao</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/ganchinho</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/umbara</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/cic</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/hauer</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/capao-raso</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/novo-mundo</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/centro</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/batel</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/agua-verde</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/portao</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/santa-felicidade</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/sao-jose-dos-pinhais</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/pinhais</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/colombo</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/araucaria</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.celularescuritibashopcell.com.br/bairro/fazenda-rio-grande</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+
+  <!-- Custom Product URLs -->
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
 </urlset>

@@ -1,5 +1,58 @@
+# Robots.txt for Xiaomi Shop Cell Curitiba
+# Optimized for Google, Bing, and AI Search Engines (ChatGPT, Gemini, Claude, Copilot, Perplexity)
+
 User-agent: *
 Allow: /
+Allow: /sitio-cercado
+Allow: /loja-de-celular-sitio-cercado
+Allow: /loja-xiaomi-sitio-cercado
+Allow: /loja-xiaomi-curitiba
+Allow: /iphone-curitiba
+Allow: /samsung-curitiba
+Allow: /redmi-curitiba
+Allow: /poco-curitiba
+Allow: /comprar-celular-curitiba
+Allow: /celular-barato-curitiba
+Allow: /assistencia-xiaomi-curitiba
+Allow: /troca-de-celular-curitiba
+Allow: /celular-com-garantia-curitiba
+Allow: /loja-de-celulares-perto-de-mim
+Allow: /bairro/
+Allow: /produto/
+Allow: /blog/
+Allow: /llms.txt
+Allow: /llms-full.txt
 
-# Sitemaps
-Sitemap: https://www.xiaomishopcell.com/sitemap.xml
+# Specific AI Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Sitemaps Index
+Sitemap: https://www.celularescuritibashopcell.com.br/sitemap-index.xml
+Sitemap: https://www.celularescuritibashopcell.com.br/sitemap.xml
+Sitemap: https://www.celularescuritibashopcell.com.br/sitemap-products.xml
+Sitemap: https://www.celularescuritibashopcell.com.br/sitemap-images.xml

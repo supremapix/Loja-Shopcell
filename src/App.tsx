@@ -2,6 +2,9 @@ import React from 'react';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import Home from './components/Home';
 import LocationPage from './components/LocationPage';
+import IntentPage from './components/IntentPage';
+import BlogPage from './components/BlogPage';
+import BlogPostPage from './components/BlogPostPage';
 import Compare from './components/Compare';
 import ProductPage from './components/ProductPage';
 import NotFound from './components/NotFound';
@@ -39,6 +42,28 @@ export default function App() {
     <Routes>
       {/* Primary Home Page */}
       <Route path="/" element={<Home />} />
+
+      {/* Spotlight Sítio Cercado Intent Routes */}
+      <Route path="/sitio-cercado" element={<IntentPage />} />
+      <Route path="/loja-de-celular-sitio-cercado" element={<IntentPage />} />
+      <Route path="/loja-xiaomi-sitio-cercado" element={<IntentPage />} />
+
+      {/* High Intent Curitiba Routes */}
+      <Route path="/loja-xiaomi-curitiba" element={<IntentPage />} />
+      <Route path="/iphone-curitiba" element={<IntentPage />} />
+      <Route path="/samsung-curitiba" element={<IntentPage />} />
+      <Route path="/redmi-curitiba" element={<IntentPage />} />
+      <Route path="/poco-curitiba" element={<IntentPage />} />
+      <Route path="/comprar-celular-curitiba" element={<IntentPage />} />
+      <Route path="/celular-barato-curitiba" element={<IntentPage />} />
+      <Route path="/assistencia-xiaomi-curitiba" element={<IntentPage />} />
+      <Route path="/troca-de-celular-curitiba" element={<IntentPage />} />
+      <Route path="/celular-com-garantia-curitiba" element={<IntentPage />} />
+      <Route path="/loja-de-celulares-perto-de-mim" element={<IntentPage />} />
+
+      {/* Blog & Content Module */}
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:slug" element={<BlogPostPage />} />
 
       {/* Dedicated Product Detail Pages with + separators */}
       <Route path="/produto/:slug" element={<ProductPage />} />

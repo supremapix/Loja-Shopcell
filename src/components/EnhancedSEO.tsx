@@ -11,6 +11,7 @@ export interface EnhancedSEOProps {
   bairroName?: string;
   regiaoName?: string;
   noindex?: boolean;
+  faqList?: { question: string; answer: string }[];
 }
 
 export default function EnhancedSEO({
@@ -19,20 +20,33 @@ export default function EnhancedSEO({
   canonical,
   ogImage = "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
   ogType = 'website',
-  keywords = "Xiaomi Curitiba, comprar Xiaomi Curitiba, celular Xiaomi Centro, Redmi Note 14, POCO X8 Pro, POCO F8 Ultra, Xiaomi original Curitiba, loja Xiaomi Curitiba",
+  keywords = "Xiaomi Curitiba, comprar Xiaomi Curitiba, celular Xiaomi Sítio Cercado, celular Xiaomi Centro, Redmi Note 15, POCO X8 Pro, POCO F8 Ultra, Xiaomi original Curitiba, loja Xiaomi Curitiba",
   bairroName,
   regiaoName,
   noindex = false,
+  faqList,
 }: EnhancedSEOProps) {
   
-  // Base structured data (JSON-LD) for the business
+  // Organization & LocalBusiness Schema
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Xiaomi Shop Cell Curitiba",
+    "url": "https://www.celularescuritibashopcell.com.br",
+    "logo": ogImage,
+    "telephone": "+55-41-3538-1822",
+    "sameAs": [
+      "https://maps.app.goo.gl/UdXVapfdEjvFVWEC8"
+    ]
+  };
+
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "MobilePhoneStore",
     "name": "Xiaomi Shop Cell Curitiba",
     "image": ogImage,
-    "@id": "https://www.xiaomishopcell.com/#localbusiness",
-    "url": "https://www.xiaomishopcell.com",
+    "@id": "https://www.celularescuritibashopcell.com.br/#localbusiness",
+    "url": "https://www.celularescuritibashopcell.com.br",
     "telephone": "+55-41-3538-1822",
     "priceRange": "$$",
     "address": {
@@ -47,6 +61,13 @@ export default function EnhancedSEO({
       "@type": "GeoCoordinates",
       "latitude": -25.4357,
       "longitude": -49.2638
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "3800",
+      "bestRating": "5",
+      "worstRating": "1"
     },
     "openingHoursSpecification": [
       {
@@ -67,16 +88,28 @@ export default function EnhancedSEO({
     ]
   };
 
-  // If this is a neighborhood page, we append areaServed and unique information
   const neighborhoodBusinessSchema = bairroName ? {
     ...localBusinessSchema,
-    "@id": `https://www.xiaomishopcell.com/bairro/${bairroName.toLowerCase()}#localbusiness`,
+    "@id": `https://www.celularescuritibashopcell.com.br/bairro/${bairroName.toLowerCase()}#localbusiness`,
     "areaServed": {
       "@type": "AdministrativeArea",
       "name": `${bairroName}, Curitiba, PR`
     },
     "description": `Revenda autorizada especializada Xiaomi atendendo com rapidez e segurança o bairro ${bairroName} em Curitiba.`
   } : localBusinessSchema;
+
+  // WebSite Schema with SearchAction
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Xiaomi Shop Cell Curitiba",
+    "url": "https://www.celularescuritibashopcell.com.br",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.celularescuritibashopcell.com.br/#produtos?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
 
   // Breadcrumb Schema
   const breadcrumbSchema = {
@@ -87,7 +120,7 @@ export default function EnhancedSEO({
         "@type": "ListItem",
         "position": 1,
         "name": "Início",
-        "item": "https://www.xiaomishopcell.com"
+        "item": "https://www.celularescuritibashopcell.com.br"
       },
       ...(bairroName ? [{
         "@type": "ListItem",
@@ -98,6 +131,20 @@ export default function EnhancedSEO({
     ]
   };
 
+  // Optional FAQPage Schema
+  const faqSchema = faqList && faqList.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqList.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  } : null;
+
   return (
     <Helmet>
       {/* Primary HTML Meta Tags */}
@@ -106,6 +153,7 @@ export default function EnhancedSEO({
       <meta name="keywords" content={`${keywords}${bairroName ? `, Xiaomi ${bairroName}, celular Xiaomi ${bairroName}, Redmi ${bairroName}, POCO ${bairroName}` : ''}`} />
       <meta name="author" content="Suprema Sites Express" />
       <link rel="canonical" href={canonical} />
+      <link rel="alternate" hrefLang="pt-BR" href={canonical} />
 
       {/* Robots indexing constraints */}
       {noindex ? (
@@ -114,7 +162,7 @@ export default function EnhancedSEO({
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       )}
 
-      {/* Geo-targeting Meta Tags (Curitiba focus) */}
+      {/* Geo-targeting Meta Tags */}
       <meta name="geo.region" content="BR-PR" />
       <meta name="geo.placename" content={`Curitiba${bairroName ? ` - ${bairroName}` : ''}`} />
       <meta name="geo.position" content="-25.4357;-49.2638" />
@@ -138,22 +186,29 @@ export default function EnhancedSEO({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
 
-      {/* Resource Hints (Performance Optimization) */}
+      {/* Resource Hints */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link rel="preconnect" href="https://www.celularescuritibashopcell.com.br" />
-      <link rel="dns-prefetch" href="https://www.celularescuritibashopcell.com.br" />
-
-      {/* Font preloads to minimize Layout Shift */}
-      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" as="style" />
 
       {/* Structured Data Scripts (JSON-LD) */}
+      <script type="application/ld+json">
+        {JSON.stringify(organizationSchema)}
+      </script>
       <script type="application/ld+json">
         {JSON.stringify(neighborhoodBusinessSchema)}
       </script>
       <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
+      </script>
+      <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}
       </script>
+      {faqSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      )}
     </Helmet>
   );
 }

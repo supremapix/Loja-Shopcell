@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, MessageSquare, ArrowUp, Star, Home, Smartphone, ShieldCheck, HelpCircle, RefreshCw } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, ArrowUp, Star, Home, Smartphone, ShieldCheck, HelpCircle, RefreshCw, BookOpen } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 
 export default function Footer() {
@@ -68,10 +68,10 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#diferenciais" className="flex items-center gap-2 py-3 px-4 sm:py-1 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-bold sm:font-semibold shadow-2xs min-h-[46px] sm:min-h-0">
-                  <ShieldCheck className="w-4.5 h-4.5 text-[#FF6600]" />
-                  <span>Por que comprar com a gente?</span>
-                </a>
+                <Link to="/blog" className="flex items-center gap-2 py-3 px-4 sm:py-1 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-bold sm:font-semibold shadow-2xs min-h-[46px] sm:min-h-0">
+                  <BookOpen className="w-4.5 h-4.5 text-[#FF6600]" />
+                  <span>Blog & Guias de Compra</span>
+                </Link>
               </li>
               <li>
                 <a href="#RMCEbairros" className="flex items-center gap-2 py-3 px-4 sm:py-1 sm:px-0 bg-slate-900 sm:bg-transparent border border-slate-800 sm:border-0 rounded-xl sm:rounded-none text-slate-200 hover:text-[#FF6600] transition-all font-bold sm:font-semibold shadow-2xs min-h-[46px] sm:min-h-0">
@@ -163,8 +163,42 @@ export default function Footer() {
 
         </div>
 
+        {/* Semantic Link Mesh & Internal Clusters */}
+        <div className="border-t border-slate-900 pt-10 pb-6 mb-8">
+          <h4 className="text-white font-display font-bold text-xs uppercase tracking-wider text-[#FF6600] mb-4">
+            Mapa de Intent & Busca Local (Curitiba, Sítio Cercado e RMC)
+          </h4>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 text-[11px] font-mono text-slate-400">
+            <Link to="/sitio-cercado" className="hover:text-[#FF6600] transition-colors truncate">• Sítio Cercado</Link>
+            <Link to="/loja-de-celular-sitio-cercado" className="hover:text-[#FF6600] transition-colors truncate">• Loja Sítio Cercado</Link>
+            <Link to="/loja-xiaomi-sitio-cercado" className="hover:text-[#FF6600] transition-colors truncate">• Xiaomi Sítio Cercado</Link>
+            <Link to="/loja-xiaomi-curitiba" className="hover:text-[#FF6600] transition-colors truncate">• Xiaomi Curitiba</Link>
+            <Link to="/iphone-curitiba" className="hover:text-[#FF6600] transition-colors truncate">• iPhone Curitiba</Link>
+            <Link to="/samsung-curitiba" className="hover:text-[#FF6600] transition-colors truncate">• Samsung Curitiba</Link>
+            <Link to="/redmi-curitiba" className="hover:text-[#FF6600] transition-colors truncate">• Redmi Curitiba</Link>
+            <Link to="/poco-curitiba" className="hover:text-[#FF6600] transition-colors truncate">• POCO Curitiba</Link>
+            <Link to="/comprar-celular-curitiba" className="hover:text-[#FF6600] transition-colors truncate">• Comprar Celular</Link>
+            <Link to="/celular-barato-curitiba" className="hover:text-[#FF6600] transition-colors truncate">• Celular Barato</Link>
+            <Link to="/assistencia-xiaomi-curitiba" className="hover:text-[#FF6600] transition-colors truncate">• Assistência Xiaomi</Link>
+            <Link to="/troca-de-celular-curitiba" className="hover:text-[#FF6600] transition-colors truncate">• Troca de Celular</Link>
+            <Link to="/celular-com-garantia-curitiba" className="hover:text-[#FF6600] transition-colors truncate">• Celular com Garantia</Link>
+            <Link to="/loja-de-celulares-perto-de-mim" className="hover:text-[#FF6600] transition-colors truncate">• Celulares Perto de Mim</Link>
+            <Link to="/bairro/xaxim" className="hover:text-[#FF6600] transition-colors truncate">• Xaxim</Link>
+            <Link to="/bairro/pinheirinho" className="hover:text-[#FF6600] transition-colors truncate">• Pinheirinho</Link>
+            <Link to="/bairro/boqueirao" className="hover:text-[#FF6600] transition-colors truncate">• Boqueirão</Link>
+            <Link to="/bairro/cic" className="hover:text-[#FF6600] transition-colors truncate">• CIC Curitiba</Link>
+            <Link to="/bairro/sao-jose-dos-pinhais" className="hover:text-[#FF6600] transition-colors truncate">• São José dos Pinhais</Link>
+            <Link to="/bairro/araucaria" className="hover:text-[#FF6600] transition-colors truncate">• Araucária</Link>
+            <Link to="/bairro/fazenda-rio-grande" className="hover:text-[#FF6600] transition-colors truncate">• Fazenda Rio Grande</Link>
+            <Link to="/bairro/pinhais" className="hover:text-[#FF6600] transition-colors truncate">• Pinhais</Link>
+            <Link to="/bairro/colombo" className="hover:text-[#FF6600] transition-colors truncate">• Colombo</Link>
+            <Link to="/blog/qual-xiaomi-comprar-em-2026" className="hover:text-[#FF6600] transition-colors truncate">• Qual Xiaomi Comprar</Link>
+          </div>
+        </div>
+
         {/* Lower section */}
-        <div className="border-t border-slate-900 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+        <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           
           {/* CNPJ and Legal */}
           <div className="space-y-1.5">
