@@ -137,7 +137,7 @@ export default function ProductPage() {
     .sort((a, b) => {
       if (a.brand === product.brand && b.brand !== product.brand) return -1;
       if (a.brand !== product.brand && b.brand === product.brand) return 1;
-      return a.priceAt - b.priceAt;
+      return a.id - b.id;
     })
     .slice(0, 4);
 

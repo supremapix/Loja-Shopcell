@@ -20,7 +20,7 @@ export default function EnhancedSEO({
   canonical,
   ogImage = "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
   ogType = 'website',
-  keywords = "Xiaomi Curitiba, comprar Xiaomi Curitiba, celular Xiaomi Sítio Cercado, celular Xiaomi Centro, Redmi Note 15, POCO X8 Pro, POCO F8 Ultra, Xiaomi original Curitiba, loja Xiaomi Curitiba",
+  keywords = "loja de celulares Curitiba, celulares Curitiba, comprar celular Curitiba, celular com garantia Curitiba, loja de celular Centro Curitiba, Shopcell Curitiba",
   bairroName,
   regiaoName,
   noindex = false,
@@ -31,7 +31,7 @@ export default function EnhancedSEO({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Xiaomi Shop Cell Curitiba",
+    "name": "Shopcell Curitiba",
     "url": "https://www.celularescuritibashopcell.com.br",
     "logo": ogImage,
     "telephone": "+55-41-3538-1822",
@@ -43,7 +43,7 @@ export default function EnhancedSEO({
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "MobilePhoneStore",
-    "name": "Xiaomi Shop Cell Curitiba",
+    "name": "Shopcell — Loja de Celulares em Curitiba",
     "image": ogImage,
     "@id": "https://www.celularescuritibashopcell.com.br/#localbusiness",
     "url": "https://www.celularescuritibashopcell.com.br",
@@ -95,20 +95,15 @@ export default function EnhancedSEO({
       "@type": "AdministrativeArea",
       "name": `${bairroName}, Curitiba, PR`
     },
-    "description": `Revenda autorizada especializada Xiaomi atendendo com rapidez e segurança o bairro ${bairroName} em Curitiba.`
+    "description": `Loja de celulares atendendo com rapidez e segurança o bairro ${bairroName} em Curitiba.`
   } : localBusinessSchema;
 
-  // WebSite Schema with SearchAction
+  // WebSite Schema
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Xiaomi Shop Cell Curitiba",
-    "url": "https://www.celularescuritibashopcell.com.br",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.celularescuritibashopcell.com.br/#produtos?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "name": "Shopcell Curitiba",
+    "url": "https://www.celularescuritibashopcell.com.br"
   };
 
   // Breadcrumb Schema
@@ -150,7 +145,7 @@ export default function EnhancedSEO({
       {/* Primary HTML Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={`${keywords}${bairroName ? `, Xiaomi ${bairroName}, celular Xiaomi ${bairroName}, Redmi ${bairroName}, POCO ${bairroName}` : ''}`} />
+      <meta name="keywords" content={`${keywords}${bairroName ? `, loja de celular ${bairroName}, celular ${bairroName}` : ''}`} />
       <meta name="author" content="Suprema Sites Express" />
       <link rel="canonical" href={canonical} />
       <link rel="alternate" hrefLang="pt-BR" href={canonical} />
@@ -171,7 +166,7 @@ export default function EnhancedSEO({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
       <meta property="og:locale" content="pt_BR" />
-      <meta property="og:site_name" content="Xiaomi Shop Cell Curitiba" />
+      <meta property="og:site_name" content="Shopcell — Loja de Celulares em Curitiba" />
       <meta property="og:url" content={canonical} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
@@ -189,7 +184,6 @@ export default function EnhancedSEO({
       {/* Resource Hints */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link rel="preconnect" href="https://www.celularescuritibashopcell.com.br" />
 
       {/* Structured Data Scripts (JSON-LD) */}
       <script type="application/ld+json">

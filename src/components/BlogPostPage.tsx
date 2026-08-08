@@ -1,11 +1,10 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ChevronRight, Calendar, User, Clock, MessageSquare, ArrowLeft, Share2, ShieldCheck, MapPin } from 'lucide-react';
+import { ChevronRight, Calendar, User, Clock, MessageSquare, ArrowLeft } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import EnhancedSEO from './EnhancedSEO';
 import { BLOG_POSTS } from '../blogData';
-import { CONTACT_INFO } from '../data';
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -27,11 +26,11 @@ export default function BlogPostPage() {
     "image": post.image,
     "author": {
       "@type": "Organization",
-      "name": "Xiaomi Shop Cell Curitiba"
+      "name": "Shopcell Curitiba"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Xiaomi Shop Cell Curitiba",
+      "name": "Shopcell Curitiba",
       "logo": {
         "@type": "ImageObject",
         "url": "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp"
@@ -64,8 +63,6 @@ export default function BlogPostPage() {
         onOpenCart={() => {}}
         searchQuery=""
         onSearchChange={() => {}}
-        activeSection="inicio"
-        onNavClick={() => {}}
       />
 
       <main className="flex-grow pt-24">
@@ -124,7 +121,7 @@ export default function BlogPostPage() {
             <div className="bg-[#FF6900]/10 border border-[#FF6900]/30 rounded-2xl p-4 text-center">
               <span className="text-[#FF6600] font-bold text-xs sm:text-sm flex items-center justify-center gap-2">
                 <MessageSquare className="w-4 h-4 shrink-0" />
-                <span>Consulte o menor valor para qualquer aparelho via WhatsApp agora mesmo!</span>
+                <span>Consulte opções e disponibilidade via WhatsApp agora mesmo!</span>
               </span>
             </div>
 
@@ -146,13 +143,13 @@ export default function BlogPostPage() {
             {/* Call to Action Box */}
             <div className="bg-slate-950 text-white rounded-2xl p-6 sm:p-8 space-y-4">
               <h3 className="text-xl font-display font-black text-white">
-                Pronto para garantir seu Xiaomi no Sítio Cercado ou Curitiba?
+                Pronto para garantir seu celular em Curitiba?
               </h3>
               <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Fale agora mesmo com nossos consultores especialistas no WhatsApp, tire suas dúvidas de modelos e solicite entrega no mesmo dia com opção de pagar ao receber!
+                Fale agora mesmo com nossos consultores especialistas no WhatsApp e solicite entrega no mesmo dia com opção de pagar ao receber!
               </p>
               <a
-                href={getWhatsAppMsg(`Olá! Li o artigo "${post.title}" no blog e gostaria de consultar valores de smartphones!`)}
+                href={getWhatsAppMsg(`Olá! Li o artigo "${post.title}" no blog e gostaria de consultar modelos de celular!`)}
                 target="_blank"
                 referrerPolicy="no-referrer"
                 className="inline-flex items-center gap-2 bg-[#FF6600] hover:bg-[#D45500] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition-colors shadow-md"

@@ -1,6 +1,6 @@
 {
-  "name": "Xiaomi Shop Cell Curitiba",
-  "description": "Loja virtual e catálogo premium de smartphones Xiaomi, POCO e Redmi em Curitiba.",
+  "name": "Shopcell — Loja de Celulares em Curitiba",
+  "description": "Loja institucional e comercial de celulares novos e lacrados em Curitiba, com 6 meses de garantia local e entrega expressa.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

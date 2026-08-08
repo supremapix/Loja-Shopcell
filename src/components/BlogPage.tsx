@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Calendar, User, Clock, ArrowRight, BookOpen, MessageSquare } from 'lucide-react';
+import { ChevronRight, Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import EnhancedSEO from './EnhancedSEO';
@@ -13,10 +13,10 @@ export default function BlogPage() {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-[#FF6600] selection:text-white flex flex-col justify-between">
       
       <EnhancedSEO
-        title="Blog Xiaomi Curitiba | Guias de Compra, Análises e Dicas de Celulares"
-        description="Confira os melhores guias de compra e análises de smartphones Xiaomi, POCO e Redmi em Curitiba. Descubra qual modelo comprar em 2026 com dicas de especialistas."
+        title="Blog Shopcell Curitiba | Guias de Compra, Análises e Dicas de Celulares"
+        description="Confira os melhores guias de compra e análises de smartphones em Curitiba. Descubra como escolher seu celular ideal com dicas de especialistas da Shopcell."
         canonical="https://www.celularescuritibashopcell.com.br/blog"
-        keywords="blog xiaomi curitiba, qual xiaomi comprar, redmi vs poco, onde comprar celular em curitiba, guia de compras celular curitiba"
+        keywords="blog celular curitiba, qual celular comprar, loja de celular curitiba, guia de compras celular curitiba"
       />
 
       <Navbar 
@@ -24,8 +24,6 @@ export default function BlogPage() {
         onOpenCart={() => {}}
         searchQuery=""
         onSearchChange={() => {}}
-        activeSection="inicio"
-        onNavClick={() => {}}
       />
 
       <main className="flex-grow pt-24">
@@ -47,7 +45,7 @@ export default function BlogPage() {
               <span>CONTEÚDO TÉCNICO & GUIAS DE COMPRA</span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-display font-black tracking-tight text-white mb-4">
-              Blog Xiaomi Shop Cell Curitiba
+              Blog Shopcell Curitiba
             </h1>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-medium">
               Tudo o que você precisa saber antes de comprar seu smartphone em Curitiba, Sítio Cercado e Região Metropolitana.

@@ -1,17 +1,24 @@
 export interface Product {
   id: number;
   name: string;
-  brand: 'Redmi' | 'POCO' | 'Xiaomi' | 'Tablet' | 'Fone';
+  category: string;
+  brand?: string;
   desc: string;
   rating: number;
   reviewsCount: number | string;
-  priceDe?: number;
-  priceAt: number;
-  parcelas: string;
   image: string;
-  link: string;
   badges: string[];
   isHeroDestaque?: boolean;
+}
+
+export interface CategoryHighlight {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: string;
+  features: string[];
+  badge: string;
 }
 
 export interface Review {

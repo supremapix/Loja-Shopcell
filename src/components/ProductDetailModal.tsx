@@ -12,7 +12,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
   if (!product) return null;
 
   const getWhatsAppMessage = (prod: Product) => {
-    const text = `Olá! Gostaria de consultar o menor valor para o *${prod.name}* via WhatsApp agora mesmo! Link: ${prod.link}`;
+    const text = `Olá! Gostaria de consultar o menor valor para o *${prod.name}* via WhatsApp agora mesmo!`;
     return `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(text)}`;
   };
 
@@ -52,7 +52,6 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
               
               {/* Left Column: Image wrapper */}
               <div className="bg-slate-50 rounded-2xl p-1 flex justify-center items-center relative overflow-hidden h-[280px] sm:h-[320px]">
-                {/* Image */}
                 <img
                   src={product.image}
                   alt={product.name}
@@ -63,7 +62,6 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
 
               {/* Right Column: Specifications */}
               <div className="space-y-4">
-                {/* Brand & badging */}
                 <div className="flex flex-wrap items-center gap-1.5">
                   <span className="bg-[#FF6600]/10 text-[#FF6600] border border-[#FF6600]/20 font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider">
                     {product.brand}
@@ -78,7 +76,6 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
                   ))}
                 </div>
 
-                {/* Rating */}
                 <div className="flex items-center gap-1">
                   <div className="flex items-center gap-0.5">
                     {[...Array(5)].map((_, i) => (
@@ -89,17 +86,14 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
                   <span className="text-[10px] text-gray-400">({product.reviewsCount} avaliações)</span>
                 </div>
 
-                {/* Title */}
                 <h3 className="font-display font-semibold text-gray-900 text-xl sm:text-2xl leading-tight">
                   {product.name}
                 </h3>
 
-                {/* Description */}
                 <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                   {product.desc}
                 </p>
 
-                {/* Local guarantees badges */}
                 <div className="grid grid-cols-2 gap-3 pt-2">
                   <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 p-2.5 rounded-xl">
                     <ShieldCheck className="w-4 h-4 text-[#FF6600]" />
@@ -120,7 +114,6 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
 
             </div>
 
-            {/* Spec sheets divider */}
             <div className="mt-8 border-t border-slate-200 pt-6">
               <h4 className="font-display font-bold text-gray-900 text-sm uppercase tracking-wider mb-4 flex items-center gap-1.5">
                 <span className="w-1.5 h-3 bg-[#FF6600] rounded-full" />
@@ -128,7 +121,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5 text-xs">
                 <div className="flex justify-between py-2 border-b border-slate-100">
-                  <span className="text-gray-500 font-medium">Marca</span>
+                  <span className="text-gray-500 font-medium">Categoria</span>
                   <span className="text-gray-800 font-bold">{product.brand}</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-slate-100">
@@ -148,10 +141,8 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
 
           </div>
 
-          {/* Pricing & Footer action buttons */}
           <div className="p-6 border-t border-slate-150 bg-slate-50/75 grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
             
-            {/* Price alert block */}
             <div className="sm:col-span-7 bg-[#FF6900]/10 border border-[#FF6900]/30 rounded-2xl p-3 text-center">
               <div className="flex items-center justify-center gap-1.5 text-[#FF6600] font-bold text-xs">
                 <MessageSquare className="w-4 h-4 shrink-0 text-[#FF6600]" />
@@ -159,9 +150,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
               </div>
             </div>
 
-            {/* CTA action buttons */}
             <div className="sm:col-span-6 grid grid-cols-2 gap-2">
-              {/* Checkout WhatsApp direct */}
               <a
                 href={getWhatsAppMessage(product)}
                 target="_blank"
@@ -173,7 +162,6 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
                 <span>WhatsApp</span>
               </a>
 
-              {/* Add to Cart */}
               <button
                 onClick={() => {
                   onAddToCart(product);

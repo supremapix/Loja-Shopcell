@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Trash2, Plus, Minus, ShoppingBag, Send, AlertTriangle, Store, Truck, Wallet, CreditCard, Sparkles } from 'lucide-react';
 import { CartItem } from '../types';
-import { CONTACT_INFO, CURITIBA_NEIGHBORHOODS, RMC_CITIES } from '../data';
+import { CURITIBA_NEIGHBORHOODS, RMC_CITIES } from '../data';
 
 interface CartProps {
   isOpen: boolean;
@@ -30,9 +30,6 @@ export default function Cart({
   const [paymentMethod, setPaymentMethod] = useState<'pix' | 'cartao'>('pix');
   const [formError, setFormError] = useState<string | null>(null);
 
-  // Compute Totals
-  const totalAtVista = cartItems.reduce((acc, item) => acc + (item.product.priceAt * item.quantity), 0);
-
   const handleFinishOrder = () => {
     if (!clientName.trim()) {
       setFormError('Por favor, digite seu nome para o pedido.');
@@ -47,7 +44,7 @@ export default function Cart({
     setFormError(null);
 
     // Build WhatsApp Message
-    let message = `🛒 *NOVO PEDIDO - XIAOMI SHOP CELL CURITIBA*\n`;
+    let message = `🛒 *NOVO PEDIDO - SHOPCELL CURITIBA*\n`;
     message += `===================================\n\n`;
     message += `👤 *Cliente:* ${clientName}\n`;
     message += `🚚 *Método:* ${deliveryType === 'retirada' ? 'Retirada na Loja Física (Centro)' : 'Entrega Expressa via Motoboy'}\n`;
@@ -71,7 +68,7 @@ export default function Cart({
       message += `💳 *CONDIÇÃO CARTÃO:* Consultar taxas de parcelamento final no WhatsApp.\n`;
     }
     message += `===================================\n\n`;
-    message += `_Pedido gerado de forma automática via site oficial Xiaomi Shop Cell Curitiba_`;
+    message += `_Pedido gerado de forma automática via site oficial Shopcell Curitiba_`;
 
     const encodedText = encodeURIComponent(message);
     const whatsappUrl = `https://api.whatsapp.com/send?phone=554137989918&text=${encodedText}`;
@@ -128,7 +125,7 @@ export default function Cart({
                   </div>
                   <h3 className="font-display font-semibold text-gray-900 mb-1">Seu carrinho está vazio</h3>
                   <p className="text-gray-600 text-xs max-w-xs mb-6">
-                    Navegue pelos nossos smartphones de última geração e adicione aparelhos para fazer um orçamento.
+                    Navegue pelos nossos celulares e acessórios e adicione itens para fazer um orçamento.
                   </p>
                   <button
                     onClick={onClose}

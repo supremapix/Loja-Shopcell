@@ -6,10 +6,8 @@ import IntentPage from './components/IntentPage';
 import BlogPage from './components/BlogPage';
 import BlogPostPage from './components/BlogPostPage';
 import Compare from './components/Compare';
-import ProductPage from './components/ProductPage';
 import NotFound from './components/NotFound';
 
-// Route guard to detect non-normalized slugs (with accents, capitals, spaces) and redirect to normalized form
 function BairroRouteGuard() {
   const { slug } = useParams<{ slug: string }>();
   
@@ -17,13 +15,12 @@ function BairroRouteGuard() {
     return <Navigate to="/404" replace />;
   }
 
-  // Normalize: lowercased, removed accents, replace spaces with hifens, only alphanumeric and hifens
   const normalized = slug
     .toLowerCase()
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // remove accents
-    .replace(/\s+/g, "-")           // spaces to hifens
-    .replace(/[^a-z0-9\-]/g, "");    // remove any invalid chars
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9\-]/g, "");
 
   if (slug !== normalized) {
     return <Navigate to={`/bairro/${normalized}`} replace />;
@@ -40,58 +37,57 @@ function PrefixRedirect() {
 export default function App() {
   return (
     <Routes>
-      {/* Primary Home Page */}
+      {/* Primary Institutional Routes */}
       <Route path="/" element={<Home />} />
+      <Route path="/celulares" element={<Home />} />
+      <Route path="/loja-de-celular-curitiba" element={<IntentPage />} />
+      <Route path="/acessorios" element={<Home />} />
+      <Route path="/sobre" element={<Home />} />
+      <Route path="/contato" element={<Home />} />
 
-      {/* Spotlight Sítio Cercado Intent Routes */}
+      {/* Spotlight Sítio Cercado & Local Intent Routes */}
       <Route path="/sitio-cercado" element={<IntentPage />} />
       <Route path="/loja-de-celular-sitio-cercado" element={<IntentPage />} />
-      <Route path="/loja-xiaomi-sitio-cercado" element={<IntentPage />} />
-
-      {/* High Intent Curitiba Routes */}
-      <Route path="/loja-xiaomi-curitiba" element={<IntentPage />} />
-      <Route path="/iphone-curitiba" element={<IntentPage />} />
-      <Route path="/samsung-curitiba" element={<IntentPage />} />
-      <Route path="/redmi-curitiba" element={<IntentPage />} />
-      <Route path="/poco-curitiba" element={<IntentPage />} />
       <Route path="/comprar-celular-curitiba" element={<IntentPage />} />
       <Route path="/celular-barato-curitiba" element={<IntentPage />} />
-      <Route path="/assistencia-xiaomi-curitiba" element={<IntentPage />} />
       <Route path="/troca-de-celular-curitiba" element={<IntentPage />} />
       <Route path="/celular-com-garantia-curitiba" element={<IntentPage />} />
       <Route path="/loja-de-celulares-perto-de-mim" element={<IntentPage />} />
+
+      {/* Redirects for legacy brand/model paths to protect SEO authority */}
+      <Route path="/loja-xiaomi-sitio-cercado" element={<Navigate to="/loja-de-celular-sitio-cercado" replace />} />
+      <Route path="/loja-xiaomi-curitiba" element={<Navigate to="/loja-de-celular-curitiba" replace />} />
+      <Route path="/iphone-curitiba" element={<Navigate to="/celulares" replace />} />
+      <Route path="/samsung-curitiba" element={<Navigate to="/celulares" replace />} />
+      <Route path="/redmi-curitiba" element={<Navigate to="/celulares" replace />} />
+      <Route path="/poco-curitiba" element={<Navigate to="/celulares" replace />} />
+      <Route path="/assistencia-xiaomi-curitiba" element={<Navigate to="/contato" replace />} />
+
+      {/* Redirect legacy product URL patterns to clean category page */}
+      <Route path="/produto/*" element={<Navigate to="/celulares" replace />} />
+      <Route path="/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram" element={<Navigate to="/celulares" replace />} />
+      <Route path="/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram" element={<Navigate to="/celulares" replace />} />
+      <Route path="/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram" element={<Navigate to="/celulares" replace />} />
 
       {/* Blog & Content Module */}
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<BlogPostPage />} />
 
-      {/* Dedicated Product Detail Pages with + separators */}
-      <Route path="/produto/:slug" element={<ProductPage />} />
-
-      {/* Direct custom URL for Xiaomi 17T Pro */}
-      <Route path="/celular-xiaomi-17t-pro-nfc-dual-sim-de-512gb12gb-ram" element={<ProductPage />} />
-
-      {/* Direct custom URL for POCO X8 Pro */}
-      <Route path="/celular-xiaomi-poco-x8-pro-nfc-dual-sim-de-512gb8gb-ram" element={<ProductPage />} />
-
-      {/* Direct custom URL for Redmi Note 15 5G */}
-      <Route path="/celular-xiaomi-redmi-note-15-5g-nfc-dual-sim-256gb8gb-ram" element={<ProductPage />} />
-
-      {/* Dynamic Neighborhood / Location Pages with redirect guard */}
+      {/* Dynamic Neighborhood / Location Pages */}
       <Route path="/bairro/:slug" element={<BairroRouteGuard />} />
       
       {/* Comparison page routes */}
       <Route path="/comparar" element={<Compare />} />
       <Route path="/compare" element={<Navigate to="/comparar" replace />} />
       
-      {/* City and Region Route Aliases */}
+      {/* City and Region Aliases */}
       <Route path="/cidade/:slug" element={<PrefixRedirect />} />
       <Route path="/regiao/:slug" element={<PrefixRedirect />} />
 
       {/* Explicit 404 Route */}
       <Route path="/404" element={<NotFound />} />
 
-      {/* Catch-all Route for any other undefined path */}
+      {/* Catch-all Route */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -11,9 +11,8 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, onSelect, onAddToCart }: ProductCardProps) {
-  // Generate WhatsApp text for single product query
   const getWhatsAppMessage = (prod: Product) => {
-    const text = `Olá! Gostaria de consultar o menor valor para o *${prod.name}* via WhatsApp agora mesmo! Link: ${prod.link}`;
+    const text = `Olá! Gostaria de consultar o menor valor para o *${prod.name}* via WhatsApp agora mesmo!`;
     return `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(text)}`;
   };
 
@@ -29,9 +28,7 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
       className="bg-white border-2 border-slate-200/80 rounded-3xl overflow-hidden hover:border-[#FF6900]/70 transition-all duration-300 flex flex-col h-full shadow-[0_4px_15px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_25px_rgba(255,105,0,0.06)] group relative text-left"
     >
-      {/* Product Image and badges */}
       <div className="relative pt-[100%] bg-white overflow-hidden flex items-center justify-center p-1">
-        {/* Category Badge */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
           <span className="bg-[#FF6900]/10 text-[#FF6900] border border-[#FF6900]/20 font-sans text-[9px] font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider shadow-2xs">
             {product.brand}
@@ -50,7 +47,6 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
           ))}
         </div>
 
-        {/* Product Image Link */}
         <Link to={productUrl} className="absolute inset-0 flex items-center justify-center p-1.5 cursor-pointer">
           <img
             src={product.image}
@@ -63,9 +59,7 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
         </Link>
       </div>
 
-      {/* Product Information */}
       <div className="p-5 flex flex-col flex-grow">
-        {/* Brand & Ratings Row */}
         <div className="flex items-center justify-between gap-2 mb-2">
           <span className="text-[10px] font-mono text-[#FF6900] uppercase font-bold tracking-widest">{product.brand}</span>
           <div className="flex items-center gap-0.5">
@@ -75,19 +69,16 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
           </div>
         </div>
 
-        {/* Title */}
         <h3 className="font-display font-semibold text-slate-900 text-[15px] sm:text-[16px] leading-snug line-clamp-2 mb-2 group-hover:text-[#FF6900] transition-colors duration-200">
           <Link to={productUrl} className="hover:text-[#FF6900]">
             {product.name}
           </Link>
         </h3>
 
-        {/* Description */}
         <p className="text-slate-500 text-xs line-clamp-2 mb-4 leading-relaxed font-medium flex-grow">
           {product.desc}
         </p>
 
-        {/* Pricing Alert Message */}
         <a
           href={getWhatsAppMessage(product)}
           target="_blank"
@@ -101,9 +92,7 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
           </div>
         </a>
 
-        {/* Action Buttons */}
         <div className="grid grid-cols-2 gap-2">
-          {/* View Details Link */}
           <Link
             to={productUrl}
             className="flex items-center justify-center gap-1 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-[10.5px] sm:text-[11px] font-bold py-2 px-1.5 rounded-lg transition-all duration-300 uppercase tracking-wider cursor-pointer hover:text-slate-900 hover:border-slate-300 shadow-2xs"
@@ -114,7 +103,6 @@ export default function ProductCard({ product, onSelect, onAddToCart }: ProductC
             <span>Detalhes</span>
           </Link>
 
-          {/* Add to Cart triggers adding */}
           <button
             onClick={() => onAddToCart(product)}
             className="flex items-center justify-center gap-1 bg-[#FF6900] hover:bg-[#D45500] text-white text-[10.5px] sm:text-[11px] font-bold py-2 px-1.5 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md uppercase tracking-wider cursor-pointer hover:scale-[1.01]"
