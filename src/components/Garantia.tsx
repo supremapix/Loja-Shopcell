@@ -30,12 +30,12 @@ export default function Garantia() {
 
             {/* Title / Header */}
             <h2 className="font-display font-semibold text-3xl sm:text-4xl lg:text-5xl text-gray-900 tracking-tight leading-tight">
-              Garantia de <span className="text-[#FF6600] underline decoration-[#FF6600]/20 decoration-wavy">6 Meses</span> em Todos os Produtos
+              Garantia de <span className="text-[#FF6600] underline decoration-[#FF6600]/20 decoration-wavy">12 Meses</span> em Todos os Produtos
             </h2>
 
             {/* Paragraph Text */}
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Garantimos uma compra tranquila e oferecemos garantia de 6 meses para os produtos. Compre com segurança na loja mais bem avaliada de Curitiba. Nosso compromisso é o seu total contentamento e tranquilidade pós-compra.
+              Garantimos uma compra tranquila e oferecemos garantia de 12 meses para os produtos. Compre com segurança na loja mais bem avaliada de Curitiba. Nosso compromisso é o seu total contentamento e tranquilidade pós-compra.
             </p>
 
             {/* Google Reviews Trust Block */}
@@ -115,11 +115,11 @@ export default function Garantia() {
                 className="bg-white border border-slate-200 p-6 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow relative z-10 max-w-[280px] sm:max-w-[340px]"
               >
                 <img
-                  src="https://www.celularescuritibashopcell.com.br/assets/selo-garantia-6-meses-hmty8MRN.webp"
-                  alt="Selo de Garantia de 6 Meses Shopcell"
+                  src="https://www.celularescuritibashopcell.com.br/assets/selo-garantia-1-ano-D4gjKxPE.webp"
+                  alt="Selo de Garantia de 12 Meses Shopcell"
                   referrerPolicy="no-referrer"
                   className="w-full h-auto object-contain rounded-2xl animate-float"
-                  id="img-selo-garantia-6-meses"
+                  id="img-selo-garantia-12-meses"
                 />
               </motion.div>
             </div>

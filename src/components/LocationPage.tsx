@@ -111,7 +111,7 @@ export default function LocationPage() {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Garantia Shopcell:</strong> Garantia completa de 6 meses presencial.</span>
+                  <span><strong>Garantia Shopcell:</strong> Garantia completa de 12 meses presencial.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />

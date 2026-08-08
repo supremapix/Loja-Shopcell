@@ -16,13 +16,13 @@ export interface IntentPageInfo {
 export const INTENT_PAGES: Record<string, IntentPageInfo> = {
   "sitio-cercado": {
     slug: "sitio-cercado",
-    title: "Loja de Celular no Sítio Cercado Curitiba | Entrega Hoje e Garantia 6 Meses | Shopcell",
+    title: "Loja de Celular no Sítio Cercado Curitiba | Entrega Hoje e Garantia 12 Meses | Shopcell",
     subtitle: "A melhor e mais confiável opção em celulares e atendimento especializado para o bairro Sítio Cercado e região.",
     h1: "Loja de Celular no Sítio Cercado Curitiba - Atendimento Especializado",
-    metaDescription: "Procurando loja de celular no Sítio Cercado? Compre smartphones novos com 6 meses de garantia local e entrega expressa via motoboy no Sítio Cercado, Bairro Novo e região.",
+    metaDescription: "Procurando loja de celular no Sítio Cercado? Compre smartphones novos com 12 meses de garantia local e entrega expressa via motoboy no Sítio Cercado, Bairro Novo e região.",
     keywords: "loja de celular sítio cercado, comprar celular sítio cercado, celulares sítio cercado curitiba, celular no sítio cercado, loja de celular bairro novo",
     badge: "DESTAQUE SÍTIO CERCADO & ZONA SUL",
-    introText: "Se você mora no Sítio Cercado, Bairro Novo, Osternack, Ganchinho ou Umbará e procura um smartphone original com garantia de 6 meses e atendimento de confiança, a Shopcell é a sua escolha número #1 em Curitiba. Entregamos seu celular novo e lacrado na porta da sua casa no Sítio Cercado com taxa de entrega reduzida via motoboy express, permitindo que você inspecione o aparelho em mãos antes de realizar o pagamento seguro via Pix, dinheiro ou cartão em até 12x.",
+    introText: "Se você mora no Sítio Cercado, Bairro Novo, Osternack, Ganchinho ou Umbará e procura um smartphone original com garantia de 12 meses e atendimento de confiança, a Shopcell é a sua escolha número #1 em Curitiba. Entregamos seu celular novo e lacrado na porta da sua casa no Sítio Cercado com taxa de entrega reduzida via motoboy express, permitindo que você inspecione o aparelho em mãos antes de realizar o pagamento seguro via Pix, dinheiro ou cartão em até 12x.",
     bairroFocus: "Sítio Cercado",
     ctaText: "Pedir no WhatsApp para Sítio Cercado",
     benefits: [
@@ -37,7 +37,7 @@ export const INTENT_PAGES: Record<string, IntentPageInfo> = {
         icon: "shield"
       },
       {
-        title: "6 Meses de Garantia Local",
+        title: "12 Meses de Garantia Local",
         desc: "Garantia física presencial com suporte técnico de especialistas direto na loja no Centro de Curitiba.",
         icon: "check"
       },
@@ -58,7 +58,7 @@ export const INTENT_PAGES: Record<string, IntentPageInfo> = {
       },
       {
         question: "Qual o prazo de garantia dos celulares no Sítio Cercado?",
-        answer: "Todos os nossos smartphones acompanham 6 meses de garantia local presencial assegurados pela nossa loja física no Centro de Curitiba."
+        answer: "Todos os nossos smartphones acompanham 12 meses de garantia local presencial assegurados pela nossa loja física no Centro de Curitiba."
       },
       {
         question: "Qual a vantagem de comprar na Shopcell em relação a vendedores informais?",
@@ -71,7 +71,7 @@ export const INTENT_PAGES: Record<string, IntentPageInfo> = {
     title: "Loja de Celular Sítio Cercado Curitiba | Smartphones com Garantia | Shopcell",
     subtitle: "A sua referência em celulares e suporte técnico comercial para o Sítio Cercado.",
     h1: "Sua Loja de Celular no Sítio Cercado Curitiba",
-    metaDescription: "Compre seu celular no Sítio Cercado com a Shopcell. Garantia de 6 meses, produtos originais e lacrados com entrega motoboy no mesmo dia.",
+    metaDescription: "Compre seu celular no Sítio Cercado com a Shopcell. Garantia de 12 meses, produtos originais e lacrados com entrega motoboy no mesmo dia.",
     keywords: "loja de celular no sítio cercado, celular barato sítio cercado, comprar celular sítio cercado, loja de celular perto de mim sítio cercado",
     badge: "SÍTIO CERCADO & REGIÃO",
     introText: "Buscando uma loja de celular perto de você no Sítio Cercado? A Shopcell oferece aparelhos originais, novos em caixa lacrada, com procedência garantida e suporte presencial no Centro de Curitiba.",
@@ -93,10 +93,10 @@ export const INTENT_PAGES: Record<string, IntentPageInfo> = {
     title: "Comprar Celular em Curitiba | Ofertas e Atendimento Especializado | Shopcell",
     subtitle: "Onde comprar celular em Curitiba com total segurança, garantia e facilidade de pagamento.",
     h1: "Comprar Celular em Curitiba com Garantia & Segurança",
-    metaDescription: "Saiba onde comprar celular em Curitiba sem sustos. Aparelhos lacrados com garantia de 6 meses, loja física no Centro, entrega expressa no Sítio Cercado e RMC.",
+    metaDescription: "Saiba onde comprar celular em Curitiba sem sustos. Aparelhos lacrados com garantia de 12 meses, loja física no Centro, entrega expressa no Sítio Cercado e RMC.",
     keywords: "comprar celular em curitiba, onde comprar celular em curitiba, loja de celular curitiba, celular com garantia curitiba",
     badge: "GUIA DE COMPRAS CURITIBA",
-    introText: "Decidiu comprar um celular novo em Curitiba e quer ter a certeza de fazer um excelente negócio? A Shopcell combina mais de 8 anos de reputação com loja física no Centro de Curitiba e atendimento direto via WhatsApp. Compre com garantia de 6 meses e suporte completo.",
+    introText: "Decidiu comprar um celular novo em Curitiba e quer ter a certeza de fazer um excelente negócio? A Shopcell combina mais de 8 anos de reputação com loja física no Centro de Curitiba e atendimento direto via WhatsApp. Compre com garantia de 12 meses e suporte completo.",
     ctaText: "Comprar Celular Agora no WhatsApp",
     benefits: [
       { title: "Procedência Garantida", desc: "Aparelhos 100% originais e novos na caixa lacrada de fábrica.", icon: "shield-check" },
@@ -111,10 +111,10 @@ export const INTENT_PAGES: Record<string, IntentPageInfo> = {
     title: "Celular Barato em Curitiba | Smartphones de Qualidade com Garantia | Shopcell",
     subtitle: "Os melhores celulares econômicos e de alto desempenho para o seu orçamento.",
     h1: "Celulares de Excelente Custo-Benefício em Curitiba",
-    metaDescription: "Encontre celulares de excelente qualidade e ótimo custo-benefício em Curitiba. Opções econômicas com 6 meses de garantia e entrega rápida.",
+    metaDescription: "Encontre celulares de excelente qualidade e ótimo custo-benefício em Curitiba. Opções econômicas com 12 meses de garantia e entrega rápida.",
     keywords: "celular barato curitiba, celular bom e barato curitiba, celular em promocao curitiba",
     badge: "OFERTAS E ECONOMIA CURITIBA",
-    introText: "Quer economizar de verdade sem abrir mão de um celular moderno com excelente câmera, bateria duradoura e tela grande? A Shopcell disponibiliza opções de smartphones de entrada e intermediários em Curitiba com 6 meses de garantia local.",
+    introText: "Quer economizar de verdade sem abrir mão de um celular moderno com excelente câmera, bateria duradoura e tela grande? A Shopcell disponibiliza opções de smartphones de entrada e intermediários em Curitiba com 12 meses de garantia local.",
     ctaText: "Consultar Celulares no WhatsApp",
     benefits: [
       { title: "Ótimas Condições no Pix", desc: "Consulte nossos atendentes e garanta a cotação com desconto especial no Pix.", icon: "dollar-sign" }
@@ -142,16 +142,16 @@ export const INTENT_PAGES: Record<string, IntentPageInfo> = {
   },
   "celular-com-garantia-curitiba": {
     slug: "celular-com-garantia-curitiba",
-    title: "Celular com Garantia em Curitiba | 6 Meses de Proteção Presencial | Shopcell",
-    subtitle: "Sua compra 100% protegida com garantia física de 6 meses no Centro de Curitiba.",
-    h1: "Celular com Garantia Local de 6 Meses em Curitiba",
-    metaDescription: "Compre celular com garantia real em Curitiba. 6 meses de cobertura física no Edifício Downtown Centro. Celulares novos e lacrados na Shopcell.",
+    title: "Celular com Garantia em Curitiba | 12 Meses de Proteção Presencial | Shopcell",
+    subtitle: "Sua compra 100% protegida com garantia física de 12 meses no Centro de Curitiba.",
+    h1: "Celular com Garantia Local de 12 Meses em Curitiba",
+    metaDescription: "Compre celular com garantia real em Curitiba. 12 meses de cobertura física no Edifício Downtown Centro. Celulares novos e lacrados na Shopcell.",
     keywords: "celular com garantia curitiba, celular lacrado com garantia curitiba, loja de celular garantia curitiba",
     badge: "GARANTIA LOCAL ASSEGURADA",
-    introText: "Ter a garantia de 6 meses assegurada por uma loja física com CNPJ e endereço fixo no Centro de Curitiba faz toda a diferença. Na Shopcell, você conta com suporte técnico presencial e documento de garantia em todos os seus pedidos.",
+    introText: "Ter a garantia de 12 meses assegurada por uma loja física com CNPJ e endereço fixo no Centro de Curitiba faz toda a diferença. Na Shopcell, você conta com suporte técnico presencial e documento de garantia em todos os seus pedidos.",
     ctaText: "Comprar Celular com Garantia",
     benefits: [
-      { title: "Proteção Real", desc: "Cobertura presencial direta no Centro de Curitiba durante 6 meses inteiros.", icon: "shield" }
+      { title: "Proteção Real", desc: "Cobertura presencial direta no Centro de Curitiba durante 12 meses inteiros.", icon: "shield" }
     ],
     faqs: [
       { question: "Como acionar a garantia se precisar?", answer: "Basta entrar em contato pelo nosso WhatsApp ou ir diretamente até nossa loja física no Centro de Curitiba com seu comprovante de compra." }

@@ -147,8 +147,8 @@ export const DIFFERENTIALS: Differential[] = [
   },
   {
     icon: "ShieldCheck",
-    title: "Garantia Local de 6 Meses",
-    description: "Todos os celulares novos contam com 6 meses de garantia presencial com suporte técnico direto com a nossa equipe em Curitiba."
+    title: "Garantia Local de 12 Meses",
+    description: "Todos os celulares novos contam com 12 meses de garantia presencial com suporte técnico direto com a nossa equipe em Curitiba."
   },
   {
     icon: "Star",
@@ -174,7 +174,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     question: "Como funciona a garantia dos aparelhos?",
-    answer: "Oferecemos 6 meses de garantia local direta em nossa loja física no Centro de Curitiba. Isso garante suporte presencial rápido, sem complicações ou necessidade de envio por correios."
+    answer: "Oferecemos 12 meses de garantia local direta em nossa loja física no Centro de Curitiba. Isso garante suporte presencial rápido, sem complicações ou necessidade de envio por correios."
   },
   {
     question: "Como posso consultar aparelhos e preços disponíveis?",

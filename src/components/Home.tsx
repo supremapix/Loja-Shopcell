@@ -21,7 +21,7 @@ export default function Home() {
     <div className="min-h-screen bg-white text-gray-800 flex flex-col font-sans relative">
       <EnhancedSEO
         title="Shopcell — Loja de Celulares em Curitiba | Atendimento Especializado & Garantia Local"
-        description="Sua loja de celulares em Curitiba. Aparelhos novos, originais e lacrados com 6 meses de garantia local, loja física no Centro de Curitiba e entrega rápida via motoboy."
+        description="Sua loja de celulares em Curitiba. Aparelhos novos, originais e lacrados com 12 meses de garantia local, loja física no Centro de Curitiba e entrega rápida via motoboy."
         canonical="https://www.celularescuritibashopcell.com.br/"
       />
 

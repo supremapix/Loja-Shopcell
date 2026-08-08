@@ -98,7 +98,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
                   <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 p-2.5 rounded-xl">
                     <ShieldCheck className="w-4 h-4 text-[#FF6600]" />
                     <div>
-                      <span className="block text-[10px] font-bold text-gray-900 uppercase tracking-wider font-mono">6 Meses</span>
+                      <span className="block text-[10px] font-bold text-gray-900 uppercase tracking-wider font-mono">12 Meses</span>
                       <span className="text-[9px] text-gray-400 leading-none block">Garantia Local</span>
                     </div>
                   </div>
@@ -130,7 +130,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
                 </div>
                 <div className="flex justify-between py-2 border-b border-slate-100">
                   <span className="text-gray-500 font-medium">Garantia</span>
-                  <span className="text-gray-800 font-bold">6 Meses Direto na Loja</span>
+                  <span className="text-gray-800 font-bold">12 Meses Direto na Loja</span>
                 </div>
                 <div className="flex justify-between py-2 border-b border-slate-100">
                   <span className="text-gray-500 font-medium">Suporte Técnico</span>

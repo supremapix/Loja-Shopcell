@@ -155,12 +155,12 @@ export default function ProductPage() {
         }
         description={
           product.id === 16 
-            ? "Garanta seu Xiaomi 17T Pro 5G NFC 512GB 12GB RAM na Xiaomi Shop Cell Curitiba por R$ 5.199,99 à vista ou parcelado em até 12x de R$ 501,52 no cartão. Loja segura no Centro de Curitiba com garantia local de 6 meses. Compre com retirada imediata!" 
+            ? "Garanta seu Xiaomi 17T Pro 5G NFC 512GB 12GB RAM na Xiaomi Shop Cell Curitiba por R$ 5.199,99 à vista ou parcelado em até 12x de R$ 501,52 no cartão. Loja segura no Centro de Curitiba com garantia local de 12 meses. Compre com retirada imediata!" 
             : product.id === 7
-            ? "Compre o Celular Xiaomi POCO X8 Pro 5G NFC 256GB 8GB RAM na Xiaomi Shop Cell Curitiba por R$ 2.199,99 à vista ou parcelado em até 12x de R$ 212,18 no cartão. Loja segura com garantia local de 6 meses."
+            ? "Compre o Celular Xiaomi POCO X8 Pro 5G NFC 256GB 8GB RAM na Xiaomi Shop Cell Curitiba por R$ 2.199,99 à vista ou parcelado em até 12x de R$ 212,18 no cartão. Loja segura com garantia local de 12 meses."
             : product.id === 17
-            ? "Compre o Celular Xiaomi Redmi Note 15 5G NFC Dual SIM 256GB 8GB RAM na Xiaomi Shop Cell Curitiba por R$ 1.699,99 à vista ou parcelado em até 12x de R$ 163,90 no cartão. Loja segura no Centro de Curitiba com garantia local de 6 meses."
-            : `Garanta seu ${product.name} na Xiaomi Shop Cell Curitiba. Novo, original, caixa lacrada com 6 meses de garantia local. Em até 12x no cartão ou desconto à vista!`
+            ? "Compre o Celular Xiaomi Redmi Note 15 5G NFC Dual SIM 256GB 8GB RAM na Xiaomi Shop Cell Curitiba por R$ 1.699,99 à vista ou parcelado em até 12x de R$ 163,90 no cartão. Loja segura no Centro de Curitiba com garantia local de 12 meses."
+            : `Garanta seu ${product.name} na Xiaomi Shop Cell Curitiba. Novo, original, caixa lacrada com 12 meses de garantia local. Em até 12x no cartão ou desconto à vista!`
         }
         canonical={
           product.id === 16 
@@ -325,7 +325,7 @@ export default function ProductPage() {
                   <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl flex items-start gap-3">
                     <ShieldCheck className="w-5 h-5 text-[#FF6600] shrink-0 mt-0.5" />
                     <div>
-                      <h5 className="font-bold text-slate-900 text-xs sm:text-sm uppercase tracking-wider font-mono">6 Meses Garantia</h5>
+                      <h5 className="font-bold text-slate-900 text-xs sm:text-sm uppercase tracking-wider font-mono">12 Meses Garantia</h5>
                       <p className="text-slate-500 text-[10px] sm:text-xs mt-0.5">Suporte local rápido e direto no Centro de Curitiba.</p>
                     </div>
                   </div>
@@ -359,7 +359,7 @@ export default function ProductPage() {
                     </div>
                     <div className="flex justify-between py-2 border-b border-slate-100">
                       <span className="text-slate-500 font-medium">Garantia Local</span>
-                      <span className="text-slate-800 font-bold">6 Meses (Curitiba)</span>
+                      <span className="text-slate-800 font-bold">12 Meses (Curitiba)</span>
                     </div>
 
                     {/* Dynamic Detailed Specifications for POCO X8 Pro */}
@@ -1164,14 +1164,16 @@ export default function ProductPage() {
               exit={{ scale: 0.95, opacity: 0 }}
               className="relative bg-black rounded-3xl overflow-hidden w-full max-w-3xl aspect-video z-10 shadow-2xl border border-slate-800 pointer-events-auto"
             >
-              <iframe
-                src={product.id === 16 ? "https://www.youtube.com/embed/dSPOGtBxMds?autoplay=1" : "https://www.youtube.com/embed/Oxsd08SpQtI?autoplay=1"}
-                title={`${product.name} Video Review`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              />
+              <video
+                src="https://img.supremasite.com.br/shopcell.mp4"
+                controls
+                autoPlay
+                playsInline
+                className="w-full h-full object-contain"
+                id="product-modal-video"
+              >
+                Seu navegador não suporta a reprodução deste vídeo.
+              </video>
               <button
                 onClick={() => setVideoOpen(false)}
                 className="absolute top-4 right-4 bg-black/60 hover:bg-[#FF6600] text-white rounded-full p-2 cursor-pointer transition-colors"

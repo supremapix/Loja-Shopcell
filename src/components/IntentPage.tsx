@@ -96,7 +96,7 @@ export default function IntentPage() {
 
                 <div className="pt-4 flex flex-wrap items-center gap-6 justify-center lg:justify-start text-xs font-mono text-slate-400">
                   <span className="flex items-center gap-1.5">
-                    <ShieldCheck className="w-4 h-4 text-[#FF6600]" /> 6 Meses de Garantia Local
+                    <ShieldCheck className="w-4 h-4 text-[#FF6600]" /> 12 Meses de Garantia Local
                   </span>
                   <span className="flex items-center gap-1.5">
                     <Truck className="w-4 h-4 text-[#FF6600]" /> Entregas via Motoboy Express
@@ -130,7 +130,7 @@ export default function IntentPage() {
                     </li>
                     <li className="flex items-start gap-2.5">
                       <CheckCircle2 className="w-4 h-4 text-[#FF6600] shrink-0 mt-0.5" />
-                      <span><strong>Produtos Novos e Originais:</strong> Aparelhos lacrados na caixa com garantia de 6 meses.</span>
+                      <span><strong>Produtos Novos e Originais:</strong> Aparelhos lacrados na caixa com garantia de 12 meses.</span>
                     </li>
                   </ul>
 

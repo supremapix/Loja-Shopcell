@@ -12,8 +12,8 @@ const DESKTOP_SLIDE_DATA = [
   {
     badge: "Loja Física no Centro de Curitiba",
     title: "LOJA DE CELULARES EM CURITIBA",
-    subtitle: "Sua loja especializada com garantia local de 6 meses, produtos novos e lacrados e o melhor atendimento da região.",
-    incentive: "Garantia Local de 6 Meses • Atendimento Humanizado • 8+ Anos de História",
+    subtitle: "Sua loja especializada com garantia local de 12 meses, produtos novos e lacrados e o melhor atendimento da região.",
+    incentive: "Garantia Local de 12 Meses • Atendimento Humanizado • 8+ Anos de História",
     ctaText: "Consultar Celulares no WhatsApp",
     ctaLink: CONTACT_INFO.whatsappLink
   }
@@ -24,7 +24,7 @@ export default function Hero() {
 
   const promoItems = [
     "SHOPCELL — LOJA DE CELULARES EM CURITIBA",
-    "COMPRE SEU CELULAR NOVO E LACRADO COM 6 MESES DE GARANTIA",
+    "COMPRE SEU CELULAR NOVO E LACRADO COM 12 MESES DE GARANTIA",
     "LOJA FÍSICA NO EDIFÍCIO DOWNTOWN — CENTRO DE CURITIBA",
     "ENTREGA EXPRESSA VIA MOTOBOY COM OPÇÃO DE PAGAR NA ENTREGA",
     "NOTA 5.0 NO GOOGLE COM MAIS DE 3.800 AVALIAÇÕES SATISFEITAS",
@@ -85,7 +85,7 @@ export default function Hero() {
               <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-slate-300 pt-4 border-t border-slate-800">
                 <span className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Garantia Local 6 Meses</span>
+                  <span>Garantia Local 12 Meses</span>
                 </span>
                 <span className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />

@@ -215,7 +215,7 @@ export default function Cart({
                   <div className="bg-[#FF6600]/5 border border-[#FF6600]/15 rounded-xl p-3 flex gap-2.5 mt-6">
                     <AlertTriangle className="w-4 h-4 text-[#FF6600] flex-shrink-0 mt-0.5" />
                     <p className="text-[11px] text-gray-600 leading-normal">
-                      Os aparelhos de Curitiba são abertos e testados na sua frente na loja física ou lacrados na entrega. Todos contam com <strong>6 meses de garantia local</strong>.
+                      Os aparelhos de Curitiba são abertos e testados na sua frente na loja física ou lacrados na entrega. Todos contam com <strong>12 meses de garantia local</strong>.
                     </p>
                   </div>
                 </div>

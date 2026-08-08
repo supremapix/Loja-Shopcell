@@ -34,7 +34,7 @@ export default function Footer() {
             </div>
             
             <p className="text-xs leading-relaxed text-slate-400 font-medium">
-              Sua loja especializada em celulares em Curitiba. Há mais de 8 anos oferecendo atendimento personalizado, garantia de 6 meses e produtos originais.
+              Sua loja especializada em celulares em Curitiba. Há mais de 8 anos oferecendo atendimento personalizado, garantia de 12 meses e produtos originais.
             </p>
             
             <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 p-2.5 rounded-xl w-fit shadow-xs">

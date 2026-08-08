@@ -21,7 +21,7 @@ export default function ShareButton() {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const shareTitle = "Xiaomi Shop Cell Curitiba - Smartphones Xiaomi, POCO e Redmi Originais";
-  const shareText = "Confira a loja Xiaomi mais bem avaliada de Curitiba com entrega expressa, retirada segura e 6 meses de garantia!";
+  const shareText = "Confira a loja Xiaomi mais bem avaliada de Curitiba com entrega expressa, retirada segura e 12 meses de garantia!";
   const currentPath = window.location.pathname;
   const shareUrl = currentPath && currentPath !== '/' 
     ? `https://www.xiaomishopcell.com${currentPath}`

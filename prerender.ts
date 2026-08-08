@@ -37,7 +37,7 @@ const pages: PrerenderPage[] = [
     path: '/',
     outputPath: 'index.html',
     title: 'Shopcell — Loja de Celulares em Curitiba | Aparelhos Lacrados e Garantia',
-    description: 'Tradicional loja de celulares no Centro de Curitiba. Aparelhos novos, lacrados na caixa com 6 meses de garantia local. Entrega expressa via motoboy!',
+    description: 'Tradicional loja de celulares no Centro de Curitiba. Aparelhos novos, lacrados na caixa com 12 meses de garantia local. Entrega expressa via motoboy!',
     canonical: 'https://www.celularescuritibashopcell.com.br/',
     keywords: 'loja de celular curitiba, celular sitio cercado, comprar celular curitiba, loja de celular centro curitiba, celulares com garantia curitiba'
   },
@@ -54,7 +54,7 @@ const pages: PrerenderPage[] = [
     path: '/loja-de-celular-curitiba',
     outputPath: path.join('loja-de-celular-curitiba', 'index.html'),
     title: 'Loja de Celular em Curitiba | Shopcell Centro',
-    description: 'Encontre os melhores celulares com 6 meses de garantia na Shopcell no Centro de Curitiba. Atendimento presencial e entrega expressa.',
+    description: 'Encontre os melhores celulares com 12 meses de garantia na Shopcell no Centro de Curitiba. Atendimento presencial e entrega expressa.',
     canonical: 'https://www.celularescuritibashopcell.com.br/loja-de-celular-curitiba',
     keywords: 'loja de celular curitiba, loja de celular centro curitiba, shopcell curitiba'
   },

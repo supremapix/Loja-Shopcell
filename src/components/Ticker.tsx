@@ -30,7 +30,7 @@ export default function Ticker() {
     },
     {
       icon: <Shield className="w-4 h-4 text-sky-400" />,
-      text: "COMPRE COM SEGURANÇA: 6 Meses de Garantia Local em Todos os Aparelhos Xiaomi!",
+      text: "COMPRE COM SEGURANÇA: 12 Meses de Garantia Local em Todos os Aparelhos!",
       actionText: "Falar com Vendedor",
       link: CONTACT_INFO.whatsappLink
     },

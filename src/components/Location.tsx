@@ -163,16 +163,17 @@ export default function Location() {
             </div>
 
             {/* Video Player in Max 16:9 Prominence Aspect Ratio */}
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
-              <iframe
-                src="https://www.youtube.com/embed/so2ruQUFU6Q?rel=0&autoplay=0"
-                title="Apresentação Xiaomi Shop Cell Curitiba"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="absolute top-0 left-0 w-full h-full"
-                id="youtube-institutional-video"
-              />
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black flex items-center justify-center">
+              <video
+                src="https://img.supremasite.com.br/shopcell.mp4"
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-contain rounded-2xl"
+                id="shopcell-institutional-video"
+              >
+                Seu navegador não suporta a reprodução deste vídeo.
+              </video>
             </div>
           </div>
         </div>

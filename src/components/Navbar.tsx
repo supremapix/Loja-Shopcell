@@ -92,7 +92,7 @@ export default function Navbar({
               Shopcell
             </span>
             <span className="font-semibold text-slate-200">
-              🔥 Celulares Originais em Curitiba • Até 12x no cartão • 6 Meses de Garantia Local!
+              🔥 Celulares Originais em Curitiba • Até 12x no cartão • 12 Meses de Garantia Local!
             </span>
           </div>
 
@@ -128,7 +128,7 @@ export default function Navbar({
               </a>
               <span className="text-slate-700 select-none">❖</span>
               <span className="flex items-center gap-1.5 flex-shrink-0 text-[#FF6900]">
-                <span>🔥 CELULARES COM 6 MESES DE GARANTIA EM CURITIBA</span>
+                <span>🔥 CELULARES COM 12 MESES DE GARANTIA EM CURITIBA</span>
               </span>
               <span className="text-slate-700 select-none">❖</span>
               <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 flex-shrink-0 hover:text-emerald-400 text-emerald-400 font-extrabold">

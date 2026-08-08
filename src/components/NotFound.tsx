@@ -63,7 +63,7 @@ export default function NotFound() {
   const faqList = [
     {
       q: "Os celulares são novos e originais?",
-      a: "Sim! Trabalhamos apenas com celulares novos, originais e lacrados na caixa. Oferecemos 6 meses de garantia local presencial em nossa loja física em Curitiba."
+      a: "Sim! Trabalhamos apenas com celulares novos, originais e lacrados na caixa. Oferecemos 12 meses de garantia local presencial em nossa loja física em Curitiba."
     },
     {
       q: "Em quantas vezes posso parcelar?",
@@ -71,7 +71,7 @@ export default function NotFound() {
     },
     {
       q: "Qual a garantia dos aparelhos?",
-      a: "Oferecemos garantia de 6 meses contra qualquer defeito de fabricação diretamente conosco na Shopcell Curitiba."
+      a: "Oferecemos garantia de 12 meses contra qualquer defeito de fabricação diretamente conosco na Shopcell Curitiba."
     },
     {
       q: "Onde fica a loja e qual o horário?",

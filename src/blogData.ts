@@ -35,13 +35,13 @@ export const BLOG_POSTS: Record<string, BlogPost> = {
       <p>Para navegação diária sem travamentos, priorize smartphones com ao menos 128GB a 256GB de espaço interno e 8GB de memória RAM.</p>
 
       <h3>3. Garantia Local e Suporte Físico</h3>
-      <p>Comprar em uma loja física estabelecida no Centro de Curitiba com 6 meses de garantia local traz a segurança de que qualquer dúvida será resolvida presencialmente.</p>
+      <p>Comprar em uma loja física estabelecida no Centro de Curitiba com 12 meses de garantia local traz a segurança de que qualquer dúvida será resolvida presencialmente.</p>
     `
   },
   "vantagens-de-comprar-celular-em-loja-fisica-em-curitiba": {
     slug: "vantagens-de-comprar-celular-em-loja-fisica-em-curitiba",
     title: "Vantagens de Comprar Celular em Loja Física com Garantia Local em Curitiba",
-    metaDescription: "Descubra os benefícios de comprar seu smartphone em loja física com garantia de 6 meses no Centro de Curitiba e entrega via motoboy.",
+    metaDescription: "Descubra os benefícios de comprar seu smartphone em loja física com garantia de 12 meses no Centro de Curitiba e entrega via motoboy.",
     category: "Dicas de Compra",
     date: "20 de Julho de 2026",
     author: "Gerência Shopcell",
@@ -56,7 +56,7 @@ export const BLOG_POSTS: Record<string, BlogPost> = {
       <ul>
         <li><strong>Sem espera:</strong> Retire no mesmo dia no Centro de Curitiba ou receba em poucas horas via motoboy no Sítio Cercado e demais bairros.</li>
         <li><strong>Inspeção presencial:</strong> Você confere a embalagem lacrada antes do pagamento.</li>
-        <li><strong>Garantia de 6 meses:</strong> Suporte dedicado presencial direto na nossa loja física.</li>
+        <li><strong>Garantia de 12 meses:</strong> Suporte dedicado presencial direto na nossa loja física.</li>
       </ul>
     `
   },

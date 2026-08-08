@@ -20,7 +20,7 @@ export default function Features() {
             Por que escolher a Shopcell Curitiba?
           </h2>
           <p className="text-gray-600 text-xs sm:text-sm mt-4 leading-relaxed">
-            Mais de 8 anos de tradição em Curitiba oferecendo segurança, transparência e 6 meses de garantia local presencial.
+            Mais de 8 anos de tradição em Curitiba oferecendo segurança, transparência e 12 meses de garantia local presencial.
           </p>
         </div>
 
