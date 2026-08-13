@@ -7,10 +7,11 @@ import {
   Store, Headphones
 } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
+import { useCart } from '../context/CartContext';
 
 interface NavbarProps {
-  cartCount: number;
-  onOpenCart: () => void;
+  cartCount?: number;
+  onOpenCart?: () => void;
   searchQuery: string;
   onSearchChange: (query: string) => void;
   activeSection?: string;
@@ -18,11 +19,15 @@ interface NavbarProps {
 }
 
 export default function Navbar({
-  cartCount,
-  onOpenCart,
+  cartCount: propCartCount,
+  onOpenCart: propOnOpenCart,
   searchQuery,
   onSearchChange
 }: NavbarProps) {
+  const { totalItemsCount, openCart } = useCart();
+  const cartCount = propCartCount !== undefined ? propCartCount : totalItemsCount;
+  const onOpenCart = propOnOpenCart || openCart;
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);

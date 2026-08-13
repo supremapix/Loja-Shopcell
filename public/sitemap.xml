@@ -7,9 +7,41 @@
   <!-- Home Page -->
   <url>
     <loc>https://www.celularescuritibashopcell.com.br/</loc>
-    <lastmod>2026-07-26</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
+  </url>
+
+  <!-- Realme Smartphones Catalog -->
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celulares</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.99</priority>
+  </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celular/realme-note-60x</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.96</priority>
+  </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celular/realme-p4-lite</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.96</priority>
+  </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celular/realme-14-5g</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.96</priority>
+  </url>
+  <url>
+    <loc>https://www.celularescuritibashopcell.com.br/celular/realme-p4-power-5g</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.96</priority>
   </url>
 
   <!-- High Intent Spotlight - Sítio Cercado -->

@@ -1,12 +1,16 @@
 import React from 'react';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './components/Home';
+import CelularesListingPage from './components/CelularesListingPage';
+import CelularProductPage from './components/CelularProductPage';
 import LocationPage from './components/LocationPage';
 import IntentPage from './components/IntentPage';
 import BlogPage from './components/BlogPage';
 import BlogPostPage from './components/BlogPostPage';
 import Compare from './components/Compare';
 import NotFound from './components/NotFound';
+import { CartProvider } from './context/CartContext';
 
 function BairroRouteGuard() {
   const { slug } = useParams<{ slug: string }>();
@@ -36,10 +40,13 @@ function PrefixRedirect() {
 
 export default function App() {
   return (
-    <Routes>
+    <CartProvider>
+      <ScrollToTop />
+      <Routes>
       {/* Primary Institutional Routes */}
       <Route path="/" element={<Home />} />
-      <Route path="/celulares" element={<Home />} />
+      <Route path="/celulares" element={<CelularesListingPage />} />
+      <Route path="/celular/:slug" element={<CelularProductPage />} />
       <Route path="/loja-de-celular-curitiba" element={<IntentPage />} />
       <Route path="/acessorios" element={<Home />} />
       <Route path="/sobre" element={<Home />} />
@@ -90,5 +97,6 @@ export default function App() {
       {/* Catch-all Route */}
       <Route path="*" element={<NotFound />} />
     </Routes>
+    </CartProvider>
   );
 }

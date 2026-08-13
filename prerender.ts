@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { bairrosData } from './src/bairrosData.js';
 import { INTENT_PAGES } from './src/intentData.js';
+import { REALME_PRODUCTS } from './src/realmeData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -29,6 +30,15 @@ interface PrerenderPage {
   bairroName?: string;
   regiaoName?: string;
   noindex?: boolean;
+  ogType?: string;
+  ogImage?: string;
+  productData?: {
+    name: string;
+    price: number;
+    image: string;
+    description: string;
+    brand: string;
+  };
 }
 
 const pages: PrerenderPage[] = [
@@ -41,15 +51,33 @@ const pages: PrerenderPage[] = [
     canonical: 'https://www.celularescuritibashopcell.com.br/',
     keywords: 'loja de celular curitiba, celular sitio cercado, comprar celular curitiba, loja de celular centro curitiba, celulares com garantia curitiba'
   },
-  // Core institutional pages
+  // Realme Smartphones Catalog Page
   {
     path: '/celulares',
     outputPath: path.join('celulares', 'index.html'),
-    title: 'Celulares em Curitiba — Shopcell | Modelos Novos com Garantia',
-    description: 'Confira as melhores opções de celulares novos em Curitiba. Entrega rápida via motoboy e opção de pague na entrega.',
+    title: 'Smartphones Realme em Curitiba | Shopcell — Modelos com Garantia de 12 Meses',
+    description: 'Confira os smartphones Realme em Curitiba na Shopcell: realme Note 60X, P4 Lite, 14 5G e P4 Power 5G. Aparelhos novos com 12 meses de garantia local e entrega expressa.',
     canonical: 'https://www.celularescuritibashopcell.com.br/celulares',
-    keywords: 'celulares curitiba, comprar celular novo curitiba, loja de celulares curitiba'
+    keywords: 'smartphones realme curitiba, comprar realme curitiba, celular realme curitiba, realme note 60x curitiba, realme p4 lite curitiba, realme 14 5g curitiba, realme p4 power curitiba, loja de celulares curitiba'
   },
+  // Individual Realme Smartphone Pages
+  ...REALME_PRODUCTS.map((prod) => ({
+    path: `/celular/${prod.slug}`,
+    outputPath: path.join('celular', prod.slug, 'index.html'),
+    title: prod.titleSEO,
+    description: prod.metaDescription,
+    canonical: prod.canonical,
+    keywords: `${prod.name}, comprar ${prod.name} curitiba, ${prod.name} menor preco curitiba, celular realme curitiba, shopcell curitiba`,
+    ogType: 'product',
+    ogImage: prod.image,
+    productData: {
+      name: prod.name,
+      price: prod.price,
+      image: prod.image,
+      description: prod.shortDescription,
+      brand: 'realme'
+    }
+  })),
   {
     path: '/loja-de-celular-curitiba',
     outputPath: path.join('loja-de-celular-curitiba', 'index.html'),
@@ -157,28 +185,79 @@ function generateSchemas(page: PrerenderPage) {
     ]
   };
 
+  const breadcrumbElements = [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://www.celularescuritibashopcell.com.br"
+    }
+  ];
+
+  if (page.path.startsWith('/celular/')) {
+    breadcrumbElements.push({
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Celulares",
+      "item": "https://www.celularescuritibashopcell.com.br/celulares"
+    });
+    breadcrumbElements.push({
+      "@type": "ListItem",
+      "position": 3,
+      "name": page.productData?.name || page.title,
+      "item": page.canonical
+    });
+  } else if (page.path === '/celulares') {
+    breadcrumbElements.push({
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Celulares",
+      "item": page.canonical
+    });
+  } else if (page.bairroName) {
+    breadcrumbElements.push({
+      "@type": "ListItem",
+      "position": 2,
+      "name": page.bairroName,
+      "item": page.canonical
+    });
+  }
+
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Início",
-        "item": "https://www.celularescuritibashopcell.com.br"
-      },
-      ...(page.bairroName ? [{
-        "@type": "ListItem",
-        "position": 2,
-        "name": page.bairroName,
-        "item": page.canonical
-      }] : [])
-    ]
+    "itemListElement": breadcrumbElements
   };
+
+  const productSchema = page.productData ? {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": page.productData.name,
+    "image": page.productData.image,
+    "description": page.productData.description,
+    "brand": {
+      "@type": "Brand",
+      "name": page.productData.brand
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": page.canonical,
+      "priceCurrency": "BRL",
+      "price": page.productData.price.toFixed(2),
+      "priceValidUntil": "2026-12-31",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "MobilePhoneStore",
+        "name": "Shopcell Curitiba"
+      }
+    }
+  } : null;
 
   return `
     <script type="application/ld+json">${JSON.stringify(localBusiness)}</script>
     <script type="application/ld+json">${JSON.stringify(breadcrumb)}</script>
+    ${productSchema ? `<script type="application/ld+json">${JSON.stringify(productSchema)}</script>` : ''}
   `;
 }
 
@@ -187,7 +266,8 @@ pages.forEach((page) => {
 
   html = html.replace(/<title>.*?<\/title>/gi, `<title>${page.title}</title>`);
 
-  const ogImage = "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp";
+  const ogImage = page.ogImage || "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp";
+  const ogType = page.ogType || "website";
   
   const robotsTag = page.noindex 
     ? '<meta name="robots" content="noindex, nofollow" />' 
@@ -206,7 +286,7 @@ pages.forEach((page) => {
     <meta name="ICBM" content="-25.4357, -49.2638" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="${ogType}" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="Shopcell — Loja de Celulares em Curitiba" />
     <meta property="og:url" content="${page.canonical}" />

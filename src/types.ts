@@ -1,14 +1,19 @@
 export interface Product {
-  id: number;
+  id: number | string;
   name: string;
   category: string;
   brand?: string;
-  desc: string;
-  rating: number;
-  reviewsCount: number | string;
+  desc?: string;
+  rating?: number;
+  reviewsCount?: number | string;
   image: string;
-  badges: string[];
+  badges?: string[];
   isHeroDestaque?: boolean;
+  price?: number;
+  priceFormatted?: string;
+  installments?: string;
+  slug?: string;
+  color?: string;
 }
 
 export interface CategoryHighlight {
@@ -40,7 +45,22 @@ export interface Differential {
   description: string;
 }
 
+export interface CartProduct {
+  id: string | number;
+  slug?: string;
+  name: string;
+  category?: string;
+  brand?: string;
+  desc?: string;
+  image: string;
+  price?: number;
+  priceFormatted?: string;
+  installments?: string;
+  color?: string;
+  badges?: string[];
+}
+
 export interface CartItem {
-  product: Product;
+  product: CartProduct;
   quantity: number;
 }

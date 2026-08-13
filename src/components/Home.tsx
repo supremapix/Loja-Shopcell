@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MessageSquare, ShieldCheck, Store, Zap, Phone, MapPin, Star, ArrowRight, CheckCircle2, ChevronRight, Headphones, Smartphone, CreditCard } from 'lucide-react';
 import { CATEGORY_HIGHLIGHTS, CONTACT_INFO, DIFFERENTIALS, FAQS, REVIEWS } from '../data';
 import Navbar from './Navbar';
@@ -10,11 +11,9 @@ import Reviews from './Reviews';
 import FAQ from './FAQ';
 import Location from './Location';
 import Garantia from './Garantia';
-import Cart from './Cart';
 import ShareButton from './ShareButton';
 
 export default function Home() {
-  const [cartOpen, setCartOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
@@ -26,8 +25,6 @@ export default function Home() {
       />
 
       <Navbar
-        cartCount={0}
-        onOpenCart={() => setCartOpen(true)}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
       />
@@ -87,6 +84,18 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          {/* Direct link to Realme catalog */}
+          <div className="mt-12 text-center">
+            <Link
+              to="/celulares"
+              className="inline-flex items-center gap-3 bg-slate-900 hover:bg-[#FF6600] text-white text-base font-bold px-8 py-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-200"
+            >
+              <Smartphone className="w-5 h-5 text-[#FF6600]" />
+              <span>Ver Catálogo de Smartphones Realme com Preços</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -128,15 +137,6 @@ export default function Home() {
       </section>
 
       <Footer />
-
-      <Cart
-        isOpen={cartOpen}
-        onClose={() => setCartOpen(false)}
-        cartItems={[]}
-        onUpdateQuantity={() => {}}
-        onRemoveItem={() => {}}
-        onClearCart={() => {}}
-      />
 
       <ShareButton />
 

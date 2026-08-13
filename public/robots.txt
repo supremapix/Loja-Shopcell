@@ -1,9 +1,10 @@
 # Robots.txt for Shopcell — Loja de Celulares em Curitiba
-# Optimized for Google, Bing, and AI Search Engines (ChatGPT, Gemini, Claude, Copilot, Perplexity)
+# Optimized for Search Engines & Generative AI Systems (ChatGPT, Gemini, Claude, Copilot, Perplexity)
 
 User-agent: *
 Allow: /
 Allow: /celulares
+Allow: /celular/
 Allow: /loja-de-celular-curitiba
 Allow: /acessorios
 Allow: /sobre
@@ -17,15 +18,13 @@ Allow: /celular-com-garantia-curitiba
 Allow: /loja-de-celulares-perto-de-mim
 Allow: /bairro/
 Allow: /llms.txt
+Allow: /llms-full.txt
 
-# Specific AI Crawlers
+# Specific AI & Search Crawlers
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Google-Extended
 Allow: /
 
 User-agent: ClaudeBot
@@ -34,7 +33,10 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Bytespider
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Amazonbot
 Allow: /
 
 User-agent: CCBot
@@ -44,6 +46,12 @@ User-agent: Bingbot
 Allow: /
 
 User-agent: Googlebot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bytespider
 Allow: /
 
 # Sitemaps Index

@@ -8,8 +8,8 @@ interface CartProps {
   isOpen: boolean;
   onClose: () => void;
   cartItems: CartItem[];
-  onUpdateQuantity: (productId: number, q: number) => void;
-  onRemoveItem: (productId: number) => void;
+  onUpdateQuantity: (productId: string | number, q: number) => void;
+  onRemoveItem: (productId: string | number) => void;
   onClearCart: () => void;
 }
 
@@ -59,16 +59,20 @@ export default function Cart({
     message += `📦 *ITENS DO PEDIDO:*\n`;
     cartItems.forEach((item) => {
       message += `- *${item.quantity}x* ${item.product.name}\n`;
-      message += `   Consulta: Consulte o menor valor via WhatsApp agora mesmo!\n\n`;
+      if (item.product.priceFormatted) {
+        message += `   Valor: ${item.product.priceFormatted} à vista (ou até 12x)\n`;
+      }
+      if (item.product.color) {
+        message += `   Cor: ${item.product.color}\n`;
+      }
+      message += `\n`;
     });
 
     message += `-----------------------------------\n`;
-    message += `💵 *VALOR DO PEDIDO:* Consulte o menor valor para este aparelho via WhatsApp agora mesmo!\n`;
-    if (paymentMethod === 'cartao') {
-      message += `💳 *CONDIÇÃO CARTÃO:* Consultar taxas de parcelamento final no WhatsApp.\n`;
-    }
+    message += `📍 *Loja Física:* Edifício Downtown - Centro de Curitiba\n`;
+    message += `🛡️ *Garantia:* 12 Meses de Garantia Local\n`;
     message += `===================================\n\n`;
-    message += `_Pedido gerado de forma automática via site oficial Shopcell Curitiba_`;
+    message += `_Pedido gerado via site oficial Shopcell Curitiba_`;
 
     const encodedText = encodeURIComponent(message);
     const whatsappUrl = `https://api.whatsapp.com/send?phone=554137989918&text=${encodedText}`;
@@ -154,7 +158,7 @@ export default function Cart({
                         key={item.product.id}
                         className="flex gap-3 bg-white border border-slate-200 p-3 rounded-xl relative group shadow-xs"
                       >
-                        <div className="w-16 h-16 bg-slate-50 rounded-lg p-2 flex items-center justify-center flex-shrink-0">
+                        <div className="w-16 h-16 bg-white border border-slate-200 rounded-lg p-1.5 flex items-center justify-center flex-shrink-0">
                           <img
                             src={item.product.image}
                             alt={item.product.name}
@@ -167,12 +171,19 @@ export default function Cart({
                           <h4 className="font-display font-bold text-gray-900 text-xs sm:text-sm line-clamp-1">
                             {item.product.name}
                           </h4>
-                          <span className="text-[10px] text-gray-400 font-mono block mt-0.5 uppercase tracking-wide">
-                            {item.product.brand}
-                          </span>
+                          <div className="flex items-center gap-2 mt-0.5">
+                            <span className="text-[10px] text-gray-500 font-mono uppercase tracking-wide">
+                              {item.product.brand || 'Realme'}
+                            </span>
+                            {item.product.color && (
+                              <span className="text-[10px] bg-slate-100 text-slate-700 font-bold px-1.5 py-0.2 rounded border border-slate-200">
+                                {item.product.color}
+                              </span>
+                            )}
+                          </div>
                           <div className="flex items-center justify-between mt-2.5">
-                            <span className="text-[#FF6600] font-mono text-[11px] font-bold">
-                              Consulte o menor valor via WhatsApp
+                            <span className="text-[#FF6600] font-mono text-[12px] font-bold">
+                              {item.product.priceFormatted ? item.product.priceFormatted : 'Consulte no WhatsApp'}
                             </span>
 
                             {/* Quantity Controls */}

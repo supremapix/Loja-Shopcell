@@ -137,7 +137,7 @@ export default function ProductPage() {
     .sort((a, b) => {
       if (a.brand === product.brand && b.brand !== product.brand) return -1;
       if (a.brand !== product.brand && b.brand === product.brand) return 1;
-      return a.id - b.id;
+      return String(a.id).localeCompare(String(b.id));
     })
     .slice(0, 4);
 
@@ -206,7 +206,7 @@ export default function ProductPage() {
             
             {/* Left Column: Image Area */}
             <div className="lg:col-span-6 flex flex-col justify-between h-full">
-              <div className="relative bg-slate-50 border border-slate-100 rounded-2xl p-6 flex justify-center items-center overflow-hidden aspect-square max-h-[460px] md:max-h-[520px] w-full">
+              <div className="relative bg-white border border-slate-200/90 rounded-2xl p-6 flex justify-center items-center overflow-hidden aspect-square max-h-[460px] md:max-h-[520px] w-full">
                 
                 {/* Product Badges */}
                 <div className="absolute top-4 left-4 flex flex-wrap gap-1.5 z-10">
@@ -255,8 +255,8 @@ export default function ProductPage() {
                     <button
                       key={idx}
                       onClick={() => setSelectedImage(imgUrl)}
-                      className={`bg-slate-50 border-2 rounded-xl p-1 aspect-square flex items-center justify-center overflow-hidden transition-all cursor-pointer ${
-                        currentDisplayImage === imgUrl ? 'border-[#FF6600] shadow-sm scale-105 bg-orange-50/20' : 'border-slate-200 hover:border-slate-300'
+                      className={`bg-white border-2 rounded-xl p-1 aspect-square flex items-center justify-center overflow-hidden transition-all cursor-pointer ${
+                        currentDisplayImage === imgUrl ? 'border-[#FF6600] shadow-sm scale-105 bg-white' : 'border-slate-200 hover:border-slate-300'
                       }`}
                     >
                       <img

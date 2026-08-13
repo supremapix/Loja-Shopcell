@@ -36,8 +36,6 @@ export default function IntentPage() {
       />
 
       <Navbar 
-        cartCount={0}
-        onOpenCart={() => {}}
         searchQuery=""
         onSearchChange={() => {}}
       />

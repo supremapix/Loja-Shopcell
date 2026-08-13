@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { bairrosData } from '../bairrosData';
 import { CATEGORY_HIGHLIGHTS, CONTACT_INFO } from '../data';
@@ -10,7 +10,6 @@ import Garantia from './Garantia';
 import Reviews from './Reviews';
 import FAQ from './FAQ';
 import Footer from './Footer';
-import Cart from './Cart';
 import ShareButton from './ShareButton';
 import { MapPin, MessageSquare, ChevronRight, ShieldCheck, Check } from 'lucide-react';
 
@@ -24,8 +23,6 @@ export default function LocationPage() {
   if (!currentBairro) {
     return <Navigate to="/404" replace />;
   }
-
-  const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -44,8 +41,6 @@ export default function LocationPage() {
       />
 
       <Navbar
-        cartCount={0}
-        onOpenCart={() => setCartOpen(true)}
         searchQuery=""
         onSearchChange={() => {}}
       />
@@ -165,15 +160,6 @@ export default function LocationPage() {
       <Reviews />
       <FAQ />
       <Footer />
-
-      <Cart
-        isOpen={cartOpen}
-        onClose={() => setCartOpen(false)}
-        cartItems={[]}
-        onUpdateQuantity={() => {}}
-        onRemoveItem={() => {}}
-        onClearCart={() => {}}
-      />
 
       <ShareButton />
 

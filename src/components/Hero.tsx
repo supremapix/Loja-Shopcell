@@ -1,128 +1,166 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
-import { Star, Shield, Zap, Sparkles, ArrowRight, ChevronLeft, ChevronRight, MessageSquare, MapPin, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Zap, MapPin, Truck, CreditCard, Sparkles, CheckCircle2, Star } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
-
-const DESKTOP_SLIDES = [
-  "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp"
-];
-
-const DESKTOP_SLIDE_DATA = [
-  {
-    badge: "Loja Física no Centro de Curitiba",
-    title: "LOJA DE CELULARES EM CURITIBA",
-    subtitle: "Sua loja especializada com garantia local de 12 meses, produtos novos e lacrados e o melhor atendimento da região.",
-    incentive: "Garantia Local de 12 Meses • Atendimento Humanizado • 8+ Anos de História",
-    ctaText: "Consultar Celulares no WhatsApp",
-    ctaLink: CONTACT_INFO.whatsappLink
-  }
-];
+import HeroSmartphoneMarquee from './HeroSmartphoneMarquee';
 
 export default function Hero() {
-  const [currentDesktopSlide, setCurrentDesktopSlide] = useState(0);
-
-  const promoItems = [
-    "SHOPCELL — LOJA DE CELULARES EM CURITIBA",
-    "COMPRE SEU CELULAR NOVO E LACRADO COM 12 MESES DE GARANTIA",
-    "LOJA FÍSICA NO EDIFÍCIO DOWNTOWN — CENTRO DE CURITIBA",
-    "ENTREGA EXPRESSA VIA MOTOBOY COM OPÇÃO DE PAGAR NA ENTREGA",
-    "NOTA 5.0 NO GOOGLE COM MAIS DE 3.800 AVALIAÇÕES SATISFEITAS",
-    "PARCELAMENTO EM ATÉ 12X NO CARTÃO DE CRÉDITO"
+  // Row 1: Brand, Location & Identity Ticker (Moves Left: animate-marquee)
+  const tickerBrand = [
+    { text: "SHOPCELL CURITIBA", highlight: true, icon: Sparkles },
+    { text: "LOJA FÍSICA NO EDIFÍCIO DOWNTOWN — CENTRO", highlight: false, icon: MapPin },
+    { text: "SMARTPHONES NOVOS, ORIGINAIS E LACRADOS", highlight: true, icon: Zap },
+    { text: "ATENDIMENTO VIP DE ALTO PADRÃO", highlight: false, icon: CheckCircle2 },
+    { text: "AVALIAÇÃO MÁXIMA 5.0 NO GOOGLE — +3.800 CLIENTES", highlight: true, icon: Star },
+    { text: "PRONTA ENTREGA EM TODA CURITIBA E REGIÃO", highlight: false, icon: Truck },
   ];
 
-  const duplicatedPromoItems = [...promoItems, ...promoItems, ...promoItems];
+  // Row 2: Warranties, Payment & Guarantees Ticker (Moves Right in Reverse: animate-marquee-reverse)
+  const tickerGuarantees = [
+    { text: "GARANTIA LOCAL DE 12 MESES DIRETO NA LOJA", highlight: true, icon: ShieldCheck },
+    { text: "ENTREGA EXPRESSA NO MESMO DIA VIA MOTOBOY", highlight: false, icon: Truck },
+    { text: "PARCELAMENTO EXCLUSIVO EM ATÉ 12X NO CARTÃO", highlight: true, icon: CreditCard },
+    { text: "PAGAMENTO SEGURO NA ENTREGA", highlight: false, icon: ShieldCheck },
+    { text: "APARELHOS HOMOLOGADOS ANATEL", highlight: true, icon: Zap },
+    { text: "TESTE E CONFIRA SEU APARELHO NO ATO", highlight: false, icon: CheckCircle2 },
+  ];
+
+  // Row 3: Models & Fast Contact Ticker (Moves Left: animate-marquee)
+  const tickerModels = [
+    { text: "REALME 14 5G — ULTRA VELOCIDADE & CÂMERA PRO", highlight: true, icon: Zap },
+    { text: "REALME NOTE 60X — RESISTÊNCIA & BATERIA MONSTRO", highlight: false, icon: Sparkles },
+    { text: "REALME P4 LITE — O MELHOR CUSTO-BENEFÍCIO", highlight: true, icon: Zap },
+    { text: "REALME P4 POWER 5G — DESEMPENHO EXTREMO", highlight: false, icon: Sparkles },
+    { text: "WHATSAPP OFICIAL: (41) 3798-9918", highlight: true, icon: CheckCircle2 },
+    { text: "MENOR PREÇO GARANTIDO DE CURITIBA", highlight: false, icon: Star },
+  ];
+
+  const duplicatedBrand = [...tickerBrand, ...tickerBrand, ...tickerBrand, ...tickerBrand];
+  const duplicatedGuarantees = [...tickerGuarantees, ...tickerGuarantees, ...tickerGuarantees, ...tickerGuarantees];
+  const duplicatedModels = [...tickerModels, ...tickerModels, ...tickerModels, ...tickerModels];
 
   return (
-    <div id="inicio" className="w-full flex flex-col bg-white">
-      {/* DESKTOP HERO BANNER */}
-      <div className="w-full relative z-20">
-        <div className="relative w-full min-h-[460px] lg:min-h-[520px] bg-slate-900 overflow-hidden flex items-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-slate-900/60 z-10" />
+    <div id="inicio" className="w-full flex flex-col bg-slate-950">
+      {/* CINEMATIC LUXURY HERO BANNER: 1 TICKER NO TOPO E 2 TICKERS NO RODAPÉ DA HERO (CENTRO TOTALMENTE LIVRE PARA O VÍDEO) */}
+      <div className="w-full relative z-20 overflow-hidden">
+        <div className="relative w-full min-h-[480px] sm:min-h-[540px] lg:min-h-[600px] bg-slate-950 flex flex-col justify-between overflow-hidden">
           
-          <img
-            src={DESKTOP_SLIDES[0]}
-            alt="Shopcell Loja de Celulares em Curitiba"
-            referrerPolicy="no-referrer"
-            className="absolute inset-0 w-full h-full object-cover object-center opacity-40"
-          />
+          {/* Background Video Layer - 100% Immersive, Ultra Crisp & Prominent */}
+          <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover min-w-full min-h-full opacity-90 filter brightness-100 contrast-105"
+            >
+              <source src="https://img.supremasite.com.br/shopcell.mp4" type="video/mp4" />
+            </video>
+            
+            {/* Subtle Gradient Framing - Keeps top/bottom legible while the entire center is completely clear */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-slate-950/80 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/30 via-transparent to-slate-950/30 pointer-events-none" />
+          </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full z-20 py-12 lg:py-16">
-            <div className="max-w-2xl text-left">
-              <div className="inline-flex items-center gap-1.5 bg-[#FF6900] text-white px-3.5 py-1 text-xs font-black uppercase tracking-wider rounded-lg mb-4 shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 fill-white" />
-                <span>{DESKTOP_SLIDE_DATA[0].badge}</span>
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-white leading-tight mb-4 tracking-tight uppercase">
-                {DESKTOP_SLIDE_DATA[0].title}
-              </h1>
-
-              <p className="text-slate-200 text-sm sm:text-base lg:text-lg mb-8 font-medium leading-relaxed">
-                {DESKTOP_SLIDE_DATA[0].subtitle}
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8">
-                <a
-                  href={CONTACT_INFO.whatsappLink}
-                  target="_blank"
-                  referrerPolicy="no-referrer"
-                  className="bg-[#FF6600] hover:bg-[#D45500] text-white text-sm font-extrabold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all duration-300 shadow-md inline-flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.01]"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  <span>Consultar no WhatsApp</span>
-                </a>
-
-                <Link
-                  to="/celulares"
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-sm font-extrabold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all duration-300 inline-flex items-center justify-center gap-2"
-                >
-                  <span>Conhecer Celulares</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-slate-300 pt-4 border-t border-slate-800">
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Garantia Local 12 Meses</span>
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Entrega Motoboy no Mesmo Dia</span>
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>Até 12x no Cartão</span>
-                </span>
+          {/* 1. LETREIRO NO TOPO DA HERO (Move para a Esquerda) */}
+          <div className="w-full relative z-20 overflow-hidden py-2.5 select-none border-b border-white/10 backdrop-blur-md bg-slate-950/50">
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
+            
+            <div className="flex w-max relative">
+              <div className="flex gap-6 sm:gap-10 animate-marquee hover:[animation-play-state:paused] transition-all duration-300">
+                {duplicatedBrand.map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-2.5 flex-shrink-0 text-xs sm:text-sm font-sans font-black tracking-wider uppercase text-white/95"
+                    >
+                      <span className={`inline-flex items-center justify-center p-1 rounded-md ${item.highlight ? 'bg-[#FF6600] text-white shadow-xs' : 'bg-white/15 text-slate-200'}`}>
+                        <Icon className="w-3.5 h-3.5" />
+                      </span>
+                      <span className={item.highlight ? 'text-[#FF8533] font-black' : 'text-white'}>
+                        {item.text}
+                      </span>
+                      <span className="text-white/30 ml-3">•</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
+
+          {/* ÁREA CENTRAL 100% LIVRE - VISÃO COMPLETA E LIMPA DO VÍDEO CINEMATOGRÁFICO */}
+          <div className="flex-1 w-full pointer-events-none" aria-hidden="true" />
+
+          {/* 2. DUPLO LETREIRO NO RODAPÉ DA HERO (2 Lados Inversos) */}
+          <div className="w-full relative z-20 flex flex-col">
+            
+            {/* Letreiro Inferior 1 (Move para a Direita em Sentido Inverso) */}
+            <div className="w-full overflow-hidden py-3 sm:py-3.5 select-none border-t border-white/15 backdrop-blur-md bg-slate-950/65">
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
+              
+              <div className="flex w-max relative">
+                <div className="flex gap-8 sm:gap-12 animate-marquee-reverse hover:[animation-play-state:paused] transition-all duration-300">
+                  {duplicatedGuarantees.map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <a
+                        key={idx}
+                        href={CONTACT_INFO.whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 flex-shrink-0 text-xs sm:text-base font-display font-black tracking-widest uppercase transition-all group"
+                      >
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-lg text-xs font-mono font-bold group-hover:scale-105 transition-transform">
+                          <Icon className="w-4 h-4 text-emerald-400" />
+                          <span>OFICIAL</span>
+                        </span>
+                        <span className="text-white group-hover:text-[#FF8533] transition-colors drop-shadow-md">
+                          {item.text}
+                        </span>
+                        <span className="text-[#FF6600]/70 ml-4">✦</span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Letreiro Inferior 2 (Move para a Esquerda) */}
+            <div className="w-full overflow-hidden py-2.5 select-none border-t border-white/10 backdrop-blur-md bg-slate-950/80">
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
+              
+              <div className="flex w-max relative">
+                <div className="flex gap-6 sm:gap-10 animate-marquee hover:[animation-play-state:paused] transition-all duration-300">
+                  {duplicatedModels.map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <div
+                        key={idx}
+                        className="flex items-center gap-2.5 flex-shrink-0 text-xs sm:text-sm font-sans font-bold tracking-wider uppercase text-slate-200"
+                      >
+                        <span className={`inline-flex items-center justify-center p-1 rounded-md ${item.highlight ? 'bg-amber-500/30 text-amber-300 border border-amber-500/40' : 'bg-slate-800 text-slate-300'}`}>
+                          <Icon className="w-3.5 h-3.5" />
+                        </span>
+                        <span className={item.highlight ? 'text-amber-300 font-extrabold' : 'text-slate-100'}>
+                          {item.text}
+                        </span>
+                        <span className="text-white/20 ml-3">—</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
 
-      {/* PROMOTIONAL TICKER */}
-      <div className="block w-full bg-slate-950 text-white border-y border-slate-800 py-3 relative overflow-hidden select-none z-20">
-        <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
-        
-        <div className="flex w-max relative">
-          <div className="flex gap-8 sm:gap-12 animate-marquee-reverse-fast hover:[animation-play-state:paused] transition-all duration-300">
-            {duplicatedPromoItems.map((item, idx) => (
-              <a
-                key={idx}
-                href={CONTACT_INFO.whatsappLink}
-                target="_blank"
-                referrerPolicy="no-referrer"
-                className="flex items-center gap-2 flex-shrink-0 text-xs sm:text-sm font-sans font-extrabold tracking-wide text-white hover:text-emerald-400 transition-colors cursor-pointer uppercase"
-              >
-                <span className="inline-flex items-center justify-center px-1.5 py-0.5 bg-[#FF6900] text-white rounded-md text-[10px] font-mono font-bold mr-1">SHOPCELL</span>
-                <span>{item}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* SMARTPHONE SHOWCASE CONVEYOR / TICKER */}
+      <HeroSmartphoneMarquee />
     </div>
   );
 }
