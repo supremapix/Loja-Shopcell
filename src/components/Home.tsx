@@ -12,6 +12,7 @@ import FAQ from './FAQ';
 import Location from './Location';
 import Garantia from './Garantia';
 import ShareButton from './ShareButton';
+import BrandTicker from './BrandTicker';
 import ProductsTicker from './ProductsTicker';
 import GuaranteesTicker from './GuaranteesTicker';
 
@@ -32,6 +33,9 @@ export default function Home() {
       />
 
       <Hero />
+
+      {/* LETREIRO INSTITUCIONAL E LOCALIZAÇÃO ANTES DAS CATEGORIAS */}
+      <BrandTicker />
 
       {/* CATEGORIES / APPAREL SHOWCASE */}
       <section id="celulares" className="py-16 bg-slate-50 border-t border-slate-200/80">

@@ -1,9 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  ShieldCheck, Zap, MapPin, Truck, Sparkles, 
-  CheckCircle2, Star, Volume2, VolumeX, MessageSquare, ArrowRight
-} from 'lucide-react';
-import { CONTACT_INFO } from '../data';
+import { Volume2, VolumeX, MessageSquare, ArrowRight } from 'lucide-react';
 import HeroSmartphoneMarquee from './HeroSmartphoneMarquee';
 
 export default function Hero() {
@@ -38,16 +34,6 @@ export default function Hero() {
     }
   };
 
-  // Row 1: Brand, Location & Identity Ticker (Moves Left: animate-marquee-slow)
-  const tickerBrand = [
-    { text: "SHOPCELL CURITIBA", highlight: true, icon: Sparkles },
-    { text: "LOJA FÍSICA NO EDIFÍCIO DOWNTOWN — CENTRO", highlight: false, icon: MapPin },
-    { text: "SMARTPHONES NOVOS, ORIGINAIS E LACRADOS", highlight: true, icon: Zap },
-    { text: "ATENDIMENTO VIP DE ALTO PADRÃO", highlight: false, icon: CheckCircle2 },
-    { text: "AVALIAÇÃO MÁXIMA 5.0 NO GOOGLE — +3.800 CLIENTES", highlight: true, icon: Star },
-    { text: "PRONTA ENTREGA EM TODA CURITIBA E REGIÃO", highlight: false, icon: Truck },
-  ];
-
   // WhatsApp Catalog Ticker items - Running to the RIGHT (animate-marquee-reverse)
   const whatsappCatalogLink = `https://wa.me/554137989918?text=${encodeURIComponent("Olá! Gostaria de receber o catálogo completo com todos os celulares e preços atualizados no WhatsApp.")}`;
 
@@ -78,7 +64,6 @@ export default function Hero() {
     }
   ];
 
-  const duplicatedBrand = [...tickerBrand, ...tickerBrand, ...tickerBrand, ...tickerBrand];
   const duplicatedCatalog = [...catalogTickerItems, ...catalogTickerItems, ...catalogTickerItems, ...catalogTickerItems];
 
   return (
@@ -106,34 +91,6 @@ export default function Hero() {
             
             {/* Subtle Gradient Framing */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/70 pointer-events-none" />
-          </div>
-
-          {/* 1. LETREIRO NO TOPO DA HERO (Velocidade suave e confortável - Sentido Esquerda) */}
-          <div className="w-full relative z-20 overflow-hidden py-1.5 sm:py-2.5 select-none border-b border-white/10 backdrop-blur-md bg-slate-950/60">
-            <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-20 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
-            
-            <div className="flex w-max relative">
-              <div className="flex gap-6 sm:gap-10 animate-marquee-slow hover:[animation-play-state:paused] active:[animation-play-state:paused] transition-all duration-300">
-                {duplicatedBrand.map((item, idx) => {
-                  const Icon = item.icon;
-                  return (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 text-[10px] sm:text-xs md:text-sm font-sans font-black tracking-wider uppercase text-white/95"
-                    >
-                      <span className={`inline-flex items-center justify-center p-0.5 sm:p-1 rounded-md ${item.highlight ? 'bg-[#FF6600] text-white shadow-xs' : 'bg-white/15 text-slate-200'}`}>
-                        <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                      </span>
-                      <span className={item.highlight ? 'text-[#FF8533] font-black' : 'text-white'}>
-                        {item.text}
-                      </span>
-                      <span className="text-white/30 ml-2 sm:ml-3">•</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
           </div>
 
           {/* ÁREA CENTRAL LIVRE */}
