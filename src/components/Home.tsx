@@ -12,6 +12,8 @@ import FAQ from './FAQ';
 import Location from './Location';
 import Garantia from './Garantia';
 import ShareButton from './ShareButton';
+import ProductsTicker from './ProductsTicker';
+import GuaranteesTicker from './GuaranteesTicker';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -99,6 +101,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* LETREIRO APÓS OS PRODUTOS */}
+      <ProductsTicker />
+
       {/* WHY CHOOSE SHOPCELL */}
       <Features />
 
@@ -135,6 +140,9 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* LETREIRO DE GARANTIAS & SEGURANÇA ANTES DO FOOTER */}
+      <GuaranteesTicker />
 
       <Footer />
 
