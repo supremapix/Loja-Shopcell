@@ -5,6 +5,9 @@ import BackToTop from './components/BackToTop';
 import Home from './components/Home';
 import CelularesListingPage from './components/CelularesListingPage';
 import CelularProductPage from './components/CelularProductPage';
+import SobrePage from './components/SobrePage';
+import ContatoPage from './components/ContatoPage';
+import AcessoriosPage from './components/AcessoriosPage';
 import LocationPage from './components/LocationPage';
 import IntentPage from './components/IntentPage';
 import BlogPage from './components/BlogPage';
@@ -50,9 +53,9 @@ export default function App() {
       <Route path="/celulares" element={<CelularesListingPage />} />
       <Route path="/celular/:slug" element={<CelularProductPage />} />
       <Route path="/loja-de-celular-curitiba" element={<IntentPage />} />
-      <Route path="/acessorios" element={<Home />} />
-      <Route path="/sobre" element={<Home />} />
-      <Route path="/contato" element={<Home />} />
+      <Route path="/acessorios" element={<AcessoriosPage />} />
+      <Route path="/sobre" element={<SobrePage />} />
+      <Route path="/contato" element={<ContatoPage />} />
 
       {/* Spotlight Sítio Cercado & Local Intent Routes */}
       <Route path="/sitio-cercado" element={<IntentPage />} />
