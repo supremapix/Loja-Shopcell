@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
+import BackToTop from './components/BackToTop';
 import Home from './components/Home';
 import CelularesListingPage from './components/CelularesListingPage';
 import CelularProductPage from './components/CelularProductPage';
@@ -42,6 +43,7 @@ export default function App() {
   return (
     <CartProvider>
       <ScrollToTop />
+      <BackToTop />
       <Routes>
       {/* Primary Institutional Routes */}
       <Route path="/" element={<Home />} />
