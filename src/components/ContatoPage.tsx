@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Phone, MessageSquare, MapPin, Clock, Truck, ShieldCheck, 
-  Send, CheckCircle2, Copy, Navigation, Store, Smartphone, Star 
+  Send, CheckCircle2, Copy, Navigation, Store, Smartphone, Star, Mail, Globe, ExternalLink, ArrowRight
 } from 'lucide-react';
-import { CONTACT_INFO } from '../data';
+import { CONTACT_INFO, STORES } from '../data';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import EnhancedSEO from './EnhancedSEO';
@@ -12,19 +12,19 @@ import BackToTop from './BackToTop';
 
 export default function ContatoPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [copied, setCopied] = useState(false);
+  const [copiedStore, setCopiedStore] = useState<string | null>(null);
 
-  const copyAddress = () => {
-    navigator.clipboard.writeText(CONTACT_INFO.address);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 3000);
+  const copyAddress = (address: string, storeId: string) => {
+    navigator.clipboard.writeText(address);
+    setCopiedStore(storeId);
+    setTimeout(() => setCopiedStore(null), 3000);
   };
 
   return (
     <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans">
       <EnhancedSEO
-        title="Contato Shopcell Curitiba | Endereço, WhatsApp, Telefone e Loja Física"
-        description="Fale com a Shopcell Curitiba. Loja física no Edifício Downtown, Rua Conselheiro Laurindo, 809 - Sala 402 - Centro. WhatsApp oficial (41) 3798-9918."
+        title="Contato SUNCELL Curitiba | Lojas no Mercado Goes (Guaíra e Alto Boqueirão)"
+        description="Fale com a SUNCELL Assistência Técnica e Celulares em Curitiba. Unidade Guaíra: (41) 99917-6640 e Unidade Alto Boqueirão: (41) 99750-1961 (Dentro do Mercado Goes). E-mail: info@suncellassistencia.com.br."
         canonical="https://www.celularescuritibashopcell.com.br/contato"
       />
 
@@ -37,144 +37,218 @@ export default function ContatoPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6600]/15 border border-[#FF6600]/30 text-[#FF8533] text-xs font-mono font-bold uppercase tracking-wider mb-5">
             <Store className="w-3.5 h-3.5" />
-            Canais de Atendimento Oficial
+            Canais de Atendimento SUNCELL
           </span>
           <h1 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight mb-6">
-            Fale com a Shopcell Curitiba
+            Fale com a SUNCELL Curitiba
           </h1>
           <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
-            Tire dúvidas sobre modelos em estoque, consulte valores e formas de pagamento, agende sua retirada presencial ou solicite entrega expressa no mesmo dia via motoboy.
+            Possuímos duas unidades físicas dentro do tradicional <strong>Mercado Goes</strong> (Guaíra e Alto Boqueirão). Tire dúvidas sobre smartphones, solicite orçamentos de assistência técnica ou agende sua entrega via motoboy.
           </p>
 
-          <div className="inline-flex items-center gap-2 bg-slate-900 border border-slate-700 px-4 py-2 rounded-xl text-xs sm:text-sm text-slate-300">
-            <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-            <span>Nota 5.0 no Google (+3.800 avaliações de clientes reais)</span>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={CONTACT_INFO.officialSiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FF6600] to-amber-500 hover:brightness-110 text-white font-extrabold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-md transition-all"
+            >
+              <Globe className="w-4 h-4" />
+              <span>Ver Lojas no Site Oficial</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href={CONTACT_INFO.emailLink}
+              className="inline-flex items-center gap-2 bg-slate-900 border border-slate-700 hover:border-slate-500 px-4 py-2.5 rounded-xl text-xs text-slate-300 transition-colors"
+            >
+              <Mail className="w-4 h-4 text-[#FF8533]" />
+              <span>{CONTACT_INFO.email}</span>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* CARDS DE CONTATO PRINCIPAIS */}
+      {/* DUAL STORE CONTACT CARDS */}
       <section className="py-12 sm:py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 -mt-16 sm:-mt-24 relative z-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 -mt-14 sm:-mt-20 relative z-20 mb-12">
             
-            {/* WHATSAPP CARD */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-emerald-300 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+            {/* SUNCELL GUAÍRA */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-orange-200 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center border border-emerald-200 mb-6">
-                  <MessageSquare className="w-7 h-7 fill-emerald-50" />
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-wider bg-[#FF6600]/10 px-3 py-1 rounded-full">
+                    UNIDADE GUAÍRA • MERCADO GOES
+                  </span>
+                  <span className="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md">
+                    Loja Física
+                  </span>
                 </div>
-                <span className="text-xs font-mono font-bold text-emerald-600 uppercase tracking-wider block mb-1">
-                  ATENDIMENTO MAIS RÁPIDO
-                </span>
                 <h3 className="font-display font-black text-slate-900 text-2xl mb-2">
-                  WhatsApp Oficial
+                  SUNCELL Guaíra
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                  Envie uma mensagem direta para nossa equipe. Passamos fotos reais, orçamentos e disponibilidade imediata.
+                  Dentro do Mercado Goes - Rua Maria Moscardi Fanini, 261 - Guaíra, Curitiba - PR, CEP 80220-450.
                 </p>
-                <div className="text-lg font-mono font-bold text-slate-900 mb-6">
-                  {CONTACT_INFO.whatsapp}
+
+                <div className="space-y-3 mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200/80 text-xs">
+                  <div className="flex items-center gap-2 text-slate-700 font-semibold">
+                    <Clock className="w-4 h-4 text-[#FF6600] shrink-0" />
+                    <span>Segunda a Sábado em horário comercial</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-900 font-bold font-mono text-sm">
+                    <Phone className="w-4 h-4 text-[#FF6600] shrink-0" />
+                    <span>(41) 99917-6640</span>
+                  </div>
                 </div>
               </div>
 
-              <a
-                href={CONTACT_INFO.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-extrabold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 shadow-md transition-all"
-              >
-                <MessageSquare className="w-4 h-4 fill-white text-[#25D366]" />
-                <span>Iniciar Conversa no WhatsApp</span>
-              </a>
+              <div className="space-y-2.5">
+                <a
+                  href={STORES[0].whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-extrabold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 shadow-md transition-all"
+                >
+                  <MessageSquare className="w-4 h-4 fill-white text-[#25D366]" />
+                  <span>WhatsApp Unidade Guaíra</span>
+                </a>
+                
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => copyAddress(STORES[0].address, 'guaira')}
+                    className="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2.5 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+                  >
+                    {copiedStore === 'guaira' ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                    <span>{copiedStore === 'guaira' ? 'Copiado!' : 'Copiar Endereço'}</span>
+                  </button>
+                  <a
+                    href={STORES[0].mapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all text-center"
+                  >
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>Google Maps</span>
+                  </a>
+                </div>
+              </div>
             </div>
 
-            {/* LOJA FÍSICA CARD */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-orange-200 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+            {/* SUNCELL ALTO BOQUEIRÃO */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-orange-200 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div className="w-14 h-14 bg-[#FF6600]/10 text-[#FF6600] rounded-2xl flex items-center justify-center border border-[#FF6600]/20 mb-6">
-                  <MapPin className="w-7 h-7" />
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-wider bg-[#FF6600]/10 px-3 py-1 rounded-full">
+                    UNIDADE ALTO BOQUEIRÃO • MERCADO GOES
+                  </span>
+                  <span className="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md">
+                    Loja Física
+                  </span>
                 </div>
-                <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-wider block mb-1">
-                  RETIRADA PRESENCIAL
-                </span>
                 <h3 className="font-display font-black text-slate-900 text-2xl mb-2">
-                  Loja no Centro
+                  SUNCELL Alto Boqueirão
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                  Edifício Downtown: Rua Conselheiro Laurindo, 809 - Sala 402 - Centro, Curitiba/PR.
+                  Dentro do Mercado Goes - R. Pastor Antônio Polito, 1805 - Alto Boqueirão, Curitiba - PR, CEP 81770-260.
                 </p>
-                <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 mb-6 bg-slate-100 p-2.5 rounded-lg">
-                  <Clock className="w-4 h-4 text-[#FF6600] shrink-0" />
-                  <span>Seg a Sex: 09h às 18h | Sáb: 09h às 13h</span>
+
+                <div className="space-y-3 mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200/80 text-xs">
+                  <div className="flex items-center gap-2 text-slate-700 font-semibold">
+                    <Clock className="w-4 h-4 text-[#FF6600] shrink-0" />
+                    <span>Segunda a Sábado em horário comercial</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-900 font-bold font-mono text-sm">
+                    <Phone className="w-4 h-4 text-[#FF6600] shrink-0" />
+                    <span>(41) 99750-1961</span>
+                  </div>
                 </div>
               </div>
 
-              <button
-                onClick={copyAddress}
-                className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer"
-              >
-                {copied ? <CheckCircle2 className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                <span>{copied ? 'Endereço Copiado!' : 'Copiar Endereço Completo'}</span>
-              </button>
-            </div>
-
-            {/* TELEFONE & SUPORTE */}
-            <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center border border-blue-200 mb-6">
-                  <Phone className="w-7 h-7" />
-                </div>
-                <span className="text-xs font-mono font-bold text-blue-600 uppercase tracking-wider block mb-1">
-                  LIGAÇÃO TELEFÔNICA
-                </span>
-                <h3 className="font-display font-black text-slate-900 text-2xl mb-2">
-                  Telefone Fixo
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                  Prefere ligar? Nosso time de atendimento está à disposição durante o horário comercial.
-                </p>
-                <div className="text-lg font-mono font-bold text-slate-900 mb-6">
-                  {CONTACT_INFO.phone}
+              <div className="space-y-2.5">
+                <a
+                  href={STORES[1].whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-extrabold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 shadow-md transition-all"
+                >
+                  <MessageSquare className="w-4 h-4 fill-white text-[#25D366]" />
+                  <span>WhatsApp Alto Boqueirão</span>
+                </a>
+                
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => copyAddress(STORES[1].address, 'boqueirao')}
+                    className="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-2.5 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+                  >
+                    {copiedStore === 'boqueirao' ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                    <span>{copiedStore === 'boqueirao' ? 'Copiado!' : 'Copiar Endereço'}</span>
+                  </button>
+                  <a
+                    href={STORES[1].mapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all text-center"
+                  >
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>Google Maps</span>
+                  </a>
                 </div>
               </div>
-
-              <a
-                href={CONTACT_INFO.phoneLink}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-all"
-              >
-                <Phone className="w-4 h-4" />
-                <span>Ligar Agora</span>
-              </a>
             </div>
 
           </div>
+
+          {/* EMAIL & SUPORTE INSTITUCIONAL */}
+          <div className="bg-slate-900 text-white p-8 rounded-3xl border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-2 text-center md:text-left">
+              <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#FF8533] uppercase">
+                <Mail className="w-4 h-4" />
+                <span>ATENDIMENTO CORPORATIVO & DÚVIDAS</span>
+              </div>
+              <h4 className="font-display font-black text-xl text-white">
+                Prefere enviar uma mensagem por e-mail?
+              </h4>
+              <p className="text-slate-300 text-sm">
+                Entre em contato pelo e-mail oficial: <strong className="text-white">{CONTACT_INFO.email}</strong>
+              </p>
+            </div>
+
+            <a
+              href={CONTACT_INFO.emailLink}
+              className="bg-white hover:bg-slate-100 text-slate-950 font-extrabold px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md shrink-0 flex items-center gap-2"
+            >
+              <Mail className="w-4 h-4 text-[#FF6600]" />
+              <span>Enviar E-mail</span>
+            </a>
+          </div>
+
         </div>
       </section>
 
-      {/* SEÇÃO DO MAPA INTERATIVO E FOTOS DA LOJA */}
+      {/* SEÇÃO DO MAPA INTERATIVO E INFORMAÇÕES */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* INFORMAÇÕES DE VISITA */}
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-6 space-y-6">
               <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block">
-                COMO CHEGAR
+                CONVENIÊNCIA & SEGURANÇA
               </span>
               <h2 className="font-display font-black text-3xl text-slate-900 tracking-tight leading-tight">
-                Localização Privilegiada no Centro de Curitiba
+                Duas Unidades no Mercado Goes com Estacionamento
               </h2>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Nossa loja fica no tradicional <strong>Edifício Downtown</strong>, um prédio comercial moderno e seguro com portaria e elevadores, próximo à Rua XV de Novembro e ao Shopping Mueller.
+                As lojas da SUNCELL foram planejadas para oferecer total conforto: localizadas dentro do Mercado Goes (Unidade Guaíra e Unidade Alto Boqueirão), com estacionamento facilitado, ambiente seguro e equipe técnica qualificada.
               </p>
 
               <div className="space-y-4 pt-2">
                 <div className="flex items-start gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
                   <Navigation className="w-5 h-5 text-[#FF6600] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900 text-sm">Fácil Acesso:</strong>
-                    <span className="text-slate-600 text-xs">Estacionamentos conveniados e pontos de ônibus a poucos metros.</span>
+                    <strong className="block text-slate-900 text-sm">Fácil Acesso no Mercado Goes:</strong>
+                    <span className="text-slate-600 text-xs">Estacionamento no local e facilidade para retirar seus aparelhos com total tranquilidade.</span>
                   </div>
                 </div>
 
@@ -182,45 +256,43 @@ export default function ContatoPage() {
                   <Truck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-slate-900 text-sm">Entrega Expressa no Mesmo Dia:</strong>
-                    <span className="text-slate-600 text-xs">Não pode vir até a loja? Enviamos via motoboy para toda Curitiba e Região Metropolitana com pagamento seguro na entrega.</span>
+                    <span className="text-slate-600 text-xs">Não pode vir até uma das lojas? Enviamos via motoboy para toda Curitiba e Região Metropolitana com pagamento seguro na entrega.</span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
                   <ShieldCheck className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900 text-sm">12 Meses de Garantia Direto na Loja:</strong>
-                    <span className="text-slate-600 text-xs">Suporte presencial humanizado para qualquer dúvida ou configuração.</span>
+                    <strong className="block text-slate-900 text-sm">12 Meses de Garantia Local:</strong>
+                    <span className="text-slate-600 text-xs">Suporte presencial humanizado e assistência técnica especializada.</span>
                   </div>
                 </div>
               </div>
-
-              <div className="pt-4">
-                <a
-                  href={CONTACT_INFO.mapsLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#FF6600] hover:bg-[#D45500] text-white font-extrabold px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all"
-                >
-                  <MapPin className="w-4 h-4" />
-                  <span>Abrir no Google Maps</span>
-                </a>
-              </div>
             </div>
 
-            {/* MAPA EMBED GOOGLE MAPS */}
-            <div className="lg:col-span-7 bg-slate-100 rounded-3xl overflow-hidden border-2 border-slate-200 shadow-lg min-h-[420px] relative">
-              <iframe
-                title="Localização Shopcell Curitiba no Google Maps"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.220138096245!2d-49.2676059!3d-25.4308553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce46d790d9ec3%3A0x8dd33e7daaa7e91!2sR.%20Conselheiro%20Laurindo%2C%20809%20-%20Centro%2C%20Curitiba%20-%20PR%2C%2080060-100!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full min-h-[420px]"
-              />
+            {/* CARD INSTITUCIONAL PORTAL OFICIAL */}
+            <div className="lg:col-span-6 bg-gradient-to-br from-slate-950 to-slate-900 text-white rounded-3xl p-8 border border-slate-800 shadow-xl space-y-6">
+              <span className="text-xs font-mono font-bold text-[#FF8533] uppercase tracking-wider bg-[#FF6600]/20 px-3 py-1 rounded-full inline-block border border-[#FF6600]/30">
+                PORTAL OFICIAL
+              </span>
+              <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight">
+                SUNCELL Assistência Técnica & Vendas
+              </h3>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                Conheça mais sobre a história, nossos laboratórios técnicos, troca de telas, baterias e serviços especializados no site oficial.
+              </p>
+
+              <div className="pt-2">
+                <a
+                  href={CONTACT_INFO.officialSiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 bg-[#FF6600] hover:bg-[#D45500] text-white font-extrabold px-6 py-4 rounded-2xl text-xs uppercase tracking-wider transition-all shadow-md"
+                >
+                  <span>Visitar suncellassistencia.com.br/#lojas-section</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
             </div>
 
           </div>

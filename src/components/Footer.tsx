@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, MessageSquare, ArrowUp, Star, Home, Smartphone, Store, Headphones, Users, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { CONTACT_INFO } from '../data';
+import { Phone, MapPin, MessageSquare, ArrowUp, Star, Home, Smartphone, Store, Headphones, Users, ShieldCheck, CheckCircle2, Globe, Mail, ExternalLink } from 'lucide-react';
+import { CONTACT_INFO, STORES } from '../data';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -16,15 +16,14 @@ export default function Footer() {
           loop
           muted
           playsInline
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover min-w-full min-h-full opacity-70 filter brightness-90 contrast-115"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover min-w-full min-h-full opacity-60 filter brightness-90 contrast-115"
         >
           <source src="https://img.supremasite.com.br/shopcell.mp4" type="video/mp4" />
         </video>
         
-        {/* Luxury Vignette & Subtle Scrim to ensure crisp typography and high contrast */}
-        <div className="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/60 to-slate-950/95" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-[#FF6600]/15 via-transparent to-transparent" />
+        {/* Vignette & Contrast Overlay */}
+        <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/75 to-slate-950" />
       </div>
 
       {/* Radiant Orange Metallic Accent Bar */}
@@ -36,33 +35,33 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto py-16 px-6 relative z-10">
         {/* Top Feature Bar in Footer */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
-          <div className="bg-slate-900/80 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3.5 shadow-lg">
+          <div className="bg-slate-900/85 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3.5 shadow-lg">
             <div className="p-2.5 bg-[#FF6600]/20 text-[#FF6600] rounded-xl border border-[#FF6600]/30 shrink-0">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
               <span className="text-white font-display font-bold text-sm block">Garantia Local 12 Meses</span>
-              <span className="text-slate-300 text-xs">Assistência e suporte direto em nossa loja física</span>
+              <span className="text-slate-300 text-xs">Assistência e suporte técnico direto em nossas lojas físicas</span>
             </div>
           </div>
 
-          <div className="bg-slate-900/80 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3.5 shadow-lg">
+          <div className="bg-slate-900/85 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3.5 shadow-lg">
             <div className="p-2.5 bg-emerald-500/20 text-emerald-400 rounded-xl border border-emerald-500/30 shrink-0">
               <CheckCircle2 className="w-6 h-6" />
             </div>
             <div>
               <span className="text-white font-display font-bold text-sm block">Produtos 100% Originais</span>
-              <span className="text-slate-300 text-xs">Aparelhos novos, lacrados na caixa e homologados Anatel</span>
+              <span className="text-slate-300 text-xs">Aparelhos novos lacrados e procedência garantida</span>
             </div>
           </div>
 
-          <div className="bg-slate-900/80 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3.5 shadow-lg">
+          <div className="bg-slate-900/85 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3.5 shadow-lg">
             <div className="p-2.5 bg-blue-500/20 text-blue-400 rounded-xl border border-blue-500/30 shrink-0">
               <MapPin className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-white font-display font-bold text-sm block">Edifício Downtown — Centro</span>
-              <span className="text-slate-300 text-xs">Retirada em mãos com segurança ou motoboy no mesmo dia</span>
+              <span className="text-white font-display font-bold text-sm block">Mercado Goes (Guaíra & Boqueirão)</span>
+              <span className="text-slate-300 text-xs">Retirada facilitada com estacionamento e motoboy express</span>
             </div>
           </div>
         </div>
@@ -71,34 +70,39 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           
           {/* Column 1: Brand details */}
-          <div className="bg-slate-900/75 backdrop-blur-md border border-white/10 p-6 rounded-2xl space-y-4 shadow-xl">
+          <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl space-y-4 shadow-xl">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 bg-gradient-to-br from-[#FF6600] to-[#E65C00] rounded-xl flex items-center justify-center font-black text-white text-lg shadow-lg shadow-[#FF6600]/30 border border-white/20">
                 SC
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-black tracking-wider text-white text-xl leading-none">
-                  SHOPCELL
+                  SUNCELL
                 </span>
                 <span className="font-mono text-[9px] text-[#FF8533] tracking-widest font-extrabold mt-1 uppercase">
-                  Celulares Curitiba
+                  Assistência & Celulares CWB
                 </span>
               </div>
             </div>
             
             <p className="text-xs leading-relaxed text-slate-300 font-medium">
-              Referência em smartphones novos em Curitiba. Loja física no Centro com mais de 8 anos de credibilidade, atendimento transparente e o menor preço da capital.
+              Referência em smartphones originais e assistência técnica especializada em Curitiba, presente em duas unidades dentro do Mercado Goes.
             </p>
-            
-            <div className="flex items-center gap-2 bg-slate-950/80 border border-white/15 p-2.5 rounded-xl w-fit shadow-md">
-              <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-              <span className="text-white text-xs font-bold font-mono">5.0 Estrelas no Google</span>
-              <span className="text-[10px] text-slate-400 font-mono">(+3.800 clientes)</span>
-            </div>
+
+            <a
+              href={CONTACT_INFO.officialSiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-[#FF8533] hover:text-white font-bold transition-colors bg-[#FF6600]/15 px-3 py-1.5 rounded-lg border border-[#FF6600]/30"
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>suncellassistencia.com.br</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="bg-slate-900/75 backdrop-blur-md border border-white/10 p-6 rounded-2xl space-y-4 shadow-xl">
+          <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl space-y-4 shadow-xl">
             <h4 className="text-white font-display font-bold text-sm tracking-wider uppercase border-l-2 border-[#FF6600] pl-3">
               Navegação
             </h4>
@@ -116,12 +120,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/loja-de-celular-curitiba" className="hover:text-[#FF6600] transition-colors flex items-center gap-2">
-                  <Store className="w-4 h-4 text-[#FF6600]" />
-                  <span>Loja no Centro Curitiba</span>
-                </Link>
-              </li>
-              <li>
                 <Link to="/acessorios" className="hover:text-[#FF6600] transition-colors flex items-center gap-2">
                   <Headphones className="w-4 h-4 text-[#FF6600]" />
                   <span>Acessórios Originais</span>
@@ -130,64 +128,66 @@ export default function Footer() {
               <li>
                 <Link to="/sobre" className="hover:text-[#FF6600] transition-colors flex items-center gap-2">
                   <Users className="w-4 h-4 text-[#FF6600]" />
-                  <span>Sobre a Shopcell</span>
+                  <span>Sobre a SUNCELL</span>
                 </Link>
               </li>
               <li>
                 <Link to="/contato" className="hover:text-[#FF6600] transition-colors flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#FF6600]" />
-                  <span>Contato & Localização</span>
+                  <span>Contato & Unidades</span>
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Contact details */}
-          <div className="bg-slate-900/75 backdrop-blur-md border border-white/10 p-6 rounded-2xl space-y-4 shadow-xl">
+          {/* Column 3: Contact details for both stores */}
+          <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl space-y-4 shadow-xl">
             <h4 className="text-white font-display font-bold text-sm tracking-wider uppercase border-l-2 border-[#FF6600] pl-3">
-              Atendimento Direto
+              Nossas Unidades
             </h4>
-            <ul className="space-y-3.5 text-xs text-slate-300">
-              <li className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-slate-950/80 border border-white/15 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-4 h-4 text-[#FF6600]" />
+            <div className="space-y-3 text-xs text-slate-300">
+              {/* Guaíra */}
+              <div className="bg-slate-950/60 p-3 rounded-xl border border-white/10 space-y-1">
+                <div className="flex items-center gap-1.5 text-white font-bold text-xs">
+                  <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
+                  <span>SUNCELL Guaíra (Mercado Goes)</span>
                 </div>
-                <div>
-                  <span className="block text-[10px] text-slate-400 font-mono">TELEFONE:</span>
-                  <a href={CONTACT_INFO.phoneLink} className="hover:text-[#FF6600] font-mono font-bold text-white text-xs">{CONTACT_INFO.phone}</a>
+                <p className="text-[11px] text-slate-400">Rua Maria Moscardi Fanini, 261</p>
+                <a href={STORES[0].whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-emerald-400 font-bold font-mono text-[11px] hover:underline">
+                  <MessageSquare className="w-3 h-3" />
+                  <span>(41) 99917-6640</span>
+                </a>
+              </div>
+
+              {/* Alto Boqueirão */}
+              <div className="bg-slate-950/60 p-3 rounded-xl border border-white/10 space-y-1">
+                <div className="flex items-center gap-1.5 text-white font-bold text-xs">
+                  <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
+                  <span>SUNCELL Alto Boqueirão</span>
                 </div>
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-slate-950/80 border border-white/15 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MessageSquare className="w-4 h-4 text-emerald-400" />
-                </div>
-                <div>
-                  <span className="block text-[10px] text-slate-400 font-mono">WHATSAPP:</span>
-                  <a href={CONTACT_INFO.whatsappLink} className="hover:text-emerald-400 font-mono font-bold text-white text-xs">{CONTACT_INFO.whatsapp}</a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-9 h-9 bg-slate-950/80 border border-white/15 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <MapPin className="w-4 h-4 text-[#FF6600]" />
-                </div>
-                <div>
-                  <span className="block text-[10px] text-slate-400 font-mono">ENDEREÇO:</span>
-                  <span className="leading-normal text-slate-200 font-medium">{CONTACT_INFO.address}</span>
-                </div>
-              </li>
-            </ul>
+                <p className="text-[11px] text-slate-400">R. Pastor Antônio Polito, 1805</p>
+                <a href={STORES[1].whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-emerald-400 font-bold font-mono text-[11px] hover:underline">
+                  <MessageSquare className="w-3 h-3" />
+                  <span>(41) 99750-1961</span>
+                </a>
+              </div>
+            </div>
           </div>
 
-          {/* Column 4: Timings and Top */}
-          <div className="bg-slate-900/75 backdrop-blur-md border border-white/10 p-6 rounded-2xl space-y-4 shadow-xl flex flex-col justify-between">
-            <div>
-              <h4 className="text-white font-display font-bold text-sm tracking-wider uppercase border-l-2 border-[#FF6600] pl-3 mb-3">
-                Horário da Loja
+          {/* Column 4: Email, Timings and Top */}
+          <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl space-y-4 shadow-xl flex flex-col justify-between">
+            <div className="space-y-3">
+              <h4 className="text-white font-display font-bold text-sm tracking-wider uppercase border-l-2 border-[#FF6600] pl-3">
+                Atendimento Oficial
               </h4>
-              <p className="text-xs leading-relaxed text-slate-300 font-mono bg-slate-950/80 p-3.5 rounded-xl border border-white/10">
-                Segunda a Sexta: 09:00h às 19:00h<br />
-                Sábado: 10:00h às 16:00h<br />
-                Domingo: Fechado
+              <div className="bg-slate-950/80 p-3 rounded-xl border border-white/10 text-xs space-y-1.5">
+                <span className="block text-[10px] text-slate-400 font-mono">E-MAIL:</span>
+                <a href={CONTACT_INFO.emailLink} className="text-white hover:text-[#FF6600] font-mono font-bold text-xs truncate block">
+                  {CONTACT_INFO.email}
+                </a>
+              </div>
+              <p className="text-[11px] leading-relaxed text-slate-300 font-mono bg-slate-950/80 p-3 rounded-xl border border-white/10">
+                {CONTACT_INFO.hours}
               </p>
             </div>
             
@@ -231,10 +231,10 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <div className="space-y-1">
             <p className="text-xs text-slate-300 font-medium">
-              © {new Date().getFullYear()} Shopcell Curitiba. Todos os direitos reservados.
+              © {new Date().getFullYear()} SUNCELL Curitiba. Todos os direitos reservados.
             </p>
             <p className="text-[10px] text-slate-400 font-mono">
-              CNPJ: {CONTACT_INFO.cnpj} | R. Conselheiro Laurindo, 809 - Sala 402 - Curitiba - PR
+              CNPJ: {CONTACT_INFO.cnpj} | Unidades Mercado Goes: Guaíra & Alto Boqueirão - Curitiba - PR
             </p>
           </div>
 

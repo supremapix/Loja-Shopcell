@@ -77,74 +77,94 @@ export default function Navbar({
         <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 flex items-center justify-between">
           
           {/* Desktop Left Side - Address */}
-          <div className="hidden lg:flex items-center gap-1.5 text-slate-400">
+          <div className="hidden lg:flex items-center gap-3 text-slate-400">
             <a 
               href={CONTACT_INFO.mapsLink} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="hover:text-[#FF6900] flex items-center gap-1.5 transition-colors duration-200"
-              title="Ver localização no Google Maps"
+              className="hover:text-[#FF8533] flex items-center gap-1.5 transition-colors duration-200"
+              title="SUNCELL Guaíra - Mercado Goes"
             >
-              <MapPin className="w-3.5 h-3.5 text-[#FF6900]" />
-              <span className="font-semibold text-slate-300">Loja Centro:</span>
-              <span>R. Conselheiro Laurindo, 809 - Sala 402</span>
+              <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
+              <span className="font-bold text-slate-200">Guaíra:</span>
+              <span>R. Maria Moscardi Fanini, 261</span>
+            </a>
+            <span className="text-slate-700">|</span>
+            <a 
+              href={CONTACT_INFO.mapsLinkBoqueirao} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-[#FF8533] flex items-center gap-1.5 transition-colors duration-200"
+              title="SUNCELL Alto Boqueirão - Mercado Goes"
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
+              <span className="font-bold text-slate-200">Alto Boqueirão:</span>
+              <span>R. Pastor Antônio Polito, 1805</span>
             </a>
           </div>
 
-          {/* Desktop Center Side - High Conversion Slogan */}
+          {/* Desktop Center Side - High Conversion Slogan & Official Link */}
           <div className="hidden lg:flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#FF6900]/10 text-[#FF6900] rounded text-[9px] font-bold uppercase tracking-widest border border-[#FF6900]/20 animate-pulse">
-              Shopcell
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#FF6600]/15 text-[#FF8533] rounded text-[9px] font-bold uppercase tracking-widest border border-[#FF6600]/30">
+              MERCADO GOES
             </span>
-            <span className="font-semibold text-slate-200">
-              🔥 Celulares Originais em Curitiba • Até 12x no cartão • 12 Meses de Garantia Local!
-            </span>
+            <a 
+              href={CONTACT_INFO.officialSiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-slate-200 hover:text-[#FF8533] transition-colors flex items-center gap-1"
+              title="Site Oficial da Assistência SUNCELL"
+            >
+              <span>Site Oficial: suncellassistencia.com.br</span>
+            </a>
           </div>
 
           {/* Desktop Right Side - Clickable Contacts */}
-          <div className="hidden lg:flex items-center gap-4 text-slate-400">
-            <a 
-              href={CONTACT_INFO.phoneLink} 
-              className="hover:text-white flex items-center gap-1 transition-colors duration-200"
-              title="Ligar para nós"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#FF6900]" />
-              <span>{CONTACT_INFO.phone}</span>
-            </a>
-            <span className="text-slate-700">|</span>
+          <div className="hidden lg:flex items-center gap-3 text-slate-400">
             <a 
               href={CONTACT_INFO.whatsappLink} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="hover:text-emerald-400 flex items-center gap-1 transition-colors duration-200"
-              title="Chamar no WhatsApp"
+              title="WhatsApp Unidade Guaíra"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/10" />
-              <span className="text-emerald-400 font-bold">WhatsApp</span>
+              <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="text-emerald-400 font-bold">Whats Guaíra: (41) 99917-6640</span>
+            </a>
+            <span className="text-slate-700">|</span>
+            <a 
+              href={CONTACT_INFO.whatsappLink2} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-emerald-400 flex items-center gap-1 transition-colors duration-200"
+              title="WhatsApp Unidade Alto Boqueirão"
+            >
+              <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="text-emerald-400 font-bold">Boqueirão: (41) 99750-1961</span>
             </a>
           </div>
 
           {/* Mobile/Tablet Marquee */}
           <div className="flex lg:hidden w-full relative overflow-hidden py-0.5">
-            <div className="flex gap-10 animate-marquee-reverse hover:[animation-play-state:paused] transition-all duration-300 w-max text-[10px] font-sans font-bold tracking-wider uppercase text-slate-300">
-              <a href={CONTACT_INFO.mapsLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 flex-shrink-0 hover:text-[#FF6900]">
-                <MapPin className="w-3.5 h-3.5 text-[#FF6900]" />
-                <span>R. Conselheiro Laurindo, 809 - Sala 402, Centro</span>
-              </a>
-              <span className="text-slate-700 select-none">❖</span>
-              <span className="flex items-center gap-1.5 flex-shrink-0 text-[#FF6900]">
-                <span>🔥 CELULARES COM 12 MESES DE GARANTIA EM CURITIBA</span>
+            <div className="flex gap-8 animate-marquee-reverse hover:[animation-play-state:paused] transition-all duration-300 w-max text-[10px] font-sans font-bold tracking-wider uppercase text-slate-300">
+              <span className="flex items-center gap-1 text-[#FF8533]">
+                <span>SUNCELL CURITIBA (MERCADO GOES)</span>
               </span>
               <span className="text-slate-700 select-none">❖</span>
-              <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 flex-shrink-0 hover:text-emerald-400 text-emerald-400 font-extrabold">
-                <MessageSquare className="w-3.5 h-3.5 fill-emerald-400/10" />
-                <span>WHATSAPP: {CONTACT_INFO.whatsapp}</span>
+              <a href={CONTACT_INFO.mapsLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-[#FF8533]">
+                <MapPin className="w-3 h-3 text-[#FF6600]" />
+                <span>Guaíra: R. Maria Moscardi Fanini, 261</span>
               </a>
               <span className="text-slate-700 select-none">❖</span>
-              <span className="flex items-center gap-1.5 flex-shrink-0 text-amber-400">
-                <Star className="w-3.5 h-3.5 fill-amber-400" />
-                <span>NOTA 5.0 NO GOOGLE (+3.800 AVALIAÇÕES)</span>
-              </span>
+              <a href={CONTACT_INFO.mapsLinkBoqueirao} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-[#FF8533]">
+                <MapPin className="w-3 h-3 text-[#FF6600]" />
+                <span>Alto Boqueirão: R. Pastor Antônio Polito, 1805</span>
+              </a>
+              <span className="text-slate-700 select-none">❖</span>
+              <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" className="text-emerald-400 font-extrabold flex items-center gap-1">
+                <MessageSquare className="w-3 h-3 text-emerald-400" />
+                <span>Whats: (41) 99917-6640 / (41) 99750-1961</span>
+              </a>
             </div>
           </div>
 
@@ -178,10 +198,10 @@ export default function Navbar({
 
             <div className="flex flex-col">
               <span className="font-display font-black tracking-wider text-gray-900 text-lg leading-none group-hover:text-[#FF6600] transition-colors duration-200">
-                SHOPCELL
+                SUNCELL
               </span>
               <span className="font-mono text-[9px] text-[#FF6600] tracking-widest font-extrabold mt-0.5">
-                LOJA DE CELULARES CURITIBA
+                ASSISTÊNCIA & SMARTPHONES CWB
               </span>
             </div>
           </Link>
@@ -326,7 +346,7 @@ export default function Navbar({
                   <div className="w-9 h-9 bg-[#FF6600] rounded-xl flex items-center justify-center font-black text-white text-sm shadow-sm">
                     SC
                   </div>
-                  <span className="font-display font-black text-gray-900 text-sm tracking-tight">MENU SHOPCELL</span>
+                  <span className="font-display font-black text-gray-900 text-sm tracking-tight">MENU SUNCELL</span>
                 </div>
 
                 <button

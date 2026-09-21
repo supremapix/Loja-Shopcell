@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, MessageSquare, Mail, Clock, ShieldAlert, ChevronDown, ChevronUp, Video, Home } from 'lucide-react';
-import { CONTACT_INFO } from '../data';
+import { CONTACT_INFO, STORES } from '../data';
 import { bairrosData } from '../bairrosData';
 
 export default function Location() {
+  const [selectedStore, setSelectedStore] = useState<'guaira' | 'alto-boqueirao'>('guaira');
   const [showAllCities, setShowAllCities] = useState(false);
   const [showAllBairros, setShowAllBairros] = useState(false);
 
@@ -13,134 +14,143 @@ export default function Location() {
   const officialBairros = bairrosData.filter(b => b.regiao === "Curitiba (IPPUC)" || ["Central", "Nobre", "Sul", "Oeste", "Norte", "Leste"].includes(b.regiao));
   const unofficialBairros = bairrosData.filter(b => b.regiao === "Curitiba (Região Popular)");
 
+  const currentStoreData = STORES.find(s => s.id === selectedStore) || STORES[0];
+
   return (
     <section id="RMCEbairros" className="py-12 sm:py-20 bg-white relative overflow-hidden border-t border-slate-200">
-      {/* Glow */}
-      <div className="absolute right-0 bottom-0 w-[20rem] h-[20rem] bg-[#FF6600]/3 rounded-full filter blur-[100px] pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Title */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
-          <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-3">ATENDIMENTO LOCAL</span>
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-2">
+            NOSSAS UNIDADES EM CURITIBA
+          </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-gray-900 tracking-tight">
-            Nossa Loja Física em Curitiba
+            Lojas Físicas SUNCELL no Mercado Goes
           </h2>
-          <p className="text-gray-600 text-xs sm:text-sm mt-3">
-            Venha nos visitar no Edifício Downtown para retirar seu aparelho Xiaomi com segurança ou solicite nossa entrega rápida.
+          <p className="text-gray-600 text-xs sm:text-sm mt-3 leading-relaxed">
+            Atendimento presencial especializado, assistência técnica e smartphones originais com 12 meses de garantia local. Escolha a unidade mais próxima de você:
           </p>
         </div>
 
-        {/* Info Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10 sm:mb-16">
-          {/* Photos and Details */}
-          <div className="col-span-1 lg:col-span-6 space-y-6">
-            {/* Optimized Gallery Grid */}
-            <div className="grid grid-cols-2 gap-3.5">
-              {/* Image 1 - Shop Cell Monitores (Main) */}
-              <div className="col-span-2 bg-white border border-slate-200 p-2 rounded-2xl shadow-xs h-56 sm:h-64 overflow-hidden relative group">
-                <img
-                  src="https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp"
-                  alt="Xiaomi Shop Cell - Monitores e Atendimento"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-103"
-                  id="img-gallery-monitores"
-                />
-                <div className="absolute bottom-4 left-4 bg-slate-900/85 backdrop-blur-xs text-white px-3 py-1 rounded-lg text-[10px] font-bold tracking-wider uppercase">
-                  Atendimento Premium
-                </div>
-              </div>
+        {/* Store Switcher Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
+          {STORES.map((st) => {
+            const isSelected = selectedStore === st.id;
+            return (
+              <button
+                key={st.id}
+                onClick={() => setSelectedStore(st.id as 'guaira' | 'alto-boqueirao')}
+                className={`px-5 py-3 rounded-2xl font-display font-extrabold text-xs sm:text-sm transition-all duration-200 cursor-pointer flex items-center gap-2 border-2 ${
+                  isSelected
+                    ? 'bg-[#0B0F19] text-white border-[#0B0F19] shadow-md scale-102'
+                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-[#FF6600]/50 hover:bg-white'
+                }`}
+              >
+                <MapPin className={`w-4 h-4 ${isSelected ? 'text-[#FF7A00]' : 'text-slate-400'}`} />
+                <span>{st.name}</span>
+                <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold ${isSelected ? 'bg-[#FF6600] text-white' : 'bg-slate-200 text-slate-700'}`}>
+                  Mercado Goes
+                </span>
+              </button>
+            );
+          })}
+        </div>
 
-              {/* Image 2 - Sacola Shop Cell */}
-              <div className="col-span-1 bg-white border border-slate-200 p-2 rounded-2xl shadow-xs h-40 overflow-hidden relative group">
-                <img
-                  src="https://www.celularescuritibashopcell.com.br/assets/sacola-shopcell-CFvwClu6.webp"
-                  alt="Sacola Xiaomi Shop Cell"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
-                  id="img-gallery-sacola"
-                />
-                <div className="absolute bottom-3 left-3 bg-slate-900/85 backdrop-blur-xs text-white px-2 py-0.5 rounded-md text-[9px] font-bold tracking-wider uppercase">
-                  Seu Aparelho
-                </div>
-              </div>
-
-              {/* Image 3 - Loja Shop Cell Interior */}
-              <div className="col-span-1 bg-white border border-slate-200 p-2 rounded-2xl shadow-xs h-40 overflow-hidden relative group">
-                <img
-                  src="https://www.celularescuritibashopcell.com.br/img-ext/loja-shopcell-2-10d4c7.webp"
-                  alt="Interior Loja Xiaomi Shop Cell"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
-                  id="img-gallery-interior"
-                />
-                <div className="absolute bottom-3 left-3 bg-slate-900/85 backdrop-blur-xs text-white px-2 py-0.5 rounded-md text-[9px] font-bold tracking-wider uppercase">
-                  Espaço Físico
-                </div>
-              </div>
-            </div>
-
-            {/* Address Details Card */}
-            <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl space-y-4">
-              <div className="flex gap-3.5">
-                <MapPin className="w-5.5 h-5.5 text-[#FF6600] flex-shrink-0 mt-0.5" />
+        {/* Two Store Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          {STORES.map((st) => {
+            const isSelected = selectedStore === st.id;
+            return (
+              <div
+                key={st.id}
+                className={`rounded-3xl p-6 sm:p-8 transition-all duration-300 border-2 flex flex-col justify-between ${
+                  isSelected
+                    ? 'bg-slate-50 border-[#FF6600] shadow-xl ring-1 ring-[#FF6600]/20'
+                    : 'bg-white border-slate-200 shadow-xs hover:border-slate-300'
+                }`}
+              >
                 <div>
-                  <h3 className="font-display font-bold text-gray-900 text-base">Endereço Oficial</h3>
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mt-1">
-                    {CONTACT_INFO.address}
-                  </p>
-                  <span className="flex items-center gap-1.5 text-[#FF6600] hover:underline text-xs font-bold font-mono uppercase tracking-wider mt-2">
-                    <MapPin className="w-3.5 h-3.5" />
-                    <span>Abrir no Google Maps</span>
-                  </span>
-                </div>
-              </div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF6600]/10 text-[#FF6600] text-xs font-mono font-extrabold uppercase tracking-wider">
+                      <Home className="w-3.5 h-3.5" />
+                      {st.landmark}
+                    </span>
+                    <span className="text-[11px] font-bold font-mono text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
+                      Garantia Local 12M
+                    </span>
+                  </div>
 
-              <div className="flex gap-3.5 border-t border-slate-200 pt-4">
-                <Clock className="w-5.5 h-5.5 text-[#FF6600] flex-shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-display font-bold text-gray-900 text-base">Horário de Funcionamento</h3>
-                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mt-1 font-mono">
-                    {CONTACT_INFO.hours}
-                  </p>
-                </div>
-              </div>
+                  <h3 className="font-display font-black text-2xl text-slate-900 mb-2">
+                    {st.name}
+                  </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-200 pt-4">
-                <div className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-[#FF6600]" />
-                  <div>
-                    <span className="block text-[10px] text-gray-500 uppercase font-mono leading-none">Telefone Fixo</span>
-                    <a href={CONTACT_INFO.phoneLink} className="text-gray-800 text-xs sm:text-sm font-bold font-mono hover:text-[#FF6600]">
-                      {CONTACT_INFO.phone}
-                    </a>
+                  <div className="flex items-start gap-3 text-slate-700 text-sm mb-4">
+                    <MapPin className="w-5 h-5 text-[#FF6600] shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-slate-900">{st.address}</p>
+                      <p className="text-xs text-slate-500 mt-0.5">{st.city}</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 text-xs font-mono text-slate-700 bg-white p-4 rounded-2xl border border-slate-200 mb-6">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-[#FF6600] shrink-0" />
+                      <span>{st.hours}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-4 h-4 text-[#FF6600] shrink-0" />
+                      <span>Tel / WhatsApp: <strong className="text-slate-900">{st.phone}</strong></span>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <MessageSquare className="w-4 h-4 text-[#FF6600]" />
-                  <div>
-                    <span className="block text-[10px] text-gray-500 uppercase font-mono leading-none">WhatsApp</span>
-                    <a href={CONTACT_INFO.whatsappLink} className="text-gray-800 text-xs sm:text-sm font-bold font-mono hover:text-[#FF6600]">
-                      {CONTACT_INFO.whatsapp}
-                    </a>
-                  </div>
+
+                <div className="grid grid-cols-2 gap-3 pt-2">
+                  <a
+                    href={st.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#25D366] hover:bg-[#128C7E] text-white font-extrabold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all text-center"
+                  >
+                    <MessageSquare className="w-4 h-4 fill-white text-[#25D366]" />
+                    <span>WhatsApp</span>
+                  </a>
+                  <a
+                    href={st.mapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#0B0F19] hover:bg-slate-800 text-white font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all text-center"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    <span>Google Maps</span>
+                  </a>
                 </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
+        </div>
 
-          {/* Map Embed and Directory */}
-          <div className="col-span-1 lg:col-span-6 flex flex-col h-full">
-            <div className="bg-white border border-slate-200 p-2.5 rounded-2xl shadow-sm h-[280px] sm:h-[350px] relative overflow-hidden flex-grow mb-6">
-              <iframe
-                title="Google Maps Xiaomi Shop Cell"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.8279869689843!2d-49.2638!3d-25.4357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDI2JzA4LjUiUyA0OcKwMTUnNDkuNyJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
-                className="w-full h-full border-0 rounded-xl"
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+        {/* Official Portal Banner Card */}
+        <div className="bg-gradient-to-br from-[#0B0F19] to-slate-900 text-white p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-xl mb-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center sm:text-left">
+            <span className="text-[10px] font-mono font-bold text-[#FF8533] uppercase tracking-widest bg-[#FF6600]/20 px-3 py-1 rounded-full border border-[#FF6600]/30 inline-block">
+              PORTAL OFICIAL SUNCELL ASSISTÊNCIA
+            </span>
+            <h3 className="font-display font-black text-xl sm:text-2xl text-white">
+              Visite a Seção de Lojas em Nosso Site Oficial
+            </h3>
+            <p className="text-slate-300 text-xs sm:text-sm max-w-xl">
+              Consulte todas as unidades, serviços de assistência técnica para telas, baterias e reparos de placas diretamente no portal da SUNCELL.
+            </p>
           </div>
+          <a
+            href={CONTACT_INFO.officialSiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 bg-gradient-to-r from-[#FF6600] to-amber-500 hover:brightness-110 text-white font-extrabold px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2"
+          >
+            <span>Acessar suncellassistencia.com.br</span>
+            <MapPin className="w-4 h-4" />
+          </a>
         </div>
 
         {/* Highlighted 16:9 Institutional Video */}

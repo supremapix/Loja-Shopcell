@@ -17,8 +17,8 @@ export default function SobrePage() {
   return (
     <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans">
       <EnhancedSEO
-        title="Sobre a Shopcell Curitiba | Loja Física no Centro e 12 Meses de Garantia"
-        description="Conheça a história da Shopcell Curitiba. Mais de 8 anos de tradição em smartphones novos e originais com 12 meses de garantia local no Edifício Downtown."
+        title="Sobre a SUNCELL Curitiba | Lojas no Mercado Goes e 12 Meses de Garantia"
+        description="Conheça a história da SUNCELL Assistência Técnica e Smartphones em Curitiba. Duas lojas físicas no Mercado Goes (Guaíra e Alto Boqueirão) com 12 meses de garantia local."
         canonical="https://www.celularescuritibashopcell.com.br/sobre"
       />
 
@@ -35,10 +35,10 @@ export default function SobrePage() {
               Nossa História & Compromisso
             </span>
             <h1 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight mb-6">
-              Mais de 8 Anos de Confiança e Excelência em Curitiba
+              Confiança, Assistência e Excelência em Curitiba
             </h1>
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
-              A <strong className="text-white font-bold">Shopcell Curitiba</strong> nasceu com o propósito de oferecer smartphones novos, homologados e 100% originais com atendimento humanizado, segurança máxima e a verdadeira garantia local de 12 meses direto em nossa loja física.
+              A <strong className="text-white font-bold">SUNCELL Curitiba</strong> oferece smartphones novos e assistência técnica com duas unidades físicas dentro do tradicional <strong className="text-white">Mercado Goes</strong> (Guaíra e Alto Boqueirão), garantindo procedência 100% original e suporte local.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -49,15 +49,17 @@ export default function SobrePage() {
                 className="inline-flex items-center gap-2 bg-[#FF6600] hover:bg-[#D45500] text-white font-extrabold px-6 py-3.5 rounded-xl text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#FF6600]/20"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Falar com Nossa Equipe</span>
+                <span>Falar no WhatsApp (Guaíra)</span>
               </a>
-              <Link
-                to="/contato"
+              <a
+                href={CONTACT_INFO.officialSiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white border border-slate-700 font-bold px-6 py-3.5 rounded-xl text-sm transition-all duration-200"
               >
                 <MapPin className="w-4 h-4 text-[#FF6600]" />
-                <span>Visitar Loja Física</span>
-              </Link>
+                <span>Site Oficial SUNCELL</span>
+              </a>
             </div>
           </div>
         </div>
@@ -68,8 +70,8 @@ export default function SobrePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs text-center">
-              <div className="font-display font-black text-3xl sm:text-4xl text-[#FF6600] mb-1">8+ Anos</div>
-              <p className="text-slate-600 text-xs sm:text-sm font-semibold">Atuação no mercado de Curitiba</p>
+              <div className="font-display font-black text-3xl sm:text-4xl text-[#FF6600] mb-1">2 Lojas</div>
+              <p className="text-slate-600 text-xs sm:text-sm font-semibold">Unidades no Mercado Goes</p>
             </div>
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs text-center">
               <div className="font-display font-black text-3xl sm:text-4xl text-slate-900 mb-1">+3.800</div>
@@ -99,10 +101,10 @@ export default function SobrePage() {
                 Segurança, Transparência e Atendimento que Faz a Diferença
               </h2>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-4">
-                Localizada no coração de Curitiba, no tradicional <strong>Edifício Downtown</strong> (Rua Conselheiro Laurindo, 809 - Sala 402), a Shopcell oferece uma experiência de compra protegida e transparente.
+                Com duas lojas físicas bem localizadas em Curitiba dentro do <strong>Mercado Goes</strong> (Guaíra e Alto Boqueirão), a SUNCELL oferece uma experiência completa em venda de smartphones e assistência técnica.
               </p>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-                Diferente de compras em marketplaces com vendedores desconhecidos, na Shopcell você tem endereço físico, equipe experiente para tirar dúvidas e a certeza de comprar um aparelho novo, original e lacrado na caixa.
+                Aqui você tem suporte presencial humanizado, profissionais qualificados e a tranquilidade de poder retirar seu aparelho ou solicitar entrega expressa com motoboy.
               </p>
 
               <div className="space-y-3">
@@ -112,7 +114,7 @@ export default function SobrePage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                  <span className="text-sm font-semibold text-slate-700">Garantia local de 12 meses com atendimento direto no Centro</span>
+                  <span className="text-sm font-semibold text-slate-700">Garantia local de 12 meses direto nas unidades Mercado Goes</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
@@ -125,33 +127,31 @@ export default function SobrePage() {
               </div>
             </div>
 
-            {/* FOTOS DA LOJA */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="col-span-2 rounded-2xl overflow-hidden shadow-md border border-slate-200 h-64">
-                <img
-                  src="https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp"
-                  alt="Loja Shopcell Curitiba - Atendimento Presencial"
-                  className="w-full h-full object-cover"
-                />
+            {/* CARDS DAS LOJAS MERCADO GOES */}
+            <div className="space-y-4">
+              <div className="bg-slate-50 border-2 border-slate-200 p-6 rounded-2xl">
+                <span className="text-xs font-mono font-bold text-[#FF6600] uppercase">Unidade 1 • Guaíra</span>
+                <h3 className="font-display font-bold text-xl text-slate-900 mt-1">SUNCELL Guaíra (Mercado Goes)</h3>
+                <p className="text-slate-600 text-xs mt-1">Rua Maria Moscardi Fanini, 261 - Guaíra, Curitiba - PR</p>
+                <div className="mt-3 flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold text-slate-800">(41) 99917-6640</span>
+                  <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-emerald-600 hover:underline">WhatsApp Guaíra →</a>
+                </div>
               </div>
-              <div className="rounded-2xl overflow-hidden shadow-xs border border-slate-200 h-44">
-                <img
-                  src="https://www.celularescuritibashopcell.com.br/assets/sacola-shopcell-CFvwClu6.webp"
-                  alt="Shopcell Sacola e Aparelhos Originais"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="rounded-2xl overflow-hidden shadow-xs border border-slate-200 h-44">
-                <img
-                  src="https://www.celularescuritibashopcell.com.br/img-ext/loja-shopcell-2-10d4c7.webp"
-                  alt="Interior Loja Shopcell Curitiba"
-                  className="w-full h-full object-cover"
-                />
+
+              <div className="bg-slate-50 border-2 border-slate-200 p-6 rounded-2xl">
+                <span className="text-xs font-mono font-bold text-[#FF6600] uppercase">Unidade 2 • Alto Boqueirão</span>
+                <h3 className="font-display font-bold text-xl text-slate-900 mt-1">SUNCELL Alto Boqueirão</h3>
+                <p className="text-slate-600 text-xs mt-1">R. Pastor Antônio Polito, 1805 - Alto Boqueirão, Curitiba - PR</p>
+                <div className="mt-3 flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold text-slate-800">(41) 99750-1961</span>
+                  <a href={CONTACT_INFO.whatsappLink2} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-emerald-600 hover:underline">WhatsApp Boqueirão →</a>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* PILARES SHOPCELL */}
+          {/* PILARES SUNCELL */}
           <div className="border-t border-slate-200 pt-16">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h3 className="font-display font-black text-2xl sm:text-3xl text-slate-900">
@@ -202,10 +202,10 @@ export default function SobrePage() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Building2 className="w-12 h-12 text-[#FF6600] mx-auto mb-4" />
           <h2 className="font-display font-black text-3xl sm:text-4xl mb-4">
-            Venha Conhecer Nossa Loja em Curitiba
+            Venha Conhecer as Lojas SUNCELL no Mercado Goes
           </h2>
           <p className="text-slate-300 text-sm sm:text-base mb-8 max-w-2xl mx-auto">
-            Atendimento presencial no Edifício Downtown (Rua Conselheiro Laurindo, 809 - Sala 402) ou faça seu pedido pelo WhatsApp com entrega no mesmo dia.
+            Unidade Guaíra: (41) 99917-6640 e Unidade Alto Boqueirão: (41) 99750-1961 ou faça seu pedido pelo WhatsApp com entrega no mesmo dia.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
@@ -215,15 +215,17 @@ export default function SobrePage() {
               className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-extrabold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all duration-300 shadow-md"
             >
               <MessageSquare className="w-5 h-5 fill-white text-[#25D366]" />
-              <span>Chamar no WhatsApp</span>
+              <span>Chamar no WhatsApp (Guaíra)</span>
             </a>
-            <Link
-              to="/celulares"
-              className="inline-flex items-center gap-2 bg-[#FF6600] hover:bg-[#D45500] text-white font-bold px-8 py-4 rounded-xl text-sm transition-all duration-200"
+            <a
+              href={CONTACT_INFO.whatsappLink2}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white font-extrabold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all duration-300 shadow-md"
             >
-              <Smartphone className="w-5 h-5" />
-              <span>Ver Catálogo de Celulares</span>
-            </Link>
+              <MessageSquare className="w-5 h-5 fill-white text-[#25D366]" />
+              <span>Chamar no WhatsApp (Boqueirão)</span>
+            </a>
           </div>
         </div>
       </section>

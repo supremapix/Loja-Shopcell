@@ -1,6 +1,6 @@
 {
-  "name": "Shopcell — Loja de Celulares em Curitiba",
-  "description": "Loja institucional e comercial de celulares novos e lacrados em Curitiba, catálogo de smartphones Realme com 12 meses de garantia local e entrega expressa.",
+  "name": "SUNCELL — Celulares e Assistência Técnica em Curitiba",
+  "description": "Loja de celulares novos e assistência técnica especializada em Curitiba com duas unidades físicas no Mercado Goes (Guaíra e Alto Boqueirão), 12 meses de garantia local e entrega rápida.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

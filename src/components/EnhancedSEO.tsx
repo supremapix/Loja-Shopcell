@@ -31,36 +31,37 @@ export default function EnhancedSEO({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Shopcell Curitiba",
-    "url": "https://www.celularescuritibashopcell.com.br",
+    "name": "SUNCELL Curitiba - Assistência Técnica & Celulares",
+    "url": "https://www.suncellassistencia.com.br/#lojas-section",
     "logo": ogImage,
-    "telephone": "+55-41-3538-1822",
+    "telephone": "+55-41-99917-6640",
+    "email": "info@suncellassistencia.com.br",
     "sameAs": [
-      "https://maps.app.goo.gl/UdXVapfdEjvFVWEC8"
+      "https://www.suncellassistencia.com.br/#lojas-section"
     ]
   };
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "MobilePhoneStore",
-    "name": "Shopcell — Loja de Celulares em Curitiba",
+    "name": "SUNCELL — Celulares & Assistência Técnica Curitiba",
     "image": ogImage,
-    "@id": "https://www.celularescuritibashopcell.com.br/#localbusiness",
-    "url": "https://www.celularescuritibashopcell.com.br",
-    "telephone": "+55-41-3538-1822",
+    "@id": "https://www.suncellassistencia.com.br/#localbusiness",
+    "url": "https://www.suncellassistencia.com.br/#lojas-section",
+    "telephone": "+55-41-99917-6640",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "R. Conselheiro Laurindo, 809 – Sala 402, Centro",
+      "streetAddress": "Rua Maria Moscardi Fanini, 261 - Mercado Goes",
       "addressLocality": "Curitiba",
       "addressRegion": "PR",
-      "postalCode": "80060-100",
+      "postalCode": "80220-450",
       "addressCountry": "BR"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": -25.4357,
-      "longitude": -49.2638
+      "latitude": -25.4716,
+      "longitude": -49.2789
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -72,19 +73,41 @@ export default function EnhancedSEO({
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         "opens": "09:00",
         "closes": "19:00"
+      }
+    ],
+    "department": [
+      {
+        "@type": "LocalBusiness",
+        "name": "SUNCELL Guaíra (Mercado Goes)",
+        "telephone": "+5541999176640",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Maria Moscardi Fanini, 261",
+          "addressLocality": "Curitiba",
+          "addressRegion": "PR",
+          "postalCode": "80220-450",
+          "addressCountry": "BR"
+        }
       },
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "10:00",
-        "closes": "16:00"
+        "@type": "LocalBusiness",
+        "name": "SUNCELL Alto Boqueirão (Mercado Goes)",
+        "telephone": "+5541997501961",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "R. Pastor Antônio Polito, 1805",
+          "addressLocality": "Curitiba",
+          "addressRegion": "PR",
+          "postalCode": "81770-260",
+          "addressCountry": "BR"
+        }
       }
     ],
     "sameAs": [
-      "https://maps.app.goo.gl/UdXVapfdEjvFVWEC8"
+      "https://www.suncellassistencia.com.br/#lojas-section"
     ]
   };
 
@@ -102,8 +125,8 @@ export default function EnhancedSEO({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Shopcell Curitiba",
-    "url": "https://www.celularescuritibashopcell.com.br"
+    "name": "SUNCELL Curitiba - Assistência Técnica & Celulares",
+    "url": "https://www.suncellassistencia.com.br/#lojas-section"
   };
 
   // Breadcrumb Schema
@@ -166,7 +189,7 @@ export default function EnhancedSEO({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
       <meta property="og:locale" content="pt_BR" />
-      <meta property="og:site_name" content="Shopcell — Loja de Celulares em Curitiba" />
+      <meta property="og:site_name" content="SUNCELL — Celulares & Assistência Técnica Curitiba" />
       <meta property="og:url" content={canonical} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />

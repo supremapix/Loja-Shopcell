@@ -137,8 +137,8 @@ export const REVIEWS: Review[] = [
 export const DIFFERENTIALS: Differential[] = [
   {
     icon: "MapPin",
-    title: "Loja no Centro de Curitiba",
-    description: "Excelente localização com facilidade de acesso no Edifício Downtown, ao lado do Shopping Estação."
+    title: "2 Lojas no Mercado Goes",
+    description: "Unidade Guaíra e Unidade Alto Boqueirão em Curitiba. Facilidade de acesso, segurança e estacionamento no Mercado Goes."
   },
   {
     icon: "CreditCard",
@@ -148,12 +148,12 @@ export const DIFFERENTIALS: Differential[] = [
   {
     icon: "ShieldCheck",
     title: "Garantia Local de 12 Meses",
-    description: "Todos os celulares novos contam com 12 meses de garantia presencial com suporte técnico direto com a nossa equipe em Curitiba."
+    description: "Todos os celulares novos contam com 12 meses de garantia presencial com suporte técnico e assistência especializada SUNCELL em Curitiba."
   },
   {
     icon: "Star",
-    title: "Nota 5.0 no Google",
-    description: "Empresa referência com avaliação máxima e mais de 3.800 clientes satisfeitos em Curitiba e Região Metropolitana."
+    title: "Excelência e Confiança",
+    description: "Assistência técnica e venda de smartphones com atendimento transparente, peças de qualidade e respeito total ao cliente."
   },
   {
     icon: "Smartphone",
@@ -163,38 +163,42 @@ export const DIFFERENTIALS: Differential[] = [
   {
     icon: "MessageSquare",
     title: "Atendimento Especializado",
-    description: "Consultoria completa antes e depois da compra via WhatsApp ou presencialmente para ajudar você a escolher o melhor aparelho."
+    description: "Consultoria completa antes e depois da compra via WhatsApp ou presencialmente em nossas unidades para você tirar todas as dúvidas."
   }
 ];
 
 export const FAQS: FAQItem[] = [
   {
     question: "Os celulares são novos, originais e lacrados?",
-    answer: "Sim! A Shopcell trabalha exclusivamente com celulares 100% originais, novos em caixas lacradas. Abrimos e conferimos a integridade do produto junto com você na hora da compra ou na entrega."
+    answer: "Sim! A SUNCELL trabalha exclusivamente com celulares 100% originais, novos em caixas lacradas. Abrimos e conferimos a integridade do produto junto com você na hora da compra ou na entrega."
   },
   {
     question: "Como funciona a garantia dos aparelhos?",
-    answer: "Oferecemos 12 meses de garantia local direta em nossa loja física no Centro de Curitiba. Isso garante suporte presencial rápido, sem complicações ou necessidade de envio por correios."
+    answer: "Oferecemos 12 meses de garantia local direta em nossas lojas físicas no Mercado Goes em Curitiba. Isso garante suporte presencial ágil com equipe técnica própria, sem burocracia."
   },
   {
     question: "Como posso consultar aparelhos e preços disponíveis?",
-    answer: "Você pode clicar em qualquer botão de atendimento para falar no WhatsApp com nossos consultores. Nossa equipe envia as opções disponíveis em estoque, fotos, cores e orçamentos na hora!"
+    answer: "Você pode falar no WhatsApp da Unidade Guaíra pelo (41) 99917-6640 ou da Unidade Alto Boqueirão pelo (41) 99750-1961. Nossa equipe envia as opções disponíveis em estoque, fotos e orçamentos na hora!"
   },
   {
     question: "Como funciona o pagamento parcelado no cartão?",
-    answer: "Parcelamos suas compras em até 12x no cartão de crédito diretamente na nossa loja física ou na entrega presencial com o motoboy."
+    answer: "Parcelamos suas compras em até 12x no cartão de crédito diretamente em nossas lojas físicas no Mercado Goes ou na entrega presencial com motoboy."
   },
   {
-    question: "Qual o endereço da loja física em Curitiba?",
-    answer: "Estamos localizados na Rua Conselheiro Laurindo, 809 – Sala 402 (Edifício Downtown), no Centro de Curitiba – PR. Pertinho do Shopping Estação e Rodoferroviária."
+    question: "Quais são os endereços das lojas SUNCELL em Curitiba?",
+    answer: "Possuímos 2 unidades dentro do Mercado Goes em Curitiba: 1) SUNCELL Guaíra: Rua Maria Moscardi Fanini, 261 - Guaíra (Tel/Whats: 41 99917-6640); 2) SUNCELL Alto Boqueirão: R. Pastor Antônio Polito, 1805 - Alto Boqueirão (Tel/Whats: 41 99750-1961)."
   },
   {
     question: "Vocês entregam em Curitiba e Região Metropolitana?",
-    answer: "Sim! Contamos com serviço de motoboy express para entregas no mesmo dia em todos os bairros de Curitiba (Sítio Cercado, Batel, Água Verde, Boqueirão, CIC, etc.) e cidades da Região Metropolitana."
+    answer: "Sim! Contamos com serviço de motoboy express para entregas no mesmo dia em todos os bairros de Curitiba e cidades da Região Metropolitana."
   },
   {
-    question: "Qual o horário de funcionamento da loja?",
-    answer: "Atendemos de Segunda a Sexta-feira das 09h às 19h, e aos Sábados das 10h às 16h."
+    question: "Qual o horário de funcionamento das lojas?",
+    answer: "Atendemos de Segunda a Sábado em horário comercial dentro do Mercado Goes (das 09h às 19h)."
+  },
+  {
+    question: "Qual o e-mail oficial e site da SUNCELL?",
+    answer: "Nosso e-mail de atendimento é info@suncellassistencia.com.br e nosso site oficial com todas as lojas pode ser acessado em https://www.suncellassistencia.com.br/#lojas-section."
   }
 ];
 
@@ -209,16 +213,95 @@ export const RMC_CITIES = [
   "Piraquara", "Fazenda Rio Grande", "Campina Grande do Sul", "Almirante Tamandaré"
 ];
 
+export interface StoreInfo {
+  id: string;
+  name: string;
+  unitName: string;
+  landmark: string;
+  address: string;
+  street: string;
+  neighborhood: string;
+  cep: string;
+  city: string;
+  phone: string;
+  phoneClean: string;
+  phoneLink: string;
+  whatsapp: string;
+  whatsappClean: string;
+  whatsappLink: string;
+  mapsQuery: string;
+  mapsLink: string;
+  hours: string;
+  badge: string;
+}
+
+export const STORES: StoreInfo[] = [
+  {
+    id: "guaira",
+    name: "SUNCELL Guaíra",
+    unitName: "Unidade Guaíra",
+    landmark: "Dentro do Mercado Goes",
+    address: "Rua Maria Moscardi Fanini, 261 - Guaíra, Curitiba - PR, 80220-450",
+    street: "Rua Maria Moscardi Fanini, 261",
+    neighborhood: "Guaíra",
+    cep: "80220-450",
+    city: "Curitiba - PR",
+    phone: "(41) 99917-6640",
+    phoneClean: "41999176640",
+    phoneLink: "tel:41999176640",
+    whatsapp: "(41) 99917-6640",
+    whatsappClean: "5541999176640",
+    whatsappLink: "https://wa.me/5541999176640?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20na%20SUNCELL%20Unidade%20Gua%C3%ADra%20%28Dentro%20do%20Mercado%20Goes%29.",
+    mapsQuery: "Rua+Maria+Moscardi+Fanini,+261+-+Guaíra,+Curitiba+-+PR,+80220-450",
+    mapsLink: "https://www.google.com/maps/search/?api=1&query=Rua+Maria+Moscardi+Fanini,+261+-+Guaíra,+Curitiba+-+PR,+80220-450",
+    hours: "Seg–Sáb 09h–19h (Dentro do Mercado Goes)",
+    badge: "Mercado Goes Guaíra"
+  },
+  {
+    id: "alto-boqueirao",
+    name: "SUNCELL Alto Boqueirão",
+    unitName: "Unidade Alto Boqueirão",
+    landmark: "Dentro do Mercado Goes",
+    address: "R. Pastor Antônio Polito, 1805 - Alto Boqueirão, Curitiba - PR, 81770-260",
+    street: "R. Pastor Antônio Polito, 1805",
+    neighborhood: "Alto Boqueirão",
+    cep: "81770-260",
+    city: "Curitiba - PR",
+    phone: "(41) 99750-1961",
+    phoneClean: "41997501961",
+    phoneLink: "tel:41997501961",
+    whatsapp: "(41) 99750-1961",
+    whatsappClean: "5541997501961",
+    whatsappLink: "https://wa.me/5541997501961?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20na%20SUNCELL%20Unidade%20Alto%20Boqueir%C3%A3o%20%28Dentro%20do%20Mercado%20Goes%29.",
+    mapsQuery: "R.+Pastor+Antônio+Polito,+1805+-+Alto+Boqueirão,+Curitiba+-+PR,+81770-260",
+    mapsLink: "https://www.google.com/maps/search/?api=1&query=R.+Pastor+Antônio+Polito,+1805+-+Alto+Boqueirão,+Curitiba+-+PR,+81770-260",
+    hours: "Seg–Sáb 09h–19h (Dentro do Mercado Goes)",
+    badge: "Mercado Goes Alto Boqueirão"
+  }
+];
+
 export const CONTACT_INFO = {
-  phone: "(41) 3538-1822",
-  phoneLink: "tel:4135381822",
-  whatsapp: "(41) 3798-9918",
-  whatsappLink: "https://api.whatsapp.com/send?phone=554137989918&text=Ol%C3%A1%21%20Gostaria%20de%20consultar%20os%20celulares%20dispon%C3%ADveis%20na%20Shopcell%20Curitiba.",
-  email: "contato@celularcuritibashopcell.com.br",
-  address: "R. Conselheiro Laurindo, 809 – Sala 402, 4º Andar, Edifício Downtown, Centro, Curitiba – PR, CEP 80060-100",
-  mapsLink: "https://maps.app.goo.gl/UdXVapfdEjvFVWEC8",
-  hours: "Seg–Sex 09h–19h | Sábado 10h–16h | Domingo fechado",
+  brandName: "SUNCELL",
+  brandSubtitle: "Assistência Técnica & Celulares em Curitiba",
+  phone: "(41) 99917-6640",
+  phoneLink: "tel:41999176640",
+  phone2: "(41) 99750-1961",
+  phoneLink2: "tel:41997501961",
+  whatsapp: "(41) 99917-6640",
+  whatsappLink: "https://wa.me/5541999176640?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20na%20SUNCELL%20Unidade%20Gua%C3%ADra%20%28Mercado%20Goes%29.",
+  whatsapp2: "(41) 99750-1961",
+  whatsappLink2: "https://wa.me/5541997501961?text=Ol%C3%A1%21%20Gostaria%20de%20atendimento%20na%20SUNCELL%20Unidade%20Alto%20Boqueir%C3%A3o%20%28Mercado%20Goes%29.",
+  email: "info@suncellassistencia.com.br",
+  emailLink: "mailto:info@suncellassistencia.com.br",
+  address: "SUNCELL Guaíra: Rua Maria Moscardi Fanini, 261 | SUNCELL Alto Boqueirão: R. Pastor Antônio Polito, 1805 (Ambas no Mercado Goes, Curitiba - PR)",
+  addressGuaira: "Rua Maria Moscardi Fanini, 261 - Guaíra, Curitiba - PR, 80220-450 (Dentro do Mercado Goes)",
+  addressBoqueirao: "R. Pastor Antônio Polito, 1805 - Alto Boqueirão, Curitiba - PR, 81770-260 (Dentro do Mercado Goes)",
+  mapsLink: "https://www.google.com/maps/search/?api=1&query=Rua+Maria+Moscardi+Fanini,+261+-+Guaíra,+Curitiba+-+PR,+80220-450",
+  mapsLinkBoqueirao: "https://www.google.com/maps/search/?api=1&query=R.+Pastor+Antônio+Polito,+1805+-+Alto+Boqueirão,+Curitiba+-+PR,+81770-260",
+  officialSiteUrl: "https://www.suncellassistencia.com.br/#lojas-section",
+  hours: "Segunda a Sábado: 09h às 19h (Dentro do Mercado Goes)",
   cnpj: "33.628.749/0001-58",
+  stores: STORES,
   creditoName: "Suprema Sites Express",
   creditoUrl: "https://supremasite.com.br",
   creditoLogo: "https://img.supremamidia.com/suprema-img.png"
