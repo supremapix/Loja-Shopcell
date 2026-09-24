@@ -329,33 +329,33 @@ export default function Navbar({
               className="fixed inset-0 w-full h-screen bg-slate-50 z-50 overflow-y-auto flex flex-col p-4 sm:p-6"
             >
               {/* TOP NAVIGATION BAR */}
-              <div className="flex items-center justify-between gap-3 border-b-2 border-slate-200 pb-4 mb-4">
+              <div className="flex items-center justify-between gap-2 border-b-2 border-slate-200 pb-3 mb-3">
                 <button
                   onClick={() => {
                     navigate(-1);
                     setMobileMenuOpen(false);
                   }}
-                  className="flex items-center justify-center gap-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-black px-4 py-3 rounded-2xl text-sm transition-all shadow-xs cursor-pointer"
-                  style={{ minHeight: '48px' }}
+                  className="flex items-center justify-center gap-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-black px-2.5 py-2.5 rounded-xl text-xs transition-all shadow-xs cursor-pointer flex-1"
+                  style={{ minHeight: '44px' }}
                 >
-                  <ArrowLeft className="w-5 h-5 text-[#FF6600]" />
-                  <span>VOLTAR</span>
+                  <ArrowLeft className="w-4 h-4 text-[#FF6600] shrink-0" />
+                  <span className="truncate">VOLTAR</span>
                 </button>
                 
-                <div className="flex items-center gap-2 select-none">
-                  <div className="w-9 h-9 bg-[#FF6600] rounded-xl flex items-center justify-center font-black text-white text-sm shadow-sm">
+                <div className="flex items-center gap-1.5 select-none px-1 shrink-0">
+                  <div className="w-7 h-7 bg-[#FF6600] rounded-lg flex items-center justify-center font-black text-white text-xs shadow-sm">
                     SC
                   </div>
-                  <span className="font-display font-black text-gray-900 text-sm tracking-tight">MENU SUNCELL</span>
+                  <span className="font-display font-black text-gray-900 text-xs tracking-tight hidden sm:inline">MENU SUNCELL</span>
                 </div>
 
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-[#FF6600] hover:bg-[#D45500] text-white font-black px-4 py-3 rounded-2xl text-sm transition-all shadow-md cursor-pointer"
-                  style={{ minHeight: '48px' }}
+                  className="flex items-center justify-center gap-1 bg-[#FF6600] hover:bg-[#D45500] text-white font-black px-2.5 py-2.5 rounded-xl text-xs transition-all shadow-md cursor-pointer flex-1"
+                  style={{ minHeight: '44px' }}
                 >
-                  <X className="w-5 h-5" />
-                  <span>FECHAR</span>
+                  <X className="w-4 h-4 shrink-0" />
+                  <span className="truncate">FECHAR</span>
                 </button>
               </div>
 

@@ -32,7 +32,7 @@ export default function Footer() {
         id="premium-shifting-footer-separator"
       />
 
-      <div className="max-w-7xl mx-auto py-16 px-6 relative z-10">
+      <div className="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 relative z-10">
         {/* Top Feature Bar in Footer */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
           <div className="bg-slate-900/85 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-3.5 shadow-lg">
