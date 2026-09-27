@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 import { useCart } from '../context/CartContext';
+import StoreSelectModal from './StoreSelectModal';
 
 interface NavbarProps {
   cartCount?: number;
@@ -32,6 +33,7 @@ export default function Navbar({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [isLargeText, setIsLargeText] = useState(false);
+  const [isStoreModalOpen, setIsStoreModalOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -72,42 +74,41 @@ export default function Navbar({
       {/* Top Bar - Premium Dark Minimalist Layout */}
       <div 
         id="topbar" 
-        className="w-full bg-[#0B0F19] text-slate-300 py-2 relative z-50 shadow-xs border-b border-slate-800 text-[11px] font-sans font-medium tracking-wide"
+        className="w-full bg-[#0B0F19] text-slate-300 py-2 relative z-20 shadow-xs border-b border-slate-800 text-[11px] font-sans font-medium tracking-wide"
       >
         <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 flex items-center justify-between">
           
           {/* Desktop Left Side - Address */}
           <div className="hidden lg:flex items-center gap-3 text-slate-400">
-            <a 
-              href={CONTACT_INFO.mapsLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-[#FF8533] flex items-center gap-1.5 transition-colors duration-200"
+            <button 
+              onClick={() => setIsStoreModalOpen(true)}
+              className="hover:text-[#FF8533] flex items-center gap-1.5 transition-colors duration-200 cursor-pointer text-left"
               title="SUNCELL Guaíra - Mercado Goes"
             >
               <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
               <span className="font-bold text-slate-200">Guaíra:</span>
               <span>R. Maria Moscardi Fanini, 261</span>
-            </a>
+            </button>
             <span className="text-slate-700">|</span>
-            <a 
-              href={CONTACT_INFO.mapsLinkBoqueirao} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-[#FF8533] flex items-center gap-1.5 transition-colors duration-200"
+            <button 
+              onClick={() => setIsStoreModalOpen(true)}
+              className="hover:text-[#FF8533] flex items-center gap-1.5 transition-colors duration-200 cursor-pointer text-left"
               title="SUNCELL Alto Boqueirão - Mercado Goes"
             >
               <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
               <span className="font-bold text-slate-200">Alto Boqueirão:</span>
               <span>R. Pastor Antônio Polito, 1805</span>
-            </a>
+            </button>
           </div>
 
           {/* Desktop Center Side - High Conversion Slogan & Official Link */}
           <div className="hidden lg:flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#FF6600]/15 text-[#FF8533] rounded text-[9px] font-bold uppercase tracking-widest border border-[#FF6600]/30">
+            <button
+              onClick={() => setIsStoreModalOpen(true)}
+              className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#FF6600]/15 text-[#FF8533] hover:bg-[#FF6600]/25 rounded text-[9px] font-bold uppercase tracking-widest border border-[#FF6600]/30 cursor-pointer transition-colors"
+            >
               MERCADO GOES
-            </span>
+            </button>
             <a 
               href={CONTACT_INFO.officialSiteUrl}
               target="_blank"
@@ -144,28 +145,107 @@ export default function Navbar({
             </a>
           </div>
 
-          {/* Mobile/Tablet Marquee */}
-          <div className="flex lg:hidden w-full relative overflow-hidden py-0.5">
-            <div className="flex gap-8 animate-marquee-reverse hover:[animation-play-state:paused] transition-all duration-300 w-max text-[10px] font-sans font-bold tracking-wider uppercase text-slate-300">
-              <span className="flex items-center gap-1 text-[#FF8533]">
-                <span>SUNCELL CURITIBA (MERCADO GOES)</span>
-              </span>
-              <span className="text-slate-700 select-none">❖</span>
-              <a href={CONTACT_INFO.mapsLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-[#FF8533]">
-                <MapPin className="w-3 h-3 text-[#FF6600]" />
-                <span>Guaíra: R. Maria Moscardi Fanini, 261</span>
-              </a>
-              <span className="text-slate-700 select-none">❖</span>
-              <a href={CONTACT_INFO.mapsLinkBoqueirao} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-[#FF8533]">
-                <MapPin className="w-3 h-3 text-[#FF6600]" />
-                <span>Alto Boqueirão: R. Pastor Antônio Polito, 1805</span>
-              </a>
-              <span className="text-slate-700 select-none">❖</span>
-              <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" className="text-emerald-400 font-extrabold flex items-center gap-1">
-                <MessageSquare className="w-3 h-3 text-emerald-400" />
-                <span>Whats: (41) 99917-6640 / (41) 99750-1961</span>
-              </a>
+          {/* Mobile/Tablet Top Bar Layout */}
+          <div className="flex lg:hidden w-full items-center justify-between gap-2 text-[10px] font-sans font-bold tracking-tight">
+            
+            {/* Left: Store Selector Pill */}
+            <button
+              onClick={() => setIsStoreModalOpen(true)}
+              className="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-800 active:scale-95 text-slate-200 border border-slate-700/80 px-2.5 py-1 rounded-full transition-all shrink-0 cursor-pointer shadow-xs"
+              title="Ver unidades SUNCELL no Mercado Goes"
+            >
+              <MapPin className="w-3 h-3 text-[#FF6600]" />
+              <span className="text-[#FF8533] font-black uppercase text-[9.5px]">Lojas CWB</span>
+              <ChevronRight className="w-2.5 h-2.5 text-slate-400" />
+            </button>
+
+            {/* Center: Seamless Infinite Marquee with Duplicated Sets */}
+            <div className="flex-1 overflow-hidden relative mx-1 py-0.5">
+              <div className="flex gap-6 animate-marquee hover:[animation-play-state:paused] active:[animation-play-state:paused] w-max text-[10px] uppercase font-bold tracking-wider text-slate-300">
+                {/* Set 1 */}
+                <a 
+                  href={CONTACT_INFO.whatsappLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-1 text-emerald-400 hover:underline shrink-0"
+                >
+                  <MessageSquare className="w-3 h-3 text-emerald-400" />
+                  <span>Whats Guaíra: (41) 99917-6640</span>
+                </a>
+
+                <span className="text-slate-700 select-none">❖</span>
+
+                <a 
+                  href={CONTACT_INFO.whatsappLink2} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-1 text-emerald-400 hover:underline shrink-0"
+                >
+                  <MessageSquare className="w-3 h-3 text-emerald-400" />
+                  <span>Whats Boqueirão: (41) 99750-1961</span>
+                </a>
+
+                <span className="text-slate-700 select-none">❖</span>
+
+                <button
+                  onClick={() => setIsStoreModalOpen(true)}
+                  className="flex items-center gap-1 text-[#FF8533] hover:underline shrink-0 text-left cursor-pointer"
+                >
+                  <Store className="w-3 h-3 text-[#FF6600]" />
+                  <span>SUNCELL Mercado Goes Guaíra e Boqueirão</span>
+                </button>
+
+                <span className="text-slate-700 select-none">❖</span>
+
+                {/* Set 2 (Duplicate for smooth infinite marquee loop) */}
+                <a 
+                  href={CONTACT_INFO.whatsappLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-1 text-emerald-400 hover:underline shrink-0"
+                >
+                  <MessageSquare className="w-3 h-3 text-emerald-400" />
+                  <span>Whats Guaíra: (41) 99917-6640</span>
+                </a>
+
+                <span className="text-slate-700 select-none">❖</span>
+
+                <a 
+                  href={CONTACT_INFO.whatsappLink2} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-1 text-emerald-400 hover:underline shrink-0"
+                >
+                  <MessageSquare className="w-3 h-3 text-emerald-400" />
+                  <span>Whats Boqueirão: (41) 99750-1961</span>
+                </a>
+
+                <span className="text-slate-700 select-none">❖</span>
+
+                <button
+                  onClick={() => setIsStoreModalOpen(true)}
+                  className="flex items-center gap-1 text-[#FF8533] hover:underline shrink-0 text-left cursor-pointer"
+                >
+                  <Store className="w-3 h-3 text-[#FF6600]" />
+                  <span>SUNCELL Mercado Goes Guaíra e Boqueirão</span>
+                </button>
+
+                <span className="text-slate-700 select-none">❖</span>
+              </div>
             </div>
+
+            {/* Right: Quick Whats Pill */}
+            <a
+              href={CONTACT_INFO.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-full text-[9.5px] font-extrabold uppercase shrink-0 transition-all cursor-pointer shadow-xs active:scale-95"
+              title="Falar no WhatsApp"
+            >
+              <MessageSquare className="w-3 h-3 text-emerald-400 fill-emerald-400/20" />
+              <span>Whats</span>
+            </a>
+
           </div>
 
         </div>
@@ -475,6 +555,11 @@ export default function Navbar({
           )}
         </AnimatePresence>
       </header>
+
+      <StoreSelectModal 
+        isOpen={isStoreModalOpen} 
+        onClose={() => setIsStoreModalOpen(false)} 
+      />
     </>
   );
 }
