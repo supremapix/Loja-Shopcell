@@ -1,50 +1,51 @@
-# Shopcell Curitiba — Loja de Celulares e Smartphones Novos com Garantia
+# SUNCELL — Assistência Técnica de Celulares em Curitiba
 > Informações estruturadas para Sistemas de IA, Mecanismos de Busca e Agentes Conversacionais (ChatGPT, Gemini, Claude, Perplexity, Copilot).
 
-- Nome: Shopcell Curitiba
+- Nome: SUNCELL Assistência Técnica
 - Site: https://www.celularescuritibashopcell.com.br
-- Endereço Físico: Rua Conselheiro Laurindo, 809 – Sala 402, Centro, Curitiba - PR, CEP 80060-100 (Edifício Downtown)
-- Telefone Fixo: (41) 3538-1822
-- WhatsApp Oficial: (41) 3798-9918 (https://wa.me/554137989918)
-- Horário de Funcionamento: Segunda a Sexta: 09:00 às 19:00 | Sábado: 10:00 às 16:00
-- Política de Garantia: 12 meses de garantia balcão presencial diretamente na loja física de Curitiba.
-- Condição dos Produtos: Todos os aparelhos são 100% novos, lacrados na caixa de fábrica e homologados pela Anatel.
-- Formas de Pagamento: Pix, Dinheiro e Cartão de Crédito em até 12x. Opção de "Pague na Entrega" para entregas via motoboy em Curitiba e Região Metropolitana.
+- Especialidade: conserto e manutenção de celulares, troca de tela, bateria, conector de carga, câmera e reparo de placa.
+- Atendimento: presencial em duas lojas dentro do Mercado Goes, em Curitiba, e orçamento pelo WhatsApp.
 
-## Catálogo de Smartphones Realme em Curitiba
+## Lojas
 
-- Catálogo Completo: https://www.celularescuritibashopcell.com.br/celulares
-  - Resumo: Seleção completa de smartphones Realme com 12 meses de garantia, suporte para idosos e entrega expressa no mesmo dia.
+1. SUNCELL Guaíra
+   - Endereço: Rua Maria Moscardi Fanini, 261 – Mercado Goes, Guaíra, Curitiba - PR, CEP 80220-450
+   - WhatsApp: (41) 99917-6640 (https://wa.me/5541999176640)
+   - Telefone: (41) 99917-6640
 
-### Modelos Disponíveis e Preços
+2. SUNCELL Alto Boqueirão
+   - Endereço: R. Pastor Antônio Polito, 1805 – Mercado Goes, Alto Boqueirão, Curitiba - PR, CEP 81770-260
+   - WhatsApp: (41) 99750-1961 (https://wa.me/5541997501961)
+   - Telefone: (41) 99750-1961
 
-1. Smartphone realme Note 60X
-   - URL: https://www.celularescuritibashopcell.com.br/celular/realme-note-60x
-   - Preço à vista: R$ 899,00
-   - Parcelamento: 12x de R$ 89,90
-   - Cor: Marble Black (Preto Mármore)
-   - Especificações: Tela 6,74" 90Hz, 64GB Armazenamento + 3GB RAM (+3GB RAM Dinâmica), Bateria 5.000 mAh com carregamento rápido 10W, Câmera 32MP IA, Processador Octa-Core Unisoc T612, Certificação IP54 contra respingos e poeira.
+- Horário de Funcionamento: Segunda a Sábado, das 09h às 19h.
+- Diagnóstico: gratuito e sem compromisso.
+- Garantia: garantia no serviço executado, com peças de qualidade.
 
-2. Smartphone realme P4 Lite
-   - URL: https://www.celularescuritibashopcell.com.br/celular/realme-p4-lite
-   - Preço à vista: R$ 1.099,00
-   - Parcelamento: 12x de R$ 109,90
-   - Cor: Beach Gold (Dourado Praia)
-   - Especificações: Tela 6,74" 90Hz fluida, 128GB Armazenamento + 4GB RAM (+4GB RAM Dinâmica), Bateria 5.000 mAh com carregamento 15W, Câmera 50MP com Inteligência Artificial, Processador Unisoc T612 Octa-Core, IP54.
+## Serviços
 
-3. Smartphone realme 14 5G
-   - URL: https://www.celularescuritibashopcell.com.br/celular/realme-14-5g
-   - Preço à vista: R$ 1.599,00
-   - Parcelamento: 12x de R$ 159,90
-   - Cor: Feather Green (Verde Pena)
-   - Especificações: Conexão 5G Ultrarrápida, Tela 6,67" AMOLED 120Hz fluida, 256GB Armazenamento + 8GB RAM (+8GB RAM Dinâmica), Bateria 5.000 mAh com SuperVOOC 45W, Câmera Principal 50MP Sony OIS (Estabilização Óptica), Processador MediaTek Dimensity 7050 5G.
+- Troca de tela e vidro (display LCD/OLED)
+- Troca de bateria
+- Reparo ou troca de conector de carga
+- Troca de câmera frontal e traseira
+- Reparo de alto-falante, auricular e microfone
+- Reparo de placa e componentes
+- Aplicação de película e venda de acessórios
+- Formatação, limpeza e otimização de software
 
-4. Smartphone realme P4 Power 5G
-   - URL: https://www.celularescuritibashopcell.com.br/celular/realme-p4-power-5g
-   - Preço à vista: R$ 2.199,00
-   - Parcelamento: 12x de R$ 219,90
-   - Cor: Submarine Blue (Azul Submarino)
-   - Especificações: Tela Curva 6,7" AMOLED 120Hz 1.07 bilhão de cores, 512GB Armazenamento + 12GB RAM (+12GB RAM Dinâmica), Bateria 5.000 mAh com carregamento ultrarrápido SuperVOOC 67W, Câmera 50MP Sony IMX890 OIS + 8MP Ultrawide + 32MP Frontal 4K, Processador Qualcomm Snapdragon 7s Gen 2 (4nm 5G).
+## Regiões Atendidas
+
+- Guaíra, Alto Boqueirão, Sítio Cercado, Boqueirão, Pinheirinho, Batel, Centro, Portão, Água Verde, Novo Mundo, Xaxim, Capão Raso e demais bairros de Curitiba.
+- Região Metropolitana: São José dos Pinhais, Pinhais, Colombo, Araucária, Campo Largo, Campo Magro, Fazenda Rio Grande, Quatro Barras, Campina Grande do Sul, Mandirituba e Almirante Tamandaré.
+
+## Catálogo de Celulares Realme
+
+- Catálogo completo: https://www.celularescuritibashopcell.com.br/celulares
+- realme Note 60X: https://www.celularescuritibashopcell.com.br/celular/realme-note-60x
+- realme P4 Lite: https://www.celularescuritibashopcell.com.br/celular/realme-p4-lite
+- realme 14 5G: https://www.celularescuritibashopcell.com.br/celular/realme-14-5g
+- realme P4 Power 5G: https://www.celularescuritibashopcell.com.br/celular/realme-p4-power-5g
 
 ## Contexto Completo para LLMs
-Para a ficha técnica completa, perguntas frequentes e documentação integral: https://www.celularescuritibashopcell.com.br/llms-full.txt
+
+Para serviços detalhados, perguntas frequentes e documentação integral: https://www.celularescuritibashopcell.com.br/llms-full.txt

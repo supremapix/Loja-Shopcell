@@ -21,8 +21,8 @@ export default function CatalogoModal({ isOpen, onClose }: CatalogoModalProps) {
     }
     setError(null);
 
-    const message = `Olá! Gostaria de receber o catálogo completo em PDF da *Xiaomi Shop Cell Curitiba* com todos os smartphones, tablets e acessórios disponíveis.\n\n👤 *Nome:* ${name}\n📱 *Contato:* ${phone || 'Não informado'}\n\n_Solicitado via formulário de catálogo do site_`;
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(message)}`;
+    const message = `Olá! Gostaria de receber o catálogo completo em PDF da *SUNCELL Curitiba* com todos os smartphones, tablets e acessórios disponíveis.\n\n👤 *Nome:* ${name}\n📱 *Contato:* ${phone || 'Não informado'}\n\n_Solicitado via formulário de catálogo do site_`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=5541999176640&text=${encodeURIComponent(message)}`;
 
     window.open(whatsappUrl, '_blank', 'noreferrer');
     onClose();

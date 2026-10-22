@@ -44,7 +44,7 @@ export default function Cart({
     setFormError(null);
 
     // Build WhatsApp Message
-    let message = `🛒 *NOVO PEDIDO - SHOPCELL CURITIBA*\n`;
+    let message = `🛒 *NOVO PEDIDO - SUNCELL CURITIBA*\n`;
     message += `===================================\n\n`;
     message += `👤 *Cliente:* ${clientName}\n`;
     message += `🚚 *Método:* ${deliveryType === 'retirada' ? 'Retirada na Loja Física (Centro)' : 'Entrega Expressa via Motoboy'}\n`;
@@ -69,13 +69,13 @@ export default function Cart({
     });
 
     message += `-----------------------------------\n`;
-    message += `📍 *Loja Física:* Edifício Downtown - Centro de Curitiba\n`;
+    message += `📍 *Loja Física:* Mercado Goes - Guaíra\n`;
     message += `🛡️ *Garantia:* 12 Meses de Garantia Local\n`;
     message += `===================================\n\n`;
-    message += `_Pedido gerado via site oficial Shopcell Curitiba_`;
+    message += `_Pedido gerado via site oficial SUNCELL Curitiba_`;
 
     const encodedText = encodeURIComponent(message);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=554137989918&text=${encodedText}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=5541999176640&text=${encodedText}`;
 
     window.open(whatsappUrl, '_blank', 'noreferrer');
   };
@@ -307,7 +307,7 @@ export default function Cart({
                             required
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
-                            placeholder="Ex: Rua Conselheiro Laurindo, 809 - Ap 42"
+                            placeholder="Ex: Rua Maria Moscardi Fanini, 261 - Ap 42"
                             className="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:border-[#FF6600] focus:ring-1 focus:ring-[#FF6600]/10 focus:outline-none"
                             id="checkout-address-input"
                           />

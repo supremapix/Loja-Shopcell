@@ -18,7 +18,7 @@ export default function IntentPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const getWhatsAppMsg = (text: string) => {
-    return `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(text)}`;
+    return `https://api.whatsapp.com/send?phone=5541999176640&text=${encodeURIComponent(text)}`;
   };
 
   const defaultMsg = `Olá! Vi a página de *${pageData.h1}* no site e gostaria de consultar as opções de celulares disponíveis e agendar minha entrega/retirada!`;
@@ -88,7 +88,7 @@ export default function IntentPage() {
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold text-sm px-6 py-4 rounded-2xl transition-colors"
                   >
                     <PhoneCall className="w-4 h-4 text-[#FF6600]" />
-                    <span>(41) 3538-1822</span>
+                    <span>(41) 99917-6640</span>
                   </a>
                 </div>
 
@@ -112,8 +112,8 @@ export default function IntentPage() {
                       <Building2 className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold text-base">Shopcell Curitiba</h3>
-                      <p className="text-slate-400 text-xs font-mono">Edifício Downtown - Centro</p>
+                      <h3 className="text-white font-bold text-base">SUNCELL Curitiba</h3>
+                      <p className="text-slate-400 text-xs font-mono">Mercado Goes - Guaíra</p>
                     </div>
                   </div>
 
@@ -153,7 +153,7 @@ export default function IntentPage() {
         <section className="py-16 bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-[#FF6600] font-mono text-xs font-bold uppercase tracking-widest">Por Que Escolher a Shopcell</span>
+              <span className="text-[#FF6600] font-mono text-xs font-bold uppercase tracking-widest">Por Que Escolher a SUNCELL</span>
               <h2 className="text-2xl sm:text-3xl font-display font-black text-slate-900 mt-1">
                 Vantagens Exclusivas para Curitiba
               </h2>

@@ -49,7 +49,7 @@ const PRESET_COMPARISONS: PresetComparison[] = [
       antutu: '605.000 pontos',
       weight: '187g',
       highlights: ['Câmera avançada com super zoom digital', 'Tela 1.5K ultra definida', 'Bordas de tela extremamente finas'],
-      image: "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp"
+      image: "/images/suncell-assistencia-banner.webp"
     },
     old: {
       name: 'Intermediário Premium (Anterior)',
@@ -61,7 +61,7 @@ const PRESET_COMPARISONS: PresetComparison[] = [
       antutu: '490.000 pontos',
       weight: '187g',
       highlights: ['Boa câmera para uso básico', 'Ótimo equilíbrio geral', 'Corpo com acabamento elegante'],
-      image: "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp"
+      image: "/images/suncell-assistencia-banner.webp"
     }
   },
   {
@@ -82,7 +82,7 @@ const PRESET_COMPARISONS: PresetComparison[] = [
       antutu: '1.610.000 pontos',
       weight: '209g',
       highlights: ['Processador topo de linha extremamente fluído', 'Carregador super rápido incluso na caixa', 'Tela brilhante em ambientes ensolarados'],
-      image: "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp"
+      image: "/images/suncell-assistencia-banner.webp"
     },
     old: {
       name: 'Alta Performance (Anterior)',
@@ -94,7 +94,7 @@ const PRESET_COMPARISONS: PresetComparison[] = [
       antutu: '1.135.000 pontos',
       weight: '204g',
       highlights: ['Excelente desempenho geral', 'Boa tela WQHD+', 'Boa autonomia de bateria'],
-      image: "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp"
+      image: "/images/suncell-assistencia-banner.webp"
     }
   }
 ];
@@ -110,14 +110,14 @@ export default function Compare() {
 
   const handleConsultWhatsApp = (productName: string) => {
     const whatsappMessage = `Olá! Vi o comparativo de *${productName}* no site e gostaria de saber as opções disponíveis a pronta entrega!`;
-    const fullLink = `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(whatsappMessage)}`;
+    const fullLink = `https://api.whatsapp.com/send?phone=5541999176640&text=${encodeURIComponent(whatsappMessage)}`;
     window.open(fullLink, '_blank', 'referrer');
   };
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
       <EnhancedSEO 
-        title="Comparativo de Celulares | Shopcell — Loja de Celulares em Curitiba"
+        title="Comparativo de Celulares | SUNCELL — Loja de Celulares em Curitiba"
         description="Analise técnica e compare smartphones atuais com suas gerações anteriores. Saiba se vale a pena fazer o upgrade!"
         canonical="https://www.celularescuritibashopcell.com.br/comparar"
       />
@@ -132,7 +132,7 @@ export default function Compare() {
             </div>
             <div className="flex flex-col">
               <span className="font-display font-black tracking-wider text-white text-lg leading-none group-hover:text-[#FF6600] transition-colors">
-                SHOPCELL
+                SUNCELL
               </span>
               <span className="font-mono text-[9px] text-[#FF6600] tracking-widest font-semibold mt-0.5">
                 CURITIBA · PR
@@ -195,7 +195,7 @@ export default function Compare() {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <span className="block text-[10px] font-mono font-bold text-[#FF6600] tracking-wider uppercase">VEREDITO SHOPCELL</span>
+                <span className="block text-[10px] font-mono font-bold text-[#FF6600] tracking-wider uppercase">VEREDITO SUNCELL</span>
                 <span className="text-sm font-black text-white block mt-0.5">
                   Upgrade Recomendado!
                 </span>

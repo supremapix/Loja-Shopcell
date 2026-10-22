@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { bairrosData } from '../bairrosData';
-import { CATEGORY_HIGHLIGHTS, CONTACT_INFO } from '../data';
+import { CATEGORY_HIGHLIGHTS, CONTACT_INFO, STORES } from '../data';
 import EnhancedSEO from './EnhancedSEO';
 import Navbar from './Navbar';
 import Ticker from './Ticker';
@@ -10,8 +10,18 @@ import Garantia from './Garantia';
 import Reviews from './Reviews';
 import FAQ from './FAQ';
 import Footer from './Footer';
-import ShareButton from './ShareButton';
+import AssistenciaTecnica from './AssistenciaTecnica';
 import { MapPin, MessageSquare, ChevronRight, ShieldCheck, Check } from 'lucide-react';
+
+const GUAIRA_NEIGHBORHOODS = new Set([
+  'guaira', 'agua-verde', 'batel', 'centro', 'bigorrilho', 'portao',
+  'vila-izabel', 'parolin', 'novo-mundo', 'merces', 'cabral', 'juveve',
+]);
+
+const BOQUEIRAO_NEIGHBORHOODS = new Set([
+  'alto-boqueirao', 'boqueirao', 'xaxim', 'sitio-cercado', 'pinheirinho',
+  'ganchinho', 'hauer', 'fanny', 'lindoia', 'cic', 'cristo-rei',
+]);
 
 export default function LocationPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -28,7 +38,15 @@ export default function LocationPage() {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [slug]);
 
-  const customWhatsAppLink = `https://api.whatsapp.com/send?phone=554137989918&text=Ol%C3%A1%21%20Gostaria%20de%20consultar%20celulares%20com%20entrega%20expressa%20para%20o%20bairro%20${encodeURIComponent(currentBairro.nome)}%20Curitiba%21`;
+  const nearestStore = BOQUEIRAO_NEIGHBORHOODS.has(currentBairro.slug)
+    ? STORES[1]
+    : GUAIRA_NEIGHBORHOODS.has(currentBairro.slug)
+      ? STORES[0]
+      : STORES[0];
+
+  const customWhatsAppLink = `https://wa.me/${nearestStore.whatsappClean}?text=${encodeURIComponent(
+    `Olá! Gostaria de um orçamento de assistência técnica para celular no bairro ${currentBairro.nome}, em Curitiba. Vim pelo site da SUNCELL.`,
+  )}`;
 
   return (
     <div className="min-h-screen bg-white text-gray-800 flex flex-col font-sans relative">
@@ -65,7 +83,7 @@ export default function LocationPage() {
               </div>
 
               <h1 className="font-display font-semibold text-xl sm:text-2xl lg:text-3xl tracking-tight leading-tight">
-                Loja de Celulares no <span className="text-[#FF6600]">{currentBairro.nome}</span> Curitiba
+                Assistência Técnica de Celular no <span className="text-[#FF6600]">{currentBairro.nome}</span> · Curitiba
               </h1>
 
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
@@ -95,22 +113,36 @@ export default function LocationPage() {
 
             <div className="lg:col-span-4 bg-slate-900/50 border border-slate-800 p-6 rounded-3xl space-y-4 shadow-xl">
               <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <span className="text-xs text-slate-400 font-bold uppercase tracking-wider font-mono">Diferenciais do Serviço</span>
-                <span className="text-xs text-[#FF6600] font-bold font-mono">★★★★★</span>
+                <span className="text-xs text-slate-400 font-bold uppercase tracking-wider font-mono">Unidade mais próxima</span>
+                <span className="text-[10px] text-emerald-400 font-bold font-mono">ABERTA HOJE</span>
+              </div>
+
+              <div className="rounded-xl border border-[#FF6600]/25 bg-[#FF6600]/10 p-3">
+                <p className="text-sm font-black text-white">{nearestStore.name}</p>
+                <p className="mt-1 text-[11px] leading-relaxed text-slate-300">{nearestStore.address}</p>
+                <a
+                  href={nearestStore.mapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold text-[#FFA366] hover:text-white"
+                >
+                  <MapPin className="h-3 w-3" />
+                  Ver rota até a loja
+                </a>
               </div>
               
               <ul className="space-y-3 text-xs text-slate-300">
                 <li className="flex items-start gap-2.5">
                   <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Pague na Chegada:</strong> Pagamento seguro após conferir o aparelho.</span>
+                  <span><strong>Diagnóstico gratuito:</strong> orçamento na hora, sem compromisso.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Garantia Shopcell:</strong> Garantia completa de 12 meses presencial.</span>
+                  <span><strong>Garantia SUNCELL:</strong> suporte presencial e garantia no serviço.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
-                  <span><strong>Entrega Expressa:</strong> Receba no mesmo dia no bairro {currentBairro.nome}.</span>
+                  <span><strong>Atendimento local:</strong> lojas no Mercado Goes, em Guaíra e Alto Boqueirão.</span>
                 </li>
               </ul>
             </div>
@@ -155,23 +187,13 @@ export default function LocationPage() {
         </div>
       </section>
 
+      <AssistenciaTecnica />
+
       <Features />
       <Garantia />
       <Reviews />
       <FAQ />
       <Footer />
-
-      <ShareButton />
-
-      <a
-        href={customWhatsAppLink}
-        target="_blank"
-        referrerPolicy="no-referrer"
-        className="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#128C7E] text-white p-4 rounded-full shadow-lg transition-all duration-300"
-        title="Enviar WhatsApp"
-      >
-        <MessageSquare className="w-7 h-7 fill-white text-[#25D366]" />
-      </a>
     </div>
   );
 }

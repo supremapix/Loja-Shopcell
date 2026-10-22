@@ -71,11 +71,11 @@ export default function NotFound() {
     },
     {
       q: "Qual a garantia dos aparelhos?",
-      a: "Oferecemos garantia de 12 meses contra qualquer defeito de fabricação diretamente conosco na Shopcell Curitiba."
+      a: "Oferecemos garantia de 12 meses contra qualquer defeito de fabricação diretamente conosco na SUNCELL Curitiba."
     },
     {
       q: "Onde fica a loja e qual o horário?",
-      a: "Nossa loja física fica na Rua Conselheiro Laurindo, 809 – Sala 402, 4º Andar, Centro, Curitiba – PR (Edifício Downtown, bem próximo ao Shopping Estação). Funcionamos de Segunda a Sexta das 09h às 19h e Sábados das 10h às 16h."
+      a: "Nossas lojas ficam dentro do Mercado Goes: Guaíra (Rua Maria Moscardi Fanini, 261) e Alto Boqueirão (R. Pastor Antônio Polito, 1805), em Curitiba – PR. Funcionamos de segunda a sábado, das 09h às 19h."
     },
     {
       q: "Vocês fazem entrega?",
@@ -87,10 +87,10 @@ export default function NotFound() {
     <div className="min-h-screen bg-slate-950 text-white flex flex-col font-sans relative overflow-hidden">
       
       <EnhancedSEO
-        title="Página não encontrada (404) | Shopcell — Loja de Celulares em Curitiba"
+        title="Página não encontrada (404) | SUNCELL — Loja de Celulares em Curitiba"
         description="A página solicitada não foi encontrada ou foi movida. Confira nossos canais de atendimento e perguntas frequentes."
         canonical="https://www.celularescuritibashopcell.com.br/404"
-        keywords="404 shopcell curitiba, pagina nao encontrada"
+        keywords="404 suncell curitiba, pagina nao encontrada"
         noindex={true}
       />
 

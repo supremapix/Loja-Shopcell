@@ -9,7 +9,6 @@ import { CONTACT_INFO, DIFFERENTIALS, REVIEWS } from '../data';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import EnhancedSEO from './EnhancedSEO';
-import BackToTop from './BackToTop';
 
 export default function SobrePage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -231,7 +230,6 @@ export default function SobrePage() {
       </section>
 
       <Footer />
-      <BackToTop />
     </div>
   );
 }

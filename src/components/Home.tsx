@@ -11,10 +11,9 @@ import Reviews from './Reviews';
 import FAQ from './FAQ';
 import Location from './Location';
 import Garantia from './Garantia';
-import ShareButton from './ShareButton';
 import BrandTicker from './BrandTicker';
-import ProductsTicker from './ProductsTicker';
-import GuaranteesTicker from './GuaranteesTicker';
+import AssistenciaTecnica from './AssistenciaTecnica';
+import InstagramFeed from './InstagramFeed';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -22,8 +21,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white text-gray-800 flex flex-col font-sans relative">
       <EnhancedSEO
-        title="Shopcell — Loja de Celulares em Curitiba | Atendimento Especializado & Garantia Local"
-        description="Sua loja de celulares em Curitiba. Aparelhos novos, originais e lacrados com 12 meses de garantia local, loja física no Centro de Curitiba e entrega rápida via motoboy."
+        title="SUNCELL Curitiba | Assistência Técnica de Celulares no Mercado Goes"
+        description="Assistência técnica de celulares em Curitiba com diagnóstico gratuito e garantia. Troca de tela, bateria e placa nas unidades SUNCELL Guaíra e Alto Boqueirão, dentro do Mercado Goes."
         canonical="https://www.celularescuritibashopcell.com.br/"
       />
 
@@ -36,6 +35,9 @@ export default function Home() {
 
       {/* LETREIRO INSTITUCIONAL E LOCALIZAÇÃO ANTES DAS CATEGORIAS */}
       <BrandTicker />
+
+      {/* ASSISTÊNCIA TÉCNICA + LOJAS SUNCELL + BAIRROS AO REDOR */}
+      <AssistenciaTecnica />
 
       {/* CATEGORIES / APPAREL SHOWCASE */}
       <section id="celulares" className="py-16 bg-slate-50 border-t border-slate-200/80">
@@ -105,10 +107,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LETREIRO APÓS OS PRODUTOS */}
-      <ProductsTicker />
-
-      {/* WHY CHOOSE SHOPCELL */}
+      {/* WHY CHOOSE SUNCELL */}
       <Features />
 
       {/* WARRANTY & SECURITY */}
@@ -122,7 +121,6 @@ export default function Home() {
 
       {/* FAQ */}
       <FAQ />
-
       {/* WHATSAPP CONSULTATION BANNER */}
       <section className="py-16 bg-slate-900 text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
@@ -145,25 +143,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LETREIRO DE GARANTIAS & SEGURANÇA ANTES DO FOOTER */}
-      <GuaranteesTicker />
+      <InstagramFeed />
 
       <Footer />
-
-      <ShareButton />
-
-      {/* Floating WhatsApp */}
-      <a
-        href={CONTACT_INFO.whatsappLink}
-        target="_blank"
-        referrerPolicy="no-referrer"
-        className="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-[0_5px_15px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_25px_rgba(37,211,102,0.6)] transition-all duration-300 group hover:scale-110 active:scale-95"
-        title="Falar Conosco no WhatsApp"
-        id="floating-whatsapp"
-      >
-        <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-25 group-hover:opacity-40 pointer-events-none" />
-        <MessageSquare className="w-6.5 h-6.5 fill-white text-[#25D366] relative z-10" />
-      </a>
     </div>
   );
 }

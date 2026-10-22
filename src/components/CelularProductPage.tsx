@@ -41,7 +41,7 @@ export default function CelularProductPage() {
 
   const otherProducts = REALME_PRODUCTS.filter(p => p.slug !== product.slug);
 
-  const whatsappUrl = `https://wa.me/554137989918?text=${encodeURIComponent(`Olá! Tenho interesse no ${product.name} (R$ ${product.priceFormatted}) na Shopcell Curitiba.`)}`;
+  const whatsappUrl = `https://wa.me/5541999176640?text=${encodeURIComponent(`Olá! Tenho interesse no ${product.name} (R$ ${product.priceFormatted}) na SUNCELL Curitiba.`)}`;
 
   const scrollToSection = (id: string, tab: 'geral' | 'specs' | 'faq') => {
     setActiveTab(tab);
@@ -75,14 +75,14 @@ export default function CelularProductPage() {
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "MobilePhoneStore",
-        "name": "Shopcell Curitiba",
-        "telephone": "+55-41-3538-1822",
+        "name": "SUNCELL Curitiba",
+        "telephone": "+55-41-99917-6640",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "R. Conselheiro Laurindo, 809 – Sala 402, Centro",
+          "streetAddress": "Rua Maria Moscardi Fanini, 261 - Mercado Goes",
           "addressLocality": "Curitiba",
           "addressRegion": "PR",
-          "postalCode": "80060-100",
+          "postalCode": "80220-450",
           "addressCountry": "BR"
         }
       }
@@ -121,13 +121,13 @@ export default function CelularProductPage() {
         {/* SEO Tags */}
         <title>{product.titleSEO}</title>
         <meta name="description" content={product.metaDescription} />
-        <meta name="keywords" content={`${product.name}, comprar ${product.name} curitiba, ${product.name} menor preco curitiba, celular realme curitiba, shopcell curitiba`} />
+        <meta name="keywords" content={`${product.name}, comprar ${product.name} curitiba, ${product.name} menor preco curitiba, celular realme curitiba, suncell curitiba`} />
         <link rel="canonical" href={product.canonical} />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="product" />
-        <meta property="og:site_name" content="Shopcell — Loja de Celulares em Curitiba" />
+        <meta property="og:site_name" content="SUNCELL — Loja de Celulares em Curitiba" />
         <meta property="og:url" content={product.canonical} />
         <meta property="og:title" content={product.titleSEO} />
         <meta property="og:description" content={product.metaDescription} />
@@ -335,7 +335,7 @@ export default function CelularProductPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-purple-600 shrink-0" />
-                  <span>Edifício Downtown - Centro</span>
+                  <span>Mercado Goes - Guaíra</span>
                 </div>
               </div>
 

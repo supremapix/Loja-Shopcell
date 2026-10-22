@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { 
-  ShieldCheck, MapPin, Truck, CreditCard, Star, MessageSquare, 
-  Home, ChevronRight, CheckCircle2, Sparkles, PhoneCall 
+import {
+  ShieldCheck, MapPin, Truck, CreditCard, Star, MessageSquare,
+  Home, ChevronRight, CheckCircle2, Sparkles, PhoneCall
 } from 'lucide-react';
 import { REALME_PRODUCTS } from '../realmeData';
 import { CONTACT_INFO } from '../data';
@@ -18,7 +18,7 @@ export default function CelularesListingPage() {
   // Sorted by price ascending (cheapest to most expensive)
   const sortedProducts = [...REALME_PRODUCTS].sort((a, b) => a.price - b.price);
 
-  const filteredProducts = sortedProducts.filter(p => 
+  const filteredProducts = sortedProducts.filter(p =>
     p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     p.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
     p.specs.tela.toLowerCase().includes(searchQuery.toLowerCase())
@@ -59,10 +59,10 @@ export default function CelularesListingPage() {
   return (
     <div className={`min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans ${isSeniorText ? 'text-lg' : 'text-base'}`}>
       <Helmet>
-        <title>Smartphones Realme em Curitiba | Shopcell — Modelos com Garantia de 12 Meses</title>
-        <meta 
-          name="description" 
-          content="Confira os smartphones Realme em Curitiba na Shopcell: realme Note 60X, P4 Lite, 14 5G e P4 Power 5G. Aparelhos novos com 12 meses de garantia local e entrega expressa." 
+        <title>Smartphones Realme em Curitiba | SUNCELL — Modelos com Garantia de 12 Meses</title>
+        <meta
+          name="description"
+          content="Confira os smartphones Realme em Curitiba na SUNCELL: realme Note 60X, P4 Lite, 14 5G e P4 Power 5G. Aparelhos novos com 12 meses de garantia local e entrega expressa."
         />
         <meta name="keywords" content="smartphones realme curitiba, comprar realme curitiba, celular realme curitiba, realme note 60x curitiba, realme p4 lite curitiba, realme 14 5g curitiba, realme p4 power curitiba, loja de celulares curitiba" />
         <link rel="canonical" href={canonicalUrl} />
@@ -70,17 +70,17 @@ export default function CelularesListingPage() {
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Shopcell — Loja de Celulares em Curitiba" />
+        <meta property="og:site_name" content="SUNCELL — Loja de Celulares em Curitiba" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:title" content="Smartphones Realme em Curitiba | Shopcell" />
-        <meta property="og:description" content="Catálogo completo de celulares Realme com 12 meses de garantia física no Centro de Curitiba e entrega via motoboy." />
-        <meta property="og:image" content="https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp" />
+        <meta property="og:title" content="Smartphones Realme em Curitiba | SUNCELL" />
+        <meta property="og:description" content="Catálogo completo de celulares Realme com 12 meses de garantia física no Mercado Goes, em Curitiba e entrega via motoboy." />
+        <meta property="og:image" content="/images/suncell-assistencia-banner.webp" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Smartphones Realme em Curitiba | Shopcell" />
+        <meta name="twitter:title" content="Smartphones Realme em Curitiba | SUNCELL" />
         <meta name="twitter:description" content="Catálogo de celulares Realme novos, originais e lacrados com 12 meses de garantia local em Curitiba." />
-        <meta name="twitter:image" content="https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp" />
+        <meta name="twitter:image" content="/images/suncell-assistencia-banner.webp" />
 
         {/* Schema */}
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
@@ -126,11 +126,11 @@ export default function CelularesListingPage() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-slate-900 tracking-tight leading-tight mb-4">
-              Smartphones Realme em Curitiba | Shopcell
+              Smartphones Realme em Curitiba | SUNCELL
             </h1>
 
             <p className="text-base sm:text-xl text-slate-600 leading-relaxed mb-8">
-              Encontre o modelo ideal com procedência garantida, caixas lacradas de fábrica, 12 meses de garantia presencial no Centro de Curitiba e entrega expressa via motoboy.
+              Encontre o modelo ideal com procedência garantida, caixas lacradas de fábrica, 12 meses de garantia presencial no Mercado Goes, em Curitiba e entrega expressa via motoboy.
             </p>
 
             {/* Fast Benefit Badges */}
@@ -162,8 +162,8 @@ export default function CelularesListingPage() {
               <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-3">
                 <MapPin className="w-6 h-6 text-purple-600 shrink-0" />
                 <div>
-                  <div className="font-bold text-xs sm:text-sm text-slate-900 leading-tight">Loja no Centro</div>
-                  <div className="text-[11px] text-slate-500">Ed. Downtown</div>
+                    <div className="font-bold text-xs sm:text-sm text-slate-900 leading-tight">Loja no Mercado Goes</div>
+                  <div className="text-[11px] text-slate-500">Mercado Goes</div>
                 </div>
               </div>
             </div>
@@ -190,7 +190,7 @@ export default function CelularesListingPage() {
           {filteredProducts.length === 0 ? (
             <div className="bg-white rounded-3xl p-12 text-center border-2 border-slate-200 max-w-lg mx-auto my-8">
               <p className="text-lg font-bold text-slate-800 mb-4">Nenhum aparelho encontrado para sua busca.</p>
-              <button 
+              <button
                 onClick={() => setSearchQuery('')}
                 className="bg-[#FF6600] text-white px-6 py-3 rounded-xl font-bold cursor-pointer hover:bg-[#D45500]"
               >

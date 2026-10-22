@@ -67,7 +67,7 @@ export const PRODUCTS: Product[] = [
     desc: "Bateria de longa duração de 5000mAh, tela imersiva de alta definição e desempenho confiável para seu dia a dia.",
     rating: 5,
     reviewsCount: 180,
-    image: "https://www.celularcuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
+    image: "/images/suncell-assistencia-banner.webp",
     badges: ["Bateria 5000mAh", "128GB", "Câmera HD"]
   },
   {
@@ -77,7 +77,7 @@ export const PRODUCTS: Product[] = [
     desc: "Equipado com tecnologia NFC para pagamentos por aproximação, câmera tripla de 50MP e tela fluida AMOLED.",
     rating: 5,
     reviewsCount: 264,
-    image: "https://www.celularcuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
+    image: "/images/suncell-assistencia-banner.webp",
     badges: ["Conexão 5G", "NFC", "256GB"]
   },
   {
@@ -87,7 +87,7 @@ export const PRODUCTS: Product[] = [
     desc: "Processador ultra-rápido, carregamento de alta potência e sistema de resfriamento para jogos e multitarefa pesada.",
     rating: 5,
     reviewsCount: 528,
-    image: "https://www.celularcuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
+    image: "/images/suncell-assistencia-banner.webp",
     badges: ["12GB RAM", "Processador Octa-Core", "120Hz"]
   },
   {
@@ -97,7 +97,7 @@ export const PRODUCTS: Product[] = [
     desc: "Conjunto fotográfico de nível profissional, gravação em alta definição, acabamento nobre e certificação de resistência IP68.",
     rating: 5,
     reviewsCount: "3.500+",
-    image: "https://www.celularcuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
+    image: "/images/suncell-assistencia-banner.webp",
     badges: ["512GB", "Câmera Profissional", "Resistente à Água"],
     isHeroDestaque: true
   }
@@ -109,28 +109,28 @@ export const REVIEWS: Review[] = [
     author: "Daniela Viviani",
     rating: 5,
     text: "Ótimo atendimento, preço justo e qualidade exemplar. Meu celular foi aberto na minha frente na caixa lacrada por um preço excelente. Recomendo muito!",
-    avatar: "https://www.celularcuritibashopcell.com.br/images/depoimentos/cliente-xaomi-curitiba.webp"
+    avatar: ""
   },
   {
     id: 2,
     author: "Jason L.S",
     rating: 5,
-    text: "Espaço muito bem localizado no Centro. Comprei meus acessórios e aparelhos aqui com ótimo atendimento e tudo certinho. Nota 10!",
-    avatar: "https://www.celularcuritibashopcell.com.br/images/depoimentos/cliente-xaomi-curitiba-2.webp"
+    text: "Espaço muito bem localizado no Mercado Goes. Comprei meus acessórios e aparelhos aqui com ótimo atendimento e tudo certinho. Nota 10!",
+    avatar: ""
   },
   {
     id: 3,
     author: "Noemi Germanio",
     rating: 5,
     text: "Eu e meu marido fomos muito bem atendidos na loja física e ficamos extremamente satisfeitos com o suporte prestado. Atendimento humano faz toda diferença!",
-    avatar: "https://www.celularcuritibashopcell.com.br/images/depoimentos/cliente-xaomi-curitiba-3.webp"
+    avatar: ""
   },
   {
     id: 4,
     author: "Marcio Araujo",
     rating: 5,
-    text: "Excelente atendimento e produtos de altíssima qualidade! Fui super bem recebido no Edifício Downtown e saí com meu celular novo no mesmo dia.",
-    avatar: "https://www.celularcuritibashopcell.com.br/images/depoimentos/cliente-xaomi-curitiba-4.webp"
+    text: "Excelente atendimento e produtos de altíssima qualidade! Fui super bem recebido no Mercado Goes e saí com meu celular novo no mesmo dia.",
+    avatar: ""
   }
 ];
 

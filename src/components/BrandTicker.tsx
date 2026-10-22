@@ -1,15 +1,15 @@
 import React from 'react';
-import { Sparkles, MapPin, Zap, CheckCircle2, Star, Truck } from 'lucide-react';
+import { Sparkles, MapPin, Zap, CheckCircle2, Star, Wrench } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 
 export default function BrandTicker() {
   const tickerBrand = [
-    { text: "SHOPCELL CURITIBA", highlight: true, icon: Sparkles },
-    { text: "LOJA FÍSICA NO EDIFÍCIO DOWNTOWN — CENTRO", highlight: false, icon: MapPin },
-    { text: "SMARTPHONES NOVOS, ORIGINAIS E LACRADOS", highlight: true, icon: Zap },
-    { text: "ATENDIMENTO VIP DE ALTO PADRÃO", highlight: false, icon: CheckCircle2 },
-    { text: "AVALIAÇÃO MÁXIMA 5.0 NO GOOGLE — +3.800 CLIENTES", highlight: true, icon: Star },
-    { text: "PRONTA ENTREGA EM TODA CURITIBA E REGIÃO", highlight: false, icon: Truck },
+    { text: "SUNCELL ASSISTÊNCIA TÉCNICA", highlight: true, icon: Sparkles },
+    { text: "2 LOJAS NO MERCADO GOES — GUAÍRA E ALTO BOQUEIRÃO", highlight: false, icon: MapPin },
+    { text: "TROCA DE TELA, BATERIA E PLACA NO MESMO DIA", highlight: true, icon: Wrench },
+    { text: "DIAGNÓSTICO GRATUITO E GARANTIA NO SERVIÇO", highlight: false, icon: CheckCircle2 },
+    { text: "AVALIAÇÃO 5.0 NO GOOGLE — +3.800 CLIENTES", highlight: true, icon: Star },
+    { text: "ATENDIMENTO EM CURITIBA E REGIÃO METROPOLITANA", highlight: false, icon: Zap },
   ];
 
   const duplicatedBrand = [...tickerBrand, ...tickerBrand, ...tickerBrand, ...tickerBrand];

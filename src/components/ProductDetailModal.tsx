@@ -13,7 +13,7 @@ export default function ProductDetailModal({ product, onClose, onAddToCart }: Pr
 
   const getWhatsAppMessage = (prod: Product) => {
     const text = `Olá! Gostaria de consultar o menor valor para o *${prod.name}* via WhatsApp agora mesmo!`;
-    return `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(text)}`;
+    return `https://api.whatsapp.com/send?phone=5541999176640&text=${encodeURIComponent(text)}`;
   };
 
   return (

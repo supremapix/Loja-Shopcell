@@ -8,7 +8,7 @@ export default function ProductsTicker() {
     { text: "REALME NOTE 60X — RESISTÊNCIA & BATERIA MONSTRO", highlight: false, icon: Sparkles },
     { text: "REALME P4 LITE — O MELHOR CUSTO-BENEFÍCIO", highlight: true, icon: Zap },
     { text: "REALME P4 POWER 5G — DESEMPENHO EXTREMO", highlight: false, icon: Sparkles },
-    { text: "WHATSAPP OFICIAL: (41) 3798-9918", highlight: true, icon: CheckCircle2 },
+    { text: "WHATSAPP OFICIAL: (41) 99917-6640", highlight: true, icon: CheckCircle2 },
     { text: "MENOR PREÇO GARANTIDO DE CURITIBA", highlight: false, icon: Star },
     { text: "APARELHOS NOVOS, ORIGINAIS E COM NOTA", highlight: true, icon: Flame },
   ];

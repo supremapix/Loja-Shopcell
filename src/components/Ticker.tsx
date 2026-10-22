@@ -12,7 +12,7 @@ export default function Ticker() {
     },
     {
       icon: <MapPin className="w-4 h-4 text-[#FF6600]" />,
-      text: "LOJA FÍSICA NO CENTRO: R. Conselheiro Laurindo, 809 - Sala 402, Curitiba/PR",
+      text: "LOJA FÍSICA NO MERCADO GOES: R. Maria Moscardi Fanini, 261 - Guaíra, Curitiba/PR",
       actionText: "Ver Mapa",
       link: CONTACT_INFO.mapsLink
     },

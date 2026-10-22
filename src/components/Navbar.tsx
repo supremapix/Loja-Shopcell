@@ -63,9 +63,9 @@ export default function Navbar({
   const navItems = [
     { path: '/', label: 'Início', seniorLabel: 'Ir para o Início', icon: <Home className="w-5 h-5 text-[#FF6600]" />, bgClass: 'bg-[#FFF0E5] border-orange-200 text-orange-950', sub: 'Página inicial' },
     { path: '/celulares', label: 'Celulares', seniorLabel: 'Ver Celulares', icon: <Smartphone className="w-5 h-5 text-emerald-600" />, bgClass: 'bg-[#EAFDF5] border-emerald-200 text-emerald-950', sub: 'Aparelhos com garantia' },
-    { path: '/loja-de-celular-curitiba', label: 'Loja Curitiba', seniorLabel: 'Loja em Curitiba', icon: <Store className="w-5 h-5 text-blue-600" />, bgClass: 'bg-[#EFF6FF] border-blue-200 text-blue-950', sub: 'Atendimento presencial no Centro' },
+    { path: '/loja-de-celular-curitiba', label: 'Loja Curitiba', seniorLabel: 'Loja em Curitiba', icon: <Store className="w-5 h-5 text-blue-600" />, bgClass: 'bg-[#EFF6FF] border-blue-200 text-blue-950', sub: 'Atendimento presencial no Mercado Goes' },
     { path: '/acessorios', label: 'Acessórios', seniorLabel: 'Acessórios', icon: <Headphones className="w-5 h-5 text-amber-600" />, bgClass: 'bg-[#FFFBEB] border-amber-200 text-amber-950', sub: 'Películas, capas e carregadores' },
-    { path: '/sobre', label: 'Sobre', seniorLabel: 'Sobre a Shopcell', icon: <Users className="w-5 h-5 text-indigo-600" />, bgClass: 'bg-[#EEF2FF] border-indigo-200 text-indigo-950', sub: 'Mais de 8 anos de história' },
+    { path: '/sobre', label: 'Sobre', seniorLabel: 'Sobre a SUNCELL', icon: <Users className="w-5 h-5 text-indigo-600" />, bgClass: 'bg-[#EEF2FF] border-indigo-200 text-indigo-950', sub: 'Mais de 8 anos de história' },
     { path: '/contato', label: 'Contato', seniorLabel: 'Falar com Atendente', icon: <Phone className="w-5 h-5 text-orange-600" />, bgClass: 'bg-[#FFF5F0] border-orange-200 text-orange-950', sub: 'Endereço e WhatsApp' },
   ];
 
@@ -78,70 +78,56 @@ export default function Navbar({
       >
         <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 flex items-center justify-between">
           
-          {/* Desktop Left Side - Address */}
+          {/* Desktop Left Side - Stores */}
           <div className="hidden lg:flex items-center gap-3 text-slate-400">
-            <button 
-              onClick={() => setIsStoreModalOpen(true)}
-              className="hover:text-[#FF8533] flex items-center gap-1.5 transition-colors duration-200 cursor-pointer text-left"
-              title="SUNCELL Guaíra - Mercado Goes"
-            >
-              <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
-              <span className="font-bold text-slate-200">Guaíra:</span>
-              <span>R. Maria Moscardi Fanini, 261</span>
-            </button>
-            <span className="text-slate-700">|</span>
-            <button 
-              onClick={() => setIsStoreModalOpen(true)}
-              className="hover:text-[#FF8533] flex items-center gap-1.5 transition-colors duration-200 cursor-pointer text-left"
-              title="SUNCELL Alto Boqueirão - Mercado Goes"
-            >
-              <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
-              <span className="font-bold text-slate-200">Alto Boqueirão:</span>
-              <span>R. Pastor Antônio Polito, 1805</span>
-            </button>
-          </div>
-
-          {/* Desktop Center Side - High Conversion Slogan & Official Link */}
-          <div className="hidden lg:flex items-center gap-2">
             <button
               onClick={() => setIsStoreModalOpen(true)}
-              className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#FF6600]/15 text-[#FF8533] hover:bg-[#FF6600]/25 rounded text-[9px] font-bold uppercase tracking-widest border border-[#FF6600]/30 cursor-pointer transition-colors"
+              className="hover:text-[#FF8533] flex items-center gap-1.5 transition-colors duration-200 cursor-pointer text-left"
+              title="SUNCELL Guaíra e Alto Boqueirão - Mercado Goes"
             >
-              MERCADO GOES
+              <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
+              <span className="font-bold text-slate-200">Mercado Goes</span>
+              <span>· Guaíra e Alto Boqueirão</span>
             </button>
-            <a 
+            <span className="text-slate-700">|</span>
+            <span>Seg-Sáb · 09h às 19h</span>
+          </div>
+
+          {/* Desktop Center Side - Official Link */}
+          <div className="hidden lg:flex items-center gap-2">
+            <a
               href={CONTACT_INFO.officialSiteUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold text-slate-200 hover:text-[#FF8533] transition-colors flex items-center gap-1"
               title="Site Oficial da Assistência SUNCELL"
             >
-              <span>Site Oficial: suncellassistencia.com.br</span>
+              <span>Site oficial: suncellassistencia.com.br</span>
             </a>
           </div>
 
           {/* Desktop Right Side - Clickable Contacts */}
-          <div className="hidden lg:flex items-center gap-3 text-slate-400">
-            <a 
-              href={CONTACT_INFO.whatsappLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+          <div className="hidden lg:flex items-center gap-2.5 text-slate-400">
+            <a
+              href={CONTACT_INFO.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-emerald-400 flex items-center gap-1 transition-colors duration-200"
               title="WhatsApp Unidade Guaíra"
             >
               <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-emerald-400 font-bold">Whats Guaíra: (41) 99917-6640</span>
+              <span className="text-emerald-400 font-bold">(41) 99917-6640</span>
             </a>
             <span className="text-slate-700">|</span>
-            <a 
-              href={CONTACT_INFO.whatsappLink2} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href={CONTACT_INFO.whatsappLink2}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-emerald-400 flex items-center gap-1 transition-colors duration-200"
               title="WhatsApp Unidade Alto Boqueirão"
             >
               <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-emerald-400 font-bold">Boqueirão: (41) 99750-1961</span>
+              <span className="text-emerald-400 font-bold">(41) 99750-1961</span>
             </a>
           </div>
 
@@ -155,7 +141,7 @@ export default function Navbar({
               title="Ver unidades SUNCELL no Mercado Goes"
             >
               <MapPin className="w-3 h-3 text-[#FF6600]" />
-              <span className="text-[#FF8533] font-black uppercase text-[9.5px]">Lojas CWB</span>
+              <span className="text-[#FF8533] font-black uppercase text-[9.5px]">Lojas SUNCELL</span>
               <ChevronRight className="w-2.5 h-2.5 text-slate-400" />
             </button>
 
@@ -270,9 +256,9 @@ export default function Navbar({
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6, type: "spring" }}
-              className="w-10 h-10 bg-[#FF6600] rounded-xl flex items-center justify-center font-black text-white text-base shadow-md group-hover:scale-105 transition-all duration-300 relative overflow-hidden tracking-tighter"
+              className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-300 relative overflow-hidden"
             >
-              SC
+              <img src="/favicon.svg" alt="SUNCELL" className="w-full h-full object-contain" />
               <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.div>
 
@@ -281,7 +267,7 @@ export default function Navbar({
                 SUNCELL
               </span>
               <span className="font-mono text-[9px] text-[#FF6600] tracking-widest font-extrabold mt-0.5">
-                ASSISTÊNCIA & SMARTPHONES CWB
+                ASSISTÊNCIA TÉCNICA · CURITIBA
               </span>
             </div>
           </Link>
@@ -423,8 +409,8 @@ export default function Navbar({
                 </button>
                 
                 <div className="flex items-center gap-1.5 select-none px-1 shrink-0">
-                  <div className="w-7 h-7 bg-[#FF6600] rounded-lg flex items-center justify-center font-black text-white text-xs shadow-sm">
-                    SC
+                  <div className="w-7 h-7 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
+                    <img src="/favicon.svg" alt="SUNCELL" className="w-full h-full object-contain" />
                   </div>
                   <span className="font-display font-black text-gray-900 text-xs tracking-tight hidden sm:inline">MENU SUNCELL</span>
                 </div>

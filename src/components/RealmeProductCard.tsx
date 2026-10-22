@@ -9,7 +9,7 @@ interface RealmeProductCardProps {
 
 export default function RealmeProductCard({ product }: RealmeProductCardProps) {
   const { addToCart } = useCart();
-  const whatsappUrl = `https://wa.me/554137989918?text=${encodeURIComponent(`Olá! Tenho interesse no ${product.name}`)}`;
+  const whatsappUrl = `https://wa.me/5541999176640?text=${encodeURIComponent(`Olá! Tenho interesse no ${product.name}`)}`;
 
   return (
     <article 

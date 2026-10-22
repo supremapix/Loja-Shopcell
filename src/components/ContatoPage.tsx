@@ -8,7 +8,6 @@ import { CONTACT_INFO, STORES } from '../data';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import EnhancedSEO from './EnhancedSEO';
-import BackToTop from './BackToTop';
 
 export default function ContatoPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -300,7 +299,6 @@ export default function ContatoPage() {
       </section>
 
       <Footer />
-      <BackToTop />
     </div>
   );
 }

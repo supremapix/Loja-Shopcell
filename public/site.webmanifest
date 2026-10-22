@@ -1,0 +1,29 @@
+{
+  "name": "SUNCELL Assistência Técnica de Celulares",
+  "short_name": "SUNCELL",
+  "description": "Assistência técnica de celulares em Curitiba. Lojas Guaíra e Alto Boqueirão, dentro do Mercado Goes.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#FF6600",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "pt-BR"
+}

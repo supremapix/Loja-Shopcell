@@ -53,7 +53,7 @@ export default function HeroSmartphoneMarquee() {
         <div className="flex w-max">
           <div className="flex gap-4 sm:gap-6 animate-marquee-products hover:[animation-play-state:paused] py-2 px-4 transition-all duration-300">
             {marqueeProducts.map((prod, index) => {
-              const whatsappUrl = `https://wa.me/554137989918?text=${encodeURIComponent(`Olá! Vi a oferta do ${prod.name} por ${prod.priceFormatted} e gostaria de comprar.`)}`;
+              const whatsappUrl = `https://wa.me/5541999176640?text=${encodeURIComponent(`Olá! Vi a oferta do ${prod.name} por ${prod.priceFormatted} e gostaria de comprar.`)}`;
 
               return (
                 <div

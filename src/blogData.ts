@@ -16,14 +16,14 @@ export const BLOG_POSTS: Record<string, BlogPost> = {
   "como-escolher-seu-novo-celular-em-curitiba": {
     slug: "como-escolher-seu-novo-celular-em-curitiba",
     title: "Como Escolher Seu Novo Celular em Curitiba: Guia Prático 2026",
-    metaDescription: "Aprenda a escolher o smartphone ideal com base no seu uso diário, bateria, câmera e orçamento na Shopcell Curitiba.",
+    metaDescription: "Aprenda a escolher o smartphone ideal com base no seu uso diário, bateria, câmera e orçamento na SUNCELL Curitiba.",
     category: "Guias de Compra",
     date: "26 de Julho de 2026",
-    author: "Equipe Especializada Shopcell",
+    author: "Equipe Especializada SUNCELL",
     readTime: "5 min de leitura",
-    image: "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
+    image: "https://www.celularescuritibashopcell.com.br/images/suncell-assistencia-banner.webp",
     summary: "Buscando um novo smartphone em Curitiba? Confira nossas dicas fundamentais sobre autonomia de bateria, telas fluidas, câmeras e garantia presencial.",
-    tags: ["Guia de Compras", "Celular Curitiba", "Shopcell", "Sítio Cercado"],
+    tags: ["Guia de Compras", "Celular Curitiba", "SUNCELL", "Sítio Cercado"],
     contentHtml: `
       <h2>O que considerar antes de comprar um celular novo?</h2>
       <p>Comprar um novo smartphone é uma decisão importante. Para garantir que você escolha o modelo certo para sua rotina em Curitiba, vale observar os seguintes fatores:</p>
@@ -44,14 +44,14 @@ export const BLOG_POSTS: Record<string, BlogPost> = {
     metaDescription: "Descubra os benefícios de comprar seu smartphone em loja física com garantia de 12 meses no Centro de Curitiba e entrega via motoboy.",
     category: "Dicas de Compra",
     date: "20 de Julho de 2026",
-    author: "Gerência Shopcell",
+    author: "Gerência SUNCELL",
     readTime: "4 min de leitura",
-    image: "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
+    image: "https://www.celularescuritibashopcell.com.br/images/suncell-assistencia-banner.webp",
     summary: "Comprar localmente em Curitiba garante que você receba um aparelho 100% original, com atendimento humano e suporte presencial garantido.",
     tags: ["Loja Física", "Garantia Local", "Curitiba", "Segurança"],
     contentHtml: `
       <h2>Por que escolher uma loja física em Curitiba?</h2>
-      <p>Comprar seu celular diretamente com a <strong>Shopcell Curitiba</strong> oferece vantagens imbatíveis em relação a compras online genéricas:</p>
+      <p>Comprar seu celular diretamente com a <strong>SUNCELL Curitiba</strong> oferece vantagens imbatíveis em relação a compras online genéricas:</p>
 
       <ul>
         <li><strong>Sem espera:</strong> Retire no mesmo dia no Centro de Curitiba ou receba em poucas horas via motoboy no Sítio Cercado e demais bairros.</li>
@@ -66,14 +66,14 @@ export const BLOG_POSTS: Record<string, BlogPost> = {
     metaDescription: "Confira o melhor lugar para comprar celular em Curitiba. Loja física no Centro, entrega rápida no Sítio Cercado, parcelamento até 12x e garantia local.",
     category: "Lojas e Serviços",
     date: "15 de Julho de 2026",
-    author: "Equipe Shopcell",
+    author: "Equipe SUNCELL",
     readTime: "4 min de leitura",
-    image: "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
-    summary: "Encontrar uma loja séria de smartphones em Curitiba faz toda a diferença para o seu bolso e sua tranquilidade. Conheça a história e diferenciais da Shopcell.",
+    image: "https://www.celularescuritibashopcell.com.br/images/suncell-assistencia-banner.webp",
+    summary: "Encontrar uma loja séria de smartphones em Curitiba faz toda a diferença para o seu bolso e sua tranquilidade. Conheça a história e diferenciais da SUNCELL.",
     tags: ["Onde Comprar", "Loja de Celular Curitiba", "Sítio Cercado"],
     contentHtml: `
       <h2>Sua Melhor Opção para Comprar Smartphones em Curitiba</h2>
-      <p>Com mais de 8 anos de história e pontuação máxima 5.0 com mais de 3.800 avaliações de clientes no Google, a <strong>Shopcell Curitiba</strong> se consolidou como referência no atendimento a moradores do Sítio Cercado, Centro e Região Metropolitana.</p>
+      <p>Com mais de 8 anos de história e pontuação máxima 5.0 com mais de 3.800 avaliações de clientes no Google, a <strong>SUNCELL Curitiba</strong> se consolidou como referência no atendimento a moradores do Sítio Cercado, Centro e Região Metropolitana.</p>
     `
   }
 };

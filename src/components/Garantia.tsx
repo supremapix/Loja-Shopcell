@@ -71,7 +71,7 @@ export default function Garantia() {
               </div>
               <div className="flex items-center justify-center lg:justify-start gap-2.5">
                 <CheckCircle className="w-4.5 h-4.5 text-emerald-500 flex-shrink-0" />
-                <span className="font-semibold text-xs sm:text-sm">Retirada Segura no Centro</span>
+                  <span className="font-semibold text-xs sm:text-sm">Retirada Segura no Mercado Goes</span>
               </div>
             </div>
 
@@ -115,8 +115,8 @@ export default function Garantia() {
                 className="bg-white border border-slate-200 p-6 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow relative z-10 max-w-[280px] sm:max-w-[340px]"
               >
                 <img
-                  src="https://www.celularescuritibashopcell.com.br/assets/selo-garantia-1-ano-D4gjKxPE.webp"
-                  alt="Selo de Garantia de 12 Meses Shopcell"
+                  src="/images/suncell-assistencia-banner.webp"
+                  alt="Selo de Garantia de 12 Meses SUNCELL"
                   referrerPolicy="no-referrer"
                   className="w-full h-auto object-contain rounded-2xl animate-float"
                   id="img-selo-garantia-12-meses"

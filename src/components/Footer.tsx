@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, MessageSquare, ArrowUp, Star, Home, Smartphone, Store, Headphones, Users, ShieldCheck, CheckCircle2, Globe, Mail, ExternalLink } from 'lucide-react';
+import { Phone, MapPin, MessageSquare, ArrowUp, Star, Home, Smartphone, Store, Headphones, Users, ShieldCheck, CheckCircle2, Globe, Mail, ExternalLink, Instagram, Wrench } from 'lucide-react';
 import { CONTACT_INFO, STORES } from '../data';
+import SupremaCredit from './SupremaCredit';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -9,21 +10,18 @@ export default function Footer() {
 
   return (
     <footer className="bg-slate-950 text-slate-200 relative z-10 overflow-hidden border-t-2 border-slate-800">
-      {/* High-Visibility, High-Definition Background Video Layer */}
+      {/* Background Store Image Layer */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover min-w-full min-h-full opacity-60 filter brightness-90 contrast-115"
-        >
-          <source src="https://img.supremasite.com.br/shopcell.mp4" type="video/mp4" />
-        </video>
-        
+        <img
+          src="/images/suncell-loja-guaira.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover min-w-full min-h-full opacity-30"
+        />
+
         {/* Vignette & Contrast Overlay */}
-        <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-[2px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/75 to-slate-950" />
+        <div className="absolute inset-0 bg-slate-950/85 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-950/80 to-slate-950" />
       </div>
 
       {/* Radiant Orange Metallic Accent Bar */}
@@ -72,15 +70,15 @@ export default function Footer() {
           {/* Column 1: Brand details */}
           <div className="bg-slate-900/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl space-y-4 shadow-xl">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 bg-gradient-to-br from-[#FF6600] to-[#E65C00] rounded-xl flex items-center justify-center font-black text-white text-lg shadow-lg shadow-[#FF6600]/30 border border-white/20">
-                SC
+              <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-[#FF6600]/30 border border-white/20 overflow-hidden">
+                <img src="/favicon.svg" alt="SUNCELL" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="font-display font-black tracking-wider text-white text-xl leading-none">
                   SUNCELL
                 </span>
                 <span className="font-mono text-[9px] text-[#FF8533] tracking-widest font-extrabold mt-1 uppercase">
-                  Assistência & Celulares CWB
+                  Assistência Técnica · Curitiba
                 </span>
               </div>
             </div>
@@ -117,6 +115,12 @@ export default function Footer() {
                 <Link to="/celulares" className="hover:text-[#FF6600] transition-colors flex items-center gap-2">
                   <Smartphone className="w-4 h-4 text-[#FF6600]" />
                   <span>Catálogo de Celulares</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/#assistencia" className="hover:text-[#FF6600] transition-colors flex items-center gap-2">
+                  <Wrench className="w-4 h-4 text-[#FF6600]" />
+                  <span>Assistência Técnica</span>
                 </Link>
               </li>
               <li>
@@ -189,6 +193,36 @@ export default function Footer() {
               <p className="text-[11px] leading-relaxed text-slate-300 font-mono bg-slate-950/80 p-3 rounded-xl border border-white/10">
                 {CONTACT_INFO.hours}
               </p>
+
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://www.instagram.com/suncell.brasil"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram oficial da SUNCELL"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-slate-950/70 text-slate-300 transition-all hover:border-[#E1306C]/50 hover:text-[#F77737]"
+                >
+                  <Instagram className="h-4 w-4" />
+                </a>
+                <a
+                  href={CONTACT_INFO.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp da SUNCELL"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-slate-950/70 text-slate-300 transition-all hover:border-emerald-400/50 hover:text-emerald-400"
+                >
+                  <MessageSquare className="h-4 w-4" />
+                </a>
+                <a
+                  href={CONTACT_INFO.officialSiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Site oficial da SUNCELL"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-slate-950/70 text-slate-300 transition-all hover:border-[#FF6600]/50 hover:text-[#FF8533]"
+                >
+                  <Globe className="h-4 w-4" />
+                </a>
+              </div>
             </div>
             
             <div className="pt-2">
@@ -228,7 +262,7 @@ export default function Footer() {
         </div>
 
         {/* Lower section */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+        <div className="border-t border-white/10 pt-8 flex flex-col items-center justify-center gap-2 text-center">
           <div className="space-y-1">
             <p className="text-xs text-slate-300 font-medium">
               © {new Date().getFullYear()} SUNCELL Curitiba. Todos os direitos reservados.
@@ -237,29 +271,9 @@ export default function Footer() {
               CNPJ: {CONTACT_INFO.cnpj} | Unidades Mercado Goes: Guaíra & Alto Boqueirão - Curitiba - PR
             </p>
           </div>
-
-          <div className="flex items-center gap-2.5 bg-slate-900/90 border border-white/15 px-4 py-2 rounded-2xl shadow-md backdrop-blur-md">
-            <span className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Desenvolvido por</span>
-            <a 
-              href={CONTACT_INFO.creditoUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
-              id="credit-suprema-sites"
-            >
-              <img 
-                src={CONTACT_INFO.creditoLogo} 
-                alt="Logo Suprema Sites" 
-                referrerPolicy="no-referrer"
-                className="h-4 object-contain"
-                onError={(e) => {
-                  (e.target as HTMLElement).style.display = 'none';
-                }}
-              />
-              <span className="text-xs font-bold text-white">{CONTACT_INFO.creditoName}</span>
-            </a>
-          </div>
         </div>
+
+        <SupremaCredit />
 
       </div>
     </footer>

@@ -13,8 +13,8 @@ export default function BlogPage() {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-[#FF6600] selection:text-white flex flex-col justify-between">
       
       <EnhancedSEO
-        title="Blog Shopcell Curitiba | Guias de Compra, Análises e Dicas de Celulares"
-        description="Confira os melhores guias de compra e análises de smartphones em Curitiba. Descubra como escolher seu celular ideal com dicas de especialistas da Shopcell."
+        title="Blog SUNCELL Curitiba | Guias de Compra, Análises e Dicas de Celulares"
+        description="Confira os melhores guias de compra e análises de smartphones em Curitiba. Descubra como escolher seu celular ideal com dicas de especialistas da SUNCELL."
         canonical="https://www.celularescuritibashopcell.com.br/blog"
         keywords="blog celular curitiba, qual celular comprar, loja de celular curitiba, guia de compras celular curitiba"
       />
@@ -45,7 +45,7 @@ export default function BlogPage() {
               <span>CONTEÚDO TÉCNICO & GUIAS DE COMPRA</span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-display font-black tracking-tight text-white mb-4">
-              Blog Shopcell Curitiba
+              Blog SUNCELL Curitiba
             </h1>
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-medium">
               Tudo o que você precisa saber antes de comprar seu smartphone em Curitiba, Sítio Cercado e Região Metropolitana.

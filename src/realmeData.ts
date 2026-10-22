@@ -42,10 +42,10 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
     price: 849.99,
     priceFormatted: "R$ 849,99",
     installments: "12x de R$ 81,05",
-    image: "https://resource.megaeletronicos.com/uploads/Product/new/1/4/7/1/0/5/147105/1755950606_1755950606.jpg",
+    image: "/images/products/realme-p4-power-5g.jpg",
     color: "Marble Black",
     shortDescription: "Equilíbrio entre autonomia e resistência com certificação IP54, bateria de 5.000mAh e tela de 90Hz para o uso diário.",
-    fullDescription: "O smartphone Realme Note 60X (Dual SIM, homologado Anatel) foi projetado para oferecer a melhor experiência em confiabilidade, bateria duradoura e facilidade de navegação no dia a dia. Com corpo ultra-fino de 7,84mm, proteção IP54 contra respingos e poeira, tela imersiva de 6,74 polegadas com taxa de atualização suave de 90Hz e bateria de 5.000 mAh, ele é ideal para redes sociais, chamadas de vídeo e WhatsApp com total estabilidade. Acompanha 12 meses de garantia física e suporte presencial no Centro de Curitiba na Shopcell.",
+    fullDescription: "O smartphone Realme Note 60X (Dual SIM, homologado Anatel) foi projetado para oferecer a melhor experiência em confiabilidade, bateria duradoura e facilidade de navegação no dia a dia. Com corpo ultra-fino de 7,84mm, proteção IP54 contra respingos e poeira, tela imersiva de 6,74 polegadas com taxa de atualização suave de 90Hz e bateria de 5.000 mAh, ele é ideal para redes sociais, chamadas de vídeo e WhatsApp com total estabilidade. Acompanha 12 meses de garantia física e suporte presencial no Mercado Goes, em Curitiba na SUNCELL.",
     specs: {
       tela: "LCD 6,74\" HD+ 90Hz, brilho 560 nits",
       processador: "Unisoc Tiger T612 Octa Core",
@@ -73,11 +73,11 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
       "Tela ampla de 6,74\" com 90Hz super fluida",
       "128GB de memória com suporte a cartão",
       "Resistência IP54 contra respingos e poeira",
-      "12 Meses de Garantia Local no Centro de Curitiba"
+      "12 Meses de Garantia Local no Mercado Goes, em Curitiba"
     ],
     altText: "Smartphone Realme Note 60X Marble Black tela 6,74 polegadas bateria 5000mAh",
-    metaDescription: "Compre o Realme Note 60X 128GB em Curitiba por R$ 849,99 à vista ou 12x de R$ 81,05. Bateria 5.000mAh, tela 90Hz e 12 meses de garantia na Shopcell.",
-    titleSEO: "Realme Note 60X (Dual SIM, Anatel) — R$ 849,99 à vista | Shopcell Curitiba",
+    metaDescription: "Compre o Realme Note 60X 128GB em Curitiba por R$ 849,99 à vista ou 12x de R$ 81,05. Bateria 5.000mAh, tela 90Hz e 12 meses de garantia na SUNCELL.",
+    titleSEO: "Realme Note 60X (Dual SIM, Anatel) — R$ 849,99 à vista | SUNCELL Curitiba",
     canonical: "https://www.celularescuritibashopcell.com.br/celular/realme-note-60x",
     faqs: [
       {
@@ -86,7 +86,7 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
       },
       {
         question: "O aparelho é original e possui garantia em Curitiba?",
-        answer: "Sim! Trabalhamos exclusivamente com aparelhos novos, originais na caixa lacrada com selo de fábrica. Oferecemos 12 meses de garantia local com suporte presencial na nossa loja física no Centro de Curitiba."
+        answer: "Sim! Trabalhamos exclusivamente com aparelhos novos, originais na caixa lacrada com selo de fábrica. Oferecemos 12 meses de garantia local com suporte presencial na nossa loja física no Mercado Goes, em Curitiba."
       },
       {
         question: "Vocês fazem entrega em Curitiba e Região Metropolitana?",
@@ -105,10 +105,10 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
     price: 999.99,
     priceFormatted: "R$ 999,99",
     installments: "12x de R$ 94,23",
-    image: "https://resource.megaeletronicos.com/uploads/Product/new/1/6/3/6/5/4/163654/1781967177_1781967177.webp",
+    image: "/images/products/realme-note-60x.webp",
     color: "Pulse Purple",
     shortDescription: "Bateria gigante de 6.600mAh, tela de 120Hz e NFC para pagamentos por aproximação, ideal para quem quer autonomia e praticidade.",
-    fullDescription: "O smartphone Realme P4 Lite NFC (Dual SIM, homologado Anatel) destaca-se pela impressionante bateria de 6.600 mAh que garante dias de uso longe da tomada. Com tela fluida de 6,8 polegadas com taxa de 120Hz protegida por Panda Glass, processador Unisoc T7250 Octa Core, sistema Android 16 e conectividade NFC integrada para pagamentos rápidos por aproximação, ele une autonomia incomparável, design moderno em Pulse Purple e alta confiabilidade com garantia de 12 meses na Shopcell Curitiba.",
+    fullDescription: "O smartphone Realme P4 Lite NFC (Dual SIM, homologado Anatel) destaca-se pela impressionante bateria de 6.600 mAh que garante dias de uso longe da tomada. Com tela fluida de 6,8 polegadas com taxa de 120Hz protegida por Panda Glass, processador Unisoc T7250 Octa Core, sistema Android 16 e conectividade NFC integrada para pagamentos rápidos por aproximação, ele une autonomia incomparável, design moderno em Pulse Purple e alta confiabilidade com garantia de 12 meses na SUNCELL Curitiba.",
     specs: {
       tela: "LCD 6,8\" HD+ 120Hz, proteção Panda Glass",
       processador: "Unisoc T7250 Octa Core",
@@ -135,11 +135,11 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
       "Tecnologia NFC para pagar por aproximação",
       "Tela ampla de 6,8\" com taxa fluida de 120Hz",
       "Proteção Panda Glass e certificação IP54",
-      "12 Meses de Garantia Local no Centro de Curitiba"
+      "12 Meses de Garantia Local no Mercado Goes, em Curitiba"
     ],
     altText: "Smartphone Realme P4 Lite NFC Pulse Purple tela 6,8 polegadas bateria 6600mAh",
-    metaDescription: "Compre o Realme P4 Lite NFC 128GB em Curitiba por R$ 999,99 à vista ou 12x de R$ 94,23. Bateria 6.600mAh, tela 120Hz, NFC e garantia de 12 meses na Shopcell.",
-    titleSEO: "Realme P4 Lite NFC (Dual SIM, Anatel) — R$ 999,99 à vista | Shopcell Curitiba",
+    metaDescription: "Compre o Realme P4 Lite NFC 128GB em Curitiba por R$ 999,99 à vista ou 12x de R$ 94,23. Bateria 6.600mAh, tela 120Hz, NFC e garantia de 12 meses na SUNCELL.",
+    titleSEO: "Realme P4 Lite NFC (Dual SIM, Anatel) — R$ 999,99 à vista | SUNCELL Curitiba",
     canonical: "https://www.celularescuritibashopcell.com.br/celular/realme-p4-lite",
     faqs: [
       {
@@ -151,8 +151,8 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
         answer: "Com 6.600 mAh de capacidade, a bateria do Realme P4 Lite foi desenvolvida para durar de 2 a 3 dias de uso convencional sem precisar recarregar."
       },
       {
-        question: "Como funciona a garantia na Shopcell Curitiba?",
-        answer: "Todos os nossos smartphones possuem 12 meses de garantia local direta na nossa loja física no Centro de Curitiba (Edifício Downtown), sem depender de envio pelo correio."
+        question: "Como funciona a garantia na SUNCELL Curitiba?",
+        answer: "Todos os nossos smartphones possuem 12 meses de garantia local direta na nossa loja física no Mercado Goes, em Curitiba, sem depender de envio pelo correio."
       },
       {
         question: "Posso pagar somente quando o motoboy entregar?",
@@ -167,7 +167,7 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
     price: 1949.99,
     priceFormatted: "R$ 1.949,99",
     installments: "12x de R$ 183,75",
-    image: "https://resource.megaeletronicos.com/uploads/Product/new/1/5/0/9/0/7/150907/1756895392_1756895392.webp",
+    image: "/images/products/realme-p4-lite.webp",
     color: "Storm Titanium",
     shortDescription: "Tela AMOLED, processador Snapdragon, 512GB, câmera de 50MP e resistência militar à água (IP69) — potência de sobra para trabalho e lazer.",
     fullDescription: "O smartphone Realme 14 5G NFC (Dual SIM, Anatel) redefine o padrão da categoria intermediária premium com seu potente processador Qualcomm Snapdragon 6 Gen 4 fabricado em litografia de 4nm, impressionantes 512GB de armazenamento interno e 12GB de RAM física (+14GB virtual). Sua tela AMOLED de 6,67\" Full HD+ de 120Hz oferece cores vivas e pretos profundos, acompanhada por câmera principal de 50MP com gravação em 4K a 60fps, bateria de 6.000 mAh com carregamento rápido de 45W e certificação de resistência IP66/IP68/IP69 contra água e poeira.",
@@ -200,11 +200,11 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
       "Tela AMOLED 120Hz cinematográfica",
       "Resistência de padrão militar à água (IP69)",
       "Bateria de 6.000 mAh com carga rápida de 45W",
-      "12 Meses de Garantia Local no Centro de Curitiba"
+      "12 Meses de Garantia Local no Mercado Goes, em Curitiba"
     ],
     altText: "Smartphone Realme 14 5G NFC Storm Titanium tela AMOLED 6,67 polegadas 512GB",
-    metaDescription: "Compre o Realme 14 5G 512GB 12GB RAM em Curitiba por R$ 1.949,99 à vista ou 12x de R$ 183,75. Snapdragon, tela AMOLED, IP69 e 12 meses de garantia Shopcell.",
-    titleSEO: "Realme 14 5G NFC (Dual SIM, Anatel) — R$ 1.949,99 à vista | Shopcell Curitiba",
+    metaDescription: "Compre o Realme 14 5G 512GB 12GB RAM em Curitiba por R$ 1.949,99 à vista ou 12x de R$ 183,75. Snapdragon, tela AMOLED, IP69 e 12 meses de garantia SUNCELL.",
+    titleSEO: "Realme 14 5G NFC (Dual SIM, Anatel) — R$ 1.949,99 à vista | SUNCELL Curitiba",
     canonical: "https://www.celularescuritibashopcell.com.br/celular/realme-14-5g",
     faqs: [
       {
@@ -216,8 +216,8 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
         answer: "Sim! Sua câmera principal de 50MP grava vídeos em resolução 4K a 60 quadros por segundo com excelente estabilização e nitidez."
       },
       {
-        question: "Qual o prazo de garantia na Shopcell?",
-        answer: "Oferecemos 12 meses de garantia local presencial assegurada pela nossa loja física no Centro de Curitiba com suporte técnico especializado."
+        question: "Qual o prazo de garantia na SUNCELL?",
+        answer: "Oferecemos 12 meses de garantia local presencial assegurada pela nossa loja física no Mercado Goes, em Curitiba com suporte técnico especializado."
       },
       {
         question: "Como funciona a entrega expressa em Curitiba?",
@@ -232,7 +232,7 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
     price: 2999.99,
     priceFormatted: "R$ 2.999,99",
     installments: "12x de R$ 282,70",
-    image: "https://resource.megaeletronicos.com/uploads/Product/new/1/6/3/6/5/7/163657/1783018063_1783018063.webp",
+    image: "/images/products/realme-14-5g.webp",
     color: "Power Silver",
     shortDescription: "Topo de linha da lista: bateria colossal de 10.001mAh, tela 144Hz curva, câmera Sony com OIS e carga de 80W. O smartphone mais completo da nossa seleção.",
     fullDescription: "O Realme P4 Power 5G NFC (Dual SIM, Anatel) é o topo de linha definitivo para quem busca máxima performance e autonomia sem precedentes. Equipado com uma inacreditável bateria de 10.001 mAh com suporte a carga rápida de 80W e carregamento reverso para alimentar outros dispositivos, ele traz processador MediaTek Dimensity 7400 Ultra de 4nm, 512GB de espaço interno e 12GB de RAM (+14GB virtual). Sua tela curvada AMOLED HyperGlow 4D Curve+ de 6,8\" atinge 144Hz com Gorilla Glass 7i, combinada com câmera Sony IMX882 de 50MP com estabilização óptica (OIS), sensor ultrawide de 8MP, IR Blaster e máxima proteção IP66/IP68/IP69.",
@@ -264,11 +264,11 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
       "Tela curva AMOLED de 144Hz com Gorilla Glass 7i",
       "Processador Dimensity 7400 Ultra 4nm e 512GB",
       "Resistência máxima IP66 / IP68 / IP69",
-      "12 Meses de Garantia Local no Centro de Curitiba"
+      "12 Meses de Garantia Local no Mercado Goes, em Curitiba"
     ],
     altText: "Smartphone Realme P4 Power 5G NFC Power Silver tela curva 144Hz bateria 10001mAh",
-    metaDescription: "Compre o Realme P4 Power 5G 512GB 12GB RAM em Curitiba por R$ 2.999,99 à vista ou 12x de R$ 282,70. Bateria 10.001mAh, 80W, câmera Sony OIS e garantia Shopcell.",
-    titleSEO: "Realme P4 Power 5G NFC (Dual SIM, Anatel) — R$ 2.999,99 à vista | Shopcell Curitiba",
+    metaDescription: "Compre o Realme P4 Power 5G 512GB 12GB RAM em Curitiba por R$ 2.999,99 à vista ou 12x de R$ 282,70. Bateria 10.001mAh, 80W, câmera Sony OIS e garantia SUNCELL.",
+    titleSEO: "Realme P4 Power 5G NFC (Dual SIM, Anatel) — R$ 2.999,99 à vista | SUNCELL Curitiba",
     canonical: "https://www.celularescuritibashopcell.com.br/celular/realme-p4-power-5g",
     faqs: [
       {
@@ -284,8 +284,8 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
         answer: "Sim! O sensor Sony IMX882 de 50MP possui estabilização óptica de imagem (OIS), garantindo fotos nítidas e vídeos sem tremores mesmo em ambientes com pouca luz."
       },
       {
-        question: "Qual a garantia oferecida pela Shopcell?",
-        answer: "Garantimos 12 meses de cobertura presencial na nossa loja física no Centro de Curitiba, com atendimento direto, técnico e sem burocracias."
+        question: "Qual a garantia oferecida pela SUNCELL?",
+        answer: "Garantimos 12 meses de cobertura presencial na nossa loja física no Mercado Goes, em Curitiba, com atendimento direto, técnico e sem burocracias."
       }
     ]
   }

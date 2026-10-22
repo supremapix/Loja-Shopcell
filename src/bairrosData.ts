@@ -14,121 +14,121 @@ const baseBairrosData: BairroInfo[] = [
     slug: "centro",
     nome: "Centro",
     regiao: "Central",
-    tituloSEO: "Loja de Celular no Centro de Curitiba | Loja Física & Pronta Entrega | Shopcell",
-    metaDescription: "Procurando loja de celular no Centro de Curitiba? Compre seu smartphone novo e lacrado com 12 meses de garantia local no Edifício Downtown na Shopcell.",
-    introducao: "Nossa loja física está estrategicamente localizada no coração do Centro de Curitiba, no Edifício Downtown. Se você mora, trabalha ou está de passagem pela região central, pode escolher seu novo celular com total segurança e contar com suporte presencial qualificado.",
-    coordenadasContexto: "Próximo à Praça Carlos Gomes, ao Shopping Estação e à Rodoferroviária, com estacionamentos convenientes ao redor.",
-    ctaText: "Retirar no Centro"
+    tituloSEO: "Assistência Técnica de Celular no Centro de Curitiba | SUNCELL Guaíra",
+    metaDescription: "Conserto de celular no Centro de Curitiba com diagnóstico gratuito e garantia. A SUNCELL Guaíra fica a poucos minutos, no Mercado Goes, com troca de tela, bateria e placa.",
+    introducao: "Quem mora, trabalha ou passa pelo Centro de Curitiba está a poucos minutos da SUNCELL Guaíra, dentro do Mercado Goes. Aqui você resolve tela quebrada, bateria viciada, conector de carga e outros reparos com atendimento presencial e orçamento na hora.",
+    coordenadasContexto: "A unidade Guaíra fica na Rua Maria Moscardi Fanini, 261, dentro do Mercado Goes, com acesso rápido pelas vias centrais e estacionamento no local.",
+    ctaText: "Falar com a SUNCELL Guaíra"
   },
   {
     slug: "sitio-cercado",
     nome: "Sítio Cercado",
     regiao: "Sul",
-    tituloSEO: "Loja de Celular no Sítio Cercado Curitiba | Entrega Hoje e Garantia 12 Meses | Shopcell",
-    metaDescription: "Procurando loja de celular no Sítio Cercado? Compre smartphones novos e lacrados com 12 meses de garantia local e entrega via motoboy express na Shopcell.",
-    introducao: "Atendemos o bairro Sítio Cercado com entregas rápidas via motoboy no mesmo dia. Adquira seu novo smartphone com toda comodidade, recebendo no seu endereço no Sítio Cercado, Bairro Novo ou Ganchinho e pagando no ato do recebimento.",
-    coordenadasContexto: "Rotas diárias de entrega cobrindo a Linha Verde, Bairro Novo e todo o Sítio Cercado.",
-    ctaText: "Pedir no Sítio Cercado"
+    tituloSEO: "Assistência Técnica de Celular no Sítio Cercado | SUNCELL Curitiba",
+    metaDescription: "Assistência técnica de celular para o Sítio Cercado, Bairro Novo e Ganchinho. Diagnóstico gratuito, troca de tela e bateria na SUNCELL Alto Boqueirão, no Mercado Goes.",
+    introducao: "Moradores do Sítio Cercado, Bairro Novo e Ganchinho contam com a SUNCELL Alto Boqueirão como referência próxima para conserto de celular. Tela, bateria, câmera e conector de carga com peças de qualidade e garantia no serviço.",
+    coordenadasContexto: "A unidade Alto Boqueirão fica na R. Pastor Antônio Polito, 1805, dentro do Mercado Goes, com rota rápida pela Linha Verde e região sul.",
+    ctaText: "Falar com a SUNCELL Alto Boqueirão"
   },
   {
     slug: "batel",
     nome: "Batel",
     regiao: "Nobre",
-    tituloSEO: "Loja de Celular no Batel Curitiba | Entrega Expressa Hoje | Shopcell",
-    metaDescription: "Compre celular no Batel com entrega imediata via motoboy express ou retire com segurança no Centro. Parcelamento em até 12x e garantia local de 12 meses.",
-    introducao: "Para os moradores do bairro Batel, oferecemos um serviço de entrega expressa via motoboy extremamente rápido e seguro. Adquira seu smartphone novo e receba em sua residência ou escritório com agilidade.",
-    coordenadasContexto: "Atendimento expresso para condomínios residenciais e escritórios comerciais próximos à Av. do Batel e Praça da Espanha.",
-    ctaText: "Receber no Batel"
+    tituloSEO: "Assistência Técnica de Celular no Batel Curitiba | SUNCELL",
+    metaDescription: "Precisa de conserto de celular no Batel? A SUNCELL Guaíra fica a poucos minutos, no Mercado Goes, com diagnóstico gratuito, peças de qualidade e garantia no serviço.",
+    introducao: "Para quem está no Batel, a unidade SUNCELL Guaíra é a opção mais próxima para assistência técnica de celular. Atendemos troca de tela, bateria, alto-falante, câmera e reparos de placa com transparência e orçamento sem compromisso.",
+    coordenadasContexto: "A loja Guaíra está na Rua Maria Moscardi Fanini, 261, dentro do Mercado Goes, com acesso fácil pela Av. do Batel e região central.",
+    ctaText: "Falar com a SUNCELL Guaíra"
   },
   {
     slug: "agua-verde",
     nome: "Água Verde",
     regiao: "Sul",
-    tituloSEO: "Loja de Celular no Água Verde Curitiba | Compre com Segurança | Shopcell",
-    metaDescription: "Adquira seu celular no Água Verde com a Shopcell. Receba seu aparelho lacrado em casa via motoboy ou visite nossa loja no Centro com garantia de 12 meses.",
-    introducao: "Moradores do Água Verde contam com a facilidade de nossa entrega em poucos minutos. Sendo um dos bairros mais populosos e tradicionais de Curitiba, o Água Verde recebe entregas diárias de nossa loja.",
-    coordenadasContexto: "A poucos minutos da Avenida República Argentina, Praça do Japão e imediações do Clube Curitibano.",
-    ctaText: "Falar com Vendedor Água Verde"
+    tituloSEO: "Assistência Técnica de Celular no Água Verde | SUNCELL Curitiba",
+    metaDescription: "Conserto de celular no Água Verde com diagnóstico gratuito na SUNCELL Guaíra. Troca de tela, bateria e placa com garantia no serviço, dentro do Mercado Goes.",
+    introducao: "O Água Verde fica ao lado da SUNCELL Guaíra, no Mercado Goes. Moradores do bairro podem trazer o celular para uma avaliação gratuita e sair com o orçamento na hora, sem precisar ir até o centro da cidade.",
+    coordenadasContexto: "A unidade Guaíra está na Rua Maria Moscardi Fanini, 261, com acesso rápido pela Av. República Argentina e ruas do Água Verde.",
+    ctaText: "Falar com a SUNCELL Guaíra"
   },
   {
     slug: "bigorrilho",
     nome: "Bigorrilho",
     regiao: "Oeste",
-    tituloSEO: "Loja de Celular no Bigorrilho (Champagnat) Curitiba | Shopcell",
-    metaDescription: "Sua loja de celulares para o Bigorrilho / Champagnat. Smartphones novos e lacrados com entrega expressa sob medida. 12 meses de garantia inclusos.",
-    introducao: "Atendemos toda a região do Bigorrilho (Champagnat) com entregas rápidas via motoboy. Se você busca praticidade nos condomínios de edifícios da Padre Anchieta, nosso motoboy entrega seu celular lacrado na portaria ou recepção.",
-    coordenadasContexto: "Serviço expresso para a região da Praça da Ucrânia, Avenida Padre Anchieta e arredores.",
-    ctaText: "Comprar no Bigorrilho"
+    tituloSEO: "Assistência Técnica de Celular no Bigorrilho (Champagnat) | SUNCELL",
+    metaDescription: "Assistência técnica de celular para o Bigorrilho e Champagnat. A SUNCELL Guaíra fica no Mercado Goes, com diagnóstico gratuito e garantia no serviço.",
+    introducao: "Moradores do Bigorrilho e Champagnat encontram na SUNCELL Guaíra uma assistência técnica próxima e confiável. Fazemos troca de tela, bateria, conector de carga e reparos avançados com atendimento presencial.",
+    coordenadasContexto: "A loja Guaíra fica na Rua Maria Moscardi Fanini, 261, no Mercado Goes, com acesso rápido pela Av. Padre Anchieta e Praça da Ucrânia.",
+    ctaText: "Falar com a SUNCELL Guaíra"
   },
   {
     slug: "portao",
     nome: "Portão",
     regiao: "Sul",
-    tituloSEO: "Comprar Celular no Portão Curitiba | Aparelhos Originais em 12x | Shopcell",
-    metaDescription: "Procurando loja de celular no Portão? Compre em até 12x parcelado com garantia de 12 meses. Entrega ultra-rápida via motoboy ou retirada presencial.",
-    introducao: "O bairro Portão é um grande polo de Curitiba, e nós oferecemos atendimento prioritário para toda a região. Compre seu novo smartphone parcelado no cartão de crédito em até 12x e receba hoje mesmo.",
-    coordenadasContexto: "Próximo aos Shoppings Palladium e Ventura, com rotas rápidas de entrega via via rápida Portão-Centro.",
-    ctaText: "Garantir no Portão"
+    tituloSEO: "Assistência Técnica de Celular no Portão Curitiba | SUNCELL",
+    metaDescription: "Conserto de celular no Portão com diagnóstico gratuito na SUNCELL Guaíra, dentro do Mercado Goes. Troca de tela, bateria e placa com garantia.",
+    introducao: "O Portão está a poucos minutos da SUNCELL Guaíra. Traga seu celular para diagnóstico gratuito e resolva tela, bateria, câmera ou conector de carga com quem entende de assistência técnica em Curitiba.",
+    coordenadasContexto: "A unidade Guaíra fica na Rua Maria Moscardi Fanini, 261, dentro do Mercado Goes, próxima aos shoppings Palladium e Ventura.",
+    ctaText: "Falar com a SUNCELL Guaíra"
   },
   {
     slug: "cabral",
     nome: "Cabral",
     regiao: "Norte",
-    tituloSEO: "Loja de Celular no Cabral Curitiba | Entrega no Mesmo Dia | Shopcell",
-    metaDescription: "Adquira smartphones originais e novos no Cabral. Receba em casa hoje via motoboy com total comodidade. Garantia de 12 meses na Shopcell.",
-    introducao: "Morar no Cabral une tranquilidade e excelente infraestrutura. Para combinar com esse estilo de vida prático, oferecemos entrega expressa de smartphones com garantia de 12 meses.",
-    coordenadasContexto: "Atendimento diferenciado para a região da Avenida Paraná e imediações do Graciosa Country Club.",
-    ctaText: "Solicitar no Cabral"
+    tituloSEO: "Assistência Técnica de Celular no Cabral Curitiba | SUNCELL",
+    metaDescription: "Assistência técnica de celular no Cabral com atendimento SUNCELL. Diagnóstico gratuito, troca de tela e bateria com garantia no serviço em Curitiba.",
+    introducao: "Para os moradores do Cabral, a SUNCELL Guaíra é uma opção próxima para conserto de celular. Atendemos iPhone, Samsung, Xiaomi, Motorola e outras marcas com orçamento gratuito e peças de qualidade.",
+    coordenadasContexto: "A unidade Guaíra fica na Rua Maria Moscardi Fanini, 261, no Mercado Goes, com acesso rápido pela Av. Paraná e região norte.",
+    ctaText: "Falar com a SUNCELL Guaíra"
   },
   {
     slug: "juveve",
     nome: "Juvevê",
     regiao: "Norte",
-    tituloSEO: "Loja de Celular no Juvevê Curitiba | Atendimento Especializado | Shopcell",
-    metaDescription: "Sua melhor opção de celulares no Juvevê. Compre online e pague na entrega ou retire na nossa loja física no Centro de Curitiba.",
-    introducao: "O charmoso bairro Juvevê está localizado a pouquíssimos minutos de nossa loja física no Centro. Você pode optar por retirar seu celular na nossa sala comercial no Edifício Downtown ou solicitar entrega por motoboy.",
-    coordenadasContexto: "Fácil acesso pelas vias de ligação rápida e proximidade imediata com o Centro cívico e comercial.",
-    ctaText: "Comprar no Juvevê"
+    tituloSEO: "Assistência Técnica de Celular no Juvevê Curitiba | SUNCELL",
+    metaDescription: "Conserto de celular no Juvevê com diagnóstico gratuito. A SUNCELL Guaíra fica no Mercado Goes e atende troca de tela, bateria e placa com garantia.",
+    introducao: "O Juvevê está a poucos minutos da SUNCELL Guaíra. Moradores do bairro podem contar com atendimento presencial para troca de tela, bateria, conector de carga, câmera e reparos de placa.",
+    coordenadasContexto: "A unidade Guaíra fica na Rua Maria Moscardi Fanini, 261, dentro do Mercado Goes, com acesso fácil pelas vias de ligação com o Centro Cívico.",
+    ctaText: "Falar com a SUNCELL Guaíra"
   },
   {
     slug: "cristo-rei",
     nome: "Cristo Rei",
     regiao: "Leste",
-    tituloSEO: "Loja de Celular no Cristo Rei Curitiba | Rapidez e Segurança Local | Shopcell",
-    metaDescription: "Celulares lacrados com garantia de 12 meses no Cristo Rei. Compre com quem é referência em avaliações em Curitiba. Entrega imediata hoje.",
-    introducao: "Localizado de forma contígua ao Centro, o Cristo Rei é atendido com tempo recorde de entrega. Se você reside próximo ao Jardim Botânico, seu novo celular pode ser entregue em minutos.",
-    coordenadasContexto: "Atendimento imediato para a área residencial do Cristo Rei, próximo ao Jardim Botânico de Curitiba.",
-    ctaText: "Pedir no Cristo Rei"
+    tituloSEO: "Assistência Técnica de Celular no Cristo Rei Curitiba | SUNCELL",
+    metaDescription: "Assistência técnica de celular no Cristo Rei. A SUNCELL Guaíra fica no Mercado Goes, com diagnóstico gratuito, troca de tela e bateria com garantia.",
+    introducao: "Localizado ao lado do Centro, o Cristo Rei está muito próximo da SUNCELL Guaíra. Traga seu celular para uma avaliação gratuita e resolva tela, bateria, câmera ou conector de carga no mesmo dia.",
+    coordenadasContexto: "A unidade Guaíra fica na Rua Maria Moscardi Fanini, 261, no Mercado Goes, com acesso rápido pela região do Jardim Botânico e Centro.",
+    ctaText: "Falar com a SUNCELL Guaíra"
   },
   {
     slug: "boqueirao",
     nome: "Boqueirão",
     regiao: "Sul",
-    tituloSEO: "Loja de Celular no Boqueirão Curitiba | Aparelhos Originais 12x | Shopcell",
-    metaDescription: "Adquira celulares novos e lacrados no Boqueirão. Garantia de 12 meses e entrega via motoboy express. Compre parcelado em até 12x no cartão.",
-    introducao: "O Boqueirão é um dos bairros mais ativos de Curitiba. Atendemos comerciantes e moradores do bairro com entregas diárias de aparelhos celulares com garantia presencial de 12 meses.",
-    coordenadasContexto: "Região da Rua Marechal Floriano Peixoto e proximidades do terminal do Boqueirão.",
-    ctaText: "Pedir no Boqueirão"
+    tituloSEO: "Assistência Técnica de Celular no Boqueirão Curitiba | SUNCELL",
+    metaDescription: "Conserto de celular no Boqueirão com diagnóstico gratuito na SUNCELL Alto Boqueirão, dentro do Mercado Goes. Troca de tela, bateria e placa com garantia.",
+    introducao: "O Boqueirão é atendido pela SUNCELL Alto Boqueirão, a unidade mais próxima do bairro. Aqui você encontra troca de tela, bateria, conector de carga e reparos de placa com atendimento presencial e garantia no serviço.",
+    coordenadasContexto: "A unidade Alto Boqueirão fica na R. Pastor Antônio Polito, 1805, dentro do Mercado Goes, com acesso rápido pelo terminal e pela Linha Verde.",
+    ctaText: "Falar com a SUNCELL Alto Boqueirão"
   },
   {
     slug: "pinheirinho",
     nome: "Pinheirinho",
     regiao: "Sul",
-    tituloSEO: "Comprar Celular no Pinheirinho Curitiba | Loja Física no Centro | Shopcell",
-    metaDescription: "Loja de celular no Pinheirinho Curitiba? Visite nossa loja física no Centro ou compre pelo WhatsApp com entrega expressa via motoboy hoje mesmo.",
-    introducao: "Se você reside no Pinheirinho e busca um celular original com excelente preço e garantia real de 12 meses, nós somos a sua melhor opção com entrega rápida pela Linha Verde.",
-    coordenadasContexto: "Próximo à Linha Verde Sul, Terminal do Pinheirinho e comércios da Winston Churchill.",
-    ctaText: "Comprar no Pinheirinho"
+    tituloSEO: "Assistência Técnica de Celular no Pinheirinho Curitiba | SUNCELL",
+    metaDescription: "Assistência técnica de celular no Pinheirinho com diagnóstico gratuito. A SUNCELL Alto Boqueirão fica no Mercado Goes, com troca de tela e bateria com garantia.",
+    introducao: "Moradores do Pinheirinho contam com a SUNCELL Alto Boqueirão para conserto de celular. Atendemos troca de tela, bateria, câmera, alto-falante e reparos avançados com peças de qualidade.",
+    coordenadasContexto: "A unidade Alto Boqueirão fica na R. Pastor Antônio Polito, 1805, no Mercado Goes, com rota rápida pela Linha Verde Sul e Terminal do Pinheirinho.",
+    ctaText: "Falar com a SUNCELL Alto Boqueirão"
   },
   {
     slug: "cic",
     nome: "CIC",
     regiao: "Oeste/Sul",
-    tituloSEO: "Loja de Celular na CIC (Cidade Industrial) Curitiba | Shopcell",
-    metaDescription: "Procurando loja de celular na Cidade Industrial de Curitiba (CIC)? Oferecemos entrega expressa segura para residências e empresas da região.",
-    introducao: "Atendemos com total segurança e agilidade a área da Cidade Industrial de Curitiba (CIC). Entregamos seu novo smartphone com garantia de 12 meses no seu endereço.",
-    coordenadasContexto: "Entrega expressa cobrindo toda a extensão industrial e residencial da CIC Curitiba.",
-    ctaText: "Garantir na CIC"
+    tituloSEO: "Assistência Técnica de Celular na CIC Curitiba | SUNCELL",
+    metaDescription: "Conserto de celular na CIC com atendimento SUNCELL. Diagnóstico gratuito, troca de tela, bateria e placa com garantia no serviço em Curitiba.",
+    introducao: "Atendemos a Cidade Industrial de Curitiba com a estrutura da SUNCELL Alto Boqueirão. Se você trabalha ou mora na CIC, pode contar com diagnóstico gratuito e reparos de tela, bateria, câmera e placa.",
+    coordenadasContexto: "A unidade Alto Boqueirão fica na R. Pastor Antônio Polito, 1805, dentro do Mercado Goes, com acesso rápido pela região sul e oeste de Curitiba.",
+    ctaText: "Falar com a SUNCELL Alto Boqueirão"
   }
 ];
 
@@ -161,22 +161,22 @@ const generatedOfficial: BairroInfo[] = OFFICIAL_BAIRROS.map(nome => ({
   slug: toSlug(nome),
   nome,
   regiao: "Curitiba",
-  tituloSEO: `Loja de Celular no Bairro ${nome} Curitiba | Shopcell`,
-  metaDescription: `Adquira seu celular novo no bairro ${nome} em Curitiba com a Shopcell. Entrega imediata via motoboy, pague na entrega e 12 meses de garantia local.`,
-  introducao: `A Shopcell atende o bairro ${nome} de Curitiba com total prioridade! Garantimos a entrega expressa do seu celular novo e lacrado na caixa via motoboy. Você realiza o pagamento seguro no ato da entrega com suporte e garantia de 12 meses inclusos.`,
-  coordenadasContexto: `Atendimento logístico otimizado com rotas rápidas via motoboy para o bairro ${nome}.`,
-  ctaText: `Pedir no WhatsApp (${nome})`
+  tituloSEO: `Assistência Técnica de Celular no Bairro ${nome} | SUNCELL Curitiba`,
+  metaDescription: `Conserto de celular no bairro ${nome}, em Curitiba, com diagnóstico gratuito e garantia no serviço. Atendimento nas lojas SUNCELL Guaíra e Alto Boqueirão, dentro do Mercado Goes.`,
+  introducao: `A SUNCELL atende o bairro ${nome} com duas lojas físicas dentro do Mercado Goes, em Guaíra e no Alto Boqueirão. Traga seu celular para diagnóstico gratuito e resolva troca de tela, bateria, conector de carga, câmera ou reparo de placa com peças de qualidade e garantia no serviço.`,
+  coordenadasContexto: `Atendimento presencial nas unidades Guaíra e Alto Boqueirão, com acesso rápido a partir do Mercado Goes e das principais vias de Curitiba.`,
+  ctaText: `Falar no WhatsApp (${nome})`
 }));
 
 const generatedCities: BairroInfo[] = NEARBY_CITIES.map(nome => ({
   slug: toSlug(nome),
   nome,
   regiao: "Região Metropolitana",
-  tituloSEO: `Loja de Celular para ${nome} | Envio Rápido e Garantia | Shopcell`,
-  metaDescription: `Sua loja de celulares para ${nome}. Compre smartphones novos e lacrados com entrega expressa para a Região Metropolitana e 12 meses de garantia.`,
-  introducao: `Moradores de ${nome} e região contam com o serviço diferenciado da Shopcell! Compre seu smartphone lacrado na caixa com frete rápido e pague na entrega para o motoboy. Todos os nossos produtos têm garantia local de 12 meses.`,
-  coordenadasContexto: `Rota de entrega expressa cobrindo ${nome} e toda a Região Metropolitana a partir do Centro de Curitiba.`,
-  ctaText: `Consultar Frete para ${nome}`
+  tituloSEO: `Assistência Técnica de Celular para ${nome} | SUNCELL Curitiba`,
+  metaDescription: `Assistência técnica de celular para ${nome} e região. As lojas SUNCELL ficam no Mercado Goes, em Curitiba, com diagnóstico gratuito, troca de tela e bateria com garantia.`,
+  introducao: `Moradores de ${nome} e região podem contar com as duas lojas SUNCELL no Mercado Goes, em Curitiba. Atendemos troca de tela, bateria, conector de carga, câmera e reparos de placa com orçamento gratuito e garantia no serviço.`,
+  coordenadasContexto: `Duas lojas físicas no Mercado Goes (Guaíra e Alto Boqueirão), com acesso pelas principais vias de Curitiba e Região Metropolitana.`,
+  ctaText: `Consultar atendimento em ${nome}`
 }));
 
 const allBairrosMap = new Map<string, BairroInfo>();

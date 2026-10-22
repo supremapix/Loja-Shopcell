@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, MessageSquare, Mail, Clock, ShieldAlert, ChevronDown, ChevronUp, Video, Home } from 'lucide-react';
+import { MapPin, Phone, MessageSquare, Mail, Clock, ShieldAlert, ChevronDown, ChevronUp, Home } from 'lucide-react';
 import { CONTACT_INFO, STORES } from '../data';
 import { bairrosData } from '../bairrosData';
 
@@ -153,7 +153,7 @@ export default function Location() {
           </a>
         </div>
 
-        {/* Highlighted 16:9 Institutional Video */}
+        {/* Highlighted Store Showcase */}
         <div className="w-full max-w-4xl mx-auto mb-10 sm:mb-16 px-1">
           <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-5 sm:p-7 shadow-xl relative overflow-hidden">
             {/* Soft decorative background glows */}
@@ -161,29 +161,40 @@ export default function Location() {
             
             <div className="text-center mb-6 relative z-10">
               <span className="text-[10px] font-mono font-bold text-white uppercase tracking-widest bg-[#FF6600] px-3.5 py-1.5 rounded-full shadow-md inline-flex items-center gap-1.5">
-                <Video className="w-3.5 h-3.5" />
-                <span>VÍDEO EXCLUSIVO DA LOJA</span>
+                <Home className="w-3.5 h-3.5" />
+                <span>NOSSA LOJA NO MERCADO GOES</span>
               </span>
               <h3 className="font-display font-black text-xl sm:text-2xl text-white mt-4 tracking-tight">
-                Assista ao Vídeo e Conheça Nossa Estrutura de Retirada & Envio!
+                Conheça a SUNCELL Guaíra e o nosso atendimento presencial
               </h3>
               <p className="text-slate-400 text-xs sm:text-sm mt-2 max-w-xl mx-auto leading-relaxed">
-                Nesse vídeo, você confere como funciona nossa entrega expressa via motoboy para Curitiba e Região Metropolitana, além do nosso atendimento na loja física no Centro de Curitiba.
+                Diagnóstico gratuito, conserto no mesmo dia e garantia de 12 meses. Atendemos Curitiba e Região Metropolitana, com retirada e entrega na loja física dentro do Mercado Goes.
               </p>
             </div>
 
-            {/* Video Player in Max 16:9 Prominence Aspect Ratio */}
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black flex items-center justify-center">
-              <video
-                src="https://img.supremasite.com.br/shopcell.mp4"
-                controls
-                playsInline
-                preload="metadata"
-                className="w-full h-full object-contain rounded-2xl"
-                id="shopcell-institutional-video"
-              >
-                Seu navegador não suporta a reprodução deste vídeo.
-              </video>
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
+              <img
+                src="/images/suncell-loja-guaira.webp"
+                alt="Interior da loja SUNCELL no Mercado Goes, em Curitiba"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/15 px-3.5 py-2 text-[11px] font-bold text-white">
+                  <MapPin className="w-3.5 h-3.5 text-[#FF8533]" />
+                  Rua Maria Moscardi Fanini, 261 — Guaíra
+                </span>
+                <a
+                  href={CONTACT_INFO.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-[11px] font-black uppercase tracking-wide text-slate-950 shadow-lg"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  Falar no WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         </div>

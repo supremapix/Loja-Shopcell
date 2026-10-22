@@ -18,15 +18,20 @@ export default function EnhancedSEO({
   title,
   description,
   canonical,
-  ogImage = "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
+  ogImage = "https://www.celularescuritibashopcell.com.br/og-suncell.jpg",
   ogType = 'website',
-  keywords = "loja de celulares Curitiba, celulares Curitiba, comprar celular Curitiba, celular com garantia Curitiba, loja de celular Centro Curitiba, Shopcell Curitiba",
+  keywords = "assistência técnica celular Curitiba, troca de tela Curitiba, troca de bateria Curitiba, conserto de celular Curitiba, SUNCELL Curitiba, Mercado Goes",
   bairroName,
   regiaoName,
   noindex = false,
   faqList,
 }: EnhancedSEOProps) {
-  
+  const ogImageType = ogImage.endsWith('.webp')
+    ? 'image/webp'
+    : ogImage.endsWith('.png')
+      ? 'image/png'
+      : 'image/jpeg';
+
   // Organization & LocalBusiness Schema
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -183,8 +188,8 @@ export default function EnhancedSEO({
       {/* Geo-targeting Meta Tags */}
       <meta name="geo.region" content="BR-PR" />
       <meta name="geo.placename" content={`Curitiba${bairroName ? ` - ${bairroName}` : ''}`} />
-      <meta name="geo.position" content="-25.4357;-49.2638" />
-      <meta name="ICBM" content="-25.4357, -49.2638" />
+        <meta name="geo.position" content="-25.4716;-49.2789" />
+        <meta name="ICBM" content="-25.4716, -49.2789" />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
@@ -196,7 +201,7 @@ export default function EnhancedSEO({
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:type" content={ogImageType} />
 
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />

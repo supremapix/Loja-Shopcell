@@ -1,65 +1,36 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Volume2, VolumeX, MessageSquare, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { MessageSquare, ArrowRight, MapPin } from 'lucide-react';
 import HeroSmartphoneMarquee from './HeroSmartphoneMarquee';
+import { CONTACT_INFO } from '../data';
 
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  useEffect(() => {
-    // Attempt playback on mount
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Fallback to muted if browser blocks unmuted autoplay
-        if (videoRef.current) {
-          videoRef.current.muted = true;
-          setIsMuted(true);
-          videoRef.current.play().catch(() => {});
-        }
-      });
-    }
-  }, []);
-
-  const toggleSound = (e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    if (videoRef.current) {
-      const nextMuted = !isMuted;
-      videoRef.current.muted = nextMuted;
-      setIsMuted(nextMuted);
-      if (videoRef.current.paused) {
-        videoRef.current.play().catch(() => {});
-        setIsPlaying(true);
-      }
-    }
-  };
 
   // WhatsApp Catalog Ticker items - Running to the RIGHT (animate-marquee-reverse)
-  const whatsappCatalogLink = `https://wa.me/554137989918?text=${encodeURIComponent("Olá! Gostaria de receber o catálogo completo com todos os celulares e preços atualizados no WhatsApp.")}`;
+  const whatsappCatalogLink = `https://wa.me/5541999176640?text=${encodeURIComponent("Olá! Gostaria de um orçamento de assistência técnica na SUNCELL.")}`;
 
   const catalogTickerItems = [
     {
-      badge: "CATÁLOGO WHATSAPP",
-      title: "TRABALHAMOS COM CATÁLOGO COMPLETO VIA WHATSAPP!",
-      cta: "CLIQUE AQUI PARA RECEBER",
+      badge: "DIAGNÓSTICO GRATUITO",
+      title: "TROCA DE TELA, BATERIA E PLACA COM GARANTIA",
+      cta: "FALAR NO WHATSAPP",
       highlight: true
     },
     {
-      badge: "ESTOQUE ATUALIZADO",
-      title: "PREÇOS PROMOCIONAIS E PRONTA ENTREGA EM CURITIBA",
-      cta: "SOLICITAR TABELA NO WHATSAPP",
+      badge: "2 LOJAS NO MERCADO GOES",
+      title: "SUNCELL GUAÍRA E ALTO BOQUEIRÃO",
+      cta: "PEDIR ORÇAMENTO",
       highlight: false
     },
     {
-      badge: "ATENDIMENTO IMEDIATO",
-      title: "RECEBA FOTOS E VÍDEOS DOS APARELHOS LACRADOS",
+      badge: "ATENDIMENTO ESPECIALIZADO",
+      title: "IPHONE, SAMSUNG, XIAOMI E MOTOROLA",
       cta: "CHAMAR NO WHATSAPP",
       highlight: true
     },
     {
-      badge: "12 MESES GARANTIA",
-      title: "SMARTPHONES ORIGINAIS COM RETIRADA NO CENTRO OU MOTOBOY",
-      cta: "CLIQUE AQUI E CONFIRA",
+      badge: "CONSERTO NO MESMO DIA",
+      title: "TELA, BATERIA, CONECTOR DE CARGA E CÂMERA",
+      cta: "AGENDAR AGORA",
       highlight: false
     }
   ];
@@ -70,52 +41,61 @@ export default function Hero() {
     <div id="inicio" className="w-full flex flex-col bg-slate-950">
       {/* CINEMATIC HERO: NO MOBILE PROPORÇÃO 16:9 SEM CORTAR TEXTO LATERAL; NO DESKTOP ALTO E IMPONENTE */}
       <div className="w-full relative z-20 overflow-hidden bg-slate-950">
-        <div className="relative w-full aspect-video sm:aspect-auto sm:h-[60vh] sm:min-h-[500px] md:h-[68vh] md:min-h-[580px] lg:h-[76vh] lg:min-h-[680px] xl:h-[82vh] xl:min-h-[760px] 2xl:min-h-[820px] bg-slate-950 flex flex-col justify-between overflow-hidden">
+        <div className="relative w-full h-[580px] sm:h-[60vh] sm:min-h-[500px] md:h-[68vh] md:min-h-[580px] lg:h-[76vh] lg:min-h-[680px] xl:h-[82vh] xl:min-h-[760px] 2xl:min-h-[820px] bg-slate-950 flex flex-col justify-between overflow-hidden">
           
-          {/* Background Video Layer - Full frame fit without side text cropping */}
-          <div 
-            className="absolute inset-0 w-full h-full overflow-hidden z-0 cursor-pointer"
-            onClick={() => toggleSound()}
-            title="Clique para ativar ou desativar o som"
-          >
-            <video
-              ref={videoRef}
-              autoPlay
-              loop
-              muted={isMuted}
-              playsInline
-              className="w-full h-full object-cover object-center min-w-full min-h-full opacity-95 filter brightness-100 contrast-105 transition-all duration-500"
-            >
-              <source src="https://img.supremasite.com.br/shocell-cwb.mp4" type="video/mp4" />
-            </video>
+          {/* Background Image Layer - Loja SUNCELL no Mercado Goes */}
+          <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+            <img
+              src="/images/suncell-loja-guaira.webp"
+              alt="Interior da loja SUNCELL no Mercado Goes, em Curitiba"
+              className="w-full h-full object-cover object-center"
+              loading="eager"
+              fetchPriority="high"
+            />
             
-            {/* Subtle Gradient Framing */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/70 pointer-events-none" />
+            {/* Contrast & Framing Overlays */}
+            <div className="absolute inset-0 bg-slate-950/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/92 via-slate-950/55 to-slate-950/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/35" />
           </div>
 
           {/* ÁREA CENTRAL LIVRE */}
           <div className="flex-1 w-full pointer-events-none" aria-hidden="true" />
 
-          {/* BOTÃO DE ÁUDIO NA PARTE DE BAIXO DA HERO - PEQUENO, REDONDO E DISCRETO */}
-          <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-5 z-30 pointer-events-auto">
-            <button
-              onClick={toggleSound}
-              type="button"
-              id="hero-sound-toggle-btn"
-              aria-label={isMuted ? "Ativar som do vídeo" : "Desativar som do vídeo"}
-              title={isMuted ? "Ativar som" : "Desativar som"}
-              className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center backdrop-blur-md border transition-all duration-300 shadow-xl cursor-pointer select-none group ${
-                isMuted 
-                  ? 'bg-slate-950/85 hover:bg-slate-900 border-white/20 hover:border-[#FF6600] text-slate-300 hover:text-white' 
-                  : 'bg-emerald-950/90 hover:bg-emerald-900 border-emerald-400 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.4)]'
-              }`}
-            >
-              {isMuted ? (
-                <VolumeX className="w-4 h-4 text-[#FF8533] group-hover:scale-110 transition-transform" />
-              ) : (
-                <Volume2 className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform animate-pulse" />
-              )}
-            </button>
+          {/* HERO CONTENT */}
+          <div className="absolute inset-x-0 bottom-0 z-20 px-4 pb-6 sm:px-8 sm:pb-10 lg:px-12 lg:pb-12 pointer-events-none">
+            <div className="mx-auto max-w-7xl">
+              <div className="max-w-2xl pointer-events-auto">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#FF8533]/40 bg-slate-950/70 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#FFB27A] backdrop-blur-md">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#FF6600]" />
+                  Assistência técnica em Curitiba
+                </span>
+                <h1 className="mt-4 font-display text-3xl font-black leading-[1.05] tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)] sm:text-4xl lg:text-5xl xl:text-[3.4rem]">
+                  Seu celular em boas mãos, <span className="text-[#FF8533]">no Mercado Goes.</span>
+                </h1>
+                <p className="mt-3 max-w-xl text-sm font-medium leading-relaxed text-slate-200 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] sm:text-base">
+                  Troca de tela, bateria e placa com diagnóstico gratuito e garantia. Duas lojas SUNCELL: Guaíra e Alto Boqueirão.
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <a
+                    href={CONTACT_INFO.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#FF6600] to-[#FF8533] px-5 py-3 text-xs font-black uppercase tracking-wide text-white shadow-[0_10px_30px_rgba(255,102,0,0.35)] transition-all hover:-translate-y-0.5 hover:brightness-110 sm:text-sm"
+                  >
+                    <MessageSquare className="h-4 w-4" />
+                    Pedir orçamento
+                  </a>
+                  <a
+                    href="#assistencia"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-slate-950/60 px-5 py-3 text-xs font-black uppercase tracking-wide text-white backdrop-blur-md transition-all hover:border-[#FF8533]/60 hover:bg-slate-900/80 sm:text-sm"
+                  >
+                    <MapPin className="h-4 w-4 text-[#FF8533]" />
+                    Ver lojas
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>

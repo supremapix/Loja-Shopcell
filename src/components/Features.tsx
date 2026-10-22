@@ -17,10 +17,10 @@ export default function Features() {
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-3">DIFERENCIAIS EXCLUSIVOS</span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-gray-900 tracking-tight leading-tight">
-            Por que escolher a Shopcell Curitiba?
+            Por que escolher a SUNCELL Curitiba?
           </h2>
           <p className="text-gray-600 text-xs sm:text-sm mt-4 leading-relaxed">
-            Mais de 8 anos de tradição em Curitiba oferecendo segurança, transparência e 12 meses de garantia local presencial.
+            Assistência técnica e smartphones com segurança, transparência e 12 meses de garantia local presencial.
           </p>
         </div>
 

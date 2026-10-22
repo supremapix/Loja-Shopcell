@@ -15,7 +15,7 @@ export default function BlogPostPage() {
   }
 
   const getWhatsAppMsg = (text: string) => {
-    return `https://api.whatsapp.com/send?phone=554137989918&text=${encodeURIComponent(text)}`;
+    return `https://api.whatsapp.com/send?phone=5541999176640&text=${encodeURIComponent(text)}`;
   };
 
   const articleSchema = {
@@ -26,14 +26,14 @@ export default function BlogPostPage() {
     "image": post.image,
     "author": {
       "@type": "Organization",
-      "name": "Shopcell Curitiba"
+      "name": "SUNCELL Curitiba"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Shopcell Curitiba",
+      "name": "SUNCELL Curitiba",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp"
+        "url": "/images/suncell-assistencia-banner.webp"
       }
     },
     "datePublished": "2026-07-26",
@@ -47,7 +47,7 @@ export default function BlogPostPage() {
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-[#FF6600] selection:text-white flex flex-col justify-between">
       
       <EnhancedSEO
-        title={`${post.title} | Blog Shopcell Curitiba`}
+        title={`${post.title} | Blog SUNCELL Curitiba`}
         description={post.metaDescription}
         canonical={`https://www.celularescuritibashopcell.com.br/blog/${post.slug}`}
         ogImage={post.image}

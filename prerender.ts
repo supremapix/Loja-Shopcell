@@ -46,17 +46,17 @@ const pages: PrerenderPage[] = [
   {
     path: '/',
     outputPath: 'index.html',
-    title: 'Shopcell — Loja de Celulares em Curitiba | Aparelhos Lacrados e Garantia',
-    description: 'Tradicional loja de celulares no Centro de Curitiba. Aparelhos novos, lacrados na caixa com 12 meses de garantia local. Entrega expressa via motoboy!',
+    title: 'SUNCELL — Assistência Técnica de Celular em Curitiba | Mercado Goes',
+    description: 'Troca de tela, bateria e placa com diagnóstico gratuito e garantia. Duas lojas SUNCELL dentro do Mercado Goes: Guaíra e Alto Boqueirão, Curitiba.',
     canonical: 'https://www.celularescuritibashopcell.com.br/',
-    keywords: 'loja de celular curitiba, celular sitio cercado, comprar celular curitiba, loja de celular centro curitiba, celulares com garantia curitiba'
+    keywords: 'assistência técnica celular curitiba, troca de tela curitiba, troca de bateria curitiba, conserto de celular curitiba, suncell curitiba, mercado goes'
   },
   // Realme Smartphones Catalog Page
   {
     path: '/celulares',
     outputPath: path.join('celulares', 'index.html'),
-    title: 'Smartphones Realme em Curitiba | Shopcell — Modelos com Garantia de 12 Meses',
-    description: 'Confira os smartphones Realme em Curitiba na Shopcell: realme Note 60X, P4 Lite, 14 5G e P4 Power 5G. Aparelhos novos com 12 meses de garantia local e entrega expressa.',
+    title: 'Smartphones Realme em Curitiba | SUNCELL — Modelos com Garantia de 12 Meses',
+    description: 'Confira os smartphones Realme em Curitiba na SUNCELL: realme Note 60X, P4 Lite, 14 5G e P4 Power 5G. Aparelhos novos com 12 meses de garantia local e entrega expressa.',
     canonical: 'https://www.celularescuritibashopcell.com.br/celulares',
     keywords: 'smartphones realme curitiba, comprar realme curitiba, celular realme curitiba, realme note 60x curitiba, realme p4 lite curitiba, realme 14 5g curitiba, realme p4 power curitiba, loja de celulares curitiba'
   },
@@ -67,7 +67,7 @@ const pages: PrerenderPage[] = [
     title: prod.titleSEO,
     description: prod.metaDescription,
     canonical: prod.canonical,
-    keywords: `${prod.name}, comprar ${prod.name} curitiba, ${prod.name} menor preco curitiba, celular realme curitiba, shopcell curitiba`,
+    keywords: `${prod.name}, comprar ${prod.name} curitiba, ${prod.name} menor preco curitiba, celular realme curitiba, suncell curitiba`,
     ogType: 'product',
     ogImage: prod.image,
     productData: {
@@ -81,10 +81,10 @@ const pages: PrerenderPage[] = [
   {
     path: '/loja-de-celular-curitiba',
     outputPath: path.join('loja-de-celular-curitiba', 'index.html'),
-    title: 'Loja de Celular em Curitiba | Shopcell Centro',
-    description: 'Encontre os melhores celulares com 12 meses de garantia na Shopcell no Centro de Curitiba. Atendimento presencial e entrega expressa.',
+    title: 'Loja de Celular em Curitiba | SUNCELL Mercado Goes',
+    description: 'Encontre os melhores celulares com 12 meses de garantia na SUNCELL no Mercado Goes, em Curitiba. Atendimento presencial e entrega expressa.',
     canonical: 'https://www.celularescuritibashopcell.com.br/loja-de-celular-curitiba',
-    keywords: 'loja de celular curitiba, loja de celular centro curitiba, shopcell curitiba'
+    keywords: 'loja de celular curitiba, loja de celular mercado goes, suncell curitiba'
   },
   {
     path: '/acessorios',
@@ -97,24 +97,24 @@ const pages: PrerenderPage[] = [
   {
     path: '/sobre',
     outputPath: path.join('sobre', 'index.html'),
-    title: 'Sobre a Shopcell — Loja de Celulares em Curitiba',
-    description: 'Conheça a história da Shopcell, há mais de 8 anos oferecendo celulares originais e atendimento de excelência em Curitiba.',
+    title: 'Sobre a SUNCELL — Assistência Técnica em Curitiba',
+    description: 'Conheça a história da SUNCELL, referência em assistência técnica de celulares no Mercado Goes, em Curitiba.',
     canonical: 'https://www.celularescuritibashopcell.com.br/sobre',
-    keywords: 'sobre shopcell, historia shopcell curitiba, loja de celular confiavel curitiba'
+    keywords: 'sobre suncell, historia suncell curitiba, assistencia tecnica celular curitiba'
   },
   {
     path: '/contato',
     outputPath: path.join('contato', 'index.html'),
-    title: 'Contato e Localização | Shopcell Curitiba',
-    description: 'Fale com a Shopcell pelo WhatsApp ou visite nossa loja física na Rua Conselheiro Laurindo, 809 - Sala 402, Centro, Curitiba/PR.',
+    title: 'Contato e Localização | SUNCELL Curitiba',
+    description: 'Fale com a SUNCELL pelo WhatsApp ou visite nossas lojas no Mercado Goes, em Curitiba: Guaíra e Alto Boqueirão.',
     canonical: 'https://www.celularescuritibashopcell.com.br/contato',
-    keywords: 'contato shopcell, whatsapp shopcell curitiba, endereco shopcell curitiba'
+    keywords: 'contato suncell, whatsapp suncell curitiba, endereco suncell curitiba'
   },
   // 404 Page
   {
     path: '/404',
     outputPath: '404.html',
-    title: 'Página não encontrada (404) | Shopcell Curitiba',
+    title: 'Página não encontrada (404) | SUNCELL Curitiba',
     description: 'A página solicitada não foi encontrada. Confira nossos canais de atendimento e navegabilidade.',
     canonical: 'https://www.celularescuritibashopcell.com.br/404',
     keywords: '404, pagina nao encontrada',
@@ -137,7 +137,7 @@ const pages: PrerenderPage[] = [
     title: b.tituloSEO,
     description: b.metaDescription,
     canonical: `https://www.celularescuritibashopcell.com.br/bairro/${b.slug}`,
-    keywords: `celulares ${b.nome}, comprar celular ${b.nome}, loja de celular ${b.nome}, celular Curitiba, loja de celulares Curitiba`,
+    keywords: `assistência técnica ${b.nome}, conserto de celular ${b.nome}, troca de tela ${b.nome}, celular Curitiba, suncell curitiba`,
     bairroName: b.nome,
     regiaoName: b.regiao
   }))
@@ -147,24 +147,24 @@ function generateSchemas(page: PrerenderPage) {
   const localBusiness = {
     "@context": "https://schema.org",
     "@type": "MobilePhoneStore",
-    "name": "Shopcell — Loja de Celulares em Curitiba",
-    "image": "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp",
+    "name": "SUNCELL — Assistência Técnica de Celulares em Curitiba",
+    "image": "https://www.celularescuritibashopcell.com.br/og-suncell.jpg",
     "@id": "https://www.celularescuritibashopcell.com.br/#localbusiness",
     "url": "https://www.celularescuritibashopcell.com.br",
-    "telephone": "+55-41-3538-1822",
+    "telephone": "+55-41-99917-6640",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "R. Conselheiro Laurindo, 809 – Sala 402, Centro",
+      "streetAddress": "Rua Maria Moscardi Fanini, 261 - Mercado Goes",
       "addressLocality": "Curitiba",
       "addressRegion": "PR",
-      "postalCode": "80060-100",
+      "postalCode": "80220-450",
       "addressCountry": "BR"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": -25.4357,
-      "longitude": -49.2638
+      "latitude": -25.4716,
+      "longitude": -49.2789
     },
     "openingHoursSpecification": [
       {
@@ -176,8 +176,8 @@ function generateSchemas(page: PrerenderPage) {
       {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": "Saturday",
-        "opens": "10:00",
-        "closes": "16:00"
+        "opens": "09:00",
+        "closes": "19:00"
       }
     ],
     "sameAs": [
@@ -249,7 +249,7 @@ function generateSchemas(page: PrerenderPage) {
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "MobilePhoneStore",
-        "name": "Shopcell Curitiba"
+        "name": "SUNCELL Curitiba"
       }
     }
   } : null;
@@ -266,7 +266,14 @@ pages.forEach((page) => {
 
   html = html.replace(/<title>.*?<\/title>/gi, `<title>${page.title}</title>`);
 
-  const ogImage = page.ogImage || "https://www.celularescuritibashopcell.com.br/assets/loja-shopcell-monitores-CqWnbbff.webp";
+  // Remove template SEO tags to avoid duplicates with the per-page tags below
+  html = html
+    .replace(/<link[^>]*rel=["']canonical["'][^>]*>\s*/gi, '')
+    .replace(/<meta[^>]*(?:name|property)=["'](?:description|keywords|author|robots|geo\.[^"']*|ICBM|og:[^"']*|twitter:[^"']*)["'][^>]*>\s*/gi, '')
+    .replace(/<script[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>\s*/gi, '');
+
+  const ogImage = page.ogImage || "https://www.celularescuritibashopcell.com.br/og-suncell.jpg";
+  const ogImageType = ogImage.endsWith('.webp') ? 'image/webp' : ogImage.endsWith('.png') ? 'image/png' : 'image/jpeg';
   const ogType = page.ogType || "website";
   
   const robotsTag = page.noindex 
@@ -277,25 +284,25 @@ pages.forEach((page) => {
     <!-- Compiled Static SEO Tags -->
     <meta name="description" content="${page.description}" />
     <meta name="keywords" content="${page.keywords}" />
-    <meta name="author" content="Shopcell Curitiba" />
+    <meta name="author" content="SUNCELL Curitiba" />
     <link rel="canonical" href="${page.canonical}" />
     ${robotsTag}
     <meta name="geo.region" content="BR-PR" />
     <meta name="geo.placename" content="Curitiba${page.bairroName ? ` - ${page.bairroName}` : ''}" />
-    <meta name="geo.position" content="-25.4357;-49.2638" />
-    <meta name="ICBM" content="-25.4357, -49.2638" />
+    <meta name="geo.position" content="-25.4716;-49.2789" />
+    <meta name="ICBM" content="-25.4716, -49.2789" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="${ogType}" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content="Shopcell — Loja de Celulares em Curitiba" />
+    <meta property="og:site_name" content="SUNCELL — Assistência Técnica de Celulares em Curitiba" />
     <meta property="og:url" content="${page.canonical}" />
     <meta property="og:title" content="${page.title}" />
     <meta property="og:description" content="${page.description}" />
     <meta property="og:image" content="${ogImage}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:type" content="${ogImageType}" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />

@@ -8,7 +8,6 @@ import { CONTACT_INFO } from '../data';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import EnhancedSEO from './EnhancedSEO';
-import BackToTop from './BackToTop';
 
 export default function AcessoriosPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -28,7 +27,7 @@ export default function AcessoriosPage() {
       id: 'peliculas-protecao',
       title: 'Películas de Alta Resistência',
       subtitle: 'Vidro 3D, Cerâmica e Privacidade',
-      description: 'Proteção máxima contra riscos, trincos e quedas. Aplicação profissional de película na hora em nossa loja no Centro.',
+      description: 'Proteção máxima contra riscos, trincos e quedas. Aplicação profissional de película na hora em nossa loja no Mercado Goes.',
       badge: 'PROTEÇÃO MÁXIMA',
       color: 'border-blue-200 bg-blue-50/40',
       iconColor: 'text-blue-600 bg-blue-50',
@@ -159,13 +158,13 @@ export default function AcessoriosPage() {
           <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
             <div className="max-w-xl">
               <span className="text-xs font-mono font-bold text-[#FF8533] uppercase tracking-widest block mb-2">
-                APLICAÇÃO E RETIRADA NO CENTRO
+                APLICAÇÃO E RETIRADA NO MERCADO GOES
               </span>
               <h3 className="font-display font-black text-2xl sm:text-3xl tracking-tight mb-3">
                 Aplicação de Película e Teste de Carregador no Local
               </h3>
               <p className="text-slate-300 text-sm leading-relaxed">
-                Venha em nossa loja no Edifício Downtown (Rua Conselheiro Laurindo, 809 - Sala 402). Aplicamos a película perfeitamente em seu smartphone ou enviamos junto na entrega do seu novo aparelho.
+                Venha em nossa loja no Mercado Goes (Rua Maria Moscardi Fanini, 261 - Guaíra). Aplicamos a película perfeitamente em seu smartphone ou enviamos junto na entrega do seu novo aparelho.
               </p>
             </div>
 
@@ -192,7 +191,6 @@ export default function AcessoriosPage() {
       </section>
 
       <Footer />
-      <BackToTop />
     </div>
   );
 }

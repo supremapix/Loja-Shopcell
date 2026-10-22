@@ -1,10 +1,10 @@
-const CACHE_NAME = 'xiaomi-shopcell-v1';
+const CACHE_NAME = 'suncell-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/favicon.ico',
-  '/manifest.json',
-  '/site.webmanifest'
+  '/site.webmanifest',
+  '/og-suncell.jpg'
 ];
 
 // Install Event

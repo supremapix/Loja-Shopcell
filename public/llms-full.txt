@@ -1,113 +1,108 @@
-# Shopcell Curitiba — Documentação Completa para Motores de Busca e Modelos de IA
+# SUNCELL — Documentação Completa para Motores de Busca e Modelos de IA
 URL Oficial: https://www.celularescuritibashopcell.com.br
-Última Atualização: Agosto de 2026
+Última Atualização: Outubro de 2026
 
-## 1. Identidade e Atendimento da Empresa
-- Razão / Nome Fantasia: Shopcell Curitiba
-- Nicho: Venda de Smartphones Novos, Celulares Lacrados e Acessórios Originais.
-- Localização: Rua Conselheiro Laurindo, 809 – Sala 402, Centro, Curitiba - PR, CEP 80060-100 (Edifício Comercial Downtown, próximo a praças centrais e pontos de ônibus).
-- Telefone Fixo: (41) 3538-1822
-- WhatsApp: (41) 3798-9918 (Link direto: https://wa.me/554137989918)
-- Horário: Segunda a Sexta das 09h às 19h | Sábado das 10h às 16h.
-- Diferenciais Principais:
-  1. 12 Meses de Garantia Local com suporte presencial em balcão.
-  2. Aparelhos 100% novos na caixa lacrada de fábrica com homologação Anatel.
-  3. Atendimento humanizado e paciente especializado para idosos e famílias (auxílio na configuração de WhatsApp, transferência de contatos e fotos).
-  4. Entrega expressa por motoboy no mesmo dia em toda Curitiba e Região Metropolitana, com opção de Pague na Entrega (Pix, Dinheiro ou Cartão).
+## 1. Identidade e Atendimento
 
----
+- Nome: SUNCELL Assistência Técnica
+- Nicho: assistência técnica de celulares, manutenção, troca de peças e venda de acessórios.
+- Atendimento presencial em duas lojas dentro do Mercado Goes, em Curitiba, além de orçamento pelo WhatsApp.
+- Diagnóstico gratuito e garantia no serviço executado.
+- Peças de qualidade e atendimento humanizado, com suporte para idosos e famílias.
 
-## 2. Catálogo Oficial de Smartphones Realme
+## 2. Lojas
 
-### 2.1. Smartphone realme Note 60X
-- URL Canônica: https://www.celularescuritibashopcell.com.br/celular/realme-note-60x
-- Preço à vista (Pix/Dinheiro): R$ 899,00
-- Preço a prazo: 12x de R$ 89,90 no cartão de crédito
-- Cor: Marble Black (Preto Mármore)
-- Garantia: 12 meses direto na loja física em Curitiba
-- Descrição: O realme Note 60X é o smartphone ideal para quem busca economia, durabilidade e uma bateria de longa duração para o uso diário, redes sociais, WhatsApp e vídeos. Conta com estrutura reforçada ArmorShell e certificação IP54 contra respingos e poeira.
-- Ficha Técnica:
-  * Tela: 6.74 polegadas IPS LCD, 90Hz, 560 nits
-  * Armazenamento: 64 GB interno (expansível via MicroSD)
-  * Memória RAM: 3 GB (+3 GB de RAM Dinâmica / Virtual)
-  * Processador: Unisoc Tiger T612 Octa-core (12nm)
-  * Bateria: 5.000 mAh com carregamento rápido 10W
-  * Câmera Traseira: 32 MP Principal com IA (Inteligência Artificial)
-  * Câmera Frontal: 5 MP
-  * Sistema Operacional: Android 14 com realme UI
-  * Conectividade: 4G Dual SIM, Wi-Fi Dual Band, Bluetooth 5.0, USB Type-C, Entrada P2 (3.5mm)
-  * Segurança: Leitor de impressão digital na lateral e Reconhecimento Facial
-  * Resistência: IP54 (resistência a respingos de água e poeira)
+### 2.1. SUNCELL Guaíra
+- Endereço: Rua Maria Moscardi Fanini, 261 – Mercado Goes, Guaíra, Curitiba - PR, CEP 80220-450
+- WhatsApp: (41) 99917-6640 (https://wa.me/5541999176640)
+- Telefone: (41) 99917-6640
+- Horário: segunda a sábado, das 09h às 19h.
 
-### 2.2. Smartphone realme P4 Lite
-- URL Canônica: https://www.celularescuritibashopcell.com.br/celular/realme-p4-lite
-- Preço à vista (Pix/Dinheiro): R$ 1.099,00
-- Preço a prazo: 12x de R$ 109,90 no cartão de crédito
-- Cor: Beach Gold (Dourado Praia)
-- Garantia: 12 meses direto na loja física em Curitiba
-- Descrição: O realme P4 Lite equilibra acabamento moderno na cor Beach Gold com 128GB de memória para armazenar milhares de fotos, músicas e aplicativos, além de câmera de 50MP para fotos nítidas.
-- Ficha Técnica:
-  * Tela: 6.74 polegadas IPS LCD, 90Hz com Dynamic Notch
-  * Armazenamento: 128 GB interno (expansível via MicroSD)
-  * Memória RAM: 4 GB (+4 GB de RAM Dinâmica / Virtual)
-  * Processador: Unisoc T612 Octa-core
-  * Bateria: 5.000 mAh com carregamento 15W
-  * Câmera Traseira: 50 MP Principal com IA + sensor auxiliar
-  * Câmera Frontal: 8 MP
-  * Sistema Operacional: Android 14 com realme UI
-  * Conectividade: 4G Dual SIM, Wi-Fi 5GHz, Bluetooth 5.0, USB Type-C
-  * Segurança: Sensor biométrico lateral rápido
-  * Resistência: IP54
+### 2.2. SUNCELL Alto Boqueirão
+- Endereço: R. Pastor Antônio Polito, 1805 – Mercado Goes, Alto Boqueirão, Curitiba - PR, CEP 81770-260
+- WhatsApp: (41) 99750-1961 (https://wa.me/5541997501961)
+- Telefone: (41) 99750-1961
+- Horário: segunda a sábado, das 09h às 19h.
 
-### 2.3. Smartphone realme 14 5G
-- URL Canônica: https://www.celularescuritibashopcell.com.br/celular/realme-14-5g
-- Preço à vista (Pix/Dinheiro): R$ 1.599,00
-- Preço a prazo: 12x de R$ 159,90 no cartão de crédito
-- Cor: Feather Green (Verde Pena)
-- Garantia: 12 meses direto na loja física em Curitiba
-- Descrição: O realme 14 5G entrega desempenho veloz com processador MediaTek Dimensity 5G, tela AMOLED 120Hz de alta definição e câmera estabilizada de 50MP Sony com OIS, acompanhado de carregamento SuperVOOC de 45W.
-- Ficha Técnica:
-  * Tela: 6.67 polegadas AMOLED, 120Hz, HDR10+, até 2.000 nits de brilho
-  * Armazenamento: 256 GB interno UFS
-  * Memória RAM: 8 GB (+8 GB de RAM Dinâmica / Virtual)
-  * Processador: MediaTek Dimensity 7050 5G (6nm)
-  * Bateria: 5.000 mAh com SuperVOOC 45W (50% em 26 minutos)
-  * Câmera Traseira: 50 MP Sony com Estabilização Óptica (OIS) + 2 MP Profundidade
-  * Câmera Frontal: 16 MP
-  * Sistema Operacional: Android 14 com realme UI 5.0
-  * Conectividade: 5G Dual SIM, Wi-Fi 6, Bluetooth 5.2, NFC, USB-C
-  * Segurança: Leitor de digitais sob a tela (In-Display)
-  * Resistência: IP54
+## 3. Serviços de Assistência Técnica
 
-### 2.4. Smartphone realme P4 Power 5G
-- URL Canônica: https://www.celularescuritibashopcell.com.br/celular/realme-p4-power-5g
-- Preço à vista (Pix/Dinheiro): R$ 2.199,00
-- Preço a prazo: 12x de R$ 219,90 no cartão de crédito
-- Cor: Submarine Blue (Azul Submarino com acabamento premium)
-- Garantia: 12 meses direto na loja física em Curitiba
-- Descrição: O modelo topo de linha realme P4 Power 5G conta com 512GB de espaço interno, 12GB de RAM, câmera periscópio/sensor Sony IMX890 com OIS, tela curva AMOLED de 120Hz e processador Snapdragon 7s Gen 2 de 4nm.
-- Ficha Técnica:
-  * Tela: 6.7 polegadas Curva AMOLED 120Hz, 1.07 bilhão de cores, 2160Hz PWM Dimming
-  * Armazenamento: 512 GB interno UFS 3.1
-  * Memória RAM: 12 GB LPDDR5 (+12 GB RAM Dinâmica)
-  * Processador: Qualcomm Snapdragon 7s Gen 2 (4nm 5G)
-  * Bateria: 5.000 mAh com carregamento SuperVOOC 67W
-  * Câmera Traseira: Tripla — 50 MP Sony IMX890 OIS + 8 MP Ultrawide (112°) + sensor Macro
-  * Câmera Frontal: 32 MP Sony com gravação 4K
-  * Sistema Operacional: Android 14 com realme UI 5.0
-  * Conectividade: 5G Dual SIM, Wi-Fi 6, Bluetooth 5.3, NFC, USB-C
-  * Segurança: Sensor biométrico óptico sob a tela e áudio estéreo com Dolby Atmos
-  * Resistência: IP65 contra poeira e jatos de água
+1. Troca de tela e vidro (display LCD/OLED)
+   - Substituição de telas trincadas, quebradas ou com falha de touch.
+   - Peças de qualidade e teste completo antes da entrega.
 
----
+2. Troca de bateria
+   - Baterias com vício, descarregamento rápido ou desligamentos inesperados.
+   - Verificação de saúde da bateria e do circuito de carga.
 
-## 3. Perguntas Frequentes Gerais
+3. Conector de carga
+   - Reparo ou troca de conector USB-C, Lightning ou micro-USB.
+   - Correção de mau contato, carga lenta e aparelho que não carrega.
 
-**P: Os celulares Realme vendidos na Shopcell são originais e homologados?**
-R: Sim, 100% originais, novos, com caixa lacrada de fábrica, certificados pela Anatel e com 12 meses de garantia local.
+4. Câmeras
+   - Troca de câmera frontal e traseira.
+   - Correção de lente embaçada, foco defeituoso e falhas de imagem.
 
-**P: Como funciona a garantia de 12 meses?**
-R: A garantia é coberta diretamente em nossa loja física no Centro de Curitiba (Rua Conselheiro Laurindo, 809 - Sala 402), sem necessidade de postagens demoradas em correios ou burocracias.
+5. Áudio
+   - Reparo de alto-falante, auricular e microfone.
+   - Correção de som baixo, chiado e chamadas sem áudio.
 
-**P: Como funciona a entrega em Curitiba?**
-R: Oferecemos serviço de motoboy express com entrega no mesmo dia para todos os bairros de Curitiba e cidades da Região Metropolitana. Você pode escolher pagar na entrega via Pix, dinheiro ou parcelar no cartão.
+6. Placa e componentes
+   - Reparo de placa-mãe, solda e substituição de componentes.
+   - Diagnóstico avançado para aparelhos que não ligam ou reiniciam.
+
+7. Películas e acessórios
+   - Aplicação profissional de película de vidro.
+   - Capinhas, carregadores, cabos e fones.
+
+8. Software
+   - Formatação, limpeza, atualização e otimização do sistema.
+
+## 4. Regiões Atendidas
+
+- Curitiba: Guaíra, Alto Boqueirão, Sítio Cercado, Boqueirão, Pinheirinho, Batel, Centro, Portão, Água Verde, Novo Mundo, Xaxim, Capão Raso, CIC, Fazendinha, Santa Quitéria, Campo Comprido, Bigorrilho, Juvevê, Cabral, Hugo Lange, Jardim Botânico, São Braz, Santo Inácio, Abranches, Ahú, Alto da Glória, Alto da Rua XV, Atuba, Bacacheri, Barreirinha, Boa Vista, Bom Retiro, Butiatuvinha, Cachoeira, Campina do Sítio, Campo de Santana, Capão da Imbuia, Cascatinha, Caximba, Centro Cívico, Cristo Rei, Fanny, Ganchinho, Guabirotuba, Jardim das Américas, Lamenha Pequena, Lindóia, Mercês, Mossunguê, Orleans, Parolin, Pilarzinho, Prado Velho, Riviera, Santa Cândida, São Francisco, São João, São Lourenço, São Miguel, Taboão, Tarumã, Tatuquara, Tingui, Umbará, Vila Izabel, Vista Alegre.
+- Região Metropolitana: São José dos Pinhais, Pinhais, Colombo, Araucária, Almirante Tamandaré, Campo Largo, Campo Magro, Fazenda Rio Grande, Quatro Barras, Campina Grande do Sul, Mandirituba.
+
+## 5. Garantia e Política de Serviço
+
+- Diagnóstico gratuito e orçamento sem compromisso.
+- Garantia no serviço executado, com cobertura dos reparos realizados.
+- Peças de qualidade e testes de funcionamento antes da entrega.
+- Atendimento presencial nas duas lojas SUNCELL no Mercado Goes.
+
+## 6. Catálogo de Celulares Realme
+
+### 6.1. realme Note 60X
+- URL: https://www.celularescuritibashopcell.com.br/celular/realme-note-60x
+- Tela 6,74" 90Hz, 64GB + 3GB RAM (+3GB dinâmica), bateria 5.000 mAh, câmera 32MP, IP54.
+
+### 6.2. realme P4 Lite
+- URL: https://www.celularescuritibashopcell.com.br/celular/realme-p4-lite
+- Tela 6,74" 90Hz, 128GB + 4GB RAM (+4GB dinâmica), bateria 5.000 mAh, câmera 50MP, IP54.
+
+### 6.3. realme 14 5G
+- URL: https://www.celularescuritibashopcell.com.br/celular/realme-14-5g
+- Tela 6,67" AMOLED 120Hz, 256GB + 8GB RAM, bateria 5.000 mAh com SuperVOOC 45W, câmera 50MP Sony OIS, 5G.
+
+### 6.4. realme P4 Power 5G
+- URL: https://www.celularescuritibashopcell.com.br/celular/realme-p4-power-5g
+- Tela 6,7" AMOLED 120Hz, 512GB + 12GB RAM, bateria 5.000 mAh com SuperVOOC 67W, câmera 50MP Sony IMX890 OIS, 5G.
+
+## 7. Perguntas Frequentes
+
+**P: Onde ficam as lojas SUNCELL?**
+R: As duas lojas ficam dentro do Mercado Goes, em Curitiba: Guaíra (Rua Maria Moscardi Fanini, 261) e Alto Boqueirão (R. Pastor Antônio Polito, 1805).
+
+**P: O diagnóstico é gratuito?**
+R: Sim. O diagnóstico é gratuito e o orçamento é feito sem compromisso.
+
+**P: Quais serviços a SUNCELL realiza?**
+R: Troca de tela, bateria, conector de carga, câmeras, alto-falante, auricular, microfone, reparo de placa, películas, acessórios e otimização de software.
+
+**P: Os reparos têm garantia?**
+R: Sim. Todos os serviços executados contam com garantia e peças de qualidade.
+
+**P: Como solicitar um orçamento?**
+R: Basta chamar no WhatsApp da loja mais próxima: Guaíra (41) 99917-6640 ou Alto Boqueirão (41) 99750-1961.
+
+**P: Qual o horário de funcionamento?**
+R: Segunda a sábado, das 09h às 19h, nas duas lojas.
