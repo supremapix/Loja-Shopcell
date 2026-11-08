@@ -1,0 +1,62 @@
+/* Highlighted agency signature, shared by every page footer. */
+.suprema-signature {
+  position: relative;
+  max-width: 760px;
+  margin: 24px auto 0;
+  padding: 28px;
+  border: 1px solid #ff893a70;
+  border-radius: 22px;
+  background: radial-gradient(ellipse at top, #ff893a14, transparent 75%), #101923;
+  box-shadow: 0 12px 40px #0003;
+  text-align: center;
+}
+.suprema-signature::before {
+  content: "";
+  position: absolute;
+  inset: -1px 25% auto;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff893a, transparent);
+}
+.suprema-signature-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 0 0 18px;
+  color: #c4d0dd;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.suprema-signature-heart { color: #ff893a; fill: currentColor; animation: suprema-heartbeat 2s ease-in-out infinite; }
+.suprema-signature-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  max-width: 100%;
+  min-height: 64px;
+  padding: 6px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform .2s ease;
+}
+.suprema-signature-link:hover { transform: translateY(-2px); }
+.suprema-signature-link:focus-visible { outline: 3px solid #8de8d1; outline-offset: 7px; }
+.suprema-signature-logo { display: block; width: 222px; max-width: 100%; padding: 9px 12px; border-radius: 9px; background: #fff; flex-shrink: 0; }
+.suprema-signature-logo img { display: block; width: 100%; height: auto; object-fit: contain; }
+.suprema-signature-name { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; text-align: left; }
+.suprema-signature-name strong { color: #fff3e7; font-size: 19px; font-weight: 750; line-height: 1.3; }
+.suprema-signature-name > span { display: flex; align-items: center; gap: 7px; color: #ffad75; font-size: 12px; font-weight: 650; line-height: 1.5; }
+@keyframes suprema-heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.16); } }
+@media (max-width: 600px) {
+  .suprema-signature { padding: 25px 16px; border-radius: 18px; }
+  .suprema-signature-link { flex-direction: column; gap: 17px; }
+  .suprema-signature-logo { width: 222px; }
+  .suprema-signature-name { align-items: center; text-align: center; }
+  .suprema-signature-name strong { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .suprema-signature-heart { animation: none; }
+  .suprema-signature-link { transition: none; }
+  .suprema-signature-link:hover { transform: none; }
+}
