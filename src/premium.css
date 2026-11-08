@@ -255,3 +255,10 @@ button,a,input { -webkit-tap-highlight-color:transparent; }
 .suprema-store-dialog a { min-height:44px; }
 
 #cart-sidebar button[id^="dec-qty-"],#cart-sidebar button[id^="inc-qty-"]{min-width:40px;min-height:44px;}
+/* Keep edge shortcuts compact so the product controls remain unobstructed. */
+@media(min-width:768px){
+ .suprema-contact{width:48px;height:48px;padding:0;position:relative;}
+ .suprema-contact>span{display:none;}
+ .suprema-contact:hover>span,.suprema-contact:focus-visible>span{display:block;position:absolute;right:58px;white-space:nowrap;background:#13232f;color:#edf5f8;border:1px solid #8de8d140;border-radius:10px;padding:9px 13px;box-shadow:0 10px 25px #0005;}
+}
+.sc-home .sc-shell-footer-intro,.sc-home .sc-shell-footer-stores{display:none;}

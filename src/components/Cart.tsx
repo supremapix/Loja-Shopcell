@@ -277,7 +277,7 @@ export default function Cart({
                   {/* Form fields */}
                   <div className="space-y-3">
                     <div>
-                      <label className="block text-xs text-gray-600 mb-1 font-semibold">Seu Nome Completo *</label>
+                      <label htmlFor="checkout-name-input" className="block text-xs text-gray-600 mb-1 font-semibold">Seu Nome Completo *</label>
                       <input
                         type="text"
                         required
@@ -332,7 +332,7 @@ export default function Cart({
                         className="space-y-3 pt-1 border-t border-slate-200"
                       >
                         <div>
-                          <label className="block text-xs text-gray-600 mb-1 font-semibold">Endereço Completo com Número *</label>
+                          <label htmlFor="checkout-address-input" className="block text-xs text-gray-600 mb-1 font-semibold">Endereço Completo com Número *</label>
                           <input
                             type="text"
                             required
@@ -346,7 +346,7 @@ export default function Cart({
 
                         <div className="grid grid-cols-2 gap-2">
                           <div>
-                            <label className="block text-xs text-gray-600 mb-1 font-semibold">Bairro *</label>
+                            <label htmlFor="checkout-bairro-input" className="block text-xs text-gray-600 mb-1 font-semibold">Bairro *</label>
                             <input
                               type="text"
                               required
@@ -364,8 +364,9 @@ export default function Cart({
                             </datalist>
                           </div>
                           <div>
-                            <label className="block text-xs text-gray-600 mb-1 font-semibold">Cidade *</label>
+                            <label htmlFor="checkout-city-select" className="block text-xs text-gray-600 mb-1 font-semibold">Cidade *</label>
                             <select
+                              id="checkout-city-select"
                               value={city}
                               onChange={(e) => setCity(e.target.value)}
                               className="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:border-[#FF6600] focus:outline-none"
