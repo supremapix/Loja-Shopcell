@@ -21,6 +21,17 @@ if (!fs.existsSync(INDEX_HTML_PATH)) {
 
 const templateHtml = fs.readFileSync(INDEX_HTML_PATH, 'utf-8');
 
+// One-release compatibility for documents retained by the previous service worker.
+// Old HTML must still load the current app while the cache updates itself.
+for (const [pattern, legacyName] of [
+  [/src="(\/assets\/[^"]+\.js)"/, 'index-DeeeCG6u.js'],
+  [/href="(\/assets\/[^"]+\.css)"/, 'index-CYt2YvPK.css'],
+] as const) {
+  const currentAsset = templateHtml.match(pattern)?.[1];
+  if (currentAsset) fs.copyFileSync(path.join(DIST_PATH, currentAsset), path.join(DIST_PATH, 'assets', legacyName));
+}
+
+
 interface PrerenderPage {
   path: string;
   outputPath: string;

@@ -5,6 +5,16 @@ import {HelmetProvider} from 'react-helmet-async';
 import App from './App.tsx';
 import './index.css';
 
+// Static SEO serves crawlers and link previews. React 19 hoists Helmet metadata,
+// so retire the static copy once before rendering to avoid duplicate canonicals.
+document.head.querySelectorAll([
+  'link[rel="canonical"]',
+  'meta[name="description"]', 'meta[name="keywords"]', 'meta[name="author"]',
+  'meta[name="robots"]', 'meta[name^="geo."]', 'meta[name="ICBM"]',
+  'meta[property^="og:"]', 'meta[name^="twitter:"]',
+  'script[type="application/ld+json"]',
+].join(',')).forEach((element) => element.remove());
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
