@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { bairrosData } from './src/bairrosData.js';
 import { INTENT_PAGES } from './src/intentData.js';
 import { REALME_PRODUCTS } from './src/realmeData.js';
+import { BLOG_POSTS } from './src/blogData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,6 +33,8 @@ interface PrerenderPage {
   noindex?: boolean;
   ogType?: string;
   ogImage?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   productData?: {
     name: string;
     price: number;
@@ -69,11 +72,13 @@ const pages: PrerenderPage[] = [
     canonical: prod.canonical,
     keywords: `${prod.name}, comprar ${prod.name} curitiba, ${prod.name} menor preco curitiba, celular realme curitiba, suncell curitiba`,
     ogType: 'product',
-    ogImage: prod.image,
+    ogImage: new URL(prod.image, prod.canonical).href,
+    imageWidth: 600,
+    imageHeight: 600,
     productData: {
       name: prod.name,
       price: prod.price,
-      image: prod.image,
+      image: new URL(prod.image, prod.canonical).href,
       description: prod.shortDescription,
       brand: 'realme'
     }
@@ -109,6 +114,35 @@ const pages: PrerenderPage[] = [
     description: 'Fale com a SUNCELL pelo WhatsApp ou visite nossas lojas no Mercado Goes, em Curitiba: Guaíra e Alto Boqueirão.',
     canonical: 'https://www.celularescuritibashopcell.com.br/contato',
     keywords: 'contato suncell, whatsapp suncell curitiba, endereco suncell curitiba'
+  },
+  // Preserve metadata on direct requests as well as client-side navigation.
+  {
+    path: '/blog',
+    outputPath: path.join('blog', 'index.html'),
+    title: 'Blog SUNCELL Curitiba | Guias de Compra, Análises e Dicas de Celulares',
+    description: 'Confira os melhores guias de compra e análises de smartphones em Curitiba. Descubra como escolher seu celular ideal com dicas de especialistas da SUNCELL.',
+    canonical: 'https://www.celularescuritibashopcell.com.br/blog',
+    keywords: 'blog celular curitiba, qual celular comprar, loja de celular curitiba, guia de compras celular curitiba'
+  },
+  ...Object.values(BLOG_POSTS).map((post) => ({
+    path: `/blog/${post.slug}`,
+    outputPath: path.join('blog', post.slug, 'index.html'),
+    title: `${post.title} | Blog SUNCELL Curitiba`,
+    description: post.metaDescription,
+    canonical: `https://www.celularescuritibashopcell.com.br/blog/${post.slug}`,
+    keywords: post.tags.join(', '),
+    ogType: 'article',
+    ogImage: post.image,
+    ...(new URL(post.image, "https://www.celularescuritibashopcell.com.br").pathname === "/images/suncell-assistencia-banner.webp"
+      ? { imageWidth: 1536, imageHeight: 1024 } : {})
+  })),
+  {
+    path: '/comparar',
+    outputPath: path.join('comparar', 'index.html'),
+    title: 'Comparativo de Celulares | SUNCELL — Loja de Celulares em Curitiba',
+    description: 'Analise técnica e compare smartphones atuais com suas gerações anteriores. Saiba se vale a pena fazer o upgrade!',
+    canonical: 'https://www.celularescuritibashopcell.com.br/comparar',
+    keywords: 'assistência técnica celular Curitiba, troca de tela Curitiba, troca de bateria Curitiba, conserto de celular Curitiba, SUNCELL Curitiba, Mercado Goes'
   },
   // 404 Page
   {
@@ -261,10 +295,14 @@ function generateSchemas(page: PrerenderPage) {
   `;
 }
 
+function escapeHtml(value: string) {
+  return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 pages.forEach((page) => {
   let html = templateHtml;
 
-  html = html.replace(/<title>.*?<\/title>/gi, `<title>${page.title}</title>`);
+  html = html.replace(/<title[^>]*>.*?<\/title>/gi, `<title data-rh="true">${escapeHtml(page.title)}</title>`);
 
   // Remove template SEO tags to avoid duplicates with the per-page tags below
   html = html
@@ -272,7 +310,10 @@ pages.forEach((page) => {
     .replace(/<meta[^>]*(?:name|property)=["'](?:description|keywords|author|robots|geo\.[^"']*|ICBM|og:[^"']*|twitter:[^"']*)["'][^>]*>\s*/gi, '')
     .replace(/<script[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>\s*/gi, '');
 
-  const ogImage = page.ogImage || "https://www.celularescuritibashopcell.com.br/og-suncell.jpg";
+  const ogImage = new URL(page.ogImage || "/og-suncell.jpg", page.canonical).href;
+  const defaultImage = !page.ogImage;
+  const imageWidth = page.imageWidth ?? (defaultImage ? 1200 : undefined);
+  const imageHeight = page.imageHeight ?? (defaultImage ? 630 : undefined);
   const ogImageType = ogImage.endsWith('.webp') ? 'image/webp' : ogImage.endsWith('.png') ? 'image/png' : 'image/jpeg';
   const ogType = page.ogType || "website";
   
@@ -282,10 +323,10 @@ pages.forEach((page) => {
 
   const seoHeadTags = `
     <!-- Compiled Static SEO Tags -->
-    <meta name="description" content="${page.description}" />
-    <meta name="keywords" content="${page.keywords}" />
+    <meta name="description" content="${escapeHtml(page.description)}" />
+    <meta name="keywords" content="${escapeHtml(page.keywords)}" />
     <meta name="author" content="SUNCELL Curitiba" />
-    <link rel="canonical" href="${page.canonical}" />
+    <link rel="canonical" href="${escapeHtml(page.canonical)}" />
     ${robotsTag}
     <meta name="geo.region" content="BR-PR" />
     <meta name="geo.placename" content="Curitiba${page.bairroName ? ` - ${page.bairroName}` : ''}" />
@@ -296,23 +337,23 @@ pages.forEach((page) => {
     <meta property="og:type" content="${ogType}" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="SUNCELL — Assistência Técnica de Celulares em Curitiba" />
-    <meta property="og:url" content="${page.canonical}" />
-    <meta property="og:title" content="${page.title}" />
-    <meta property="og:description" content="${page.description}" />
-    <meta property="og:image" content="${ogImage}" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="${escapeHtml(page.canonical)}" />
+    <meta property="og:title" content="${escapeHtml(page.title)}" />
+    <meta property="og:description" content="${escapeHtml(page.description)}" />
+    <meta property="og:image" content="${escapeHtml(ogImage)}" />
+    ${imageWidth ? `<meta property="og:image:width" content="${imageWidth}" />` : ''}
+    ${imageHeight ? `<meta property="og:image:height" content="${imageHeight}" />` : ''}
     <meta property="og:image:type" content="${ogImageType}" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${page.title}" />
-    <meta name="twitter:description" content="${page.description}" />
-    <meta name="twitter:image" content="${ogImage}" />
+    <meta name="twitter:title" content="${escapeHtml(page.title)}" />
+    <meta name="twitter:description" content="${escapeHtml(page.description)}" />
+    <meta name="twitter:image" content="${escapeHtml(ogImage)}" />
 
     <!-- Structured Data -->
     ${generateSchemas(page)}
-  `;
+  `.replace(/<(meta|link|script)\b/g, '<$1 data-rh="true"');
 
   const headEndIndex = html.toLowerCase().indexOf('</head>');
   if (headEndIndex !== -1) {

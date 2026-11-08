@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
@@ -34,6 +34,7 @@ export default function Navbar({
   const [showSearch, setShowSearch] = useState(false);
   const [isLargeText, setIsLargeText] = useState(false);
   const [isStoreModalOpen, setIsStoreModalOpen] = useState(false);
+  const menuRef = useRef<HTMLDialogElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -50,15 +51,19 @@ export default function Navbar({
   }, []);
 
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
+    const dialog = menuRef.current;
+    if (!mobileMenuOpen || !dialog) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    dialog.showModal();
+    return () => { dialog.close(); document.body.style.overflow = previousOverflow; };
   }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setShowSearch(false);
+    setIsStoreModalOpen(false);
+  }, [location.pathname]);
 
   const navItems = [
     { path: '/', label: 'Início', seniorLabel: 'Ir para o Início', icon: <Home className="w-5 h-5 text-[#FF6600]" />, bgClass: 'bg-[#FFF0E5] border-orange-200 text-orange-950', sub: 'Página inicial' },
@@ -303,6 +308,7 @@ export default function Navbar({
             <div className="hidden lg:flex items-center relative w-32 focus-within:w-44 xl:w-36 xl:focus-within:w-48 transition-all duration-300">
               <input
                 type="text"
+                aria-label="Buscar celulares"
                 placeholder="Buscar..."
                 value={searchQuery}
                 onChange={(e) => onSearchChange(e.target.value)}
@@ -377,6 +383,9 @@ export default function Navbar({
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 xl:hidden text-gray-500 hover:text-gray-900 transition-colors duration-200 cursor-pointer"
               aria-label="Menu"
+              aria-haspopup="dialog"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-dialog"
               id="mobile-menu-btn"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -387,18 +396,21 @@ export default function Navbar({
         {/* Mobile Navigation Drawer */}
         <AnimatePresence>
           {mobileMenuOpen && (
-            <motion.div
+            <motion.dialog
+              ref={menuRef}
+              id="mobile-navigation-dialog"
+              aria-label="Menu de navegação SUNCELL"
+              onCancel={(event) => { event.preventDefault(); setMobileMenuOpen(false); }}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 w-full h-screen bg-slate-50 z-50 overflow-y-auto flex flex-col p-4 sm:p-6"
+              className="suprema-navigation-dialog fixed inset-0 w-full h-dvh bg-slate-50 z-50 overflow-y-auto flex flex-col p-4 sm:p-6"
             >
               {/* TOP NAVIGATION BAR */}
               <div className="flex items-center justify-between gap-2 border-b-2 border-slate-200 pb-3 mb-3">
                 <button
                   onClick={() => {
-                    navigate(-1);
                     setMobileMenuOpen(false);
                   }}
                   className="flex items-center justify-center gap-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-black px-2.5 py-2.5 rounded-xl text-xs transition-all shadow-xs cursor-pointer flex-1"
@@ -459,6 +471,7 @@ export default function Navbar({
               <div className="relative mb-5">
                 <input
                   type="text"
+                  aria-label="Pesquisar celulares"
                   placeholder="Pesquisar..."
                   value={searchQuery}
                   onChange={(e) => onSearchChange(e.target.value)}
@@ -537,7 +550,7 @@ export default function Navbar({
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.dialog>
           )}
         </AnimatePresence>
       </header>

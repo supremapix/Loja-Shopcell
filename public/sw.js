@@ -1,4 +1,4 @@
-const CACHE_NAME = 'suncell-v2';
+const CACHE_NAME = 'suncell-suprema-v3';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -29,7 +29,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
-          if (key !== CACHE_NAME) {
+          if (key.startsWith('suncell-') && key !== CACHE_NAME) {
             return caches.delete(key);
           }
         })
@@ -59,6 +59,18 @@ self.addEventListener('fetch', (event) => {
   const isGoogleFonts = url.origin === 'https://fonts.googleapis.com' || url.origin === 'https://fonts.gstatic.com';
 
   if (!isSameOrigin && !isGoogleFonts) {
+    return;
+  }
+
+  // Prefer current documents so returning visitors receive updated content and prices.
+  if (isSameOrigin && event.request.mode === 'navigate') {
+    event.respondWith(fetch(event.request).then(async (response) => {
+      if (response.ok) {
+        const cache = await caches.open(CACHE_NAME);
+        await cache.put(event.request, response.clone());
+      }
+      return response;
+    }).catch(async () => (await caches.match(event.request)) || (await caches.match('/')) || Response.error()));
     return;
   }
 

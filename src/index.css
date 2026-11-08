@@ -107,3 +107,56 @@ html {
   scroll-behavior: smooth;
 }
 
+
+/* Suprema global package: clear contrast, safe mobile placement and keyboard access. */
+:where(a, button, input, textarea, select):focus-visible { outline: 3px solid #b74900; outline-offset: 4px; }
+.suprema-float { position: fixed; bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 35; display: flex; flex-direction: column; gap: .65rem; }
+.suprema-float-left { left: max(1rem, env(safe-area-inset-left)); }
+.suprema-float-right { right: max(1rem, env(safe-area-inset-right)); align-items: flex-end; }
+.suprema-circle { display: inline-flex; width: 48px; height: 48px; flex-shrink: 0; align-items: center; justify-content: center; border-radius: 50%; cursor: pointer; }
+.suprema-share-trigger, .suprema-top { background: #0f172a; color: #ffb071; border: 1px solid #a7602d; box-shadow: 0 6px 20px #0003; }
+.suprema-contact { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-width: 48px; min-height: 48px; padding: .7rem .9rem; border-radius: 28px; color: #fff; font-weight: 750; font-size: .875rem; box-shadow: 0 6px 20px #0003; }
+.suprema-contact small { display: block; font-size: .65rem; font-weight: 500; }
+.suprema-call { background: #a94200; }
+.suprema-whatsapp { background: #06734f; }
+.suprema-float a, .suprema-float button { transition: transform .18s ease, filter .18s ease; }
+.suprema-float a:hover, .suprema-float button:hover { transform: translateY(-2px); filter: brightness(1.12); }
+.suprema-share-dialog { position: fixed; inset: 0; margin: auto; padding: 0; width: min(420px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow: auto; border: 1px solid #e5e7eb; border-radius: 24px; background: #fff; color: #0f172a; box-shadow: 0 24px 80px #0005; }
+.suprema-share-dialog::backdrop { background: #020617b3; backdrop-filter: blur(4px); }
+.suprema-share-content { padding: 24px; }
+.suprema-share-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.suprema-share-heading h2 { font-size: 1.25rem; font-weight: 800; line-height: 1.3; }
+.suprema-eyebrow { color: #a94200; font-size: .7rem; font-weight: 800; letter-spacing: .16em; }
+.suprema-close { background: #f1f5f9; color: #334155; }
+.suprema-page-title { font-size: .875rem; font-weight: 650; margin-top: 18px; overflow-wrap: anywhere; }
+.suprema-share-hint { font-size: .8rem; color: #475569; margin: 8px 0 20px; }
+.suprema-share-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.suprema-share-network { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 12px; font-size: .8rem; font-weight: 700; color: #0f172a; background: #f8fafc; }
+.suprema-share-network:hover { background: #fff2e8; border-color: #a94200; }
+.suprema-network-icon { display: flex; width: 25px; align-items: center; justify-content: center; font-size: 1.25rem; }
+.suprema-network-icon svg { width: 20px; height: 20px; }
+.suprema-copy { display: flex; align-items: center; justify-content: center; width: 100%; gap: 8px; min-height: 48px; padding: 12px; margin-top: 20px; border-radius: 12px; background: #a94200; color: white; font-weight: 750; font-size: .85rem; cursor: pointer; }
+.suprema-copy-status { color: #334155; font-size: .8rem; margin-top: 10px; }
+.suprema-manual-copy { display: block; font-size: .8rem; margin-top: 10px; }
+.suprema-manual-copy textarea { width: 100%; min-height: 100px; padding: 10px; margin-top: 5px; border: 1px solid #64748b; border-radius: 8px; }
+.suprema-share-footer { display: flex; justify-content: center; align-items: center; gap: 6px; color: #475569; font-size: .7rem; margin-top: 16px; }
+.suprema-credit { max-width: 100%; }
+.suprema-credit a { color: #ffb37a; border-color: #ffb37a80; min-height: 32px; }
+.suprema-credit a:hover { color: #ffd0ad; }
+.suprema-skip-link { position: fixed; top: -120px; left: 16px; z-index: 200; background: white; color: #0f172a; padding: 12px 18px; border-radius: 8px; font-weight: 700; }
+.suprema-skip-link:focus { top: 16px; }
+@media (max-width: 767px) {
+  .suprema-contact { padding: 0; width: 48px; height: 48px; }
+  .suprema-contact span { display: none; }
+  .suprema-product-offset { bottom: calc(104px + env(safe-area-inset-bottom)); }
+  footer { padding-bottom: calc(11rem + env(safe-area-inset-bottom)); }
+  .suprema-share-content { padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+.suprema-store-dialog { position: fixed; inset: 0; margin: auto; padding: 0; border: 0; border-radius: 24px; width: min(512px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow-y: auto; background: white; }
+.suprema-store-dialog::backdrop { background: #020617bf; backdrop-filter: blur(4px); }
+.suprema-navigation-dialog { margin: 0; max-width: none; max-height: none; border: 0; }
+.suprema-navigation-dialog:not([open]) { display: none; }

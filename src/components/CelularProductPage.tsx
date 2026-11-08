@@ -39,6 +39,9 @@ export default function CelularProductPage() {
     return <Navigate to="/404" replace />;
   }
 
+  const absoluteProductImage = new URL(product.image, product.canonical).href;
+  const productImageType = new URL(absoluteProductImage).pathname.endsWith('.webp') ? 'image/webp' : 'image/jpeg';
+
   const otherProducts = REALME_PRODUCTS.filter(p => p.slug !== product.slug);
 
   const whatsappUrl = `https://wa.me/5541999176640?text=${encodeURIComponent(`Olá! Tenho interesse no ${product.name} (R$ ${product.priceFormatted}) na SUNCELL Curitiba.`)}`;
@@ -58,7 +61,7 @@ export default function CelularProductPage() {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.name,
-    "image": product.image,
+    "image": absoluteProductImage,
     "description": product.shortDescription,
     "brand": {
       "@type": "Brand",
@@ -131,7 +134,10 @@ export default function CelularProductPage() {
         <meta property="og:url" content={product.canonical} />
         <meta property="og:title" content={product.titleSEO} />
         <meta property="og:description" content={product.metaDescription} />
-        <meta property="og:image" content={product.image} />
+        <meta property="og:image" content={absoluteProductImage} />
+        <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="600" />
+        <meta property="og:image:type" content={productImageType} />
         <meta property="product:price:amount" content={product.price.toFixed(2)} />
         <meta property="product:price:currency" content="BRL" />
 
@@ -139,7 +145,7 @@ export default function CelularProductPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={product.titleSEO} />
         <meta name="twitter:description" content={product.metaDescription} />
-        <meta name="twitter:image" content={product.image} />
+        <meta name="twitter:image" content={absoluteProductImage} />
 
         {/* Structured Data */}
         <script type="application/ld+json">{JSON.stringify(productSchema)}</script>

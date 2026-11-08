@@ -26,9 +26,16 @@ export default function EnhancedSEO({
   noindex = false,
   faqList,
 }: EnhancedSEOProps) {
-  const ogImageType = ogImage.endsWith('.webp')
+  const absoluteOgImage = new URL(ogImage, canonical).href;
+  const imagePath = new URL(absoluteOgImage).pathname;
+  const imageDimensions = /\/og-suncell\.(jpg|png)$/.test(imagePath)
+    ? { width: 1200, height: 630 }
+    : imagePath === "/images/suncell-assistencia-banner.webp"
+      ? { width: 1536, height: 1024 }
+      : null;
+  const ogImageType = imagePath.endsWith('.webp')
     ? 'image/webp'
-    : ogImage.endsWith('.png')
+    : imagePath.endsWith('.png')
       ? 'image/png'
       : 'image/jpeg';
 
@@ -38,7 +45,7 @@ export default function EnhancedSEO({
     "@type": "Organization",
     "name": "SUNCELL Curitiba - Assistência Técnica & Celulares",
     "url": "https://www.suncellassistencia.com.br/#lojas-section",
-    "logo": ogImage,
+    "logo": absoluteOgImage,
     "telephone": "+55-41-99917-6640",
     "email": "info@suncellassistencia.com.br",
     "sameAs": [
@@ -50,7 +57,7 @@ export default function EnhancedSEO({
     "@context": "https://schema.org",
     "@type": "MobilePhoneStore",
     "name": "SUNCELL — Celulares & Assistência Técnica Curitiba",
-    "image": ogImage,
+    "image": absoluteOgImage,
     "@id": "https://www.suncellassistencia.com.br/#localbusiness",
     "url": "https://www.suncellassistencia.com.br/#lojas-section",
     "telephone": "+55-41-99917-6640",
@@ -198,16 +205,16 @@ export default function EnhancedSEO({
       <meta property="og:url" content={canonical} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta property="og:image" content={absoluteOgImage} />
+      {imageDimensions && <meta property="og:image:width" content={String(imageDimensions.width)} />}
+      {imageDimensions && <meta property="og:image:height" content={String(imageDimensions.height)} />}
         <meta property="og:image:type" content={ogImageType} />
 
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image" content={absoluteOgImage} />
 
       {/* Resource Hints */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />

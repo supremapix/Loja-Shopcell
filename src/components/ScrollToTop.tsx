@@ -25,7 +25,7 @@ export default function ScrollToTop() {
     } else {
       const element = document.getElementById(hash.replace('#', ''));
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
       }
     }
   }, [pathname, search, hash]);

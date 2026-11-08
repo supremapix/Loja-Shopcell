@@ -1,4 +1,5 @@
 import React from 'react';
+import { MotionConfig } from 'motion/react';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import FloatingActions from './components/FloatingActions';
@@ -44,9 +45,12 @@ function PrefixRedirect() {
 
 export default function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <CartProvider>
+      <a className="suprema-skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
       <ScrollToTop />
       <FloatingActions />
+      <div id="conteudo-principal" tabIndex={-1}>
       <Routes>
       {/* Primary Institutional Routes */}
       <Route path="/" element={<Home />} />
@@ -102,6 +106,8 @@ export default function App() {
       {/* Catch-all Route */}
       <Route path="*" element={<NotFound />} />
     </Routes>
+    </div>
     </CartProvider>
+    </MotionConfig>
   );
 }

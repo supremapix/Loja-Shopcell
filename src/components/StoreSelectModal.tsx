@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X, MapPin, MessageSquare, Phone, Clock, Store, Globe, ExternalLink, ArrowRight } from 'lucide-react';
 import { CONTACT_INFO, STORES } from '../data';
 
@@ -9,26 +9,34 @@ interface StoreSelectModalProps {
 }
 
 export default function StoreSelectModal({ isOpen, onClose, defaultMessage }: StoreSelectModalProps) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!isOpen || !dialog) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    dialog.showModal();
+    return () => { dialog.close(); document.body.style.overflow = previousOverflow; };
+  }, [isOpen]);
   if (!isOpen) return null;
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm animate-in fade-in duration-200"
-      onClick={onClose}
+    <dialog ref={dialogRef}
+      className="suprema-store-dialog"
+      aria-labelledby="store-modal-title"
+      onCancel={(event) => { event.preventDefault(); onClose(); }}
+      onClick={(event) => { if (event.target === event.currentTarget) onClose(); }}
     >
       <div 
         className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative overflow-hidden text-slate-900 animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-labelledby="store-modal-title"
-        aria-modal="true"
       >
         {/* Close Button */}
         <button
           onClick={onClose}
           type="button"
           aria-label="Fechar"
-          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+          className="absolute top-5 right-5 p-3 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
@@ -65,7 +73,7 @@ export default function StoreSelectModal({ isOpen, onClose, defaultMessage }: St
                       {st.badge}
                     </span>
                     <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-md">
-                      Aberto hoje
+                      Loja física
                     </span>
                   </div>
 
@@ -126,6 +134,6 @@ export default function StoreSelectModal({ isOpen, onClose, defaultMessage }: St
           </a>
         </div>
       </div>
-    </div>
+    </dialog>
   );
 }
