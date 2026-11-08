@@ -13,6 +13,7 @@ import {
   Clock 
 } from 'lucide-react';
 import EnhancedSEO from './EnhancedSEO';
+import SupremaCredit from './SupremaCredit';
 import { CONTACT_INFO } from '../data';
 
 function Logo404() {
@@ -256,6 +257,7 @@ export default function NotFound() {
         </div>
 
       </div>
+      <div className="w-full pb-48"><SupremaCredit /></div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ShoppingCart, Menu, X, Phone, MessageSquare, Search, MapPin, Star, 
@@ -36,7 +36,6 @@ export default function Navbar({
   const [isStoreModalOpen, setIsStoreModalOpen] = useState(false);
   const menuRef = useRef<HTMLDialogElement>(null);
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -254,7 +253,7 @@ export default function Navbar({
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-3 group select-none flex-shrink-0"
+            className="flex items-center gap-2 sm:gap-3 group select-none min-w-0"
             id="brand-logo"
           >
             <motion.div
@@ -271,7 +270,7 @@ export default function Navbar({
               <span className="font-display font-black tracking-wider text-gray-900 text-lg leading-none group-hover:text-[#FF6600] transition-colors duration-200">
                 SUNCELL
               </span>
-              <span className="font-mono text-[9px] text-[#FF6600] tracking-widest font-extrabold mt-0.5">
+              <span className="font-mono text-[9px] text-[#FF6600] tracking-widest font-extrabold mt-0.5 max-[480px]:hidden">
                 ASSISTÊNCIA TÉCNICA · CURITIBA
               </span>
             </div>
@@ -303,7 +302,7 @@ export default function Navbar({
           </nav>
 
           {/* Actions Bar */}
-          <div className="flex items-center gap-2.5 xl:gap-3.5 flex-shrink-0">
+          <div className="flex items-center gap-0.5 sm:gap-2.5 xl:gap-3.5 flex-shrink-0">
             {/* Desktop Search Bar */}
             <div className="hidden lg:flex items-center relative w-32 focus-within:w-44 xl:w-36 xl:focus-within:w-48 transition-all duration-300">
               <input
@@ -329,6 +328,7 @@ export default function Navbar({
                   >
                     <input
                       type="text"
+                      aria-label="Buscar celulares no site"
                       placeholder="Buscar no site..."
                       value={searchQuery}
                       onChange={(e) => onSearchChange(e.target.value)}

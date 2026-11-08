@@ -40,8 +40,12 @@ export default function FloatingActions() {
 
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (isOpen && dialog && !dialog.open) dialog.showModal();
-    if (!isOpen && dialog?.open) dialog.close();
+    if (!dialog) return;
+    if (!isOpen) { if (dialog.open) dialog.close(); return; }
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    if (!dialog.open) dialog.showModal();
+    return () => { document.body.style.overflow = previousOverflow; };
   }, [isOpen]);
 
   const closeShare = () => {
