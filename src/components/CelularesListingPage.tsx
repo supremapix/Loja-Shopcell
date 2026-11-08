@@ -1,28 +1,36 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import {
-  ShieldCheck, MapPin, Truck, CreditCard, Star, MessageSquare,
-  Home, ChevronRight, CheckCircle2, Sparkles, PhoneCall
+  ArrowDown, ArrowUpRight, ShieldCheck, MapPin, CreditCard,
+  MessageSquare, ChevronRight, PhoneCall, Search, SlidersHorizontal, X
 } from 'lucide-react';
 import { REALME_PRODUCTS } from '../realmeData';
 import { CONTACT_INFO } from '../data';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import RealmeProductCard from './RealmeProductCard';
+import '../catalog.css';
 
 export default function CelularesListingPage() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('q') || '';
+  const setSearchQuery = (query: string) => {
+    setSearchParams(current => {
+      const next = new URLSearchParams(current);
+      if (query) next.set('q', query);
+      else next.delete('q');
+      return next;
+    }, { replace: true });
+  };
   const [isSeniorText, setIsSeniorText] = useState(false);
-
-  // Sorted by price ascending (cheapest to most expensive)
+  const [sortOrder, setSortOrder] = useState('price-asc');
   const sortedProducts = [...REALME_PRODUCTS].sort((a, b) => a.price - b.price);
-
   const filteredProducts = sortedProducts.filter(p =>
     p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     p.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
     p.specs.tela.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  ).sort((a, b) => sortOrder === 'price-desc' ? b.price - a.price : a.price - b.price);
 
   const canonicalUrl = "https://www.celularescuritibashopcell.com.br/celulares";
 
@@ -57,7 +65,7 @@ export default function CelularesListingPage() {
   };
 
   return (
-    <div className={`min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans ${isSeniorText ? 'text-lg' : 'text-base'}`}>
+    <div className={`sc-catalog-page ${isSeniorText ? 'sc-large-text' : ''}`}>
       <Helmet>
         <title>Smartphones Realme em Curitiba | SUNCELL — Modelos com Garantia de 12 Meses</title>
         <meta
@@ -86,179 +94,74 @@ export default function CelularesListingPage() {
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(itemListSchema)}</script>
       </Helmet>
-
-      <Navbar
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-      />
-
-      <main className="flex-1">
-        {/* Breadcrumb Navigation */}
-        <div className="bg-white border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between flex-wrap gap-3">
-            <nav className="flex items-center gap-2 text-sm sm:text-base font-semibold text-slate-600" aria-label="Breadcrumb">
-              <Link to="/" className="hover:text-[#FF6600] flex items-center gap-1.5 transition-colors">
-                <Home className="w-4 h-4 text-[#FF6600]" />
-                <span>Início</span>
-              </Link>
-              <ChevronRight className="w-4 h-4 text-slate-400" />
-              <span className="text-slate-900 font-bold">Celulares Realme</span>
-            </nav>
-
-            {/* Senior font size toggle */}
-            <button
-              onClick={() => setIsSeniorText(!isSeniorText)}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 px-3.5 py-1.5 rounded-xl cursor-pointer transition-colors"
-              title="Ajustar tamanho da fonte para facilitar a leitura"
-            >
-              <Sparkles className="w-4 h-4 text-[#FF6600]" />
-              <span>{isSeniorText ? 'Tamanho Padrão (A-)' : 'Aumentar Letra (A+)'}</span>
-            </button>
-          </div>
+      <Navbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+      <main className="sc-catalog-main">
+        <div className="sc-container sc-page-toolbar">
+          <nav className="sc-breadcrumb" aria-label="Breadcrumb">
+            <Link to="/">Início</Link><ChevronRight aria-hidden="true" /><span aria-current="page">Celulares</span>
+          </nav>
+          <button className="sc-text-toggle" onClick={() => setIsSeniorText(!isSeniorText)} aria-pressed={isSeniorText}>
+            <span aria-hidden="true">Aa</span>{isSeniorText ? 'Letra padrão' : 'Aumentar letra'}
+          </button>
         </div>
 
-        {/* Header Hero Section */}
-        <header className="bg-gradient-to-b from-white to-slate-100 border-b border-slate-200 py-10 sm:py-14">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-[#FF6600]/10 border border-[#FF6600]/25 text-[#FF6600] px-4 py-1.5 rounded-full font-mono text-xs sm:text-sm font-bold uppercase tracking-wider mb-4">
-              <ShieldCheck className="w-4 h-4" />
-              Catálogo Oficial com 12 Meses de Garantia
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-slate-900 tracking-tight leading-tight mb-4">
-              Smartphones Realme em Curitiba | SUNCELL
-            </h1>
-
-            <p className="text-base sm:text-xl text-slate-600 leading-relaxed mb-8">
-              Encontre o modelo ideal com procedência garantida, caixas lacradas de fábrica, 12 meses de garantia presencial no Mercado Goes, em Curitiba e entrega expressa via motoboy.
-            </p>
-
-            {/* Fast Benefit Badges */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
-              <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-3">
-                <ShieldCheck className="w-6 h-6 text-[#FF6600] shrink-0" />
-                <div>
-                  <div className="font-bold text-xs sm:text-sm text-slate-900 leading-tight">12 Meses</div>
-                  <div className="text-[11px] text-slate-500">Garantia Local</div>
-                </div>
-              </div>
-
-              <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-3">
-                <Truck className="w-6 h-6 text-emerald-600 shrink-0" />
-                <div>
-                  <div className="font-bold text-xs sm:text-sm text-slate-900 leading-tight">Entrega Rápida</div>
-                  <div className="text-[11px] text-slate-500">Motoboy Curitiba</div>
-                </div>
-              </div>
-
-              <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-3">
-                <CreditCard className="w-6 h-6 text-blue-600 shrink-0" />
-                <div>
-                  <div className="font-bold text-xs sm:text-sm text-slate-900 leading-tight">Até 12x</div>
-                  <div className="text-[11px] text-slate-500">No Cartão ou Pix</div>
-                </div>
-              </div>
-
-              <div className="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs flex items-center gap-3">
-                <MapPin className="w-6 h-6 text-purple-600 shrink-0" />
-                <div>
-                    <div className="font-bold text-xs sm:text-sm text-slate-900 leading-tight">Loja no Mercado Goes</div>
-                  <div className="text-[11px] text-slate-500">Mercado Goes</div>
-                </div>
-              </div>
-            </div>
+        <header className="sc-catalog-hero sc-container">
+          <div className="sc-catalog-hero-copy">
+            <span className="sc-overline"><i aria-hidden="true" /> SUNCELL / CATÁLOGO REALME</span>
+            <h1>Sua próxima<br /><span>conexão.</span></h1>
+            <p>Smartphones Realme em Curitiba. Explore os detalhes, compare os modelos e encontre o celular que acompanha o seu ritmo.</p>
+            <a href="#colecao" className="sc-button sc-button-primary">Explorar modelos <ArrowDown aria-hidden="true" /></a>
+            <div className="sc-catalog-location"><MapPin aria-hidden="true" /> Atendimento presencial no Mercado Goes</div>
+          </div>
+          <div className="sc-catalog-visual" aria-hidden="true">
+            <div className="sc-visual-grid" />
+            <span className="sc-visual-topline">DESIGN. CONEXÃO. POSSIBILIDADES.</span>
+            <div className="sc-visual-orbit sc-visual-orbit-one" /><div className="sc-visual-orbit sc-visual-orbit-two" />
+            <div className="sc-visual-core"><span>realme</span><strong>{String(REALME_PRODUCTS.length).padStart(2, '0')}</strong><small>MODELOS PARA EXPLORAR</small></div>
+            <div className="sc-visual-caption"><span>CURITIBA / PR</span><span>ESCOLHA O SEU <ArrowUpRight /></span></div>
           </div>
         </header>
 
-        {/* Product Listing Grid */}
-        <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200">
-            <div>
-              <span className="text-xs font-mono font-bold uppercase text-[#FF6600] tracking-wider block">
-                Seleção Especializada
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-display font-black text-slate-900">
-                Modelos Disponíveis (Ordenados por Preço)
-              </h2>
-            </div>
+        <div className="sc-container">
+          <div className="sc-service-strip">
+            <div><ShieldCheck aria-hidden="true" /><span><strong>12 meses</strong><small>de garantia local</small></span><span className="sc-service-index">01</span></div>
+            <div><CreditCard aria-hidden="true" /><span><strong>Até 12x</strong><small>no cartão de crédito</small></span><span className="sc-service-index">02</span></div>
+            <div><MapPin aria-hidden="true" /><span><strong>Loja física</strong><small>no Mercado Goes, Curitiba</small></span><span className="sc-service-index">03</span></div>
+          </div>
+        </div>
 
-            <div className="text-sm font-semibold text-slate-600 bg-white px-4 py-2 rounded-xl border border-slate-200 shadow-xs">
-              Exibindo {filteredProducts.length} de {REALME_PRODUCTS.length} smartphones
+        <section id="colecao" className="sc-container sc-collection">
+          <div className="sc-section-heading">
+            <div><span className="sc-overline">01 / EXPLORE A COLEÇÃO</span><h2>Tecnologia no seu ritmo<span>.</span></h2></div>
+            <span className="sc-result-count" aria-live="polite">{String(filteredProducts.length).padStart(2, '0')} <span>de {String(REALME_PRODUCTS.length).padStart(2, '0')} modelos</span></span>
+          </div>
+          <div className="sc-catalog-controls">
+            <div className="sc-search-field">
+              <Search aria-hidden="true" />
+              <label className="sr-only" htmlFor="sc-catalog-search">Buscar no catálogo</label>
+              <input id="sc-catalog-search" type="search" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder="Busque um modelo ou recurso..." />
+              {searchQuery && <button aria-label="Limpar busca" onClick={() => setSearchQuery('')}><X aria-hidden="true" /></button>}
+            </div>
+            <div className="sc-sort-field">
+              <SlidersHorizontal aria-hidden="true" /><label className="sr-only" htmlFor="sc-catalog-sort">Ordenar modelos</label>
+              <select id="sc-catalog-sort" value={sortOrder} onChange={e => setSortOrder(e.target.value)}><option value="price-asc">Menor preço primeiro</option><option value="price-desc">Maior preço primeiro</option></select>
             </div>
           </div>
-
           {filteredProducts.length === 0 ? (
-            <div className="bg-white rounded-3xl p-12 text-center border-2 border-slate-200 max-w-lg mx-auto my-8">
-              <p className="text-lg font-bold text-slate-800 mb-4">Nenhum aparelho encontrado para sua busca.</p>
-              <button
-                onClick={() => setSearchQuery('')}
-                className="bg-[#FF6600] text-white px-6 py-3 rounded-xl font-bold cursor-pointer hover:bg-[#D45500]"
-              >
-                Limpar Busca
-              </button>
-            </div>
+            <div className="sc-empty-state"><Search aria-hidden="true" /><h3>Nenhum modelo encontrado.</h3><p>Tente outro nome ou explore todos os smartphones.</p><button className="sc-button sc-button-primary" onClick={() => setSearchQuery('')}>Limpar busca <ArrowUpRight aria-hidden="true" /></button></div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
-              {filteredProducts.map((product) => (
-                <RealmeProductCard key={product.slug} product={product} />
-              ))}
-            </div>
+            <div className="sc-product-grid">{filteredProducts.map(product => <RealmeProductCard key={product.slug} product={product} />)}</div>
           )}
+        </section>
 
-          {/* Senior / Help Assistance Callout */}
-          <div className="mt-16 bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-800">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-              <div className="space-y-4 text-center lg:text-left max-w-2xl">
-                <div className="inline-flex items-center gap-2 bg-[#FF6600]/20 border border-[#FF6600]/40 text-[#FF6600] px-4 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider">
-                  <Star className="w-4 h-4 fill-[#FF6600]" />
-                  Atendimento Humano e Paciente
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-display font-black text-white leading-tight">
-                  Dúvidas sobre qual celular Realme escolher?
-                </h3>
-                <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-                  Nossos consultores estão prontos para ajudar você a escolher o melhor aparelho para o seu dia a dia, transferir seus dados, WhatsApp e fotos com total atenção.
-                </p>
-                <div className="flex flex-wrap gap-4 pt-2 justify-center lg:justify-start">
-                  <div className="flex items-center gap-2 text-sm text-slate-300 font-medium">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                    <span>Aparelhos na caixa lacrada</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-slate-300 font-medium">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                    <span>Configuração inicial sem custo</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-slate-300 font-medium">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                    <span>Pague na entrega em Curitiba</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row lg:flex-col gap-4 w-full sm:w-auto shrink-0">
-                <a
-                  href={CONTACT_INFO.whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="min-h-[56px] px-8 bg-[#25D366] hover:bg-[#1EBE5D] text-white text-lg font-black uppercase tracking-wide rounded-2xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 cursor-pointer text-center"
-                >
-                  <MessageSquare className="w-6 h-6 fill-current" />
-                  <span>Falar com Consultor</span>
-                </a>
-
-                <a
-                  href={CONTACT_INFO.phoneLink}
-                  className="min-h-[56px] px-8 bg-slate-800 hover:bg-slate-700 text-white text-base font-bold rounded-2xl transition-all flex items-center justify-center gap-3 cursor-pointer border border-slate-700 text-center"
-                >
-                  <PhoneCall className="w-5 h-5 text-[#FF6600]" />
-                  <span>Ligar para a Loja Física</span>
-                </a>
-              </div>
-            </div>
+        <section className="sc-container sc-concierge-wrap">
+          <div className="sc-concierge">
+            <div className="sc-concierge-symbol" aria-hidden="true"><MessageSquare /></div>
+            <div className="sc-concierge-copy"><span className="sc-overline">TECNOLOGIA COM ATENDIMENTO HUMANO</span><h2>A escolha é sua.<br />A gente ajuda.</h2><p>Converse com nossa equipe para entender as diferenças entre os modelos e escolher com tranquilidade.</p></div>
+            <div className="sc-concierge-actions"><a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" className="sc-button sc-button-mint">Falar com um consultor <ArrowUpRight aria-hidden="true" /></a><a href={CONTACT_INFO.phoneLink} className="sc-button sc-button-outline"><PhoneCall aria-hidden="true" /> Ligar para a loja</a></div>
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

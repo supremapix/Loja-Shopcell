@@ -1,3 +1,4 @@
+import '../secondary.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
@@ -18,7 +19,7 @@ import { CONTACT_INFO } from '../data';
 
 function Logo404() {
   return (
-    <div className="relative w-36 h-36 mx-auto group">
+    <div className="secondary-error-visual relative w-36 h-36 mx-auto group">
       <motion.div 
         animate={{ 
           scale: [1, 1.15, 1],
@@ -85,7 +86,7 @@ export default function NotFound() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex flex-col font-sans relative overflow-hidden">
+    <div className="secondary-page secondary-notfound secondary-scope min-h-screen bg-slate-950 text-white flex flex-col font-sans relative overflow-hidden">
       
       <EnhancedSEO
         title="Página não encontrada (404) | SUNCELL — Loja de Celulares em Curitiba"
@@ -107,9 +108,9 @@ export default function NotFound() {
           <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest bg-[#FF6600]/10 border border-[#FF6600]/25 px-4 py-1.5 rounded-full inline-block">
             PÁGINA NÃO ENCONTRADA
           </span>
-          <h2 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight leading-none text-white">
+          <h1 className="font-display font-semibold text-3xl sm:text-4xl tracking-tight leading-none text-white">
             Endereço Não Encontrado
-          </h2>
+          </h1>
           <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
             A URL acessada não existe ou mudou de local. Escolha uma das opções abaixo para navegar no site ou fale conosco pelo WhatsApp.
           </p>
@@ -208,6 +209,8 @@ export default function NotFound() {
                 >
                   <button
                     onClick={() => toggleFaq(idx)}
+                    aria-expanded={isSelected}
+                    aria-controls={`notfound-faq-${idx}`}
                     className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer select-none"
                   >
                     <span className="font-display font-bold text-sm text-slate-100 pr-4">
@@ -223,6 +226,7 @@ export default function NotFound() {
                   <AnimatePresence initial={false}>
                     {isSelected && (
                       <motion.div
+                        id={`notfound-faq-${idx}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}

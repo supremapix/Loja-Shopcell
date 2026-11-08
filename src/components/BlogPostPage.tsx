@@ -1,3 +1,4 @@
+import '../secondary.css';
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ChevronRight, Calendar, User, Clock, MessageSquare, ArrowLeft } from 'lucide-react';
@@ -44,7 +45,7 @@ export default function BlogPostPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-[#FF6600] selection:text-white flex flex-col justify-between">
+    <div className="secondary-page secondary-article min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-[#FF6600] selection:text-white flex flex-col justify-between">
       
       <EnhancedSEO
         title={`${post.title} | Blog SUNCELL Curitiba`}
@@ -65,10 +66,10 @@ export default function BlogPostPage() {
         onSearchChange={() => {}}
       />
 
-      <main className="flex-grow pt-24">
+      <main className="secondary-scope secondary-main flex-grow">
         
         {/* Breadcrumb Header */}
-        <section className="bg-slate-900 text-white py-4 border-b border-slate-800">
+        <section className="secondary-breadcrumb bg-slate-900 text-white py-4 border-b border-slate-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 flex items-center gap-2 text-xs font-mono text-slate-400 overflow-x-auto">
             <Link to="/" className="hover:text-[#FF6600] transition-colors whitespace-nowrap">Início</Link>
             <ChevronRight className="w-3.5 h-3.5 shrink-0" />
@@ -79,7 +80,7 @@ export default function BlogPostPage() {
         </section>
 
         {/* Article Container */}
-        <article className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+        <article className="secondary-article-container max-w-4xl mx-auto px-4 sm:px-6 py-12">
           
           <Link
             to="/blog"
@@ -89,10 +90,10 @@ export default function BlogPostPage() {
             <span>Voltar para todos os artigos</span>
           </Link>
 
-          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
+          <div className="secondary-article-sheet bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
             
             {/* Post Header */}
-            <header className="space-y-4 border-b border-slate-200 pb-8">
+            <header className="secondary-article-header space-y-4 border-b border-slate-200 pb-8">
               <span className="bg-[#FF6600]/10 text-[#FF6600] border border-[#FF6600]/30 text-xs font-mono font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full inline-block">
                 {post.category}
               </span>
@@ -126,7 +127,7 @@ export default function BlogPostPage() {
             </div>
 
             {/* Featured Image */}
-            <div className="rounded-2xl overflow-hidden bg-slate-900 aspect-16/9">
+            <div className="secondary-article-image rounded-2xl overflow-hidden bg-slate-900 aspect-16/9">
               <img 
                 src={post.image} 
                 alt={post.title}
@@ -136,7 +137,7 @@ export default function BlogPostPage() {
 
             {/* Article Content */}
             <div 
-              className="prose prose-slate max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:text-slate-900 prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-lg prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600"
+              className="secondary-prose prose prose-slate max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:text-slate-900 prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-lg prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600"
               dangerouslySetInnerHTML={{ __html: post.contentHtml }}
             />
 

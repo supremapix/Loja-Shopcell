@@ -86,7 +86,7 @@ export default function AssistenciaTecnica() {
   return (
     <section
       id="assistencia"
-      className="relative overflow-hidden border-y border-slate-200 bg-white py-16 sm:py-24"
+      className="sc-legacy-section relative overflow-hidden border-y border-slate-200 bg-white py-16 sm:py-24"
     >
       <div className="pointer-events-none absolute -left-32 top-24 h-80 w-80 rounded-full bg-[#FF6600]/5 blur-3xl" />
       <div className="pointer-events-none absolute -right-24 bottom-10 h-72 w-72 rounded-full bg-[#FF6600]/5 blur-3xl" />

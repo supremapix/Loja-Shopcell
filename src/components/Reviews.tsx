@@ -3,7 +3,7 @@ import { REVIEWS } from '../data';
 
 export default function Reviews() {
   return (
-    <section id="depoimentos" className="py-12 sm:py-20 bg-slate-50 relative overflow-hidden border-b border-slate-200">
+    <section id="depoimentos" className="sc-legacy-section py-12 sm:py-20 bg-slate-50 relative overflow-hidden border-b border-slate-200">
       {/* Background glow lights */}
       <div className="absolute left-0 bottom-0 w-[30rem] h-[30rem] bg-[#FF6600]/3 rounded-full filter blur-[120px] pointer-events-none" />
 

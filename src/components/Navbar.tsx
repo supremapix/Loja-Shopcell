@@ -1,14 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
-import { 
-  ShoppingCart, Menu, X, Phone, MessageSquare, Search, MapPin, Star, 
-  CreditCard, ChevronRight, Home, Smartphone, Users, HelpCircle, ArrowLeft,
-  Store, Headphones
+import { useEffect, useRef, useState } from 'react';
+import type { FormEvent } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {
+  ArrowUpRight, ChevronRight, Headphones, Home, MapPin, Menu,
+  MessageSquare, Phone, Search, ShoppingCart, Smartphone, Store,
+  Type, Users, X,
 } from 'lucide-react';
 import { CONTACT_INFO } from '../data';
 import { useCart } from '../context/CartContext';
 import StoreSelectModal from './StoreSelectModal';
+import '../shell.css';
 
 interface NavbarProps {
   cartCount?: number;
@@ -19,33 +20,44 @@ interface NavbarProps {
   onNavClick?: (section: string) => void;
 }
 
+const navigation = [
+  { path: '/', label: 'Início', description: 'Explore a SUNCELL', Icon: Home },
+  { path: '/celulares', label: 'Celulares', description: 'Encontre sua próxima conexão', Icon: Smartphone },
+  { path: '/loja-de-celular-curitiba', label: 'Loja Curitiba', description: 'Conheça nossas lojas físicas', Icon: Store },
+  { path: '/acessorios', label: 'Acessórios', description: 'Detalhes para o seu dia a dia', Icon: Headphones },
+  { path: '/sobre', label: 'Sobre', description: 'A história da SUNCELL', Icon: Users },
+  { path: '/contato', label: 'Contato', description: 'Converse com nossa equipe', Icon: Phone },
+];
+
 export default function Navbar({
   cartCount: propCartCount,
   onOpenCart: propOnOpenCart,
   searchQuery,
-  onSearchChange
+  onSearchChange,
 }: NavbarProps) {
   const { totalItemsCount, openCart } = useCart();
-  const cartCount = propCartCount !== undefined ? propCartCount : totalItemsCount;
-  const onOpenCart = propOnOpenCart || openCart;
-
+  const cartCount = propCartCount ?? totalItemsCount;
+  const onOpenCart = propOnOpenCart ?? openCart;
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [isLargeText, setIsLargeText] = useState(false);
   const [isStoreModalOpen, setIsStoreModalOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState(searchQuery);
   const menuRef = useRef<HTMLDialogElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const searchButtonRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
+    setSearchValue(searchQuery);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -54,511 +66,180 @@ export default function Navbar({
     if (!mobileMenuOpen || !dialog) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    dialog.showModal();
-    return () => { dialog.close(); document.body.style.overflow = previousOverflow; };
+    if (!dialog.open) dialog.showModal();
+    return () => {
+      if (dialog.open) dialog.close();
+      document.body.style.overflow = previousOverflow;
+    };
   }, [mobileMenuOpen]);
 
   useEffect(() => {
     setMobileMenuOpen(false);
     setShowSearch(false);
     setIsStoreModalOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
-  const navItems = [
-    { path: '/', label: 'Início', seniorLabel: 'Ir para o Início', icon: <Home className="w-5 h-5 text-[#FF6600]" />, bgClass: 'bg-[#FFF0E5] border-orange-200 text-orange-950', sub: 'Página inicial' },
-    { path: '/celulares', label: 'Celulares', seniorLabel: 'Ver Celulares', icon: <Smartphone className="w-5 h-5 text-emerald-600" />, bgClass: 'bg-[#EAFDF5] border-emerald-200 text-emerald-950', sub: 'Aparelhos com garantia' },
-    { path: '/loja-de-celular-curitiba', label: 'Loja Curitiba', seniorLabel: 'Loja em Curitiba', icon: <Store className="w-5 h-5 text-blue-600" />, bgClass: 'bg-[#EFF6FF] border-blue-200 text-blue-950', sub: 'Atendimento presencial no Mercado Goes' },
-    { path: '/acessorios', label: 'Acessórios', seniorLabel: 'Acessórios', icon: <Headphones className="w-5 h-5 text-amber-600" />, bgClass: 'bg-[#FFFBEB] border-amber-200 text-amber-950', sub: 'Películas, capas e carregadores' },
-    { path: '/sobre', label: 'Sobre', seniorLabel: 'Sobre a SUNCELL', icon: <Users className="w-5 h-5 text-indigo-600" />, bgClass: 'bg-[#EEF2FF] border-indigo-200 text-indigo-950', sub: 'Mais de 8 anos de história' },
-    { path: '/contato', label: 'Contato', seniorLabel: 'Falar com Atendente', icon: <Phone className="w-5 h-5 text-orange-600" />, bgClass: 'bg-[#FFF5F0] border-orange-200 text-orange-950', sub: 'Endereço e WhatsApp' },
-  ];
+  useEffect(() => {
+    if (showSearch) searchRef.current?.focus();
+  }, [showSearch]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1200px)');
+    const closeMobileMenu = () => {
+      if (desktop.matches) setMobileMenuOpen(false);
+    };
+    desktop.addEventListener('change', closeMobileMenu);
+    return () => desktop.removeEventListener('change', closeMobileMenu);
+  }, []);
+
+  const closeSearch = () => {
+    setShowSearch(false);
+    searchButtonRef.current?.focus();
+  };
+
+  const updateSearch = (value: string) => {
+    setSearchValue(value);
+    onSearchChange(value);
+  };
+
+  const submitSearch = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setMobileMenuOpen(false);
+    setShowSearch(false);
+    navigate(`/celulares?q=${encodeURIComponent(searchValue.trim())}`);
+  };
 
   return (
     <>
-      {/* Top Bar - Premium Dark Minimalist Layout */}
-      <div 
-        id="topbar" 
-        className="w-full bg-[#0B0F19] text-slate-300 py-2 relative z-20 shadow-xs border-b border-slate-800 text-[11px] font-sans font-medium tracking-wide"
-      >
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 flex items-center justify-between">
-          
-          {/* Desktop Left Side - Stores */}
-          <div className="hidden lg:flex items-center gap-3 text-slate-400">
-            <button
-              onClick={() => setIsStoreModalOpen(true)}
-              className="hover:text-[#FF8533] flex items-center gap-1.5 transition-colors duration-200 cursor-pointer text-left"
-              title="SUNCELL Guaíra e Alto Boqueirão - Mercado Goes"
-            >
-              <MapPin className="w-3.5 h-3.5 text-[#FF6600]" />
-              <span className="font-bold text-slate-200">Mercado Goes</span>
-              <span>· Guaíra e Alto Boqueirão</span>
-            </button>
-            <span className="text-slate-700">|</span>
-            <span>Seg-Sáb · 09h às 19h</span>
-          </div>
-
-          {/* Desktop Center Side - Official Link */}
-          <div className="hidden lg:flex items-center gap-2">
-            <a
-              href={CONTACT_INFO.officialSiteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold text-slate-200 hover:text-[#FF8533] transition-colors flex items-center gap-1"
-              title="Site Oficial da Assistência SUNCELL"
-            >
-              <span>Site oficial: suncellassistencia.com.br</span>
+      <div id="topbar" className="sc-shell-topbar">
+        <div className="sc-shell-container sc-shell-topbar-inner">
+          <button type="button" className="sc-shell-location" onClick={() => setIsStoreModalOpen(true)}>
+            <MapPin size={13} aria-hidden="true" />
+            <span>Curitiba, PR <span className="sc-shell-topbar-detail">/ Mercado Goes · Guaíra e Alto Boqueirão</span></span>
+            <ChevronRight size={12} aria-hidden="true" />
+          </button>
+          <div className="sc-shell-topbar-contacts">
+            <span className="sc-shell-hours">Seg–Sáb · 09h às 19h</span>
+            <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Guaíra: (41) 99917-6640">
+              <MessageSquare size={12} aria-hidden="true" />
+              <span className="sc-shell-phone-number">{CONTACT_INFO.phone}</span>
+              <span className="sc-shell-phone-short">WhatsApp</span>
+            </a>
+            <a className="sc-shell-second-phone" href={CONTACT_INFO.whatsappLink2} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Alto Boqueirão: (41) 99750-1961">
+              {CONTACT_INFO.phone2}
             </a>
           </div>
-
-          {/* Desktop Right Side - Clickable Contacts */}
-          <div className="hidden lg:flex items-center gap-2.5 text-slate-400">
-            <a
-              href={CONTACT_INFO.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-emerald-400 flex items-center gap-1 transition-colors duration-200"
-              title="WhatsApp Unidade Guaíra"
-            >
-              <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-emerald-400 font-bold">(41) 99917-6640</span>
-            </a>
-            <span className="text-slate-700">|</span>
-            <a
-              href={CONTACT_INFO.whatsappLink2}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-emerald-400 flex items-center gap-1 transition-colors duration-200"
-              title="WhatsApp Unidade Alto Boqueirão"
-            >
-              <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-emerald-400 font-bold">(41) 99750-1961</span>
-            </a>
-          </div>
-
-          {/* Mobile/Tablet Top Bar Layout */}
-          <div className="flex lg:hidden w-full items-center justify-between gap-2 text-[10px] font-sans font-bold tracking-tight">
-            
-            {/* Left: Store Selector Pill */}
-            <button
-              onClick={() => setIsStoreModalOpen(true)}
-              className="flex items-center gap-1.5 bg-slate-800/90 hover:bg-slate-800 active:scale-95 text-slate-200 border border-slate-700/80 px-2.5 py-1 rounded-full transition-all shrink-0 cursor-pointer shadow-xs"
-              title="Ver unidades SUNCELL no Mercado Goes"
-            >
-              <MapPin className="w-3 h-3 text-[#FF6600]" />
-              <span className="text-[#FF8533] font-black uppercase text-[9.5px]">Lojas SUNCELL</span>
-              <ChevronRight className="w-2.5 h-2.5 text-slate-400" />
-            </button>
-
-            {/* Center: Seamless Infinite Marquee with Duplicated Sets */}
-            <div className="flex-1 overflow-hidden relative mx-1 py-0.5">
-              <div className="flex gap-6 animate-marquee hover:[animation-play-state:paused] active:[animation-play-state:paused] w-max text-[10px] uppercase font-bold tracking-wider text-slate-300">
-                {/* Set 1 */}
-                <a 
-                  href={CONTACT_INFO.whatsappLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center gap-1 text-emerald-400 hover:underline shrink-0"
-                >
-                  <MessageSquare className="w-3 h-3 text-emerald-400" />
-                  <span>Whats Guaíra: (41) 99917-6640</span>
-                </a>
-
-                <span className="text-slate-700 select-none">❖</span>
-
-                <a 
-                  href={CONTACT_INFO.whatsappLink2} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center gap-1 text-emerald-400 hover:underline shrink-0"
-                >
-                  <MessageSquare className="w-3 h-3 text-emerald-400" />
-                  <span>Whats Boqueirão: (41) 99750-1961</span>
-                </a>
-
-                <span className="text-slate-700 select-none">❖</span>
-
-                <button
-                  onClick={() => setIsStoreModalOpen(true)}
-                  className="flex items-center gap-1 text-[#FF8533] hover:underline shrink-0 text-left cursor-pointer"
-                >
-                  <Store className="w-3 h-3 text-[#FF6600]" />
-                  <span>SUNCELL Mercado Goes Guaíra e Boqueirão</span>
-                </button>
-
-                <span className="text-slate-700 select-none">❖</span>
-
-                {/* Set 2 (Duplicate for smooth infinite marquee loop) */}
-                <a 
-                  href={CONTACT_INFO.whatsappLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center gap-1 text-emerald-400 hover:underline shrink-0"
-                >
-                  <MessageSquare className="w-3 h-3 text-emerald-400" />
-                  <span>Whats Guaíra: (41) 99917-6640</span>
-                </a>
-
-                <span className="text-slate-700 select-none">❖</span>
-
-                <a 
-                  href={CONTACT_INFO.whatsappLink2} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center gap-1 text-emerald-400 hover:underline shrink-0"
-                >
-                  <MessageSquare className="w-3 h-3 text-emerald-400" />
-                  <span>Whats Boqueirão: (41) 99750-1961</span>
-                </a>
-
-                <span className="text-slate-700 select-none">❖</span>
-
-                <button
-                  onClick={() => setIsStoreModalOpen(true)}
-                  className="flex items-center gap-1 text-[#FF8533] hover:underline shrink-0 text-left cursor-pointer"
-                >
-                  <Store className="w-3 h-3 text-[#FF6600]" />
-                  <span>SUNCELL Mercado Goes Guaíra e Boqueirão</span>
-                </button>
-
-                <span className="text-slate-700 select-none">❖</span>
-              </div>
-            </div>
-
-            {/* Right: Quick Whats Pill */}
-            <a
-              href={CONTACT_INFO.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-full text-[9.5px] font-extrabold uppercase shrink-0 transition-all cursor-pointer shadow-xs active:scale-95"
-              title="Falar no WhatsApp"
-            >
-              <MessageSquare className="w-3 h-3 text-emerald-400 fill-emerald-400/20" />
-              <span>Whats</span>
-            </a>
-
-          </div>
-
         </div>
       </div>
 
-      {/* Main Header */}
-      <header
-        className={`sticky top-0 z-40 transition-all duration-300 w-full ${
-          scrolled
-            ? 'bg-white shadow-md border-b border-slate-200/90 py-2.5'
-            : 'bg-white border-b border-slate-100 py-3.5'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-12 flex justify-between items-center">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center gap-2 sm:gap-3 group select-none min-w-0"
-            id="brand-logo"
-          >
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, type: "spring" }}
-              className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-300 relative overflow-hidden"
-            >
-              <img src="/favicon.svg" alt="SUNCELL" className="w-full h-full object-contain" />
-              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-
-            <div className="flex flex-col">
-              <span className="font-display font-black tracking-wider text-gray-900 text-lg leading-none group-hover:text-[#FF6600] transition-colors duration-200">
-                SUNCELL
-              </span>
-              <span className="font-mono text-[9px] text-[#FF6600] tracking-widest font-extrabold mt-0.5 max-[480px]:hidden">
-                ASSISTÊNCIA TÉCNICA · CURITIBA
-              </span>
-            </div>
+      <header className={`sc-shell-header${scrolled ? ' sc-shell-header-scrolled' : ''}`}>
+        <div className="sc-shell-container sc-shell-header-inner">
+          <Link to="/" className="sc-shell-brand" id="brand-logo" aria-label="SUNCELL, página inicial">
+            <span className="sc-shell-brand-symbol"><img src="/favicon.svg" alt="" width="42" height="42" /></span>
+            <span className="sc-shell-brand-type">
+              <strong>SUNCELL</strong>
+              <small>TECNOLOGIA & CONEXÃO</small>
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center gap-4 xl:gap-6 mx-2.5 xl:mx-4">
-            {navItems.map((item) => {
-              const isActive = location.pathname === item.path;
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`relative font-sans font-bold text-[13px] xl:text-[14px] tracking-wide transition-colors duration-200 py-1 ${
-                    isActive ? 'text-[#FF6900]' : 'text-slate-700 hover:text-[#FF6900]'
-                  }`}
-                >
-                  {item.label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FF6900]"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              );
-            })}
+          <nav className="sc-shell-desktop-nav" aria-label="Navegação principal">
+            {navigation.map(({ path, label }) => (
+              <Link key={path} to={path} aria-current={location.pathname === path ? 'page' : undefined}>
+                {label}
+              </Link>
+            ))}
           </nav>
 
-          {/* Actions Bar */}
-          <div className="flex items-center gap-0.5 sm:gap-2.5 xl:gap-3.5 flex-shrink-0">
-            {/* Desktop Search Bar */}
-            <div className="hidden lg:flex items-center relative w-32 focus-within:w-44 xl:w-36 xl:focus-within:w-48 transition-all duration-300">
-              <input
-                type="text"
-                aria-label="Buscar celulares"
-                placeholder="Buscar..."
-                value={searchQuery}
-                onChange={(e) => onSearchChange(e.target.value)}
-                className="w-full bg-slate-50 text-[11px] xl:text-xs text-slate-900 px-3 py-1.5 pr-8 rounded-full border border-slate-200 focus:border-[#FF6900] focus:ring-1 focus:ring-[#FF6900] focus:bg-white focus:outline-none transition-all placeholder-slate-400 font-bold"
-              />
-              <Search className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
-            </div>
-
-            {/* Mobile Search Button */}
-            <div className="relative lg:hidden">
-              <AnimatePresence>
-                {showSearch && (
-                  <motion.div
-                    initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 160, opacity: 1 }}
-                    exit={{ width: 0, opacity: 0 }}
-                    className="absolute right-10 top-1/2 -translate-y-1/2"
-                  >
-                    <input
-                      type="text"
-                      aria-label="Buscar celulares no site"
-                      placeholder="Buscar no site..."
-                      value={searchQuery}
-                      onChange={(e) => onSearchChange(e.target.value)}
-                      className="bg-slate-50 text-xs text-gray-900 px-3 py-1.5 rounded-full border border-slate-200 focus:border-[#FF6600] focus:outline-none w-full animate-fade-in"
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-              <button
-                onClick={() => setShowSearch(!showSearch)}
-                className="p-2 text-gray-500 hover:text-[#FF6600] transition-colors duration-200 cursor-pointer"
-                aria-label="Buscar"
-                id="search-btn"
-              >
-                <Search className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Cart Button */}
+          <div className="sc-shell-actions">
             <button
-              onClick={onOpenCart}
-              className="p-2 relative text-gray-500 hover:text-[#FF6600] transition-colors duration-200 cursor-pointer"
-              aria-label="Ver orçamentos"
-              id="cart-btn"
+              ref={searchButtonRef}
+              type="button"
+              className={`sc-shell-icon-button${showSearch ? ' sc-shell-icon-active' : ''}`}
+              id="search-btn"
+              aria-label={showSearch ? 'Fechar busca' : 'Buscar celulares'}
+              aria-expanded={showSearch}
+              aria-controls="sc-shell-search-panel"
+              onClick={() => setShowSearch(!showSearch)}
             >
-              <ShoppingCart className="w-5 h-5" />
-              {cartCount > 0 && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 bg-slate-950 text-white font-mono text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center shadow-md"
-                >
-                  {cartCount}
-                </motion.span>
-              )}
+              {showSearch ? <X size={19} aria-hidden="true" /> : <Search size={19} aria-hidden="true" />}
             </button>
-
-            {/* WhatsApp CTA Button */}
-            <a
-              href={CONTACT_INFO.whatsappLink}
-              target="_blank"
-              referrerPolicy="no-referrer"
-              className="hidden xl:flex items-center gap-1.5 bg-[#FF6600] hover:bg-[#D45500] text-white px-4 py-2 rounded-xl text-[11px] font-extrabold tracking-wider uppercase transition-all duration-300 shadow-sm cursor-pointer"
-              id="contact-whatsapp-btn"
-            >
-              <MessageSquare className="w-3.5 h-3.5 text-white" />
-              <span>Falar no WhatsApp</span>
+            <button type="button" className="sc-shell-icon-button sc-shell-cart" id="cart-btn" onClick={onOpenCart} aria-label={`Ver orçamentos${cartCount > 0 ? `, ${cartCount} itens` : ''}`}>
+              <ShoppingCart size={19} aria-hidden="true" />
+              {cartCount > 0 && <span className="sc-shell-cart-count" aria-hidden="true">{cartCount > 99 ? '99+' : cartCount}</span>}
+            </button>
+            <a className="sc-shell-contact-cta" id="contact-whatsapp-btn" href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer">
+              Vamos conversar <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-
-            {/* Mobile Menu Toggle */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 xl:hidden text-gray-500 hover:text-gray-900 transition-colors duration-200 cursor-pointer"
-              aria-label="Menu"
+              type="button"
+              className="sc-shell-icon-button sc-shell-menu-toggle"
+              id="mobile-menu-btn"
+              aria-label="Abrir menu"
               aria-haspopup="dialog"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation-dialog"
-              id="mobile-menu-btn"
+              onClick={() => { setShowSearch(false); setMobileMenuOpen(true); }}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <Menu size={22} aria-hidden="true" />
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.dialog
-              ref={menuRef}
-              id="mobile-navigation-dialog"
-              aria-label="Menu de navegação SUNCELL"
-              onCancel={(event) => { event.preventDefault(); setMobileMenuOpen(false); }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="suprema-navigation-dialog fixed inset-0 w-full h-dvh bg-slate-50 z-50 overflow-y-auto flex flex-col p-4 sm:p-6"
-            >
-              {/* TOP NAVIGATION BAR */}
-              <div className="flex items-center justify-between gap-2 border-b-2 border-slate-200 pb-3 mb-3">
-                <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                  }}
-                  className="flex items-center justify-center gap-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-black px-2.5 py-2.5 rounded-xl text-xs transition-all shadow-xs cursor-pointer flex-1"
-                  style={{ minHeight: '44px' }}
-                >
-                  <ArrowLeft className="w-4 h-4 text-[#FF6600] shrink-0" />
-                  <span className="truncate">VOLTAR</span>
-                </button>
-                
-                <div className="flex items-center gap-1.5 select-none px-1 shrink-0">
-                  <div className="w-7 h-7 bg-white rounded-lg flex items-center justify-center shadow-sm overflow-hidden">
-                    <img src="/favicon.svg" alt="SUNCELL" className="w-full h-full object-contain" />
-                  </div>
-                  <span className="font-display font-black text-gray-900 text-xs tracking-tight hidden sm:inline">MENU SUNCELL</span>
-                </div>
+        {showSearch && (
+          <div id="sc-shell-search-panel" className="sc-shell-search-panel" onKeyDown={(event) => { if (event.key === 'Escape') closeSearch(); }}>
+            <form className="sc-shell-container sc-shell-search-inner" role="search" aria-label="Buscar celulares no catálogo" onSubmit={submitSearch}>
+              <Search size={22} aria-hidden="true" />
+              <input ref={searchRef} type="search" name="q" aria-label="Buscar celulares" placeholder="Qual é a sua próxima conexão?" value={searchValue} onChange={(event) => updateSearch(event.target.value)} />
+              <button type="submit" className="sc-shell-search-submit">Buscar <ArrowUpRight size={16} aria-hidden="true" /></button>
+              <Link to="/celulares" onClick={() => setShowSearch(false)} className="sc-shell-search-catalog">Ver catálogo <ArrowUpRight size={17} aria-hidden="true" /></Link>
+              <button type="button" onClick={closeSearch} className="sc-shell-icon-button" aria-label="Fechar busca"><X size={20} aria-hidden="true" /></button>
+            </form>
+          </div>
+        )}
 
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-1 bg-[#FF6600] hover:bg-[#D45500] text-white font-black px-2.5 py-2.5 rounded-xl text-xs transition-all shadow-md cursor-pointer flex-1"
-                  style={{ minHeight: '44px' }}
-                >
-                  <X className="w-4 h-4 shrink-0" />
-                  <span className="truncate">FECHAR</span>
-                </button>
-              </div>
-
-              {/* ACCESSIBLE TEXT CONTROLS */}
-              <div className="bg-white border-2 border-slate-200 rounded-2xl p-4 shadow-sm mb-4">
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-                  <div className="flex items-center gap-2 text-center sm:text-left">
-                    <Users className="w-6 h-6 text-[#FF6600] flex-shrink-0" />
-                    <div>
-                      <h4 className="font-display font-black text-gray-900 text-base">
-                        Acessibilidade de Texto
-                      </h4>
-                      <p className="text-gray-500 text-xs mt-0.5">
-                        Aumente o tamanho das letras se preferir.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <button
-                    type="button"
-                    onClick={() => setIsLargeText(!isLargeText)}
-                    className={`px-5 py-3 rounded-2xl text-sm font-black uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 border w-full sm:w-auto ${
-                      isLargeText
-                        ? 'bg-[#FF6600] text-white border-[#FF6600] shadow-md scale-102'
-                        : 'bg-slate-100 hover:bg-slate-200 text-gray-800 border-slate-300'
-                    }`}
-                  >
-                    <Search className="w-4 h-4" />
-                    <span>{isLargeText ? 'Letra Normal' : 'Aumentar Letras'}</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* SEARCH INPUT */}
-              <div className="relative mb-5">
-                <input
-                  type="text"
-                  aria-label="Pesquisar celulares"
-                  placeholder="Pesquisar..."
-                  value={searchQuery}
-                  onChange={(e) => onSearchChange(e.target.value)}
-                  className={`bg-white text-gray-900 px-4 py-4 rounded-2xl border-2 border-slate-200 focus:border-[#FF6600] focus:ring-2 focus:ring-[#FF6600]/10 focus:outline-none w-full shadow-xs ${
-                    isLargeText ? 'text-lg placeholder:text-gray-400 font-bold' : 'text-sm'
-                  }`}
-                />
-                <Search className="w-5 h-5 text-gray-400 absolute right-4 top-1/2 -translate-y-1/2" />
-              </div>
-
-              {/* MAIN LINKS */}
-              <div className="flex flex-col gap-3 flex-grow">
-                <span className="text-xs text-slate-500 uppercase tracking-widest font-mono font-black block px-1 text-center sm:text-left">
-                  Menu Principal:
-                </span>
-                
-                <div className="flex flex-col gap-3">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`flex items-center justify-between w-full p-4 sm:p-5 rounded-2xl border-2 shadow-sm hover:shadow-md transition-all duration-200 ${item.bgClass}`}
-                      style={{ minHeight: '68px' }}
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="p-2.5 bg-white rounded-xl shadow-xs border border-slate-100">
-                          {item.icon}
-                        </div>
-                        <div className="flex flex-col text-left">
-                          <span className={`font-black tracking-tight leading-snug ${isLargeText ? 'text-xl' : 'text-base sm:text-lg'}`}>
-                            {item.seniorLabel}
-                          </span>
-                          <span className="text-[11px] opacity-80 font-medium">
-                            {item.sub}
-                          </span>
-                        </div>
-                      </div>
-                      <ChevronRight className="w-5 h-5 opacity-70" />
-                    </Link>
-                  ))}
-                </div>
-
-                {/* WHATSAPP SUPPORT CARD */}
-                <div className="flex flex-col gap-4 pt-6 mt-4 border-t-2 border-slate-200">
-                  <div className="bg-emerald-50 border-2 border-emerald-300 p-5 rounded-2xl flex flex-col gap-4">
-                    <div className="flex items-start gap-4 text-left">
-                      <div className="p-2 bg-white rounded-xl shadow-xs border border-emerald-100 flex-shrink-0">
-                        <MessageSquare className="w-7 h-7 text-emerald-600 fill-emerald-50" />
-                      </div>
-                      <div>
-                        <h4 className="font-display font-black text-emerald-950 text-base leading-tight">
-                          Atendimento via WhatsApp
-                        </h4>
-                        <p className="text-emerald-700 text-xs mt-1 leading-relaxed font-semibold">
-                          Consulte aparelhos, disponibilidade e receba suporte direto da nossa equipe.
-                        </p>
-                      </div>
-                    </div>
-                    <a
-                      href={CONTACT_INFO.whatsappLink}
-                      target="_blank"
-                      referrerPolicy="no-referrer"
-                      className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-3 px-5 rounded-xl font-bold uppercase text-center shadow-sm transition-colors flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <MessageSquare className="w-5 h-5 fill-white text-[#25D366]" />
-                      <span>Conversar no WhatsApp</span>
-                    </a>
-                  </div>
-
-                  <div className="text-center text-slate-500 text-xs leading-relaxed flex flex-col items-center justify-center gap-1 bg-white border border-slate-200/60 p-4 rounded-xl">
-                    <div className="flex items-center gap-1.5 font-bold text-slate-700">
-                      <MapPin className="w-4 h-4 text-[#FF6600]" />
-                      <span>{CONTACT_INFO.address}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.dialog>
-          )}
-        </AnimatePresence>
+        <dialog
+          ref={menuRef}
+          id="mobile-navigation-dialog"
+          className={`sc-shell-drawer${isLargeText ? ' sc-shell-drawer-large' : ''}`}
+          aria-labelledby="sc-shell-drawer-title"
+          onCancel={(event) => { event.preventDefault(); setMobileMenuOpen(false); }}
+          onClose={() => setMobileMenuOpen(false)}
+          onClick={(event) => { if (event.target === event.currentTarget) setMobileMenuOpen(false); }}
+        >
+          <div className="sc-shell-drawer-content">
+            <div className="sc-shell-drawer-top">
+              <div className="sc-shell-brand-type"><strong id="sc-shell-drawer-title">SUNCELL</strong><small>EXPLORE. ESCOLHA. CONECTE.</small></div>
+              <button type="button" className="sc-shell-icon-button" aria-label="Fechar menu" onClick={() => setMobileMenuOpen(false)} autoFocus><X size={23} aria-hidden="true" /></button>
+            </div>
+            <div className="sc-shell-drawer-utilities">
+              <span>SEU PRÓXIMO PASSO</span>
+              <button type="button" onClick={() => setIsLargeText(!isLargeText)} aria-pressed={isLargeText}><Type size={17} aria-hidden="true" /> {isLargeText ? 'Texto normal' : 'Aumentar texto'}</button>
+            </div>
+            <form className="sc-shell-drawer-search" role="search" aria-label="Buscar celulares pelo menu" onSubmit={submitSearch}>
+              <Search size={19} aria-hidden="true" />
+              <input type="search" name="q" aria-label="Pesquisar celulares" placeholder="Buscar celulares..." value={searchValue} onChange={(event) => updateSearch(event.target.value)} />
+              <button type="submit" className="sc-shell-search-submit">Buscar <ArrowUpRight size={15} aria-hidden="true" /></button>
+            </form>
+            <nav className="sc-shell-mobile-nav" aria-label="Navegação principal móvel">
+              {navigation.map(({ path, label, description, Icon }, index) => (
+                <Link key={path} to={path} aria-current={location.pathname === path ? 'page' : undefined} onClick={() => setMobileMenuOpen(false)}>
+                  <span className="sc-shell-nav-number">0{index + 1}</span>
+                  <Icon size={21} className="sc-shell-nav-icon" aria-hidden="true" />
+                  <span className="sc-shell-nav-copy"><strong>{label}</strong><small>{description}</small></span>
+                  <ArrowUpRight size={19} aria-hidden="true" />
+                </Link>
+              ))}
+            </nav>
+            <div className="sc-shell-drawer-contact">
+              <span className="sc-shell-eyebrow">PESSOAS DE VERDADE. PERTO DE VOCÊ.</span>
+              <p>Conte com a nossa equipe em Curitiba.</p>
+              <a href={CONTACT_INFO.whatsappLink} target="_blank" rel="noopener noreferrer"><MessageSquare size={18} aria-hidden="true" /> Conversar no WhatsApp <ArrowUpRight size={17} aria-hidden="true" /></a>
+              <span className="sc-shell-drawer-address"><MapPin size={15} aria-hidden="true" /> Mercado Goes · Guaíra e Alto Boqueirão</span>
+            </div>
+          </div>
+        </dialog>
       </header>
-
-      <StoreSelectModal 
-        isOpen={isStoreModalOpen} 
-        onClose={() => setIsStoreModalOpen(false)} 
-      />
+      <StoreSelectModal isOpen={isStoreModalOpen} onClose={() => setIsStoreModalOpen(false)} />
     </>
   );
 }

@@ -25,7 +25,9 @@ const templateHtml = fs.readFileSync(INDEX_HTML_PATH, 'utf-8');
 // Old HTML must still load the current app while the cache updates itself.
 for (const [pattern, legacyName] of [
   [/src="(\/assets\/[^"]+\.js)"/, 'index-DeeeCG6u.js'],
+  [/src="(\/assets\/[^"]+\.js)"/, 'index-Rl6KhMIH.js'],
   [/href="(\/assets\/[^"]+\.css)"/, 'index-CYt2YvPK.css'],
+  [/href="(\/assets\/[^"]+\.css)"/, 'index-BgAgHVgu.css'],
 ] as const) {
   const currentAsset = templateHtml.match(pattern)?.[1];
   if (currentAsset) fs.copyFileSync(path.join(DIST_PATH, currentAsset), path.join(DIST_PATH, 'assets', legacyName));

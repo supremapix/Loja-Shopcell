@@ -12,7 +12,7 @@ const iconMap: { [key: string]: any } = {
 
 export default function Features() {
   return (
-    <section id="diferenciais" className="py-12 sm:py-20 bg-white relative border-y border-slate-200/60">
+    <section id="diferenciais" className="sc-legacy-section py-12 sm:py-20 bg-white relative border-y border-slate-200/60">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-3">DIFERENCIAIS EXCLUSIVOS</span>

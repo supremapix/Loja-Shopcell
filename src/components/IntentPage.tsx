@@ -1,3 +1,4 @@
+import '../secondary.css';
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
@@ -24,7 +25,7 @@ export default function IntentPage() {
   const defaultMsg = `Olá! Vi a página de *${pageData.h1}* no site e gostaria de consultar as opções de celulares disponíveis e agendar minha entrega/retirada!`;
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-[#FF6600] selection:text-white flex flex-col justify-between">
+    <div className="secondary-page secondary-intent min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-[#FF6600] selection:text-white flex flex-col justify-between">
       
       <EnhancedSEO
         title={pageData.title}
@@ -40,10 +41,10 @@ export default function IntentPage() {
         onSearchChange={() => {}}
       />
 
-      <main className="flex-grow pt-24">
+      <main className="secondary-scope secondary-main flex-grow">
         
         {/* Breadcrumb Header */}
-        <section className="bg-slate-900 text-white py-4 border-b border-slate-800">
+        <section className="secondary-breadcrumb bg-slate-900 text-white py-4 border-b border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center gap-2 text-xs font-mono text-slate-400 overflow-x-auto">
             <Link to="/" className="hover:text-[#FF6600] transition-colors whitespace-nowrap">Início</Link>
             <ChevronRight className="w-3.5 h-3.5 shrink-0" />
@@ -52,7 +53,7 @@ export default function IntentPage() {
         </section>
 
         {/* Hero Section */}
-        <section className="relative bg-slate-950 text-white py-16 sm:py-20 overflow-hidden border-b border-slate-800">
+        <section className="secondary-hero relative bg-slate-950 text-white py-16 sm:py-20 overflow-hidden border-b border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               
@@ -106,7 +107,8 @@ export default function IntentPage() {
               </div>
 
               <div className="lg:col-span-4">
-                <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 shadow-2xl backdrop-blur-xs space-y-5">
+                <div className="secondary-location-panel bg-slate-900/90 border border-slate-800 rounded-3xl p-6 shadow-2xl backdrop-blur-xs space-y-5">
+                  <div className="secondary-location-visual" aria-hidden="true"><MapPin /><span>CURITIBA / PR</span></div>
                   <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
                     <div className="w-12 h-12 bg-[#FF6600]/20 rounded-2xl flex items-center justify-center text-[#FF6600]">
                       <Building2 className="w-6 h-6" />
@@ -161,7 +163,8 @@ export default function IntentPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {pageData.benefits.map((b, idx) => (
-                <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 hover:border-[#FF6600]/40 transition-all hover:shadow-md">
+                <div key={idx} className="secondary-benefit-card bg-slate-50 border border-slate-200/80 rounded-2xl p-6 hover:border-[#FF6600]/40 transition-all hover:shadow-md">
+                  <span className="secondary-card-index" aria-hidden="true">0{idx + 1}</span>
                   <div className="w-10 h-10 bg-[#FF6600]/10 rounded-xl flex items-center justify-center text-[#FF6600] mb-4">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
@@ -185,7 +188,7 @@ export default function IntentPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {CATEGORY_HIGHLIGHTS.map(cat => (
-                <div key={cat.id} className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs flex flex-col justify-between">
+                <div key={cat.id} className="secondary-category-card bg-white border border-slate-200 rounded-2xl p-6 shadow-xs flex flex-col justify-between">
                   <div>
                     <span className="inline-block bg-[#FF6900]/10 text-[#FF6900] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase mb-3">
                       {cat.badge}
@@ -224,6 +227,8 @@ export default function IntentPage() {
                 <div key={idx} className="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/50">
                   <button
                     onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                    aria-expanded={openFaq === idx}
+                    aria-controls={`intent-faq-${idx}`}
                     className="w-full text-left p-5 flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base hover:bg-slate-100 transition-colors"
                   >
                     <span className="flex items-center gap-3">
@@ -233,7 +238,7 @@ export default function IntentPage() {
                     <ChevronRight className={`w-5 h-5 text-slate-400 transition-transform ${openFaq === idx ? 'rotate-90' : ''}`} />
                   </button>
                   {openFaq === idx && (
-                    <div className="p-5 pt-0 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-200/60 bg-white">
+                    <div id={`intent-faq-${idx}`} className="p-5 pt-0 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-200/60 bg-white">
                       {faq.answer}
                     </div>
                   )}

@@ -1,3 +1,4 @@
+import '../secondary.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -20,7 +21,7 @@ export default function ContatoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans">
+    <div className="secondary-page secondary-contact min-h-screen bg-white text-slate-800 flex flex-col font-sans">
       <EnhancedSEO
         title="Contato SUNCELL Curitiba | Lojas no Mercado Goes (Guaíra e Alto Boqueirão)"
         description="Fale com a SUNCELL Assistência Técnica e Celulares em Curitiba. Unidade Guaíra: (41) 99917-6640 e Unidade Alto Boqueirão: (41) 99750-1961 (Dentro do Mercado Goes). E-mail: info@suncellassistencia.com.br."
@@ -30,10 +31,11 @@ export default function ContatoPage() {
       <Navbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
       {/* HERO SECTION DE CONTATO */}
-      <section className="bg-slate-950 text-white py-16 sm:py-20 relative overflow-hidden border-b border-slate-800">
+      <section className="secondary-scope secondary-hero bg-slate-950 text-white py-16 sm:py-20 relative overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#FF6600]/20 via-transparent to-transparent pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 secondary-hero-layout">
+          <div className="secondary-hero-copy">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6600]/15 border border-[#FF6600]/30 text-[#FF8533] text-xs font-mono font-bold uppercase tracking-wider mb-5">
             <Store className="w-3.5 h-3.5" />
             Canais de Atendimento SUNCELL
@@ -64,18 +66,25 @@ export default function ContatoPage() {
               <span>{CONTACT_INFO.email}</span>
             </a>
           </div>
+          </div>
+          <div className="secondary-signal-panel" aria-label="Duas unidades físicas em Curitiba">
+            <div className="secondary-signal-orbit" aria-hidden="true"><i /><i /><MapPin /></div>
+            <div className="secondary-signal-caption"><strong>02</strong><span>UNIDADES FÍSICAS<br />PERTO DE VOCÊ.</span></div>
+            <div className="secondary-visual-bottomline"><span>GUAÍRA</span><span>ALTO BOQUEIRÃO</span></div>
+          </div>
         </div>
       </section>
 
       {/* DUAL STORE CONTACT CARDS */}
-      <section className="py-12 sm:py-16 bg-slate-50 border-b border-slate-200">
+      <section className="secondary-scope py-12 sm:py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 -mt-14 sm:-mt-20 relative z-20 mb-12">
+          <div className="secondary-contact-grid grid grid-cols-1 md:grid-cols-2 gap-8 relative z-20 mb-12">
             
             {/* SUNCELL GUAÍRA */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-orange-200 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+            <div className="secondary-contact-card bg-white rounded-3xl p-6 sm:p-8 border-2 border-orange-200 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between mb-4">
+                <div className="secondary-contact-photo"><img src="/images/suncell-loja-guaira.webp" alt="Loja SUNCELL Guaíra no Mercado Goes" loading="lazy" /><span>01 / GUAÍRA</span></div>
+                <div className="secondary-store-labels flex items-center justify-between mb-4">
                   <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-wider bg-[#FF6600]/10 px-3 py-1 rounded-full">
                     UNIDADE GUAÍRA • MERCADO GOES
                   </span>
@@ -135,9 +144,10 @@ export default function ContatoPage() {
             </div>
 
             {/* SUNCELL ALTO BOQUEIRÃO */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-orange-200 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+            <div className="secondary-contact-card bg-white rounded-3xl p-6 sm:p-8 border-2 border-orange-200 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between mb-4">
+                <div className="secondary-contact-photo"><img src="/images/suncell-loja-boqueirao.webp" alt="Loja SUNCELL Alto Boqueirão no Mercado Goes" loading="lazy" /><span>02 / ALTO BOQUEIRÃO</span></div>
+                <div className="secondary-store-labels flex items-center justify-between mb-4">
                   <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-wider bg-[#FF6600]/10 px-3 py-1 rounded-full">
                     UNIDADE ALTO BOQUEIRÃO • MERCADO GOES
                   </span>
@@ -226,7 +236,7 @@ export default function ContatoPage() {
       </section>
 
       {/* SEÇÃO DO MAPA INTERATIVO E INFORMAÇÕES */}
-      <section className="py-16 bg-white">
+      <section className="secondary-scope py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             

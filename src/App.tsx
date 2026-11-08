@@ -1,5 +1,5 @@
 import React from 'react';
-import { MotionConfig } from 'motion/react';
+import { MotionConfig, motion, useScroll } from 'motion/react';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import FloatingActions from './components/FloatingActions';
@@ -16,6 +16,11 @@ import BlogPostPage from './components/BlogPostPage';
 import Compare from './components/Compare';
 import NotFound from './components/NotFound';
 import { CartProvider } from './context/CartContext';
+
+function ReadingProgress() {
+  const { scrollYProgress } = useScroll();
+  return <motion.div className="sc-reading-progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />;
+}
 
 function BairroRouteGuard() {
   const { slug } = useParams<{ slug: string }>();
@@ -51,6 +56,7 @@ export default function App() {
         const content = document.querySelector<HTMLElement>('main, h1');
         if (content) { event.preventDefault(); content.setAttribute('tabindex', '-1'); content.focus({ preventScroll: true }); content.scrollIntoView(); }
       }}>Pular para o conteúdo</a>
+      <ReadingProgress />
       <ScrollToTop />
       <FloatingActions />
       <div id="conteudo-principal" tabIndex={-1}>

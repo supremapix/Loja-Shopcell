@@ -17,7 +17,7 @@ export default function Location() {
   const currentStoreData = STORES.find(s => s.id === selectedStore) || STORES[0];
 
   return (
-    <section id="RMCEbairros" className="py-12 sm:py-20 bg-white relative overflow-hidden border-t border-slate-200">
+    <section id="RMCEbairros" className="sc-legacy-section py-12 sm:py-20 bg-white relative overflow-hidden border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Title */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">

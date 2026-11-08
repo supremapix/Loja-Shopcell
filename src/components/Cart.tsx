@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Trash2, Plus, Minus, ShoppingBag, Send, AlertTriangle, Store, Truck, Wallet, CreditCard, Sparkles } from 'lucide-react';
 import { CartItem } from '../types';
@@ -29,6 +29,29 @@ export default function Cart({
   const [city, setCity] = useState('Curitiba');
   const [paymentMethod, setPaymentMethod] = useState<'pix' | 'cartao'>('pix');
   const [formError, setFormError] = useState<string | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef(onClose);
+  useEffect(() => { closeRef.current = onClose; }, [onClose]);
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const panel = panelRef.current;
+    panel?.querySelector<HTMLButtonElement>('#close-cart')?.focus();
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { event.preventDefault(); closeRef.current(); }
+      if (event.key !== 'Tab' || !panel) return;
+      const focusable = [...panel.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex="0"]')].filter(element => element.getClientRects().length > 0);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) { event.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => { document.removeEventListener('keydown', handleKey); document.body.style.overflow = previousOverflow; previousFocus?.focus(); };
+  }, [isOpen]);
+
 
   const handleFinishOrder = () => {
     if (!clientName.trim()) {
@@ -101,6 +124,10 @@ export default function Cart({
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             className="fixed right-0 top-0 bottom-0 w-full sm:max-w-md bg-white border-l border-slate-200 z-50 flex flex-col shadow-2xl h-full"
             id="cart-sidebar"
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Meu carrinho"
           >
             {/* Header */}
             <div className="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50/75">
@@ -115,6 +142,7 @@ export default function Cart({
                 onClick={onClose}
                 className="p-1.5 rounded-lg text-gray-400 hover:text-gray-800 hover:bg-slate-100 transition-colors cursor-pointer"
                 id="close-cart"
+                aria-label="Fechar carrinho"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -192,6 +220,7 @@ export default function Cart({
                                 onClick={() => onUpdateQuantity(item.product.id, item.quantity - 1)}
                                 className="px-2 py-1 text-gray-500 hover:text-gray-900 hover:bg-slate-200 transition-colors cursor-pointer"
                                 id={`dec-qty-${item.product.id}`}
+                                aria-label={`Diminuir quantidade de ${item.product.name}`}
                               >
                                 <Minus className="w-3 h-3" />
                               </button>
@@ -202,6 +231,7 @@ export default function Cart({
                                 onClick={() => onUpdateQuantity(item.product.id, item.quantity + 1)}
                                 className="px-2 py-1 text-gray-500 hover:text-gray-900 hover:bg-slate-200 transition-colors cursor-pointer"
                                 id={`inc-qty-${item.product.id}`}
+                                aria-label={`Aumentar quantidade de ${item.product.name}`}
                               >
                                 <Plus className="w-3 h-3" />
                               </button>
@@ -215,6 +245,7 @@ export default function Cart({
                           className="absolute top-2 right-2 p-1 rounded-md text-gray-400 hover:text-red-500 hover:bg-slate-100 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
                           title="Remover item"
                           id={`remove-${item.product.id}`}
+                          aria-label={`Remover ${item.product.name} do carrinho`}
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>

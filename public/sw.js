@@ -1,4 +1,4 @@
-const CACHE_NAME = 'suncell-suprema-v3';
+const CACHE_NAME = 'suncell-suprema-v4';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',

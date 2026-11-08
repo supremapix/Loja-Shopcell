@@ -1,8 +1,9 @@
+import '../secondary.css';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, MessageSquare, ShieldCheck, Cpu, Smartphone, Camera, Battery, Zap } from 'lucide-react';
 import EnhancedSEO from './EnhancedSEO';
-import Ticker from './Ticker';
+import Navbar from './Navbar';
 import Footer from './Footer';
 
 export interface ComparisonModel {
@@ -100,6 +101,7 @@ const PRESET_COMPARISONS: PresetComparison[] = [
 ];
 
 export default function Compare() {
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedPresetId, setSelectedPresetId] = useState(PRESET_COMPARISONS[0].id);
 
   useEffect(() => {
@@ -115,43 +117,17 @@ export default function Compare() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+    <div className="secondary-page secondary-compare min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
       <EnhancedSEO 
         title="Comparativo de Celulares | SUNCELL — Loja de Celulares em Curitiba"
         description="Analise técnica e compare smartphones atuais com suas gerações anteriores. Saiba se vale a pena fazer o upgrade!"
         canonical="https://www.celularescuritibashopcell.com.br/comparar"
       />
       
-      <Ticker />
+      <Navbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
-      <header className="sticky top-0 z-40 bg-slate-900/90 border-b border-slate-800 backdrop-blur-md py-4 w-full">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-[#FF6600] rounded-xl flex items-center justify-center font-bold text-white text-xl shadow-md">
-              S
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-black tracking-wider text-white text-lg leading-none group-hover:text-[#FF6600] transition-colors">
-                SUNCELL
-              </span>
-              <span className="font-mono text-[9px] text-[#FF6600] tracking-widest font-semibold mt-0.5">
-                CURITIBA · PR
-              </span>
-            </div>
-          </Link>
-          
-          <Link 
-            to="/" 
-            className="flex items-center gap-1.5 text-xs font-bold text-slate-300 hover:text-white bg-slate-800 border border-slate-700 px-4 py-2.5 rounded-xl transition-all"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Voltar para a Loja</span>
-          </Link>
-        </div>
-      </header>
-
-      <section className="py-16 px-4 max-w-7xl mx-auto w-full relative">
-        <div className="text-center space-y-4 max-w-3xl mx-auto mb-12">
+      <section className="secondary-scope secondary-comparison-content py-16 px-4 max-w-7xl mx-auto w-full relative">
+        <div className="secondary-comparison-heading text-center space-y-4 max-w-3xl mx-auto mb-12">
           <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest bg-[#FF6600]/10 px-3 py-1 rounded-full">
             COMPARADOR INTELIGENTE
           </span>
@@ -166,11 +142,12 @@ export default function Compare() {
           </p>
         </div>
 
-        <div className="max-w-xl mx-auto bg-slate-900 border border-slate-800 p-4 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center gap-4 relative z-10 mb-12">
-          <label className="text-xs font-bold text-slate-400 font-mono uppercase tracking-wider whitespace-nowrap">
+        <div className="secondary-compare-select max-w-xl mx-auto bg-slate-900 border border-slate-800 p-4 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center gap-4 relative z-10 mb-12">
+          <label htmlFor="comparison-preset" className="text-xs font-bold text-slate-400 font-mono uppercase tracking-wider whitespace-nowrap">
             Escolha o Comparativo:
           </label>
           <select
+            id="comparison-preset"
             value={selectedPresetId}
             onChange={(e) => setSelectedPresetId(e.target.value)}
             className="bg-slate-950 border border-slate-800 text-white rounded-xl py-3 px-4 text-xs font-bold w-full focus:outline-none focus:border-[#FF6600] cursor-pointer"
@@ -184,7 +161,7 @@ export default function Compare() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
-          <div className="lg:col-span-4 bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-6 shadow-xl">
+          <div className="secondary-verdict lg:col-span-4 bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-6 shadow-xl">
             <div className="border-b border-slate-800 pb-4">
               <span className="text-[10px] font-mono text-[#FF6600] font-bold uppercase tracking-widest">VEREDITO TÉCNICO</span>
               <h2 className="font-display font-extrabold text-white text-xl mt-1">Recomendação Final</h2>
@@ -227,13 +204,14 @@ export default function Compare() {
             </button>
           </div>
 
-          <div className="lg:col-span-8 bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl">
+          <div className="secondary-comparison-table lg:col-span-8 bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl">
             <h3 className="font-display font-bold text-white text-lg border-b border-slate-800 pb-4">
               Ficha Técnica Lado a Lado
             </h3>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse min-w-[500px]">
+            <p className="secondary-table-hint">Deslize para comparar todas as especificações <span aria-hidden="true">↔</span></p>
+            <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Tabela de comparação de celulares">
+              <table aria-label="Especificações da geração atual e anterior" className="w-full text-left border-collapse min-w-[500px]">
                 <thead>
                   <tr className="border-b border-slate-800">
                     <th className="py-3 px-4 text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">Recurso</th>

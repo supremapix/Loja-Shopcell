@@ -3,10 +3,10 @@ import { useLocation } from 'react-router-dom';
 
 /**
  * ScrollToTop component automatically scrolls the window to the top (0, 0)
- * on every pathname or route parameter change.
+ * on pathname or anchor changes. Query-only filters preserve the reading position.
  */
 export default function ScrollToTop() {
-  const { pathname, search, hash } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     // If there is no specific hash anchor, scroll to the top of the page immediately
@@ -28,7 +28,7 @@ export default function ScrollToTop() {
         element.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
       }
     }
-  }, [pathname, search, hash]);
+  }, [pathname, hash]);
 
   return null;
 }

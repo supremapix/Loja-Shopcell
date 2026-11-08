@@ -1,3 +1,4 @@
+import '../secondary.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Calendar, Clock, ArrowRight, BookOpen } from 'lucide-react';
@@ -10,7 +11,7 @@ export default function BlogPage() {
   const postsList = Object.values(BLOG_POSTS);
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-[#FF6600] selection:text-white flex flex-col justify-between">
+    <div className="secondary-page secondary-journal min-h-screen bg-slate-50 font-sans text-slate-800 antialiased selection:bg-[#FF6600] selection:text-white flex flex-col justify-between">
       
       <EnhancedSEO
         title="Blog SUNCELL Curitiba | Guias de Compra, Análises e Dicas de Celulares"
@@ -26,10 +27,10 @@ export default function BlogPage() {
         onSearchChange={() => {}}
       />
 
-      <main className="flex-grow pt-24">
+      <main className="secondary-scope secondary-main flex-grow">
         
         {/* Breadcrumb Header */}
-        <section className="bg-slate-900 text-white py-4 border-b border-slate-800">
+        <section className="secondary-breadcrumb bg-slate-900 text-white py-4 border-b border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center gap-2 text-xs font-mono text-slate-400">
             <Link to="/" className="hover:text-[#FF6600] transition-colors">Início</Link>
             <ChevronRight className="w-3.5 h-3.5 shrink-0" />
@@ -38,8 +39,9 @@ export default function BlogPage() {
         </section>
 
         {/* Hero Section */}
-        <section className="bg-slate-950 text-white py-14 sm:py-18 border-b border-slate-800 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center max-w-3xl">
+        <section className="secondary-hero bg-slate-950 text-white py-14 sm:py-18 border-b border-slate-800 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 secondary-journal-heading">
+            <div className="secondary-editorial-kicker"><span>SUNCELL JOURNAL</span><span>TECNOLOGIA / ESCOLHAS / COTIDIANO</span></div>
             <div className="inline-flex items-center gap-2 bg-[#FF6600]/10 border border-[#FF6600]/30 text-[#FF6600] px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase mb-4">
               <BookOpen className="w-4 h-4" />
               <span>CONTEÚDO TÉCNICO & GUIAS DE COMPRA</span>
@@ -57,15 +59,16 @@ export default function BlogPage() {
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {postsList.map(post => (
-                <article key={post.slug} className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group">
+            <div className="secondary-journal-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {postsList.map((post, index) => (
+                <article key={post.slug} className={`secondary-journal-card ${index === 0 ? 'secondary-journal-featured' : ''} bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group`}>
                   
                   <div>
-                    <div className="relative h-48 bg-slate-900 overflow-hidden">
+                    <div className="secondary-journal-image relative h-48 bg-slate-900 overflow-hidden">
                       <img 
                         src={post.image} 
                         alt={post.title}
+                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
                       />
                       <span className="absolute top-4 left-4 bg-[#FF6600] text-white text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">

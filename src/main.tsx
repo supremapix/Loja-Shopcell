@@ -4,6 +4,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import App from './App.tsx';
 import './index.css';
+import './premium.css';
 
 // Static SEO serves crawlers and link previews. React 19 hoists Helmet metadata,
 // so retire the static copy once before rendering to avoid duplicate canonicals.

@@ -1,3 +1,4 @@
+import '../secondary.css';
 import React, { useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { bairrosData } from '../bairrosData';
@@ -49,7 +50,7 @@ export default function LocationPage() {
   )}`;
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 flex flex-col font-sans relative">
+    <div className="secondary-page secondary-location min-h-screen bg-white text-gray-800 flex flex-col font-sans relative">
       <EnhancedSEO
         title={currentBairro.tituloSEO}
         description={currentBairro.metaDescription}
@@ -63,7 +64,7 @@ export default function LocationPage() {
         onSearchChange={() => {}}
       />
 
-      <div className="pt-28 pb-10 bg-gradient-to-b from-slate-900 to-slate-950 text-white relative overflow-hidden">
+      <div className="secondary-scope secondary-hero pt-28 pb-10 bg-gradient-to-b from-slate-900 to-slate-950 text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <nav className="flex items-center gap-1.5 text-xs text-slate-400 mb-6 font-mono font-medium">
             <Link to="/" className="hover:text-[#FF6600] transition-colors">Início</Link>
@@ -111,7 +112,8 @@ export default function LocationPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-slate-900/50 border border-slate-800 p-6 rounded-3xl space-y-4 shadow-xl">
+            <div className="secondary-location-panel lg:col-span-4 bg-slate-900/50 border border-slate-800 p-6 rounded-3xl space-y-4 shadow-xl">
+              <div className="secondary-location-visual" aria-hidden="true"><MapPin /><span>CURITIBA / PR</span></div>
               <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                 <span className="text-xs text-slate-400 font-bold uppercase tracking-wider font-mono">Unidade mais próxima</span>
                 <span className="text-[10px] text-emerald-400 font-bold font-mono">ABERTA HOJE</span>
@@ -152,7 +154,7 @@ export default function LocationPage() {
 
       <Ticker />
 
-      <section id="categorias" className="py-12 sm:py-20 bg-slate-50 border-t border-slate-200">
+      <section id="categorias" className="secondary-scope py-12 sm:py-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-2">OPÇÕES DISPONÍVEIS</span>
@@ -163,7 +165,7 @@ export default function LocationPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {CATEGORY_HIGHLIGHTS.map(cat => (
-              <div key={cat.id} className="bg-white border border-slate-200 rounded-2xl p-6 shadow-xs flex flex-col justify-between">
+              <div key={cat.id} className="secondary-category-card bg-white border border-slate-200 rounded-2xl p-6 shadow-xs flex flex-col justify-between">
                 <div>
                   <span className="inline-block bg-[#FF6900]/10 text-[#FF6900] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase mb-3">
                     {cat.badge}

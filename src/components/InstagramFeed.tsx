@@ -10,7 +10,7 @@ export default function InstagramFeed() {
     <section
       ref={sectionRef}
       id="instagram"
-      className="relative overflow-hidden border-y border-slate-200/80 bg-gray-50/50 px-4 py-12 sm:py-16"
+      className="sc-legacy-section relative overflow-hidden border-y border-slate-200/80 bg-gray-50/50 px-4 py-12 sm:py-16"
     >
       <div className="pointer-events-none absolute -left-24 top-10 h-64 w-64 rounded-full bg-gradient-to-br from-rose-300/30 via-amber-200/25 to-transparent blur-3xl" />
       <div className="pointer-events-none absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-gradient-to-tr from-fuchsia-300/25 via-rose-200/20 to-transparent blur-3xl" />

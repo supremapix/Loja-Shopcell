@@ -1,3 +1,4 @@
+import '../secondary.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -56,7 +57,7 @@ export default function AcessoriosPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans">
+    <div className="secondary-page secondary-accessories min-h-screen bg-white text-slate-800 flex flex-col font-sans">
       <EnhancedSEO
         title="Acessórios para Celulares em Curitiba | Capas, Películas e Carregadores Turbo"
         description="Acessórios originais para smartphones em Curitiba. Carregadores rápidos, películas 3D com aplicação na loja, capas anti-impacto e fones de ouvido."
@@ -66,10 +67,11 @@ export default function AcessoriosPage() {
       <Navbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
       {/* HERO SECTION */}
-      <section className="bg-slate-950 text-white py-16 sm:py-20 relative overflow-hidden border-b border-slate-800">
+      <section className="secondary-scope secondary-hero bg-slate-950 text-white py-16 sm:py-20 relative overflow-hidden border-b border-slate-800">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#FF6600]/20 via-transparent to-transparent pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 secondary-hero-layout">
+          <div className="secondary-hero-copy">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6600]/15 border border-[#FF6600]/30 text-[#FF8533] text-xs font-mono font-bold uppercase tracking-wider mb-5">
             <Headphones className="w-3.5 h-3.5" />
             Proteção e Performance
@@ -90,11 +92,17 @@ export default function AcessoriosPage() {
             <MessageSquare className="w-4 h-4" />
             <span>Consultar Acessório no WhatsApp</span>
           </a>
+          </div>
+          <div className="secondary-accessory-visual" aria-hidden="true">
+            <div className="secondary-visual-topline"><span>O SEU PRÓXIMO UPGRADE</span><span>+ + +</span></div>
+            <div className="secondary-accessory-orbit"><Smartphone /><span className="secondary-orbit-node secondary-orbit-node--one"><Zap /></span><span className="secondary-orbit-node secondary-orbit-node--two"><Headphones /></span><span className="secondary-orbit-node secondary-orbit-node--three"><Shield /></span></div>
+            <div className="secondary-visual-bottomline"><span>ENERGIA. PROTEÇÃO. SOM.</span><span>04 CATEGORIAS</span></div>
+          </div>
         </div>
       </section>
 
       {/* CATEGORIAS DE ACESSÓRIOS */}
-      <section className="py-16 bg-slate-50 border-b border-slate-200">
+      <section className="secondary-scope py-16 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-mono font-bold text-[#FF6600] uppercase tracking-widest block mb-2">
@@ -106,12 +114,17 @@ export default function AcessoriosPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {acessoriosList.map((cat) => (
+            {acessoriosList.map((cat, index) => (
               <div
                 key={cat.id}
-                className={`p-8 rounded-3xl border-2 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between ${cat.color}`}
+                className={`secondary-accessory-card p-8 rounded-3xl border-2 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between ${cat.color}`}
               >
                 <div>
+                  <div className="secondary-category-art" aria-hidden="true">
+                    <span>0{index + 1}</span>
+                    {index === 0 ? <Zap /> : index === 1 ? <Shield /> : index === 2 ? <Smartphone /> : <Headphones />}
+                    <i />
+                  </div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] font-mono font-bold bg-white px-3 py-1 rounded-full border border-slate-200 text-slate-800 uppercase tracking-wider">
                       {cat.badge}
@@ -153,7 +166,7 @@ export default function AcessoriosPage() {
       </section>
 
       {/* BANNER RETIRADA NA LOJA OU MOTOBOY */}
-      <section className="py-16 bg-white">
+      <section className="secondary-scope py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
             <div className="max-w-xl">

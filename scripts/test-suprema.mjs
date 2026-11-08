@@ -45,3 +45,14 @@ for (const url of urls) {
   assert.ok(html.includes(`href="${url}"`), file);
 }
 console.log(`PASS: six networks, correct link encoding, four clipboard outcomes, preserved catalog/contact/cart/SEO data, ${urls.length} indexable URLs.`);
+
+const home = readFileSync('src/components/Home.tsx', 'utf8');
+const hero = readFileSync('src/components/Hero.tsx', 'utf8');
+const nav = readFileSync('src/components/Navbar.tsx', 'utf8');
+const cart = readFileSync('src/components/Cart.tsx', 'utf8');
+assert.ok(home.includes('REALME_PRODUCTS.filter') && home.includes('STORES.map'));
+assert.ok(hero.includes('aria-pressed={selected === index}'));
+assert.ok(nav.includes('submitSearch') && nav.includes('/celulares?q='));
+assert.ok(cart.includes('aria-modal="true"') && cart.includes("event.key === 'Escape'"));
+assert.ok(!readFileSync('src/components/ScrollToTop.tsx','utf8').includes('[pathname, search, hash]'));
+console.log('PASS: premium hero selectors, real data-driven showcases, search routing, cart keyboard handling and stable query-filter scroll.');
