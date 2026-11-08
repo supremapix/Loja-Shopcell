@@ -27,9 +27,11 @@ for (const [pattern, legacyName] of [
   [/src="(\/assets\/[^"]+\.js)"/, 'index-DeeeCG6u.js'],
   [/src="(\/assets\/[^"]+\.js)"/, 'index-Rl6KhMIH.js'],
   [/src="(\/assets\/[^"]+\.js)"/, 'index-6cx5WXa-.js'],
+  [/src="(\/assets\/[^"]+\.js)"/, 'index-DIUc9Mr2.js'],
   [/href="(\/assets\/[^"]+\.css)"/, 'index-CYt2YvPK.css'],
   [/href="(\/assets\/[^"]+\.css)"/, 'index-BgAgHVgu.css'],
   [/href="(\/assets\/[^"]+\.css)"/, 'index-DzWZbtRk.css'],
+  [/href="(\/assets\/[^"]+\.css)"/, 'index-B5b2acns.css'],
 ] as const) {
   const currentAsset = templateHtml.match(pattern)?.[1];
   if (currentAsset) fs.copyFileSync(path.join(DIST_PATH, currentAsset), path.join(DIST_PATH, 'assets', legacyName));

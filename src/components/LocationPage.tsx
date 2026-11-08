@@ -116,7 +116,7 @@ export default function LocationPage() {
               <div className="secondary-location-visual" aria-hidden="true"><MapPin /><span>CURITIBA / PR</span></div>
               <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                 <span className="text-xs text-slate-400 font-bold uppercase tracking-wider font-mono">Unidade mais próxima</span>
-                <span className="text-[10px] text-emerald-400 font-bold font-mono">ABERTA HOJE</span>
+                <span className="text-[10px] text-emerald-400 font-bold font-mono">SEG–SÁB</span>
               </div>
 
               <div className="rounded-xl border border-[#FF6600]/25 bg-[#FF6600]/10 p-3">
