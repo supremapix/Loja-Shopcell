@@ -191,4 +191,17 @@ baseBairrosData.forEach(b => {
   }
 });
 
-export const bairrosData: BairroInfo[] = Array.from(allBairrosMap.values());
+export const bairrosData: BairroInfo[] = Array.from(allBairrosMap.values()).map((local) => {
+  const city = local.regiao === 'Região Metropolitana';
+  const hasStore = ['guaira', 'alto-boqueirao'].includes(local.slug);
+  return {
+    ...local,
+    tituloSEO: `Conserto de celular para ${local.nome}${city ? ' (PR)' : ', Curitiba'} | SUNCELL`,
+    metaDescription: `Está em ${local.nome}? Veja como preparar seu celular para avaliação na SUNCELL, conferir orçamento e escolher entre as lojas Guaíra e Alto Boqueirão, em Curitiba.`,
+    introducao: hasStore
+      ? `A SUNCELL tem uma unidade no ${local.nome}, dentro do Mercado Goes. Esta página reúne o endereço da loja e orientações para preparar o aparelho antes de uma avaliação técnica.`
+      : `Quem está em ${local.nome}${city ? ', no Paraná' : ', em Curitiba'} pode consultar a SUNCELL e combinar uma avaliação presencial nas unidades Guaíra ou Alto Boqueirão. Esta página orienta o atendimento a partir da sua região; não anuncia uma filial em ${local.nome}.`,
+    coordenadasContexto: `As duas lojas ficam em Curitiba, dentro do Mercado Goes. Compare os endereços e confirme a unidade, o horário e a possibilidade de avaliar o seu modelo antes de sair.`,
+    ctaText: `Consultar avaliação a partir de ${local.nome}`,
+  };
+});

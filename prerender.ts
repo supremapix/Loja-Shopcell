@@ -1,3 +1,7 @@
+import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import LocalGuide from './src/components/LocalGuide.js';
+import { localSchemas, localPath, LOCAL_SITE, localFaq, localContext } from './src/localGuideData.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -68,7 +72,7 @@ const pages: PrerenderPage[] = [
     outputPath: 'index.html',
     title: 'SUNCELL — Assistência Técnica de Celular em Curitiba | Mercado Goes',
     description: 'Troca de tela, bateria e placa com diagnóstico gratuito e garantia. Duas lojas SUNCELL dentro do Mercado Goes: Guaíra e Alto Boqueirão, Curitiba.',
-    canonical: 'https://www.celularescuritibashopcell.com.br/',
+    canonical: 'https://www.xiaomishopcell.com/',
     keywords: 'assistência técnica celular curitiba, troca de tela curitiba, troca de bateria curitiba, conserto de celular curitiba, suncell curitiba, mercado goes'
   },
   // Realme Smartphones Catalog Page
@@ -77,7 +81,7 @@ const pages: PrerenderPage[] = [
     outputPath: path.join('celulares', 'index.html'),
     title: 'Smartphones Realme em Curitiba | SUNCELL — Modelos com Garantia de 12 Meses',
     description: 'Confira os smartphones Realme em Curitiba na SUNCELL: realme Note 60X, P4 Lite, 14 5G e P4 Power 5G. Aparelhos novos com 12 meses de garantia local e entrega expressa.',
-    canonical: 'https://www.celularescuritibashopcell.com.br/celulares',
+    canonical: 'https://www.xiaomishopcell.com/celulares',
     keywords: 'smartphones realme curitiba, comprar realme curitiba, celular realme curitiba, realme note 60x curitiba, realme p4 lite curitiba, realme 14 5g curitiba, realme p4 power curitiba, loja de celulares curitiba'
   },
   // Individual Realme Smartphone Pages
@@ -105,7 +109,7 @@ const pages: PrerenderPage[] = [
     outputPath: path.join('loja-de-celular-curitiba', 'index.html'),
     title: 'Loja de Celular em Curitiba | SUNCELL Mercado Goes',
     description: 'Encontre os melhores celulares com 12 meses de garantia na SUNCELL no Mercado Goes, em Curitiba. Atendimento presencial e entrega expressa.',
-    canonical: 'https://www.celularescuritibashopcell.com.br/loja-de-celular-curitiba',
+    canonical: 'https://www.xiaomishopcell.com/loja-de-celular-curitiba',
     keywords: 'loja de celular curitiba, loja de celular mercado goes, suncell curitiba'
   },
   {
@@ -113,7 +117,7 @@ const pages: PrerenderPage[] = [
     outputPath: path.join('acessorios', 'index.html'),
     title: 'Acessórios para Celulares em Curitiba | Capinhas, Películas e Carregadores',
     description: 'Acessórios completos para seu celular em Curitiba. Capinhas, películas de vidro e carregadores com entrega expressa.',
-    canonical: 'https://www.celularescuritibashopcell.com.br/acessorios',
+    canonical: 'https://www.xiaomishopcell.com/acessorios',
     keywords: 'acessorios celular curitiba, capinha celular curitiba, pelicula celular curitiba'
   },
   {
@@ -121,7 +125,7 @@ const pages: PrerenderPage[] = [
     outputPath: path.join('sobre', 'index.html'),
     title: 'Sobre a SUNCELL — Assistência Técnica em Curitiba',
     description: 'Conheça a história da SUNCELL, referência em assistência técnica de celulares no Mercado Goes, em Curitiba.',
-    canonical: 'https://www.celularescuritibashopcell.com.br/sobre',
+    canonical: 'https://www.xiaomishopcell.com/sobre',
     keywords: 'sobre suncell, historia suncell curitiba, assistencia tecnica celular curitiba'
   },
   {
@@ -129,7 +133,7 @@ const pages: PrerenderPage[] = [
     outputPath: path.join('contato', 'index.html'),
     title: 'Contato e Localização | SUNCELL Curitiba',
     description: 'Fale com a SUNCELL pelo WhatsApp ou visite nossas lojas no Mercado Goes, em Curitiba: Guaíra e Alto Boqueirão.',
-    canonical: 'https://www.celularescuritibashopcell.com.br/contato',
+    canonical: 'https://www.xiaomishopcell.com/contato',
     keywords: 'contato suncell, whatsapp suncell curitiba, endereco suncell curitiba'
   },
   // Preserve metadata on direct requests as well as client-side navigation.
@@ -138,7 +142,7 @@ const pages: PrerenderPage[] = [
     outputPath: path.join('blog', 'index.html'),
     title: 'Blog SUNCELL Curitiba | Guias de Compra, Análises e Dicas de Celulares',
     description: 'Confira os melhores guias de compra e análises de smartphones em Curitiba. Descubra como escolher seu celular ideal com dicas de especialistas da SUNCELL.',
-    canonical: 'https://www.celularescuritibashopcell.com.br/blog',
+    canonical: 'https://www.xiaomishopcell.com/blog',
     keywords: 'blog celular curitiba, qual celular comprar, loja de celular curitiba, guia de compras celular curitiba'
   },
   ...Object.values(BLOG_POSTS).map((post) => ({
@@ -146,11 +150,11 @@ const pages: PrerenderPage[] = [
     outputPath: path.join('blog', post.slug, 'index.html'),
     title: `${post.title} | Blog SUNCELL Curitiba`,
     description: post.metaDescription,
-    canonical: `https://www.celularescuritibashopcell.com.br/blog/${post.slug}`,
+    canonical: `https://www.xiaomishopcell.com/blog/${post.slug}`,
     keywords: post.tags.join(', '),
     ogType: 'article',
     ogImage: post.image,
-    ...(new URL(post.image, "https://www.celularescuritibashopcell.com.br").pathname === "/images/suncell-assistencia-banner.webp"
+    ...(new URL(post.image, "https://www.xiaomishopcell.com").pathname === "/images/suncell-assistencia-banner.webp"
       ? { imageWidth: 1536, imageHeight: 1024 } : {})
   })),
   {
@@ -158,7 +162,7 @@ const pages: PrerenderPage[] = [
     outputPath: path.join('comparar', 'index.html'),
     title: 'Comparativo de Celulares | SUNCELL — Loja de Celulares em Curitiba',
     description: 'Analise técnica e compare smartphones atuais com suas gerações anteriores. Saiba se vale a pena fazer o upgrade!',
-    canonical: 'https://www.celularescuritibashopcell.com.br/comparar',
+    canonical: 'https://www.xiaomishopcell.com/comparar',
     keywords: 'assistência técnica celular Curitiba, troca de tela Curitiba, troca de bateria Curitiba, conserto de celular Curitiba, SUNCELL Curitiba, Mercado Goes'
   },
   // 404 Page
@@ -167,7 +171,7 @@ const pages: PrerenderPage[] = [
     outputPath: '404.html',
     title: 'Página não encontrada (404) | SUNCELL Curitiba',
     description: 'A página solicitada não foi encontrada. Confira nossos canais de atendimento e navegabilidade.',
-    canonical: 'https://www.celularescuritibashopcell.com.br/404',
+    canonical: 'https://www.xiaomishopcell.com/404',
     keywords: '404, pagina nao encontrada',
     noindex: true
   },
@@ -177,7 +181,7 @@ const pages: PrerenderPage[] = [
     outputPath: path.join(ip.slug, 'index.html'),
     title: ip.title,
     description: ip.metaDescription,
-    canonical: `https://www.celularescuritibashopcell.com.br/${ip.slug}`,
+    canonical: `https://www.xiaomishopcell.com/${ip.slug}`,
     keywords: ip.keywords,
     bairroName: ip.bairroFocus
   })),
@@ -187,7 +191,7 @@ const pages: PrerenderPage[] = [
     outputPath: path.join('bairro', b.slug, 'index.html'),
     title: b.tituloSEO,
     description: b.metaDescription,
-    canonical: `https://www.celularescuritibashopcell.com.br/bairro/${b.slug}`,
+    canonical: `https://www.xiaomishopcell.com/bairro/${b.slug}`,
     keywords: `assistência técnica ${b.nome}, conserto de celular ${b.nome}, troca de tela ${b.nome}, celular Curitiba, suncell curitiba`,
     bairroName: b.nome,
     regiaoName: b.regiao
@@ -195,13 +199,15 @@ const pages: PrerenderPage[] = [
 ];
 
 function generateSchemas(page: PrerenderPage) {
+  const local = bairrosData.find(item => page.path === localPath(item));
+  if (local) return localSchemas(local).map(schema => `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`).join('\n');
   const localBusiness = {
     "@context": "https://schema.org",
     "@type": "MobilePhoneStore",
     "name": "SUNCELL — Assistência Técnica de Celulares em Curitiba",
-    "image": "https://www.celularescuritibashopcell.com.br/og-suncell.jpg",
-    "@id": "https://www.celularescuritibashopcell.com.br/#localbusiness",
-    "url": "https://www.celularescuritibashopcell.com.br",
+    "image": "https://www.xiaomishopcell.com/og-suncell.jpg",
+    "@id": "https://www.xiaomishopcell.com/#localbusiness",
+    "url": "https://www.xiaomishopcell.com",
     "telephone": "+55-41-99917-6640",
     "priceRange": "$$",
     "address": {
@@ -241,7 +247,7 @@ function generateSchemas(page: PrerenderPage) {
       "@type": "ListItem",
       "position": 1,
       "name": "Início",
-      "item": "https://www.celularescuritibashopcell.com.br"
+      "item": "https://www.xiaomishopcell.com"
     }
   ];
 
@@ -250,7 +256,7 @@ function generateSchemas(page: PrerenderPage) {
       "@type": "ListItem",
       "position": 2,
       "name": "Celulares",
-      "item": "https://www.celularescuritibashopcell.com.br/celulares"
+      "item": "https://www.xiaomishopcell.com/celulares"
     });
     breadcrumbElements.push({
       "@type": "ListItem",
@@ -346,9 +352,8 @@ pages.forEach((page) => {
     <link rel="canonical" href="${escapeHtml(page.canonical)}" />
     ${robotsTag}
     <meta name="geo.region" content="BR-PR" />
-    <meta name="geo.placename" content="Curitiba${page.bairroName ? ` - ${page.bairroName}` : ''}" />
-    <meta name="geo.position" content="-25.4716;-49.2789" />
-    <meta name="ICBM" content="-25.4716, -49.2789" />
+    <meta name="geo.placename" content="${page.regiaoName === 'Região Metropolitana' ? `${page.bairroName}, PR` : `Curitiba${page.bairroName ? ` - ${page.bairroName}` : ''}`}" />
+
 
     <!-- Open Graph -->
     <meta property="og:type" content="${ogType}" />
@@ -377,6 +382,12 @@ pages.forEach((page) => {
     html = html.substring(0, headEndIndex) + seoHeadTags + html.substring(headEndIndex);
   }
 
+  const local = bairrosData.find(item => page.path === localPath(item));
+  if (local) {
+    const body = renderToStaticMarkup(React.createElement(LocalGuide, { local }));
+    html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`);
+  }
+
   const fullOutputPath = path.join(DIST_PATH, page.outputPath);
   const outputDir = path.dirname(fullOutputPath);
 
@@ -389,3 +400,10 @@ pages.forEach((page) => {
 });
 
 console.log('🎉 Pre-Rendering concluído com sucesso total!');
+
+// The same local data drives visible HTML, search discovery and AI-readable context.
+const localUrls = bairrosData.map(local => `${LOCAL_SITE}${localPath(local)}`);
+fs.writeFileSync(path.join(DIST_PATH, 'sitemap-local.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${localUrls.map(url => `<url><loc>${url}</loc><lastmod>2026-11-09</lastmod></url>`).join('')}</urlset>`);
+const intro = `# SUNCELL: atendimento e preparo do celular\n\nSite: ${LOCAL_SITE}\nConteúdo revisado em 9 de novembro de 2026.\n\n## Atendimento presencial\nA SUNCELL informa duas lojas no Mercado Goes em Curitiba: Guaíra, Rua Maria Moscardi Fanini, 261, WhatsApp +55 41 99917-6640; Alto Boqueirão, R. Pastor Antônio Polito, 1805, WhatsApp +55 41 99750-1961. Horário informado: segunda a sábado, 9h às 19h; confirme exceções.\n\nAs páginas locais orientam clientes que partem dos bairros e cidades relacionados. Elas não representam filiais nessas localidades. Não há garantia automática de coleta, entrega, preço, estoque, recuperação de dados ou prazo de conserto. Confirme condições e garantia antes de autorizar o reparo. Não envie senhas ou códigos de autenticação.\n\n## Páginas de atendimento\n`;
+fs.writeFileSync(path.join(DIST_PATH, 'llms.txt'), intro + bairrosData.map(local => `- [${local.nome}](${LOCAL_SITE}${localPath(local)}): ${local.metaDescription}`).join('\n') + `\n\nConteúdo ampliado: ${LOCAL_SITE}/llms-full.txt\n`);
+fs.writeFileSync(path.join(DIST_PATH, 'llms-full.txt'), intro + bairrosData.map(local => `\n## ${local.nome}\nURL: ${LOCAL_SITE}${localPath(local)}\n${local.introducao}\n${localContext(local)}\n${localFaq(local).map(faq => `\n### ${faq.question}\n${faq.answer}`).join('\n')}`).join('\n'));

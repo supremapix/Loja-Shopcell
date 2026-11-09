@@ -40,7 +40,7 @@ export default function BlogPostPage() {
     "datePublished": "2026-07-26",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://www.celularescuritibashopcell.com.br/blog/${post.slug}`
+      "@id": `https://www.xiaomishopcell.com/blog/${post.slug}`
     }
   };
 
@@ -50,7 +50,7 @@ export default function BlogPostPage() {
       <EnhancedSEO
         title={`${post.title} | Blog SUNCELL Curitiba`}
         description={post.metaDescription}
-        canonical={`https://www.celularescuritibashopcell.com.br/blog/${post.slug}`}
+        canonical={`https://www.xiaomishopcell.com/blog/${post.slug}`}
         ogImage={post.image}
         ogType="article"
       />

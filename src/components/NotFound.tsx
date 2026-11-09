@@ -91,7 +91,7 @@ export default function NotFound() {
       <EnhancedSEO
         title="Página não encontrada (404) | SUNCELL — Loja de Celulares em Curitiba"
         description="A página solicitada não foi encontrada ou foi movida. Confira nossos canais de atendimento e perguntas frequentes."
-        canonical="https://www.celularescuritibashopcell.com.br/404"
+        canonical="https://www.xiaomishopcell.com/404"
         keywords="404 suncell curitiba, pagina nao encontrada"
         noindex={true}
       />

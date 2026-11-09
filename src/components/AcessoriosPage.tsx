@@ -61,7 +61,7 @@ export default function AcessoriosPage() {
       <EnhancedSEO
         title="Acessórios para Celulares em Curitiba | Capas, Películas e Carregadores Turbo"
         description="Acessórios originais para smartphones em Curitiba. Carregadores rápidos, películas 3D com aplicação na loja, capas anti-impacto e fones de ouvido."
-        canonical="https://www.celularescuritibashopcell.com.br/acessorios"
+        canonical="https://www.xiaomishopcell.com/acessorios"
       />
 
       <Navbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />

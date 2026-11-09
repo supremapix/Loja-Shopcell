@@ -28,7 +28,7 @@ export default function Home() {
   const products = REALME_PRODUCTS.filter(product => `${product.name} ${product.shortDescription}`.toLocaleLowerCase('pt-BR').includes(query));
   return (
     <div className="sc-home">
-      <EnhancedSEO title="SUNCELL Curitiba | Assistência Técnica de Celulares no Mercado Goes" description="Assistência técnica de celulares em Curitiba com diagnóstico gratuito e garantia. Troca de tela, bateria e placa nas unidades SUNCELL Guaíra e Alto Boqueirão, dentro do Mercado Goes." canonical="https://www.celularescuritibashopcell.com.br/" />
+      <EnhancedSEO title="SUNCELL Curitiba | Assistência Técnica de Celulares no Mercado Goes" description="Assistência técnica de celulares em Curitiba com diagnóstico gratuito e garantia. Troca de tela, bateria e placa nas unidades SUNCELL Guaíra e Alto Boqueirão, dentro do Mercado Goes." canonical="https://www.xiaomishopcell.com/" />
       <Navbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
       <main>
         <Hero />

@@ -55,4 +55,6 @@ User-agent: Bytespider
 Allow: /
 
 # Sitemaps Index
-Sitemap: https://www.celularescuritibashopcell.com.br/sitemap.xml
+Sitemap: https://www.xiaomishopcell.com/sitemap.xml
+
+Sitemap: https://www.xiaomishopcell.com/sitemap-local.xml

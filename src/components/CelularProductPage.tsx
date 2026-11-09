@@ -95,13 +95,13 @@ export default function CelularProductPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Início",
-        "item": "https://www.celularescuritibashopcell.com.br"
+        "item": "https://www.xiaomishopcell.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Celulares",
-        "item": "https://www.celularescuritibashopcell.com.br/celulares"
+        "item": "https://www.xiaomishopcell.com/celulares"
       },
       {
         "@type": "ListItem",

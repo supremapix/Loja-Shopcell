@@ -5,14 +5,14 @@ The following SEO and metadata files are fully generated and located in the /pub
 
 1. Robots.txt (Located at: /public/robots.txt)
    Configured to allow all search engines and point to the XML sitemap.
-   URL: https://www.celularescuritibashopcell.com.br/robots.txt
+   URL: https://www.xiaomishopcell.com/robots.txt
 
 2. Sitemap.xml (Located at: /public/sitemap.xml)
    Standard XML sitemap with indexation guidelines for the homepage and all pages.
-   URL: https://www.celularescuritibashopcell.com.br/sitemap.xml
+   URL: https://www.xiaomishopcell.com/sitemap.xml
 
 3. LLMs.txt (Located at: /public/llms.txt)
    Structured specification file of the services and stores for LLM parsers.
-   URL: https://www.celularescuritibashopcell.com.br/llms.txt
+   URL: https://www.xiaomishopcell.com/llms.txt
 
 All files are structured for immediate and optimal search engine indexation.

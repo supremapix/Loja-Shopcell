@@ -18,7 +18,7 @@ export default function EnhancedSEO({
   title,
   description,
   canonical,
-  ogImage = "https://www.celularescuritibashopcell.com.br/og-suncell.jpg",
+  ogImage = "https://www.xiaomishopcell.com/og-suncell.jpg",
   ogType = 'website',
   keywords = "assistência técnica celular Curitiba, troca de tela Curitiba, troca de bateria Curitiba, conserto de celular Curitiba, SUNCELL Curitiba, Mercado Goes",
   bairroName,
@@ -125,7 +125,7 @@ export default function EnhancedSEO({
 
   const neighborhoodBusinessSchema = bairroName ? {
     ...localBusinessSchema,
-    "@id": `https://www.celularescuritibashopcell.com.br/bairro/${bairroName.toLowerCase()}#localbusiness`,
+    "@id": `https://www.xiaomishopcell.com/bairro/${bairroName.toLowerCase()}#localbusiness`,
     "areaServed": {
       "@type": "AdministrativeArea",
       "name": `${bairroName}, Curitiba, PR`
@@ -150,7 +150,7 @@ export default function EnhancedSEO({
         "@type": "ListItem",
         "position": 1,
         "name": "Início",
-        "item": "https://www.celularescuritibashopcell.com.br"
+        "item": "https://www.xiaomishopcell.com"
       },
       ...(bairroName ? [{
         "@type": "ListItem",

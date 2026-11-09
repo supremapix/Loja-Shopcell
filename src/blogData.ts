@@ -21,7 +21,7 @@ export const BLOG_POSTS: Record<string, BlogPost> = {
     date: "26 de Julho de 2026",
     author: "Equipe Especializada SUNCELL",
     readTime: "5 min de leitura",
-    image: "https://www.celularescuritibashopcell.com.br/images/suncell-assistencia-banner.webp",
+    image: "https://www.xiaomishopcell.com/images/suncell-assistencia-banner.webp",
     summary: "Buscando um novo smartphone em Curitiba? Confira nossas dicas fundamentais sobre autonomia de bateria, telas fluidas, câmeras e garantia presencial.",
     tags: ["Guia de Compras", "Celular Curitiba", "SUNCELL", "Sítio Cercado"],
     contentHtml: `
@@ -46,7 +46,7 @@ export const BLOG_POSTS: Record<string, BlogPost> = {
     date: "20 de Julho de 2026",
     author: "Gerência SUNCELL",
     readTime: "4 min de leitura",
-    image: "https://www.celularescuritibashopcell.com.br/images/suncell-assistencia-banner.webp",
+    image: "https://www.xiaomishopcell.com/images/suncell-assistencia-banner.webp",
     summary: "Comprar localmente em Curitiba garante que você receba um aparelho 100% original, com atendimento humano e suporte presencial garantido.",
     tags: ["Loja Física", "Garantia Local", "Curitiba", "Segurança"],
     contentHtml: `
@@ -68,7 +68,7 @@ export const BLOG_POSTS: Record<string, BlogPost> = {
     date: "15 de Julho de 2026",
     author: "Equipe SUNCELL",
     readTime: "4 min de leitura",
-    image: "https://www.celularescuritibashopcell.com.br/images/suncell-assistencia-banner.webp",
+    image: "https://www.xiaomishopcell.com/images/suncell-assistencia-banner.webp",
     summary: "Encontrar uma loja séria de smartphones em Curitiba faz toda a diferença para o seu bolso e sua tranquilidade. Conheça a história e diferenciais da SUNCELL.",
     tags: ["Onde Comprar", "Loja de Celular Curitiba", "Sítio Cercado"],
     contentHtml: `

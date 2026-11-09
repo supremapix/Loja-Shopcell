@@ -32,7 +32,7 @@ export default function CelularesListingPage() {
     p.specs.tela.toLowerCase().includes(searchQuery.toLowerCase())
   ).sort((a, b) => sortOrder === 'price-desc' ? b.price - a.price : a.price - b.price);
 
-  const canonicalUrl = "https://www.celularescuritibashopcell.com.br/celulares";
+  const canonicalUrl = "https://www.xiaomishopcell.com/celulares";
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -42,7 +42,7 @@ export default function CelularesListingPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Início",
-        "item": "https://www.celularescuritibashopcell.com.br"
+        "item": "https://www.xiaomishopcell.com"
       },
       {
         "@type": "ListItem",

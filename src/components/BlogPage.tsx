@@ -16,7 +16,7 @@ export default function BlogPage() {
       <EnhancedSEO
         title="Blog SUNCELL Curitiba | Guias de Compra, Análises e Dicas de Celulares"
         description="Confira os melhores guias de compra e análises de smartphones em Curitiba. Descubra como escolher seu celular ideal com dicas de especialistas da SUNCELL."
-        canonical="https://www.celularescuritibashopcell.com.br/blog"
+        canonical="https://www.xiaomishopcell.com/blog"
         keywords="blog celular curitiba, qual celular comprar, loja de celular curitiba, guia de compras celular curitiba"
       />
 

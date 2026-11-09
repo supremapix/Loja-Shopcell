@@ -121,7 +121,7 @@ export default function Compare() {
       <EnhancedSEO 
         title="Comparativo de Celulares | SUNCELL — Loja de Celulares em Curitiba"
         description="Analise técnica e compare smartphones atuais com suas gerações anteriores. Saiba se vale a pena fazer o upgrade!"
-        canonical="https://www.celularescuritibashopcell.com.br/comparar"
+        canonical="https://www.xiaomishopcell.com/comparar"
       />
       
       <Navbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />

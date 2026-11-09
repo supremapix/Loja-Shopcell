@@ -19,7 +19,7 @@ export default function SobrePage() {
       <EnhancedSEO
         title="Sobre a SUNCELL Curitiba | Lojas no Mercado Goes e 12 Meses de Garantia"
         description="Conheça a história da SUNCELL Assistência Técnica e Smartphones em Curitiba. Duas lojas físicas no Mercado Goes (Guaíra e Alto Boqueirão) com 12 meses de garantia local."
-        canonical="https://www.celularescuritibashopcell.com.br/sobre"
+        canonical="https://www.xiaomishopcell.com/sobre"
       />
 
       <Navbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />

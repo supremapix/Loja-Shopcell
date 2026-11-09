@@ -25,7 +25,7 @@ export default function ContatoPage() {
       <EnhancedSEO
         title="Contato SUNCELL Curitiba | Lojas no Mercado Goes (Guaíra e Alto Boqueirão)"
         description="Fale com a SUNCELL Assistência Técnica e Celulares em Curitiba. Unidade Guaíra: (41) 99917-6640 e Unidade Alto Boqueirão: (41) 99750-1961 (Dentro do Mercado Goes). E-mail: info@suncellassistencia.com.br."
-        canonical="https://www.celularescuritibashopcell.com.br/contato"
+        canonical="https://www.xiaomishopcell.com/contato"
       />
 
       <Navbar searchQuery={searchQuery} onSearchChange={setSearchQuery} />

@@ -11,7 +11,7 @@ export default function Location() {
 
   // Categorize from bairrosData
   const cities = bairrosData.filter(b => b.regiao === "Região Metropolitana");
-  const officialBairros = bairrosData.filter(b => b.regiao === "Curitiba (IPPUC)" || ["Central", "Nobre", "Sul", "Oeste", "Norte", "Leste"].includes(b.regiao));
+  const officialBairros = bairrosData.filter(b => b.regiao !== "Região Metropolitana");
   const unofficialBairros = bairrosData.filter(b => b.regiao === "Curitiba (Região Popular)");
 
   const currentStoreData = STORES.find(s => s.id === selectedStore) || STORES[0];

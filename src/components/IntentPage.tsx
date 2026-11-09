@@ -30,7 +30,7 @@ export default function IntentPage() {
       <EnhancedSEO
         title={pageData.title}
         description={pageData.metaDescription}
-        canonical={`https://www.celularescuritibashopcell.com.br/${pageData.slug}`}
+        canonical={`https://www.xiaomishopcell.com/${pageData.slug}`}
         keywords={pageData.keywords}
         bairroName={pageData.bairroFocus}
         faqList={pageData.faqs}

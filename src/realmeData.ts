@@ -78,7 +78,7 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
     altText: "Smartphone Realme Note 60X Marble Black tela 6,74 polegadas bateria 5000mAh",
     metaDescription: "Compre o Realme Note 60X 128GB em Curitiba por R$ 849,99 à vista ou 12x de R$ 81,05. Bateria 5.000mAh, tela 90Hz e 12 meses de garantia na SUNCELL.",
     titleSEO: "Realme Note 60X (Dual SIM, Anatel) — R$ 849,99 à vista | SUNCELL Curitiba",
-    canonical: "https://www.celularescuritibashopcell.com.br/celular/realme-note-60x",
+    canonical: "https://www.xiaomishopcell.com/celular/realme-note-60x",
     faqs: [
       {
         question: "O Realme Note 60X é resistente à água?",
@@ -140,7 +140,7 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
     altText: "Smartphone Realme P4 Lite NFC Pulse Purple tela 6,8 polegadas bateria 6600mAh",
     metaDescription: "Compre o Realme P4 Lite NFC 128GB em Curitiba por R$ 999,99 à vista ou 12x de R$ 94,23. Bateria 6.600mAh, tela 120Hz, NFC e garantia de 12 meses na SUNCELL.",
     titleSEO: "Realme P4 Lite NFC (Dual SIM, Anatel) — R$ 999,99 à vista | SUNCELL Curitiba",
-    canonical: "https://www.celularescuritibashopcell.com.br/celular/realme-p4-lite",
+    canonical: "https://www.xiaomishopcell.com/celular/realme-p4-lite",
     faqs: [
       {
         question: "O Realme P4 Lite possui NFC para pagamento por aproximação?",
@@ -205,7 +205,7 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
     altText: "Smartphone Realme 14 5G NFC Storm Titanium tela AMOLED 6,67 polegadas 512GB",
     metaDescription: "Compre o Realme 14 5G 512GB 12GB RAM em Curitiba por R$ 1.949,99 à vista ou 12x de R$ 183,75. Snapdragon, tela AMOLED, IP69 e 12 meses de garantia SUNCELL.",
     titleSEO: "Realme 14 5G NFC (Dual SIM, Anatel) — R$ 1.949,99 à vista | SUNCELL Curitiba",
-    canonical: "https://www.celularescuritibashopcell.com.br/celular/realme-14-5g",
+    canonical: "https://www.xiaomishopcell.com/celular/realme-14-5g",
     faqs: [
       {
         question: "O Realme 14 5G é resistente à água?",
@@ -269,7 +269,7 @@ export const REALME_PRODUCTS: RealmeProduct[] = [
     altText: "Smartphone Realme P4 Power 5G NFC Power Silver tela curva 144Hz bateria 10001mAh",
     metaDescription: "Compre o Realme P4 Power 5G 512GB 12GB RAM em Curitiba por R$ 2.999,99 à vista ou 12x de R$ 282,70. Bateria 10.001mAh, 80W, câmera Sony OIS e garantia SUNCELL.",
     titleSEO: "Realme P4 Power 5G NFC (Dual SIM, Anatel) — R$ 2.999,99 à vista | SUNCELL Curitiba",
-    canonical: "https://www.celularescuritibashopcell.com.br/celular/realme-p4-power-5g",
+    canonical: "https://www.xiaomishopcell.com/celular/realme-p4-power-5g",
     faqs: [
       {
         question: "A bateria de 10.001 mAh do Realme P4 Power pode carregar outros aparelhos?",
