@@ -14,10 +14,19 @@ export default function ContatoPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [copiedStore, setCopiedStore] = useState<string | null>(null);
 
-  const copyAddress = (address: string, storeId: string) => {
-    navigator.clipboard.writeText(address);
-    setCopiedStore(storeId);
-    setTimeout(() => setCopiedStore(null), 3000);
+  const [copyStatus, setCopyStatus] = useState('');
+
+  const copyAddress = async (address: string, storeId: string) => {
+    setCopiedStore(null);
+    setCopyStatus('');
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(address);
+      setCopiedStore(storeId);
+      setCopyStatus('Endereço copiado. Cole no aplicativo de sua preferência.');
+    } catch {
+      setCopyStatus('Não foi possível copiar. Selecione o endereço exibido ou use o botão Google Maps.');
+    }
   };
 
   return (
@@ -207,6 +216,8 @@ export default function ContatoPage() {
             </div>
 
           </div>
+
+          <p role="status" aria-live="polite" className="text-sm text-slate-700 mb-6">{copyStatus}</p>
 
           {/* EMAIL & SUPORTE INSTITUCIONAL */}
           <div className="bg-slate-900 text-white p-8 rounded-3xl border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
